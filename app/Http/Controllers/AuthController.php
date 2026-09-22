@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
@@ -159,6 +160,9 @@ class AuthController extends Controller
             'role' => 'siswa',
             'is_active' => true,
         ]);
+
+        Role::firstOrCreate(['name' => 'siswa']);
+        $user->assignRole('siswa');
 
         Auth::login($user);
 

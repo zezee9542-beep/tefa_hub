@@ -52,7 +52,7 @@ class SiswaController extends Controller
      */
     public function blud(): View
     {
-        return view('siswa.dashboard', [
+        return view('siswa.blud', [
             'activeMenu' => 'blud',
             'user' => $this->getUserData(),
         ]);
@@ -63,7 +63,7 @@ class SiswaController extends Controller
      */
     public function bkk(): View
     {
-        return view('siswa.dashboard', [
+        return view('siswa.bkk', [
             'activeMenu' => 'bkk',
             'user' => $this->getUserData(),
         ]);
