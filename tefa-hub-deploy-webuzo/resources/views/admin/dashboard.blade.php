@@ -184,6 +184,23 @@
         }
 
         .logout-btn:hover { background: rgba(239,68,68,0.2); }
+
+        @media (max-width: 640px) {
+            body { padding: 1.5rem 1rem; }
+            h1 { font-size: 1.6rem; line-height: 1.25; }
+            .subtitle { line-height: 1.6; margin-bottom: 1.75rem; }
+            .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+            .stat-card { padding: 1.1rem .75rem; }
+            .stat-number { font-size: 2rem; }
+            .users-breakdown, .info-card { padding: 1.1rem; }
+            .breakdown-row, .info-row { gap: 1rem; }
+            .info-val { max-width: 58%; overflow-wrap: anywhere; text-align: right; }
+        }
+
+        @media (max-width: 360px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .role-badge { margin-bottom: 1rem; }
+        }
     </style>
 </head>
 <body>

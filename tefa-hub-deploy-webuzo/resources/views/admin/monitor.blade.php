@@ -333,7 +333,39 @@
 
         @media (max-width: 1200px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 900px)  { .grid-2-1 { grid-template-columns: 1fr; } }
-        @media (max-width: 640px)  { .main { padding: 1rem; } .grid-4 { grid-template-columns: 1fr 1fr; } .topbar { padding: 0 1rem; } }
+        @media (max-width: 640px)  {
+            .topbar {
+                height: auto;
+                min-height: 60px;
+                flex-wrap: wrap;
+                gap: 8px;
+                padding: 10px 14px;
+            }
+            .topbar-left { min-width: 0; gap: 8px; }
+            .logo-badge { font-size: .95rem; white-space: nowrap; }
+            .logo-icon { width: 32px; height: 32px; }
+            .breadcrumb { display: none; }
+            .topbar-right { width: 100%; justify-content: flex-end; gap: .5rem; }
+            .main { padding: 1rem; }
+            .page-header { margin-bottom: 1.5rem; }
+            .page-header h1 { font-size: 1.45rem; line-height: 1.25; }
+            .page-header p { font-size: .82rem; line-height: 1.55; }
+            .grid-4 { grid-template-columns: 1fr 1fr; gap: .75rem; }
+            .grid-2-1 { gap: .75rem; }
+            .card { padding: 1rem; border-radius: 14px; }
+            .metric-value { font-size: 2rem; }
+            .gauge-wrap { gap: .75rem; }
+        }
+
+        @media (max-width: 420px) {
+            .live-pill,
+            .server-clock { display: none; }
+            .topbar-right { margin-left: auto; width: auto; }
+            .btn-back,
+            .btn-logout { padding: .45rem .7rem; }
+            .grid-4 { grid-template-columns: 1fr; }
+            .feed-time { font-size: .64rem; }
+        }
     </style>
 </head>
 <body>

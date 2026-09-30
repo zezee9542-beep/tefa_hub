@@ -39,45 +39,44 @@ html, body {
 .ellipse-blur {
     position: absolute;
     border-radius: 50%;
-    filter: blur(55px);
-    opacity: 0.9;
     pointer-events: none;
     will-change: transform;
+    contain: paint;
 }
 
 /* 1. Atas / Top-Left Circle */
 .ellipse-top {
-    top: -40px;
-    left: -40px;
-    width: 380px;
-    height: 380px;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.35) 0%, rgba(196, 181, 253, 0.30) 50%, rgba(96, 165, 250, 0.25) 100%);
+    top: -60px;
+    left: -60px;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.28) 0%, rgba(196, 181, 253, 0.20) 55%, transparent 80%);
     animation: floatGlow 12s ease-in-out infinite alternate;
 }
 
 /* 2. Tengah / Middle-Left Circle */
 .ellipse-middle {
     top: 36%;
-    left: 6%;
-    width: 340px;
-    height: 340px;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.30) 0%, rgba(196, 181, 253, 0.30) 50%, rgba(96, 165, 250, 0.25) 100%);
+    left: 2%;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.22) 0%, rgba(196, 181, 253, 0.18) 55%, transparent 80%);
     animation: floatGlow 16s ease-in-out infinite alternate-reverse;
 }
 
 /* 3. Bawah Kanan / Bottom-Right Circle */
 .ellipse-bottom-right {
-    bottom: -60px;
-    right: -30px;
-    width: 440px;
-    height: 440px;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.30) 0%, rgba(196, 181, 253, 0.30) 50%, rgba(96, 165, 250, 0.25) 100%);
+    bottom: -80px;
+    right: -50px;
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.24) 0%, rgba(196, 181, 253, 0.18) 55%, transparent 80%);
     animation: floatGlow 14s ease-in-out infinite alternate;
 }
 
 @keyframes floatGlow {
     0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(25px, -20px) scale(1.06); }
+    100% { transform: translate(20px, -16px) scale(1.05); }
 }
 
 /* ── LOGIN CARD ──────────────────────────────────────────── */
@@ -92,8 +91,10 @@ html, body {
 }
 
 .login-card {
-    width: 480px;
-    height: 613px;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    min-height: auto;
     background: #ffffff;
     border-radius: 28px;
     box-shadow:
@@ -506,4 +507,68 @@ html, body {
 .form-input.is-invalid {
     border-color: rgba(239, 68, 68, 0.5);
     background: rgba(239, 68, 68, 0.04);
+}
+
+@media (max-width: 640px) {
+    html, body { align-items: flex-start; }
+
+    .login-container {
+        min-height: 100dvh;
+        padding: max(16px, env(safe-area-inset-top, 0px)) 14px max(16px, env(safe-area-inset-bottom, 0px));
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 480px;
+        height: auto;
+        min-height: 0;
+        padding: 26px 20px 22px;
+        gap: 16px;
+        border-radius: 22px;
+    }
+
+    .card-header { gap: 12px; margin-bottom: 4px; }
+    .logo-badge { width: 44px; height: 44px; border-radius: 13px; }
+    .logo-badge img { height: 28px; }
+    .welcome-title { font-size: 1.3rem; }
+    .welcome-subtitle { font-size: .8rem; line-height: 1.55; }
+    .login-form { gap: 14px; }
+    .form-input { min-width: 0; }
+    .btn-submit-primary,
+    .btn-google-auth { min-height: 44px; }
+    .card-footer-note { text-align: center; line-height: 1.6; }
+
+    /* hide blur ellipses on small screens to save GPU */
+    .ellipse-middle { display: none; }
+}
+
+@media (max-width: 400px) {
+    .login-container { padding-right: 12px; padding-left: 12px; }
+    .login-card { padding: 22px 16px; border-radius: 18px; }
+    .card-header { align-items: center; }
+    .welcome-title { font-size: 1.2rem; }
+    .welcome-subtitle { font-size: .75rem; }
+    .remember-text,
+    .btn-google-auth span { font-size: .76rem; }
+    .alert-error, .alert-info { font-size: .8rem; padding: 0.6rem 0.75rem; }
+    .form-group { margin-bottom: 8px; }
+    .input-wrapper { height: 40px; }
+    .btn-submit-primary { height: 40px; font-size: 13px; }
+}
+
+@media (max-width: 360px) {
+    .login-container { padding-right: 10px; padding-left: 10px; }
+    .login-card { padding: 18px 14px; border-radius: 16px; }
+    .welcome-title { font-size: 1.1rem; }
+    .welcome-subtitle { font-size: .72rem; }
+    .logo-badge { width: 38px; height: 38px; }
+    .logo-badge img { height: 24px; }
+    .ellipse-top, .ellipse-bottom-right { display: none; }
+}
+
+@media (max-width: 320px) {
+    .login-container { padding: 12px 8px; }
+    .login-card { padding: 16px 12px; }
+    .welcome-title { font-size: 1rem; }
+    .btn-google-auth span { font-size: .7rem; }
 }

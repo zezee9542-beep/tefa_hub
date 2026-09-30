@@ -5553,3 +5553,280 @@ body.modal-open-scroll-lock {
         justify-content: center;
     }
 }
+
+/* ── RESPONSIVE SAFETY NET ───────────────────────────────────
+   Page-specific dashboard modules share this sheet. These rules keep
+   controls and data views usable at tablet and phone widths. */
+img, svg { max-width: 100%; }
+
+@media (max-width: 1024px) {
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.sidebar-mobile-open { transform: translateX(0); }
+    .sidebar-close-btn { display: inline-flex; }
+    .main-content { margin-left: 0 !important; }
+    .content-body { padding: 24px; }
+    .siswa-top-header { padding: 14px 24px; }
+}
+
+@media (max-width: 768px) {
+    .content-body { padding: 18px 16px 28px; }
+    .siswa-top-header { gap: 10px; padding: 10px 16px; }
+    .header-left-group { min-width: 0; gap: 8px; }
+    .searchbar-wrapper { min-width: 0; }
+    .header-right-group { width: auto; min-width: 0; gap: 6px; }
+    .profile-fullname,
+    .profile-subtext { display: none; }
+
+    .dashboard-grid,
+    .akademik-cards-grid,
+    .tugas-cards-grid,
+    .blud-stats-grid,
+    .bkk-jobs-grid,
+    .siswa-charts-grid,
+    .jadwal-cards-container { grid-template-columns: 1fr; }
+
+    .profile-hero-card,
+    .blud-hero-banner,
+    .bkk-hero-banner,
+    .riwayat-header-row,
+    .jadwal-header-block,
+    .tugas-header-row { min-width: 0; }
+
+    .profile-hero-card,
+    .blud-hero-banner,
+    .bkk-hero-banner { padding: 22px 18px; }
+    .profile-card-left,
+    .profile-card-right,
+    .jadwal-controls-row,
+    .tugas-header-row,
+    .riwayat-header-row { flex-wrap: wrap; gap: 12px; }
+
+    .day-tabs-pill-capsule,
+    .chips-scroll-container { max-width: 100%; overflow-x: auto; scrollbar-width: thin; }
+    .day-tabs-pill-capsule { width: 100%; justify-content: flex-start; }
+    .btn-roster-lengkap,
+    .blud-hero-actions,
+    .bkk-hero-actions { width: 100%; }
+
+    .chart-dashboard-card,
+    .jadwal-card,
+    .riwayat-card-item,
+    .akademik-card,
+    .tugas-card,
+    .blud-card-frame,
+    .bkk-job-card { min-width: 0; width: 100%; }
+
+    .bar-chart-viewport,
+    .akademik-chart-viewport,
+    .table-responsive,
+    .table-scroll-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    .modal-profil-overlay,
+    .modal-publikasi-overlay { padding: 12px; align-items: flex-start; overflow-y: auto; }
+    .modal-profil-card,
+    .modal-publikasi-card { width: 100%; max-width: 680px; margin: 12px auto; }
+    .modal-profil-grid,
+    .modal-publikasi-grid,
+    .modal-form-row { grid-template-columns: 1fr; }
+
+    .tefa-chat-history-full { padding: 18px 16px 12px; }
+    .chat-bottom-dock-full { padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); }
+    .msg-bubble-wrap { max-width: 92% !important; }
+}
+
+@media (max-width: 480px) {
+    .sidebar { width: min(86vw, 290px); min-width: min(86vw, 290px); padding: 20px 16px; }
+    .siswa-top-header { position: sticky; }
+    .header-right-group .header-circle-btn:not(:last-child) { display: none; }
+    .page-title { font-size: 21px; line-height: 1.25; }
+    .dashboard-grid { gap: 14px; }
+    .dash-card,
+    .chart-dashboard-card,
+    .jadwal-card,
+    .akademik-card,
+    .tugas-card { padding: 18px; }
+
+    .profile-hero-card,
+    .blud-hero-banner,
+    .bkk-hero-banner { border-radius: 18px; }
+    .profile-card-right,
+    .bkk-card-body,
+    .bkk-evaluation-body { width: 100%; }
+    .chart-card-header,
+    .card-schedule-header,
+    .card-schedule-footer { gap: 8px; flex-wrap: wrap; }
+    .chart-card-legend { gap: 8px; flex-wrap: wrap; }
+    .chat-suggestions-bar-full { display: none; }
+    .tefa-chat-history-full { padding: 14px 12px 10px; gap: 14px; }
+    .chat-text-input-full { min-width: 0; }
+}
+
+@media (max-width: 600px) {
+    .profile-hero-card,
+    .riwayat-section-wrapper,
+    .akademik-chart-bottom-wrapper { height: auto; min-height: 0; }
+
+    .siswa-charts-grid,
+    .jadwal-section-wrapper,
+    .riwayat-section-wrapper,
+    .tugas-section-wrapper,
+    .akademik-chart-bottom-wrapper,
+    .blud-section-wrapper,
+    .bkk-card-wrapper { width: 100%; max-width: 100%; }
+
+    .riwayat-cards-container,
+    .blud-cards-container,
+    .tugas-cards-grid,
+    .akademik-cards-grid { gap: 14px; }
+
+    .bar-chart-container,
+    .akademik-bar-chart-container { min-width: 520px; }
+}
+
+/* ── MOBILE LAYOUT CORRECTIONS ───────────────────────────────
+   Several dashboard modules were designed as fixed desktop rows. Keep the
+   visual hierarchy, but let every module reflow before it reaches phone size. */
+@media (max-width: 900px) {
+    .siswa-top-header {
+        gap: 12px;
+        padding: 12px 20px;
+    }
+
+    .header-left-group {
+        min-width: 0;
+        max-width: none;
+    }
+
+    .searchbar-wrapper { min-width: 0; }
+
+    .siswa-charts-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        gap: 16px;
+    }
+
+    .chart-dashboard-card {
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        min-height: 270px;
+        padding: 20px;
+    }
+
+    .jadwal-cards-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .jadwal-card.card-selesai,
+    .jadwal-card.card-berlangsung,
+    .jadwal-card.card-mendatang {
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        min-height: 184px;
+    }
+
+    .riwayat-section-wrapper {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+    }
+
+    .riwayat-columns-container {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .riwayat-column-group,
+    .riwayat-card-item {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .profile-hero-card {
+        height: auto;
+        min-height: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .siswa-top-header {
+        min-height: 60px;
+        flex-wrap: nowrap;
+        padding: 10px 14px;
+    }
+
+    .header-left-group { gap: 7px; }
+    .sidebar-toggle-btn { width: 36px; height: 36px; min-width: 36px; }
+    .searchbar-wrapper { height: 36px; padding: 0 11px; gap: 8px; }
+    .searchbar-input,
+    .searchbar-input::placeholder { font-size: 11.5px; }
+    .header-right-group { gap: 5px; }
+    .status-siswa-badge,
+    .header-profile-text { display: none; }
+
+    .content-body { padding: 16px 14px 28px; }
+    .page-title { margin-bottom: 18px; }
+
+    .siswa-charts-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .chart-dashboard-card {
+        min-height: 246px;
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    .chart-card-header,
+    .jadwal-header-block,
+    .tugas-header-row,
+    .riwayat-header-row {
+        align-items: flex-start;
+    }
+
+    .profile-meta-row,
+    .profile-card-left,
+    .profile-card-right { min-width: 0; }
+
+    .profile-hero-card,
+    .riwayat-section-wrapper,
+    .jadwal-section-wrapper { border-radius: 16px; }
+
+    .jadwal-card.card-selesai,
+    .jadwal-card.card-berlangsung,
+    .jadwal-card.card-mendatang { min-height: 170px; padding: 16px; }
+
+    .riwayat-section-wrapper { padding: 16px; }
+    .riwayat-card-item { height: auto; min-height: 66px; padding: 10px 12px; }
+    .riwayat-item-time { font-size: 10px; }
+
+    .bkk-hero-banner,
+    .blud-hero-banner { padding: 20px 16px; }
+
+    .bkk-hero-title,
+    .blud-hero-title { overflow-wrap: anywhere; }
+
+    .modal-profil-overlay,
+    .modal-publikasi-overlay { padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 420px) {
+    .siswa-top-header { gap: 6px; padding-right: 10px; padding-left: 10px; }
+    .header-right-group .header-circle-btn:not(:last-child) { display: none; }
+    .searchbar-wrapper { padding: 0 9px; }
+    .searchbar-icon { width: 16px; height: 16px; }
+    .searchbar-input,
+    .searchbar-input::placeholder { font-size: 10.5px; }
+    .header-circle-btn { width: 36px; height: 36px; min-width: 36px; }
+    .content-body { padding-right: 12px; padding-left: 12px; }
+
+    .chart-dashboard-card,
+    .dash-card,
+    .akademik-card,
+    .tugas-card,
+    .bkk-job-card { padding: 16px; }
+}

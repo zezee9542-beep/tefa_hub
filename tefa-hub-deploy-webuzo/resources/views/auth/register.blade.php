@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Reuse Login CSS (same design language) -->
-    <link rel="stylesheet" href="{{ asset('assets/css/auth.login.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/auth.login.css') }}?v=2.1.0">
 </head>
 <body>
 
