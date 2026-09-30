@@ -38,7 +38,7 @@
             </nav>
 
             <div class="header-actions">
-                <a href="{{ Route::has('login') ? route('login') : '#login' }}" class="btn-masuk">
+                <a href="{{ route('login') }}" class="btn-masuk">
                     Masuk
                 </a>
                 <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu Navigasi" aria-expanded="false">
@@ -73,7 +73,7 @@
             <li><a href="#career-center" class="mobile-nav-link">Career Center (BKK)</a></li>
         </ul>
         <div class="mobile-nav-footer">
-            <a href="{{ Route::has('login') ? route('login') : '#login' }}" class="btn-masuk-mobile">
+            <a href="{{ route('login') }}" class="btn-masuk-mobile">
                 Masuk ke Portal Siswa
             </a>
         </div>
@@ -132,11 +132,16 @@
             <section class="hero-visual reveal delay-1" aria-label="Visualisasi Siswa Tefa-Hub">
 
                 {{-- Fast Aura glow --}}
-                <div class="aura-wrap" aria-hidden="true"></div>
+                <div class="aura-wrap" aria-hidden="true">
+                    <div class="orb orb-b"></div>
+                    <div class="orb orb-p"></div>
+                    <div class="orb orb-v"></div>
+                    <div class="orb orb-k"></div>
+                </div>
 
                 {{-- Dot matrix --}}
                 <div class="dots" aria-hidden="true">
-                    @for ($i = 0; $i < 36; $i++)
+                    @for ($i = 0; $i < 42; $i++)
                         <span class="dot"></span>
                     @endfor
                 </div>
