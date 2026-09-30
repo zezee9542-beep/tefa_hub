@@ -1,0 +1,47 @@
+name: Deploy to Webuzo VPS
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy Laravel application
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the application
+        uses: actions/checkout@v4
+
+      - name: Upload application files
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          port: ${{ secrets.VPS_SSH_PORT }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          source: app,bootstrap,config,database,public,resources,routes,artisan,composer.json,composer.lock,package.json,vite.config.js
+          target: /home/tefahub/apps/tefa_hub
+          overwrite: true
+
+      - name: Refresh Laravel caches
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          port: ${{ secrets.VPS_SSH_PORT }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            cd /home/tefahub/apps/tefa_hub
+            composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
+            /usr/local/apps/php83/bin/php artisan migrate --force
+            /usr/local/apps/php83/bin/php artisan optimize:clear
+            /usr/local/apps/php83/bin/php artisan config:cache
+            /usr/local/apps/php83/bin/php artisan route:cache
+            /usr/local/apps/php83/bin/php artisan view:cache
