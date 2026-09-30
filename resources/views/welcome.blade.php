@@ -86,7 +86,7 @@
         <div class="wrap">
 
             {{-- Left: copy & search --}}
-            <section class="hero-content">
+            <section class="hero-content reveal">
                 <div class="pill-badge">
                     <span class="pill-dot" aria-hidden="true"></span>
                     <span class="pill-text">Ekosistem Pendidikan Vokasi Terpadu</span>
@@ -129,19 +129,14 @@
             </section>
 
             {{-- Right: visual composition --}}
-            <section class="hero-visual" aria-label="Visualisasi Siswa Tefa-Hub">
+            <section class="hero-visual reveal delay-1" aria-label="Visualisasi Siswa Tefa-Hub">
 
-                {{-- 4-colour aura glow --}}
-                <div class="aura-wrap" aria-hidden="true">
-                    <div class="orb orb-b"></div>
-                    <div class="orb orb-p"></div>
-                    <div class="orb orb-v"></div>
-                    <div class="orb orb-k"></div>
-                </div>
+                {{-- Fast Aura glow --}}
+                <div class="aura-wrap" aria-hidden="true"></div>
 
                 {{-- Dot matrix --}}
                 <div class="dots" aria-hidden="true">
-                    @for ($i = 0; $i < 42; $i++)
+                    @for ($i = 0; $i < 36; $i++)
                         <span class="dot"></span>
                     @endfor
                 </div>
@@ -163,7 +158,7 @@
                     ];
                 @endphp
 
-                <div class="cards-row">
+                <div class="cards-row reveal delay-2">
                     @foreach ($cards as $card)
                         <div class="card" role="button" tabindex="0"
                              onclick="window.location.href='{{ $card['href'] }}'">
@@ -194,12 +189,12 @@
         <div class="wrap">
 
             {{-- Left: Logo Image --}}
-            <div class="about-visual">
+            <div class="about-visual reveal-left">
                 <img src="{{ asset('assets/logo2.png') }}" alt="Logo Tefa-Hub" class="about-logo-img">
             </div>
 
             {{-- Right: Content --}}
-            <div class="about-content">
+            <div class="about-content reveal-right delay-1">
                 <span class="about-category">SOLUSI DIGITAL TERPADU</span>
 
                 <h2 class="about-title">
@@ -224,7 +219,7 @@
     <section class="services-section" id="layanan">
         <div class="wrap">
 
-            <div class="services-header">
+            <div class="services-header reveal">
                 <h2 class="services-title">Semua Kebutuhan Siswa, Satu Platform</h2>
                 <p class="services-desc">
                     Akses berbagai layanan sekolah yang terintegrasi untuk mendukung perjalananmu dari
@@ -262,8 +257,8 @@
             @endphp
 
             <div class="services-grid">
-                @foreach ($services as $service)
-                    <div class="service-card">
+                @foreach ($services as $index => $service)
+                    <div class="service-card reveal delay-{{ $index + 1 }}">
                         <div class="service-card-body">
                             <div class="service-icon">
                                 <img src="{{ asset('assets/' . $service['icon']) }}" alt="{{ $service['title'] }}">
@@ -288,7 +283,7 @@
         <div class="wrap">
 
             {{-- Left: Text & CTA --}}
-            <div class="showcase-content">
+            <div class="showcase-content reveal-left">
                 <span class="showcase-category">TEACHING FACTORY KE PUBLIK</span>
 
                 <h2 class="showcase-title">Dari Karya Menjadi Produk</h2>
@@ -304,8 +299,8 @@
                 </a>
             </div>
 
-            {{-- Right: 2 Cards --}}
-            <div class="showcase-visual">
+            {{-- Right: Cards (Mobile: Single Image, Desktop: 2 Layered Cards) --}}
+            <div class="showcase-visual reveal-right delay-1">
                 <div class="showcase-cards">
                     <img src="{{ asset('assets/card2.png') }}" alt="Card Jasa Layanan" class="showcase-card showcase-card-1">
                     <img src="{{ asset('assets/card1.png') }}" alt="Card Teaching Factory" class="showcase-card showcase-card-2">
@@ -322,12 +317,12 @@
         <div class="wrap">
 
             {{-- Left: ai.png Image --}}
-            <div class="ai-visual">
+            <div class="ai-visual reveal-left">
                 <img src="{{ asset('assets/ai.png') }}" alt="Tefa AI Assistant" class="ai-img">
             </div>
 
             {{-- Right: Content & 3 Cards --}}
-            <div class="ai-content">
+            <div class="ai-content reveal-right delay-1">
                 <span class="ai-category">PUSAT BANTUAN CERDAS</span>
 
                 <h2 class="ai-title">Butuh Informasi ? Tanya Tefa</h2>
@@ -359,8 +354,8 @@
                 @endphp
 
                 <div class="ai-cards">
-                    @foreach ($aiFeatures as $feat)
-                        <div class="ai-card">
+                    @foreach ($aiFeatures as $index => $feat)
+                        <div class="ai-card reveal delay-{{ $index + 1 }}">
                             <div class="ai-card-icon">
                                 <img src="{{ asset('assets/' . $feat['icon']) }}" alt="{{ $feat['title'] }}">
                             </div>
@@ -379,7 +374,7 @@
          ═══════════════════════════════════════════ --}}
     <section class="cta-banner-section">
         <div class="wrap">
-            <div class="cta-banner-card">
+            <div class="cta-banner-card reveal-scale">
                 <h2 class="cta-banner-title">
                     Wujudkan Potensi Kejuruan &amp;<br>
                     Siapkan Kariermu Bersama<br>
@@ -408,7 +403,7 @@
             <div class="footer-grid">
 
                 {{-- Column 1: Brand & Socials --}}
-                <div class="footer-col footer-col-brand">
+                <div class="footer-col footer-col-brand reveal">
                     <a href="{{ url('/') }}" class="brand" aria-label="Tefa-Hub Beranda">
                         <img src="{{ asset('assets/logo.png') }}" alt="Logo Tefa-Hub">
                         <span class="brand-name">Tefa<span>-Hub</span></span>
@@ -436,7 +431,7 @@
                 </div>
 
                 {{-- Column 2: Navigasi --}}
-                <div class="footer-col">
+                <div class="footer-col reveal delay-1">
                     <h3 class="footer-col-title">NAVIGASI</h3>
                     <ul class="footer-links">
                         <li><a href="{{ url('/') }}">Beranda</a></li>
@@ -447,30 +442,36 @@
                 </div>
 
                 {{-- Column 3: Fitur Unggulan --}}
-                <div class="footer-col">
+                <div class="footer-col reveal delay-2">
                     <h3 class="footer-col-title">FITUR UNGGULAN</h3>
                     <ul class="footer-links">
-                        <li><a href="#rapor">E-Rapor Vokasi</a></li>
-                        <li><a href="#blud">Kurasi BLUD</a></li>
-                        <li><a href="#bkk">Pelacak BKK</a></li>
-                        <li><a href="#cv">CV &amp; Portofolio</a></li>
+                        <li><a href="#ppdb">Pendaftaran PPDB</a></li>
+                        <li><a href="#blud">Katalog Produk BLUD</a></li>
+                        <li><a href="#career-center">Portal Karir BKK</a></li>
                         <li><a href="#tanya-tefa">Tanya Tefa AI</a></li>
                     </ul>
                 </div>
 
-                {{-- Column 4: Buletin Vokasi --}}
-                <div class="footer-col footer-col-newsletter">
-                    <h3 class="footer-col-title">BULETIN VOKASI</h3>
+                {{-- Column 4: Newsletter --}}
+                <div class="footer-col reveal delay-3">
+                    <h3 class="footer-col-title">INFORMASI TERKINI</h3>
                     <p class="newsletter-desc">
-                        Dapatkan info lowongan kerja, sertifikasi kompetensi BNSP, dan inovasi karya terbaru.
+                        Dapatkan informasi kegiatan sekolah, update BLUD, dan lowongan industri terbaru.
                     </p>
-
-                    <form action="#subscribe" method="POST" class="newsletter-box" onsubmit="event.preventDefault();">
-                        <input type="email" placeholder="Alamat email..." class="newsletter-input" required>
-                        <button type="submit" class="newsletter-btn">
-                            Langganan
+                    <form action="#newsletter" method="POST" class="newsletter-box" onsubmit="event.preventDefault(); alert('Terima kasih telah berlangganan!');">
+                        @csrf
+                        <input
+                            type="email"
+                            placeholder="Alamat email Anda..."
+                            class="newsletter-input"
+                            required
+                            aria-label="Alamat email newsletter"
+                        >
+                        <button type="submit" class="newsletter-btn" aria-label="Langganan">
+                            <span>Kirim</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                <polyline points="9 18 15 12 9 6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
                             </svg>
                         </button>
                     </form>
@@ -478,16 +479,15 @@
 
             </div>
 
-            {{-- Bottom Footer Bar --}}
+            {{-- Bottom Bar --}}
             <div class="footer-bottom">
-                <div class="copyright">
-                    &copy; 2026 Tefa-Hub Ecosystem. Hak Cipta Dilindungi.
-                </div>
+                <p class="copyright">
+                    &copy; {{ date('Y') }} Tefa-Hub. Hak Cipta Dilindungi Undang-Undang.
+                </p>
                 <div class="legal-links">
-                    <a href="#privasi">Kebijakan Privasi</a>
-                    <a href="#syarat">Syarat &amp; Ketentuan</a>
-                    <a href="#keamanan">Keamanan</a>
-                    <a href="#cookie">Cookie</a>
+                    <a href="#privacy">Kebijakan Privasi</a>
+                    <a href="#terms">Syarat &amp; Ketentuan</a>
+                    <a href="#cookies">Pengaturan Cookie</a>
                 </div>
             </div>
 
@@ -495,10 +495,10 @@
     </footer>
 
     {{-- ═══════════════════════════════════════════
-         TEFA HELP CENTER WIDGET
+         FLOATING TEFA AI BUBBLE & CHAT POPUP
          ═══════════════════════════════════════════ --}}
 
-    {{-- Floating Trigger Button (Large AI Avatar Bubble) --}}
+    {{-- Floating Trigger Button --}}
     <button id="ai-toggle-btn" class="ai-trigger" type="button" aria-label="Buka Tanya Tefa AI" aria-expanded="false" aria-controls="ai-navigator-panel" title="Tanya Tefa AI">
         <div class="ai-trigger-inner">
             <img src="{{ asset('assets/ai.png') }}" alt="Asisten Tanya Tefa AI" class="ai-trigger-img">
@@ -537,10 +537,10 @@
 
         {{-- Greeting Card (visible before any message) --}}
         <div class="ai-greeting-card" id="ai-greeting-card">
-            <p class="ai-greeting-kicker">Mulai percakapan</p>
+            <p class="ai-greeting-kicker">Mulai Percakapan</p>
             <p class="ai-greeting-label">Halo, saya Tanya Tefa <span aria-hidden="true">👋</span></p>
-            <p class="ai-greeting-sub">Temukan informasi TEFA-Hub lebih cepat. Pilih kebutuhan Anda atau tulis pertanyaan.</p>
-            <p class="ai-role-label">Saya ingin mencari...</p>
+            <p class="ai-greeting-sub">Temukan informasi seputar SMK, PPDB, BLUD, hingga Karir BKK secara instan.</p>
+            <p class="ai-role-label">Saya ingin mencari:</p>
             <div class="ai-nav-categories">
                 <button class="ai-nav-cat" type="button" onclick="sendNavChip('Saya Orang Tua / Calon Siswa (Info PPDB)')">
                     <span class="ai-nav-cat-icon">👨‍👩‍👧</span>
@@ -560,7 +560,7 @@
                 </button>
                 <button class="ai-nav-cat ai-nav-cat-wide" type="button" onclick="sendNavChip('Saya Butuh Layanan Tata Usaha (TU)')">
                     <span class="ai-nav-cat-icon">🏛️</span>
-                    <div><strong>Layanan Tata Usaha & Bantuan Akun</strong><span>Jam operasional TU, surat & reset kata sandi</span></div>
+                    <div><strong>Layanan Tata Usaha & Akun</strong><span>Jam operasional TU & bantuan</span></div>
                 </button>
             </div>
         </div>
@@ -569,14 +569,14 @@
         <div class="ai-conversation" id="ai-messages" role="log" aria-live="polite">
             <div class="ai-loading-row" id="ai-initial-typing">
                 <div class="ai-loading-dots"><span></span><span></span><span></span></div>
-                <span class="ai-loading-text">Memuat...</span>
+                <span class="ai-loading-text">Menghubungkan asisten...</span>
             </div>
         </div>
 
         {{-- Quick Actions --}}
         <div class="ai-quick-actions" id="ai-suggestions"></div>
 
-        {{-- Input --}}
+        {{-- Input Bar --}}
         <div class="ai-input-wrap">
             <form id="ai-chat-form" class="ai-form">
                 @csrf
@@ -590,243 +590,44 @@
                     aria-label="Pertanyaan untuk tim Tefa-Hub"
                 >
                 <button type="submit" class="ai-submit" id="ai-send-btn" aria-label="Kirim pertanyaan">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="22" y1="2" x2="11" y2="13"/>
                         <polygon points="22 2 15 22 11 13 2 9 22 2" fill="currentColor" opacity="0.9" stroke="none"/>
                     </svg>
                 </button>
             </form>
-            <p class="ai-powered">Didukung teknologi AI · Tefa-Hub 2026</p>
+            <p class="ai-powered">Didukung teknologi AI · Tefa-Hub</p>
         </div>
     </div>
 
+    {{-- ═══════════════════════════════════════════
+         SCRIPTS: SCROLL ANIMATIONS, DRAWER & CHAT
+         ═══════════════════════════════════════════ --}}
     <script>
-    (function () {
-        'use strict';
-
-        const GREET_URL  = '{{ route("ai.greet") }}';
-        const CHAT_URL   = '{{ route("ai.chat") }}';
-        const CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]')?.content || '';
-
-        const panel        = document.getElementById('ai-navigator-panel');
-        const toggleBtn    = document.getElementById('ai-toggle-btn');
-        const closeBtn     = document.getElementById('ai-close-btn');
-        const conversation = document.getElementById('ai-messages');
-        const form         = document.getElementById('ai-chat-form');
-        const field        = document.getElementById('ai-message-input');
-        const submitBtn    = document.getElementById('ai-send-btn');
-        const quickActions = document.getElementById('ai-suggestions');
-        const badge        = document.getElementById('ai-notif-badge');
-        const greetCard    = document.getElementById('ai-greeting-card');
-        const initLoading  = document.getElementById('ai-initial-typing');
-
-        let isOpen    = false;
-        let isBusy    = false;
-        let greeted   = false;
-
-        // ── Toggle ──────────────────────────────────────────────────────────
-        function openPanel() {
-            isOpen = true;
-            panel.classList.add('is-open');
-            panel.setAttribute('aria-hidden', 'false');
-            toggleBtn.setAttribute('aria-expanded', 'true');
-            badge.style.display = 'none';
-            field.focus();
-            if (!greeted) { greeted = true; loadGreeting(); }
-        }
-
-        function closePanel() {
-            isOpen = false;
-            panel.classList.remove('is-open');
-            panel.setAttribute('aria-hidden', 'true');
-            toggleBtn.setAttribute('aria-expanded', 'false');
-            toggleBtn.focus();
-        }
-
-        toggleBtn.addEventListener('click', () => isOpen ? closePanel() : openPanel());
-        closeBtn.addEventListener('click', closePanel);
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && isOpen) {
-                closePanel();
-            }
-        });
-
-        setTimeout(() => { if (!isOpen) { badge.style.display = 'flex'; } }, 3000);
-
-        // ── Load greeting ───────────────────────────────────────────────────
-        async function loadGreeting() {
-            try {
-                const r    = await fetch(GREET_URL);
-                const data = await r.json();
-                initLoading.remove();
-                // Show default suggestions from greet response
-                if (data.suggestions?.length) buildQuickActions(data.suggestions);
-                else buildQuickActions(['Saya Orang Tua (Info PPDB)', 'Cara Daftar PPDB Online', 'Cara Publikasi Produk BLUD', 'Cara Melamar Lowongan BKK', 'Lupa Password Akun']);
-            } catch {
-                initLoading.remove();
-                buildQuickActions(['Saya Orang Tua (Info PPDB)', 'Cara Daftar PPDB Online', 'Cara Publikasi Produk BLUD', 'Cara Melamar Lowongan BKK', 'Lupa Password Akun']);
-            }
-        }
-
-        // ── Nav category shortcut ────────────────────────────────────────────
-        function sendNavChip(text) {
-            greetCard.style.display = 'none';
-            quickActions.innerHTML  = '';
-            field.value = text;
-            form.dispatchEvent(new Event('submit', { bubbles: true }));
-        }
-        window.sendNavChip = sendNavChip;
-
-        // ── Submit ──────────────────────────────────────────────────────────
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const text = field.value.trim();
-            if (!text || isBusy) return;
-
-            // Hide greeting card on first message
-            greetCard.style.display = 'none';
-            quickActions.innerHTML  = '';
-
-            appendQuestion(text);
-            field.value = '';
-            setBusy(true);
-
-            try {
-                const r    = await fetch(CHAT_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': CSRF_TOKEN, 'Accept': 'application/json' },
-                    body: JSON.stringify({ message: text }),
-                });
-                const data = await r.json();
-                setBusy(false);
-                appendReply(data);
-            } catch {
-                setBusy(false);
-                appendReply({ answer: 'Koneksi terputus. Silakan coba kembali.' });
-            }
-        });
-
-        // ── Quick action chips ──────────────────────────────────────────────
-        function buildQuickActions(items) {
-            quickActions.innerHTML = '';
-            items.forEach(text => {
-                const btn = document.createElement('button');
-                btn.className   = 'ai-action-chip';
-                btn.textContent = text;
-                btn.addEventListener('click', () => { sendNavChip(text); });
-                quickActions.appendChild(btn);
-            });
-        }
-
-        // ── Message renderers ───────────────────────────────────────────────
-        function appendQuestion(text) {
-            const row = document.createElement('div');
-            row.className   = 'ai-row ai-row--user';
-            row.innerHTML   = `<div class="ai-msg ai-msg--user">${esc(text)}</div>`;
-            conversation.appendChild(row);
-            scrollEnd();
-        }
-
-        function appendReply(data) {
-            const text  = (typeof data === 'string') ? data : (data.answer || 'Pertanyaan Anda sudah diterima.');
-            const route = (typeof data === 'object') ? data.route : null;
-            const label = (typeof data === 'object') ? data.label : null;
-            const cat   = ((typeof data === 'object') ? (data.category || '') : '').toUpperCase();
-            const sugg  = (typeof data === 'object' && Array.isArray(data.suggestions)) ? data.suggestions : [];
-
-            // Category & Role badge
-            let badgeCls = 'ai-badge-umum', badgeTxt = '🤖 Tanya Tefa AI Navigator';
-            if (cat.includes('PPDB'))                            { badgeCls = 'ai-badge-ppdb';     badgeTxt = '👨‍👩‍👧 Info PPDB & Calon Siswa'; }
-            else if (cat.includes('INDUSTRI'))                   { badgeCls = 'ai-badge-industri'; badgeTxt = '🏢 Kemitraan Industri (DUDI)'; }
-            else if (cat.includes('BLUD'))                       { badgeCls = 'ai-badge-blud';     badgeTxt = '🏭 Unit Produksi BLUD'; }
-            else if (cat.includes('BKK'))                        { badgeCls = 'ai-badge-bkk';      badgeTxt = '💼 Bursa Kerja (BKK)'; }
-            else if (cat.includes('AKADEMIK'))                   { badgeCls = 'ai-badge-akademik'; badgeTxt = '🎓 Portal Akademik'; }
-            else if (cat.includes('ADMIN')||cat.includes('FAQ')) { badgeCls = 'ai-badge-admin';    badgeTxt = '🏛️ Layanan Tata Usaha & Akun'; }
-
-            // CTA button
-            const ctaHtml = (route && label)
-                ? `<a href="${route}" class="ai-cta-link ai-cta-link--nav">${esc(label)}<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>`
-                : '';
-
-            // Followup chips
-            const chipsHtml = sugg.length
-                ? `<div class="ai-reply-chips">${sugg.map(s => `<button class="ai-reply-chip" onclick="sendNavChip('${esc(s)}')">${esc(s)}</button>`).join('')}</div>`
-                : '';
-
-            const row = document.createElement('div');
-            row.className = 'ai-row ai-row--reply';
-            row.innerHTML = `
-                <div class="ai-msg ai-msg--reply">
-                    <span class="ai-cat-badge ${badgeCls}">${badgeTxt}</span>
-                    <div class="ai-reply-body">${mdFull(text)}</div>
-                    ${ctaHtml}
-                    ${chipsHtml}
-                </div>`;
-            conversation.appendChild(row);
-            scrollEnd();
-
-            // Refresh quick-action chips with new suggestions
-            if (sugg.length) buildQuickActions(sugg);
-        }
-
-        // ── Busy state ──────────────────────────────────────────────────────
-        function setBusy(state) {
-            isBusy = state;
-            submitBtn.disabled = state;
-            field.disabled = state;
-
-            if (state) {
-                const row = document.createElement('div');
-                row.id        = 'ai-busy-row';
-                row.className = 'ai-row ai-row--reply';
-                row.innerHTML = `<div class="ai-msg ai-msg--reply ai-msg--loading"><div class="ai-loading-dots"><span></span><span></span><span></span></div></div>`;
-                conversation.appendChild(row);
-                scrollEnd();
-            } else {
-                document.getElementById('ai-busy-row')?.remove();
-            }
-        }
-
-        function scrollEnd() { conversation.scrollTop = conversation.scrollHeight; }
-
-        function esc(s) {
-            if (!s) return '';
-            return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
-        }
-
-        function md(s) {
-            return esc(s).replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
-        }
-
-        function mdFull(text) {
-            if (!text) return '';
-            let raw = esc(text);
-            raw = raw.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
-            const lines = raw.split('\n');
-            let out = '', inList = false, listType = 'ul';
-            lines.forEach(line => {
-                const t = line.trim();
-                if (!t) { if (inList) { out += `</${listType}>`; inList = false; } return; }
-                const nm = t.match(/^(\d+)\.\s+(.+)$/);
-                if (nm) {
-                    if (!inList || listType !== 'ol') { if (inList) out += `</${listType}>`; out += '<ol>'; inList = true; listType = 'ol'; }
-                    out += `<li>${nm[2]}</li>`; return;
-                }
-                const bm = t.match(/^[•\-\*]\s+(.+)$/);
-                if (bm) {
-                    if (!inList || listType !== 'ul') { if (inList) out += `</${listType}>`; out += '<ul>'; inList = true; listType = 'ul'; }
-                    out += `<li>${bm[1]}</li>`; return;
-                }
-                if (inList) { out += `</${listType}>`; inList = false; }
-                out += `<p>${t}</p>`;
-            });
-            if (inList) out += `</${listType}>`;
-            return out;
-        }
-    })();
-
-    // ── Mobile Navigation Drawer Script ──────────────────────────────────────
+    // ── High-Performance Scroll Reveal Observer ─────────────────────────────
     document.addEventListener('DOMContentLoaded', function() {
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+        
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.12,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            revealElements.forEach(el => observer.observe(el));
+        } else {
+            revealElements.forEach(el => el.classList.add('is-revealed'));
+        }
+
+        // ── Mobile Navigation Drawer ──────────────────────────────────────────
         const toggleBtn = document.getElementById('mobileMenuToggle');
         const closeBtn = document.getElementById('mobileNavClose');
         const drawer = document.getElementById('mobileNavDrawer');
@@ -857,7 +658,7 @@
             }
         }
 
-        if (toggleBtn) toggleBtn.addEventListener('click', function() {
+        if (toggleBtn) toggleBtn.addEventListener('click', () => {
             if (drawer && drawer.classList.contains('is-open')) closeDrawer();
             else openDrawer();
         });
@@ -869,6 +670,220 @@
             link.addEventListener('click', closeDrawer);
         });
     });
+
+    // ── AI Chat Assistant Logic (Bug-Free & Smooth) ──────────────────────────
+    (function () {
+        'use strict';
+
+        const GREET_URL  = '{{ route("ai.greet") }}';
+        const CHAT_URL   = '{{ route("ai.chat") }}';
+        const CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]')?.content || '';
+
+        const panel        = document.getElementById('ai-navigator-panel');
+        const toggleBtn    = document.getElementById('ai-toggle-btn');
+        const closeBtn     = document.getElementById('ai-close-btn');
+        const conversation = document.getElementById('ai-messages');
+        const form         = document.getElementById('ai-chat-form');
+        const field        = document.getElementById('ai-message-input');
+        const submitBtn    = document.getElementById('ai-send-btn');
+        const quickActions = document.getElementById('ai-suggestions');
+        const badge        = document.getElementById('ai-notif-badge');
+        const greetCard    = document.getElementById('ai-greeting-card');
+        const initLoading  = document.getElementById('ai-initial-typing');
+
+        let isOpen    = false;
+        let isBusy    = false;
+        let greeted   = false;
+
+        function openPanel() {
+            isOpen = true;
+            panel.classList.add('is-open');
+            panel.setAttribute('aria-hidden', 'false');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            if (badge) badge.style.display = 'none';
+            
+            setTimeout(() => { field.focus(); }, 150);
+            if (!greeted) { greeted = true; loadGreeting(); }
+        }
+
+        function closePanel() {
+            isOpen = false;
+            panel.classList.remove('is-open');
+            panel.setAttribute('aria-hidden', 'true');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        if (toggleBtn) toggleBtn.addEventListener('click', () => isOpen ? closePanel() : openPanel());
+        if (closeBtn) closeBtn.addEventListener('click', closePanel);
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && isOpen) closePanel();
+        });
+
+        async function loadGreeting() {
+            try {
+                const r = await fetch(GREET_URL);
+                const data = await r.json();
+                if (initLoading) initLoading.remove();
+                if (data.suggestions && data.suggestions.length) {
+                    buildQuickActions(data.suggestions);
+                } else {
+                    buildQuickActions(['Info PPDB & Pendaftaran', 'Katalog Produk BLUD', 'Peluang Karir BKK', 'Kurikulum Akademik']);
+                }
+            } catch {
+                if (initLoading) initLoading.remove();
+                buildQuickActions(['Info PPDB & Pendaftaran', 'Katalog Produk BLUD', 'Peluang Karir BKK', 'Kurikulum Akademik']);
+            }
+        }
+
+        function sendNavChip(text) {
+            if (!text || isBusy) return;
+            if (greetCard) greetCard.style.display = 'none';
+            if (quickActions) quickActions.innerHTML = '';
+            field.value = text;
+            form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+        }
+        window.sendNavChip = sendNavChip;
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const text = field.value.trim();
+            if (!text || isBusy) return;
+
+            if (greetCard) greetCard.style.display = 'none';
+            if (quickActions) quickActions.innerHTML = '';
+
+            appendQuestion(text);
+            field.value = '';
+            setBusy(true);
+
+            try {
+                const r = await fetch(CHAT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': CSRF_TOKEN,
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ message: text }),
+                });
+                const data = await r.json();
+                setBusy(false);
+                appendReply(data);
+            } catch {
+                setBusy(false);
+                appendReply({ answer: 'Maaf, terjadi gangguan koneksi. Silakan coba kembali sesaat lagi.' });
+            }
+        });
+
+        function buildQuickActions(items) {
+            if (!quickActions) return;
+            quickActions.innerHTML = '';
+            items.forEach(text => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'ai-action-chip';
+                btn.textContent = text;
+                btn.addEventListener('click', () => { sendNavChip(text); });
+                quickActions.appendChild(btn);
+            });
+        }
+
+        function appendQuestion(text) {
+            const row = document.createElement('div');
+            row.className = 'ai-row ai-row--user';
+            row.innerHTML = `<div class="ai-msg ai-msg--user">${esc(text)}</div>`;
+            conversation.appendChild(row);
+            scrollEnd();
+        }
+
+        function appendReply(data) {
+            const text  = (typeof data === 'string') ? data : (data.answer || 'Pertanyaan Anda sudah diterima.');
+            const route = (typeof data === 'object') ? data.route : null;
+            const label = (typeof data === 'object') ? data.label : null;
+            const cat   = ((typeof data === 'object') ? (data.category || '') : '').toUpperCase();
+            const sugg  = (typeof data === 'object' && Array.isArray(data.suggestions)) ? data.suggestions : [];
+
+            let badgeCls = 'ai-badge-umum', badgeTxt = 'Tanya Tefa AI';
+            if (cat.includes('PPDB'))                            { badgeCls = 'ai-badge-ppdb';     badgeTxt = '👨‍👩‍👧 Info PPDB'; }
+            else if (cat.includes('INDUSTRI'))                   { badgeCls = 'ai-badge-industri'; badgeTxt = '🏢 Kemitraan Industri'; }
+            else if (cat.includes('BLUD'))                       { badgeCls = 'ai-badge-blud';     badgeTxt = '🏭 Teaching Factory BLUD'; }
+            else if (cat.includes('BKK'))                        { badgeCls = 'ai-badge-bkk';      badgeTxt = '💼 Karir & Lowongan BKK'; }
+            else if (cat.includes('AKADEMIK'))                   { badgeCls = 'ai-badge-akademik'; badgeTxt = '🎓 Pembelajaran Akademik'; }
+            else if (cat.includes('ADMIN')||cat.includes('FAQ')) { badgeCls = 'ai-badge-admin';    badgeTxt = '🏛️ Layanan Tata Usaha'; }
+
+            const ctaHtml = (route && label)
+                ? `<a href="${route}" class="ai-cta-link">${esc(label)} <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>`
+                : '';
+
+            const row = document.createElement('div');
+            row.className = 'ai-row ai-row--reply';
+            row.innerHTML = `
+                <div class="ai-msg ai-msg--reply">
+                    <span class="ai-cat-badge ${badgeCls}">${badgeTxt}</span>
+                    <div class="ai-reply-body">${mdFull(text)}</div>
+                    ${ctaHtml}
+                </div>`;
+            conversation.appendChild(row);
+            scrollEnd();
+
+            if (sugg.length) buildQuickActions(sugg);
+        }
+
+        function setBusy(state) {
+            isBusy = state;
+            if (submitBtn) submitBtn.disabled = state;
+            if (field) field.disabled = state;
+
+            if (state) {
+                const row = document.createElement('div');
+                row.id = 'ai-busy-row';
+                row.className = 'ai-row ai-row--reply';
+                row.innerHTML = `<div class="ai-msg ai-msg--reply ai-msg--loading"><div class="ai-loading-dots"><span></span><span></span><span></span></div></div>`;
+                conversation.appendChild(row);
+                scrollEnd();
+            } else {
+                document.getElementById('ai-busy-row')?.remove();
+            }
+        }
+
+        function scrollEnd() {
+            requestAnimationFrame(() => {
+                if (conversation) conversation.scrollTop = conversation.scrollHeight;
+            });
+        }
+
+        function esc(s) {
+            if (!s) return '';
+            return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+        }
+
+        function mdFull(text) {
+            if (!text) return '';
+            let raw = esc(text);
+            raw = raw.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
+            const lines = raw.split('\n');
+            let out = '', inList = false, listType = 'ul';
+            lines.forEach(line => {
+                const t = line.trim();
+                if (!t) { if (inList) { out += `</${listType}>`; inList = false; } return; }
+                const nm = t.match(/^(\d+)\.\s+(.+)$/);
+                if (nm) {
+                    if (!inList || listType !== 'ol') { if (inList) out += `</${listType}>`; out += '<ol>'; inList = true; listType = 'ol'; }
+                    out += `<li>${nm[2]}</li>`; return;
+                }
+                const bm = t.match(/^[•\-\*]\s+(.+)$/);
+                if (bm) {
+                    if (!inList || listType !== 'ul') { if (inList) out += `</${listType}>`; out += '<ul>'; inList = true; listType = 'ul'; }
+                    out += `<li>${bm[1]}</li>`; return;
+                }
+                if (inList) { out += `</${listType}>`; inList = false; }
+                out += `<p>${t}</p>`;
+            });
+            if (inList) out += `</${listType}>`;
+            return out;
+        }
+    })();
     </script>
 
 </body>
