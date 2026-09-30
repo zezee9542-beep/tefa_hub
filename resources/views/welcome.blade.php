@@ -498,15 +498,16 @@
          TEFA HELP CENTER WIDGET
          ═══════════════════════════════════════════ --}}
 
-    {{-- Floating Trigger Button --}}
+    {{-- Floating Trigger Button (Large AI Avatar Bubble) --}}
     <button id="ai-toggle-btn" class="ai-trigger" type="button" aria-label="Buka Tanya Tefa AI" aria-expanded="false" aria-controls="ai-navigator-panel" title="Tanya Tefa AI">
-        <span class="ai-trigger-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 11.5a7.5 7.5 0 0 1-8 7.48 7.9 7.9 0 0 1-3.52-.9L4 19.5l1.42-3.88A7.5 7.5 0 1 1 20 11.5Z" />
-                <path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01" stroke-width="2.8" />
-            </svg>
-        </span>
-        <span class="ai-trigger-copy"><strong>Tanya Tefa</strong><small>Butuh bantuan?</small></span>
+        <div class="ai-trigger-inner">
+            <img src="{{ asset('assets/ai.png') }}" alt="Asisten Tanya Tefa AI" class="ai-trigger-img">
+            <span class="ai-online-dot"></span>
+        </div>
+        <div class="ai-trigger-copy">
+            <strong>Tanya Tefa AI</strong>
+            <small>Pusat Bantuan 24/7</small>
+        </div>
         <span class="ai-trigger-badge" id="ai-notif-badge" style="display:none;"></span>
     </button>
 
@@ -516,16 +517,18 @@
         {{-- Panel Header --}}
         <div class="ai-header">
             <div class="ai-header-brand">
-                <span class="ai-header-mark" aria-hidden="true">✦</span>
-                <span>
-                    <span class="ai-header-eyebrow">ASISTEN DIGITAL</span>
-                    <span class="ai-header-title">Tanya Tefa</span>
-                </span>
+                <div class="ai-header-avatar">
+                    <img src="{{ asset('assets/ai.png') }}" alt="Tanya Tefa AI" class="ai-avatar-img">
+                    <span class="ai-status-pulse"></span>
+                </div>
+                <div class="ai-header-info">
+                    <h3 class="ai-header-title">Tanya Tefa AI</h3>
+                    <span class="ai-header-sub">Asisten Digital Vokasi • Online</span>
+                </div>
             </div>
             <div class="ai-header-actions">
-                <span class="ai-header-sub"><i></i> Online</span>
                 <button class="ai-close-btn" id="ai-close-btn" type="button" aria-label="Tutup Tanya Tefa">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
                         <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
                     </svg>
                 </button>

@@ -92,8 +92,10 @@ html, body {
 }
 
 .login-card {
-    width: 480px;
-    height: 613px;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    min-height: auto;
     background: #ffffff;
     border-radius: 28px;
     box-shadow:
