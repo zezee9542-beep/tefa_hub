@@ -507,3 +507,43 @@ html, body {
     border-color: rgba(239, 68, 68, 0.5);
     background: rgba(239, 68, 68, 0.04);
 }
+
+/* ── RESPONSIVE SAFETY ─────────────────────────────────────── */
+@media (max-width: 640px) {
+    html, body { align-items: flex-start; }
+
+    .login-container {
+        min-height: 100vh;
+        padding: max(18px, env(safe-area-inset-top)) 16px max(18px, env(safe-area-inset-bottom));
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 480px;
+        height: auto;
+        min-height: 0;
+        padding: 28px 22px 24px;
+        gap: 20px;
+    }
+
+    .card-header { gap: 12px; margin-bottom: 4px; }
+    .logo-badge { width: 44px; height: 44px; border-radius: 13px; }
+    .logo-badge img { height: 28px; }
+    .welcome-title { font-size: 1.35rem; }
+    .welcome-subtitle { font-size: .8rem; line-height: 1.55; }
+    .login-form { gap: 16px; }
+    .form-input { min-width: 0; }
+    .btn-submit-primary,
+    .btn-google-auth { min-height: 46px; }
+    .card-footer-note { text-align: center; line-height: 1.6; }
+}
+
+@media (max-width: 380px) {
+    .login-container { padding-right: 12px; padding-left: 12px; }
+    .login-card { padding: 22px 18px; border-radius: 18px; }
+    .card-header { align-items: center; }
+    .welcome-title { font-size: 1.2rem; }
+    .welcome-subtitle { font-size: .75rem; }
+    .remember-text,
+    .btn-google-auth span { font-size: .76rem; }
+}

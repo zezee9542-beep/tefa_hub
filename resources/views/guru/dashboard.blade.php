@@ -142,6 +142,17 @@
         }
 
         .logout-btn:hover { background: rgba(239,68,68,0.2); }
+
+        @media (max-width: 640px) {
+            body { align-items: flex-start; padding: 1.5rem 1rem; }
+            h1 { font-size: 1.6rem; line-height: 1.25; }
+            .subtitle { line-height: 1.6; margin-bottom: 1.75rem; }
+            .card-grid { grid-template-columns: 1fr; gap: .9rem; }
+            .card, .info-card { padding: 1.15rem; }
+            .info-row { gap: 1rem; }
+            .info-val { max-width: 58%; overflow-wrap: anywhere; text-align: right; }
+            .logout-btn { width: 100%; justify-content: center; }
+        }
     </style>
 </head>
 <body>
