@@ -29,17 +29,55 @@
 
             <nav aria-label="Navigasi Utama">
                 <ul class="nav-links">
+                    <li><a href="#tentang">Tentang</a></li>
+                    <li><a href="#layanan">Layanan</a></li>
                     <li><a href="#akademik">Akademik</a></li>
                     <li><a href="#blud">BLUD</a></li>
-                    <li><a href="#career-center">Career Center (BKK)</a></li>
+                    <li><a href="#career-center">Career Center</a></li>
                 </ul>
             </nav>
 
-            <a href="{{ Route::has('login') ? route('login') : '#login' }}" class="btn-masuk">
-                Masuk
-            </a>
+            <div class="header-actions">
+                <a href="{{ Route::has('login') ? route('login') : '#login' }}" class="btn-masuk">
+                    Masuk
+                </a>
+                <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu Navigasi" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
         </div>
     </header>
+
+    {{-- Mobile Navigation Drawer & Backdrop --}}
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Menu Navigasi Mobile">
+        <div class="mobile-nav-header">
+            <a href="{{ url('/') }}" class="brand">
+                <img src="{{ asset('assets/logo.png') }}" alt="Logo Tefa-Hub">
+                <span class="brand-name">Tefa<span>-Hub</span></span>
+            </a>
+            <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Tutup Menu Navigasi">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#tentang" class="mobile-nav-link">Tentang Platform</a></li>
+            <li><a href="#layanan" class="mobile-nav-link">Layanan Unggulan</a></li>
+            <li><a href="#akademik" class="mobile-nav-link">Akademik Terpadu</a></li>
+            <li><a href="#blud" class="mobile-nav-link">Teaching Factory (BLUD)</a></li>
+            <li><a href="#career-center" class="mobile-nav-link">Career Center (BKK)</a></li>
+        </ul>
+        <div class="mobile-nav-footer">
+            <a href="{{ Route::has('login') ? route('login') : '#login' }}" class="btn-masuk-mobile">
+                Masuk ke Portal Siswa
+            </a>
+        </div>
+    </div>
 
     {{-- ═══════════════════════════════════════════
          HERO SECTION
@@ -764,7 +802,52 @@
             return out;
         }
     })();
+
+    // ── Mobile Navigation Drawer Script ──────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleBtn = document.getElementById('mobileMenuToggle');
+        const closeBtn = document.getElementById('mobileNavClose');
+        const drawer = document.getElementById('mobileNavDrawer');
+        const backdrop = document.getElementById('mobileNavBackdrop');
+        const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function openDrawer() {
+            if (drawer && backdrop) {
+                drawer.classList.add('is-open');
+                backdrop.classList.add('is-open');
+                if (toggleBtn) {
+                    toggleBtn.classList.add('is-active');
+                    toggleBtn.setAttribute('aria-expanded', 'true');
+                }
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeDrawer() {
+            if (drawer && backdrop) {
+                drawer.classList.remove('is-open');
+                backdrop.classList.remove('is-open');
+                if (toggleBtn) {
+                    toggleBtn.classList.remove('is-active');
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                }
+                document.body.style.overflow = '';
+            }
+        }
+
+        if (toggleBtn) toggleBtn.addEventListener('click', function() {
+            if (drawer && drawer.classList.contains('is-open')) closeDrawer();
+            else openDrawer();
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+        if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeDrawer);
+        });
+    });
     </script>
 
 </body>
-</html>`n
+</html>

@@ -1,18 +1,29 @@
 @props(['user' => []])
 
 <header class="siswa-top-header" role="banner">
-    <!-- Search Bar -->
-    <div class="searchbar-wrapper">
-        <svg class="searchbar-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7E8B9B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <input 
-            type="search" 
-            class="searchbar-input" 
-            placeholder="Cari materi, tugas, produk BLUD, atau lowongan BKK..." 
-            aria-label="Pencarian materi, tugas, produk BLUD, atau lowongan BKK"
-        >
+    <!-- Header Left: Sidebar Toggle & Search Bar -->
+    <div class="header-left-group">
+        <button type="button" class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Buka Menu Navigasi" title="Menu Navigasi">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+
+        <!-- Search Bar -->
+        <div class="searchbar-wrapper">
+            <svg class="searchbar-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7E8B9B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+                type="search" 
+                class="searchbar-input" 
+                placeholder="Cari materi, tugas, produk BLUD, atau lowongan BKK..." 
+                aria-label="Pencarian materi, tugas, produk BLUD, atau lowongan BKK"
+            >
+        </div>
     </div>
 
     <!-- Header Actions & Profile Group -->
