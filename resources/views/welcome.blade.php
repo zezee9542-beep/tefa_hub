@@ -499,8 +499,14 @@
          ═══════════════════════════════════════════ --}}
 
     {{-- Floating Trigger Button --}}
-    <button id="ai-toggle-btn" class="ai-trigger" aria-label="Pusat Bantuan Tefa-Hub" title="Ada yang bisa kami bantu?">
-        <img src="{{ asset('assets/Group 106 1 (1).png') }}" alt="Tanya Tefa AI" class="ai-trigger-img">
+    <button id="ai-toggle-btn" class="ai-trigger" type="button" aria-label="Buka Tanya Tefa AI" aria-expanded="false" aria-controls="ai-navigator-panel" title="Tanya Tefa AI">
+        <span class="ai-trigger-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 11.5a7.5 7.5 0 0 1-8 7.48 7.9 7.9 0 0 1-3.52-.9L4 19.5l1.42-3.88A7.5 7.5 0 1 1 20 11.5Z" />
+                <path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01" stroke-width="2.8" />
+            </svg>
+        </span>
+        <span class="ai-trigger-copy"><strong>Tanya Tefa</strong><small>Butuh bantuan?</small></span>
         <span class="ai-trigger-badge" id="ai-notif-badge" style="display:none;"></span>
     </button>
 
@@ -510,12 +516,15 @@
         {{-- Panel Header --}}
         <div class="ai-header">
             <div class="ai-header-brand">
-                <div class="ai-header-dot"></div>
-                <span class="ai-header-title">Pusat Bantuan</span>
+                <span class="ai-header-mark" aria-hidden="true">✦</span>
+                <span>
+                    <span class="ai-header-eyebrow">ASISTEN DIGITAL</span>
+                    <span class="ai-header-title">Tanya Tefa</span>
+                </span>
             </div>
             <div class="ai-header-actions">
-                <span class="ai-header-sub">Tefa-Hub · Selalu siap</span>
-                <button class="ai-close-btn" id="ai-close-btn" aria-label="Tutup">
+                <span class="ai-header-sub"><i></i> Online</span>
+                <button class="ai-close-btn" id="ai-close-btn" type="button" aria-label="Tutup Tanya Tefa">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
                         <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
                     </svg>
@@ -525,26 +534,28 @@
 
         {{-- Greeting Card (visible before any message) --}}
         <div class="ai-greeting-card" id="ai-greeting-card">
-            <p class="ai-greeting-label">Halo! Saya Tanya Tefa AI 👋</p>
-            <p class="ai-greeting-sub">Navigator sistem & pusat bantuan TEFA-Hub. Pilih peran Anda untuk panduan langsung:</p>
+            <p class="ai-greeting-kicker">Mulai percakapan</p>
+            <p class="ai-greeting-label">Halo, saya Tanya Tefa <span aria-hidden="true">👋</span></p>
+            <p class="ai-greeting-sub">Temukan informasi TEFA-Hub lebih cepat. Pilih kebutuhan Anda atau tulis pertanyaan.</p>
+            <p class="ai-role-label">Saya ingin mencari...</p>
             <div class="ai-nav-categories">
-                <button class="ai-nav-cat" onclick="sendNavChip('Saya Orang Tua / Calon Siswa (Info PPDB)')">
+                <button class="ai-nav-cat" type="button" onclick="sendNavChip('Saya Orang Tua / Calon Siswa (Info PPDB)')">
                     <span class="ai-nav-cat-icon">👨‍👩‍👧</span>
                     <div><strong>Orang Tua & Calon</strong><span>PPDB & Jurusan</span></div>
                 </button>
-                <button class="ai-nav-cat" onclick="sendNavChip('Saya Siswa Aktif SMK')">
+                <button class="ai-nav-cat" type="button" onclick="sendNavChip('Saya Siswa Aktif SMK')">
                     <span class="ai-nav-cat-icon">🎓</span>
                     <div><strong>Siswa Aktif</strong><span>BLUD, PKL & Nilai</span></div>
                 </button>
-                <button class="ai-nav-cat" onclick="sendNavChip('Saya Alumni / Pencari Kerja')">
+                <button class="ai-nav-cat" type="button" onclick="sendNavChip('Saya Alumni / Pencari Kerja')">
                     <span class="ai-nav-cat-icon">💼</span>
                     <div><strong>Alumni & Karir</strong><span>Loker & Legalisir</span></div>
                 </button>
-                <button class="ai-nav-cat" onclick="sendNavChip('Saya Mitra Industri / Perusahaan')">
+                <button class="ai-nav-cat" type="button" onclick="sendNavChip('Saya Mitra Industri / Perusahaan')">
                     <span class="ai-nav-cat-icon">🏢</span>
                     <div><strong>Mitra Industri</strong><span>Kerjasama TEFA</span></div>
                 </button>
-                <button class="ai-nav-cat" style="grid-column: span 2;" onclick="sendNavChip('Saya Butuh Layanan Tata Usaha (TU)')">
+                <button class="ai-nav-cat ai-nav-cat-wide" type="button" onclick="sendNavChip('Saya Butuh Layanan Tata Usaha (TU)')">
                     <span class="ai-nav-cat-icon">🏛️</span>
                     <div><strong>Layanan Tata Usaha & Bantuan Akun</strong><span>Jam operasional TU, surat & reset kata sandi</span></div>
                 </button>
@@ -615,6 +626,7 @@
             isOpen = true;
             panel.classList.add('is-open');
             panel.setAttribute('aria-hidden', 'false');
+            toggleBtn.setAttribute('aria-expanded', 'true');
             badge.style.display = 'none';
             field.focus();
             if (!greeted) { greeted = true; loadGreeting(); }
@@ -624,10 +636,17 @@
             isOpen = false;
             panel.classList.remove('is-open');
             panel.setAttribute('aria-hidden', 'true');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            toggleBtn.focus();
         }
 
         toggleBtn.addEventListener('click', () => isOpen ? closePanel() : openPanel());
         closeBtn.addEventListener('click', closePanel);
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && isOpen) {
+                closePanel();
+            }
+        });
 
         setTimeout(() => { if (!isOpen) { badge.style.display = 'flex'; } }, 3000);
 

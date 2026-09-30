@@ -5682,3 +5682,151 @@ img, svg { max-width: 100%; }
     .bar-chart-container,
     .akademik-bar-chart-container { min-width: 520px; }
 }
+
+/* ── MOBILE LAYOUT CORRECTIONS ───────────────────────────────
+   Several dashboard modules were designed as fixed desktop rows. Keep the
+   visual hierarchy, but let every module reflow before it reaches phone size. */
+@media (max-width: 900px) {
+    .siswa-top-header {
+        gap: 12px;
+        padding: 12px 20px;
+    }
+
+    .header-left-group {
+        min-width: 0;
+        max-width: none;
+    }
+
+    .searchbar-wrapper { min-width: 0; }
+
+    .siswa-charts-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        gap: 16px;
+    }
+
+    .chart-dashboard-card {
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        min-height: 270px;
+        padding: 20px;
+    }
+
+    .jadwal-cards-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .jadwal-card.card-selesai,
+    .jadwal-card.card-berlangsung,
+    .jadwal-card.card-mendatang {
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        min-height: 184px;
+    }
+
+    .riwayat-section-wrapper {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+    }
+
+    .riwayat-columns-container {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .riwayat-column-group,
+    .riwayat-card-item {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .profile-hero-card {
+        height: auto;
+        min-height: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .siswa-top-header {
+        min-height: 60px;
+        flex-wrap: nowrap;
+        padding: 10px 14px;
+    }
+
+    .header-left-group { gap: 7px; }
+    .sidebar-toggle-btn { width: 36px; height: 36px; min-width: 36px; }
+    .searchbar-wrapper { height: 36px; padding: 0 11px; gap: 8px; }
+    .searchbar-input,
+    .searchbar-input::placeholder { font-size: 11.5px; }
+    .header-right-group { gap: 5px; }
+    .status-siswa-badge,
+    .header-profile-text { display: none; }
+
+    .content-body { padding: 16px 14px 28px; }
+    .page-title { margin-bottom: 18px; }
+
+    .siswa-charts-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .chart-dashboard-card {
+        min-height: 246px;
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    .chart-card-header,
+    .jadwal-header-block,
+    .tugas-header-row,
+    .riwayat-header-row {
+        align-items: flex-start;
+    }
+
+    .profile-meta-row,
+    .profile-card-left,
+    .profile-card-right { min-width: 0; }
+
+    .profile-hero-card,
+    .riwayat-section-wrapper,
+    .jadwal-section-wrapper { border-radius: 16px; }
+
+    .jadwal-card.card-selesai,
+    .jadwal-card.card-berlangsung,
+    .jadwal-card.card-mendatang { min-height: 170px; padding: 16px; }
+
+    .riwayat-section-wrapper { padding: 16px; }
+    .riwayat-card-item { height: auto; min-height: 66px; padding: 10px 12px; }
+    .riwayat-item-time { font-size: 10px; }
+
+    .bkk-hero-banner,
+    .blud-hero-banner { padding: 20px 16px; }
+
+    .bkk-hero-title,
+    .blud-hero-title { overflow-wrap: anywhere; }
+
+    .modal-profil-overlay,
+    .modal-publikasi-overlay { padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 420px) {
+    .siswa-top-header { gap: 6px; padding-right: 10px; padding-left: 10px; }
+    .header-right-group .header-circle-btn:not(:last-child) { display: none; }
+    .searchbar-wrapper { padding: 0 9px; }
+    .searchbar-icon { width: 16px; height: 16px; }
+    .searchbar-input,
+    .searchbar-input::placeholder { font-size: 10.5px; }
+    .header-circle-btn { width: 36px; height: 36px; min-width: 36px; }
+    .content-body { padding-right: 12px; padding-left: 12px; }
+
+    .chart-dashboard-card,
+    .dash-card,
+    .akademik-card,
+    .tugas-card,
+    .bkk-job-card { padding: 16px; }
+}
