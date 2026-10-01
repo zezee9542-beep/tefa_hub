@@ -109,8 +109,10 @@ body {
 
 /* ── HEADER ──────────────────────────────────────────────── */
 .site-header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     /* Must stay below drawer z-index but above page content */
     z-index: 100;
     background: rgba(255,255,255,0.96);
@@ -122,6 +124,22 @@ body {
     width: 100%;
     /* Prevent header from creating stacking context that traps drawer */
     isolation: auto;
+    transform: translateY(0);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+    will-change: transform;
+}
+
+.site-header.nav-hidden {
+    transform: translateY(-100%);
+}
+
+.site-header.nav-scrolled {
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+}
+
+/* Spacer to prevent content from jumping under fixed header */
+.site-header-spacer {
+    height: 68px; /* matches header height */
 }
 
 .site-header .wrap {
@@ -1844,23 +1862,99 @@ body {
         bottom: 0;
         width: 100%;
         max-width: 100%;
-        max-height: 85vh;
-        max-height: 85dvh;
-        border-radius: 18px 18px 0 0;
-        border-right: none;
-        border-left: none;
+        height: auto;
+        max-height: 70vh;
+        max-height: 70dvh;
+        border-radius: 20px 20px 0 0;
+        border: 1px solid #e2e8f0;
         border-bottom: none;
+        box-shadow: 0 -10px 30px rgba(15, 23, 42, 0.15);
         transform: translateY(100%);
     }
     .ai-panel.is-open {
         transform: translateY(0);
     }
-    .ai-header { padding: 10px 12px; }
-    .ai-greeting-card { margin: 6px 8px 0; padding: 10px; }
-    .ai-nav-categories { grid-template-columns: 1fr; }
-    .ai-nav-cat-wide { grid-column: auto; }
-    .ai-conversation { padding: 8px 10px; }
-    .ai-input-wrap { padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)); }
+    .ai-header { padding: 10px 14px; }
+    .ai-header-avatar { width: 32px; height: 32px; }
+    .ai-avatar-img { width: 26px; height: 26px; }
+    .ai-header-title { font-size: 13.5px; }
+    .ai-header-sub { font-size: 10.5px; }
+    .ai-close-btn { width: 28px; height: 28px; border-radius: 6px; }
+    .ai-greeting-card {
+        margin: 8px 10px 0;
+        padding: 10px 12px;
+        border-radius: 12px;
+    }
+    .ai-greeting-kicker { font-size: 8.5px; margin-bottom: 2px; }
+    .ai-greeting-label { font-size: 12.5px; margin-bottom: 2px; }
+    .ai-greeting-sub {
+        font-size: 10px;
+        margin-bottom: 6px;
+        line-height: 1.35;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .ai-role-label { font-size: 9px; margin-bottom: 4px; }
+    .ai-nav-categories {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+    }
+    .ai-nav-cat {
+        padding: 5px 8px;
+        border-radius: 6px;
+        gap: 5px;
+    }
+    .ai-nav-cat-icon { font-size: 13px; }
+    .ai-nav-cat strong { font-size: 9.5px; line-height: 1.15; }
+    .ai-nav-cat span { font-size: 8px; line-height: 1.15; }
+    .ai-nav-cat-wide { grid-column: span 2; }
+    .ai-conversation {
+        padding: 8px 10px;
+        gap: 8px;
+    }
+    .ai-msg {
+        max-width: 90%;
+        padding: 7px 11px;
+        font-size: 11.5px;
+        line-height: 1.45;
+        border-radius: 10px;
+    }
+    .ai-cta-link {
+        padding: 4px 10px;
+        font-size: 10.5px;
+        border-radius: 6px;
+    }
+    .ai-quick-actions {
+        padding: 0 10px 6px;
+        gap: 4px;
+    }
+    .ai-action-chip {
+        font-size: 10px;
+        padding: 4px 9px;
+    }
+    .ai-input-wrap {
+        padding: 6px 10px calc(8px + env(safe-area-inset-bottom, 0px));
+    }
+    .ai-form {
+        padding: 2px 3px 2px 10px;
+        border-radius: 999px;
+        min-height: 38px;
+        gap: 4px;
+    }
+    .ai-field {
+        font-size: 12px;
+        padding: 2px 0;
+    }
+    .ai-submit {
+        width: 30px;
+        height: 30px;
+    }
+    .ai-powered {
+        font-size: 8.5px;
+        margin-top: 3px;
+    }
 }
 
 @media (max-width: 520px) {
@@ -1931,7 +2025,7 @@ body {
     .services-grid { gap: 10px; }
     .showcase-card-1 { max-width: 260px !important; }
     .ai-trigger { bottom: 10px; right: 10px; }
-    .ai-panel { max-height: 88dvh; }
+    .ai-panel { max-height: 72dvh; }
 }
 
 @media (max-width: 320px) {

@@ -321,6 +321,17 @@ body::-webkit-scrollbar {
     top: 0;
     z-index: 50;
     box-sizing: border-box;
+    transform: translateY(0);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+    will-change: transform;
+}
+
+.siswa-top-header.nav-hidden {
+    transform: translateY(-100%);
+}
+
+.siswa-top-header.nav-scrolled {
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
 }
 
 /* Header Left Group (Toggle + Search) */
@@ -3846,11 +3857,31 @@ body::-webkit-scrollbar {
 
 @media (max-width: 768px) {
     .tefa-chat-history-full {
-        padding: 16px;
+        padding: 14px 12px;
     }
 
     .chat-bottom-dock-full {
-        padding: 10px 16px 14px 16px;
+        padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) 12px;
+    }
+
+    .input-pill-wrapper-full {
+        height: 42px;
+        padding: 0 4px 0 14px;
+    }
+
+    .chat-text-input-full {
+        font-size: 12.5px;
+    }
+
+    .btn-send-pill-full {
+        height: 34px;
+        padding: 0 14px;
+        font-size: 11.5px;
+    }
+
+    .chip-suggestion {
+        font-size: 10.5px;
+        padding: 4px 10px;
     }
 
     .msg-bubble-wrap,

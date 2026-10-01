@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v=3.0.0">
+    <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v=3.3.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
@@ -49,6 +49,7 @@
             </div>
         </div>
     </header>
+    <div class="site-header-spacer" aria-hidden="true"></div>
 
     {{-- Mobile Navigation Drawer & Backdrop --}}
     <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
@@ -696,6 +697,33 @@
             revealElements.forEach(el => observer.observe(el));
         } else {
             revealElements.forEach(el => el.classList.add('is-revealed'));
+        }
+
+        // ── Sticky Header: Hide on Active Scroll, Show on Scroll Stop ────────
+        const siteHeader = document.querySelector('.site-header');
+        if (siteHeader) {
+            let navScrollTimer = null;
+            window.addEventListener('scroll', function() {
+                const currentY = window.pageYOffset || document.documentElement.scrollTop;
+
+                // At the very top, keep visible
+                if (currentY <= 15) {
+                    siteHeader.classList.remove('nav-hidden');
+                    siteHeader.classList.remove('nav-scrolled');
+                    if (navScrollTimer) clearTimeout(navScrollTimer);
+                    return;
+                }
+
+                siteHeader.classList.add('nav-scrolled');
+                // Hide while actively scrolling
+                siteHeader.classList.add('nav-hidden');
+
+                // Reveal once scrolling stops
+                if (navScrollTimer) clearTimeout(navScrollTimer);
+                navScrollTimer = setTimeout(function() {
+                    siteHeader.classList.remove('nav-hidden');
+                }, 180);
+            }, { passive: true });
         }
 
         // ── Mobile Navigation Drawer ──────────────────────────────────────────
