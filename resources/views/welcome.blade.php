@@ -33,7 +33,7 @@
                     <li><a href="#layanan">Layanan</a></li>
                     <li><a href="#akademik">Akademik</a></li>
                     <li><a href="#blud">BLUD</a></li>
-                    <li><a href="#career-center">Career Center</a></li>
+                    <li><a href="{{ route('bkk') }}">BKK</a></li>
                 </ul>
             </nav>
 
@@ -71,7 +71,7 @@
             <li><a href="#layanan" class="mobile-nav-link">Layanan Unggulan</a></li>
             <li><a href="#akademik" class="mobile-nav-link">Akademik Terpadu</a></li>
             <li><a href="#blud" class="mobile-nav-link">Teaching Factory (BLUD)</a></li>
-            <li><a href="#career-center" class="mobile-nav-link">Career Center (BKK)</a></li>
+            <li><a href="{{ route('bkk') }}" class="mobile-nav-link">BKK (Pusat Karier)</a></li>
         </ul>
         <div class="mobile-nav-footer">
             <a href="{{ route('login') }}" class="btn-masuk-mobile">
@@ -222,7 +222,7 @@
                 {{-- Floating 2 feature cards (Centered, Equal Size, Original Style) --}}
                 @php
                     $heroCards = [
-                        ['icon' => 'card.png', 'title' => 'BKK Instan',  'desc' => 'Temukan informasi lowongan dan peluang kerja terbaru.',      'href' => '#career-center'],
+                        ['icon' => 'card.png', 'title' => 'BKK Instan',  'desc' => 'Temukan informasi lowongan dan peluang kerja terbaru.',      'href' => route('bkk')],
                         ['icon' => 'book.png', 'title' => 'PPDB Kilat',  'desc' => 'Daftar sebagai calon peserta didik baru dengan mudah.',       'href' => '#layanan'],
                     ];
                 @endphp
@@ -323,7 +323,7 @@
                         'icon' => '4.png',
                         'title' => 'Career Center (BKK)',
                         'desc' => 'Jembatan menuju dunia kerja. Membantu siswa dan alumni melamar pekerjaan menggunakan CV Digital & Portofolio ke jaringan mitra industri.',
-                        'link' => '#career-center',
+                        'link' => route('bkk'),
                     ],
                 ];
             @endphp

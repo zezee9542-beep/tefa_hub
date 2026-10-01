@@ -8,10 +8,14 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SystemMonitorController;
 use Illuminate\Support\Facades\Route;
 
-// ─── Landing Page ──────────────────────────────────────────────────────────
+// ─── Landing Page & Multipage Routes ─────────────────────────────────────────
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('/bkk', function () {
+    return view('bkk');
+})->name('bkk');
 
 // ─── Auth Routes (hanya bisa diakses saat belum login) ─────────────────────
 Route::middleware('guest')->group(function () {
