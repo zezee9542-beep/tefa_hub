@@ -311,163 +311,19 @@
         </div>
     </section>
 
-    {{-- ═══════════════════════════════════════════
-         FOOTER
-         ═══════════════════════════════════════════ --}}
-    <footer class="site-footer">
-        <div class="wrap">
-            <div class="footer-grid">
-                <div class="footer-col footer-col-brand">
-                    <a href="{{ url('/') }}" class="brand" aria-label="Tefa-Hub Beranda">
-                        <img src="{{ asset('assets/logo.png') }}" alt="Logo Tefa-Hub">
-                        <span class="brand-name">Tefa<span>-Hub</span></span>
-                    </a>
-                    <p class="footer-tagline">
-                        Platform ekosistem digital terpadu untuk pendidikan vokasi SMK: Akademik, Teaching Factory (BLUD), dan Bursa Kerja Khusus (BKK).
-                    </p>
-                </div>
+    {{-- Unified Reusable Landing Footer --}}
+    <x-landing-footer />
 
-                <div class="footer-col">
-                    <h3 class="footer-heading">Navigasi Utama</h3>
-                    <ul class="footer-links">
-                        <li><a href="{{ url('/#tentang') }}">Tentang Platform</a></li>
-                        <li><a href="{{ url('/#layanan') }}">Layanan Unggulan</a></li>
-                        <li><a href="{{ url('/#akademik') }}">Akademik Terpadu</a></li>
-                        <li><a href="{{ url('/#blud') }}">Teaching Factory (BLUD)</a></li>
-                        <li><a href="{{ route('bkk') }}">Career Center (BKK)</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h3 class="footer-heading">Layanan BKK</h3>
-                    <ul class="footer-links">
-                        <li><a href="{{ route('siswa.bkk') }}">Portal Karir Siswa</a></li>
-                        <li><a href="#lowongan">Eksplorasi Lowongan DUDI</a></li>
-                        <li><a href="{{ route('siswa.riwayat') }}">Riwayat Lamaran</a></li>
-                        <li><a href="{{ route('siswa.akademik') }}">Portofolio & CV Digital</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h3 class="footer-heading">Hubungi Kami</h3>
-                    <p class="footer-contact-item">
-                        <span>Email:</span> bkk@tefahub.sch.id
-                    </p>
-                    <p class="footer-contact-item">
-                        <span>WhatsApp:</span> +62 812-3456-7890
-                    </p>
-                    <p class="footer-contact-item">
-                        <span>Jam Kerja:</span> Senin - Jumat (07.30 - 16.00 WIB)
-                    </p>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; {{ date('Y') }} TEFA-HUB. Seluruh Hak Cipta Dilindungi.</p>
-                <div class="legal-links">
-                    <a href="{{ url('/') }}">Kebijakan Privasi</a>
-                    <span>•</span>
-                    <a href="{{ url('/') }}">Syarat & Ketentuan</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {{-- Unified Reusable Tanya Tefa AI Widget --}}
+    <x-ai-widget 
+        subtitle="Pusat Karir BKK"
+        greetingKicker="Pusat Karir BKK"
+        greetingTitle="Halo, ada yang bisa dibantu seputar Karir?"
+        greetingSub="Tanyakan tips lolos seleksi, lowongan mitra industri, hingga pengurusan CV digital."
+    />
 
     {{-- ═══════════════════════════════════════════
-         TANYA TEFA AI ASSISTANT WIDGET
-         ═══════════════════════════════════════════ --}}
-    <button id="ai-toggle-btn" class="ai-trigger" type="button" aria-label="Buka Tanya Tefa AI" aria-expanded="false" aria-controls="ai-navigator-panel" title="Tanya Tefa AI">
-        <div class="ai-trigger-inner">
-            <img src="{{ asset('assets/ai.png') }}" alt="Asisten Tanya Tefa AI" class="ai-trigger-img">
-            <span class="ai-online-dot"></span>
-        </div>
-        <div class="ai-trigger-copy">
-            <strong>Tanya Tefa AI</strong>
-            <small>Pusat Bantuan BKK</small>
-        </div>
-        <span class="ai-trigger-badge" id="ai-notif-badge" style="display:none;"></span>
-    </button>
-
-    <div id="ai-navigator-panel" class="ai-panel" role="dialog" aria-label="Pusat Bantuan Tefa-Hub" aria-hidden="true">
-        <div class="ai-header">
-            <div class="ai-header-brand">
-                <div class="ai-header-avatar">
-                    <img src="{{ asset('assets/ai.png') }}" alt="Tanya Tefa AI" class="ai-avatar-img">
-                    <span class="ai-status-pulse"></span>
-                </div>
-                <div class="ai-header-info">
-                    <h3 class="ai-header-title">Tanya Tefa AI</h3>
-                    <span class="ai-header-sub">Asisten BKK & Vokasi • Online</span>
-                </div>
-            </div>
-            <div class="ai-header-actions">
-                <button class="ai-close-btn" id="ai-close-btn" type="button" aria-label="Tutup Tanya Tefa">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-                        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        <div class="ai-greeting-card" id="ai-greeting-card">
-            <p class="ai-greeting-kicker">Pusat Karir BKK</p>
-            <p class="ai-greeting-label">Halo, ada yang bisa dibantu seputar Karir? <span aria-hidden="true">👋</span></p>
-            <p class="ai-greeting-sub">Tanyakan tips lolos seleksi, lowongan mitra industri, hingga pengurusan CV digital.</p>
-            <p class="ai-role-label">Topik Populer:</p>
-            <div class="ai-nav-categories">
-                <button class="ai-nav-cat" type="button" onclick="sendNavChip('Bagaimana tips lolos seleksi mitra DUDI?')">
-                    <span class="ai-nav-cat-icon">💼</span>
-                    <div><strong>Tips Lolos Seleksi</strong><span>Wawancara & Tes</span></div>
-                </button>
-                <button class="ai-nav-cat" type="button" onclick="sendNavChip('Cara melamar lowongan kerja di BKK?')">
-                    <span class="ai-nav-cat-icon">📄</span>
-                    <div><strong>Cara Melamar</strong><span>CV Digital</span></div>
-                </button>
-                <button class="ai-nav-cat" type="button" onclick="sendNavChip('Mitra industri apa saja yang bekerja sama?')">
-                    <span class="ai-nav-cat-icon">🏢</span>
-                    <div><strong>Mitra Industri</strong><span>Daftar Perusahaan</span></div>
-                </button>
-                <button class="ai-nav-cat" type="button" onclick="sendNavChip('Saya Siswa Aktif SMK')">
-                    <span class="ai-nav-cat-icon">🎓</span>
-                    <div><strong>Siswa Aktif</strong><span>PKL & Portofolio</span></div>
-                </button>
-            </div>
-        </div>
-
-        <div class="ai-conversation" id="ai-messages" role="log" aria-live="polite">
-            <div class="ai-loading-row" id="ai-initial-typing">
-                <div class="ai-loading-dots"><span></span><span></span><span></span></div>
-                <span class="ai-loading-text">Menghubungkan asisten...</span>
-            </div>
-        </div>
-
-        <div class="ai-quick-actions" id="ai-suggestions"></div>
-
-        <div class="ai-input-wrap">
-            <form id="ai-chat-form" class="ai-form">
-                @csrf
-                <input
-                    type="text"
-                    id="ai-message-input"
-                    class="ai-field"
-                    placeholder="Tulis pertanyaan seputar BKK..."
-                    autocomplete="off"
-                    maxlength="500"
-                    aria-label="Pertanyaan seputar BKK"
-                >
-                <button type="submit" class="ai-submit" id="ai-send-btn" aria-label="Kirim pertanyaan">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="22" y1="2" x2="11" y2="13"/>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2" fill="currentColor" opacity="0.9" stroke="none"/>
-                    </svg>
-                </button>
-            </form>
-            <p class="ai-powered">Didukung teknologi AI · Tefa-Hub</p>
-        </div>
-    </div>
-
-    {{-- ═══════════════════════════════════════════
-         SCRIPTS: SCROLL ANIMATIONS, NAVBAR & CHAT
+         SCRIPTS: SCROLL ANIMATIONS & NAVBAR
          ═══════════════════════════════════════════ --}}
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -478,41 +334,39 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-revealed');
-                        entry.target.classList.add('visible');
                         obs.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+            }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
             reveals.forEach(el => observer.observe(el));
         } else {
-            reveals.forEach(el => {
-                el.classList.add('is-revealed');
-                el.classList.add('visible');
-            });
+            reveals.forEach(el => el.classList.add('is-revealed'));
         }
 
         // Fixed navbar show/hide on scroll
         const header = document.querySelector('.site-header');
-        let isScrolling = null;
-        let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+        if (header) {
+            let isScrolling = null;
+            let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
 
-        window.addEventListener('scroll', function() {
-            const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
-            if (currentScrollY <= 40) {
-                header.classList.remove('header-hidden');
-                clearTimeout(isScrolling);
+            window.addEventListener('scroll', function() {
+                const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+                if (currentScrollY <= 40) {
+                    header.classList.remove('header-hidden');
+                    if (isScrolling) clearTimeout(isScrolling);
+                    lastScrollY = currentScrollY;
+                    return;
+                }
+                if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                    header.classList.add('header-hidden');
+                }
+                if (isScrolling) clearTimeout(isScrolling);
+                isScrolling = setTimeout(function() {
+                    header.classList.remove('header-hidden');
+                }, 180);
                 lastScrollY = currentScrollY;
-                return;
-            }
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                header.classList.add('header-hidden');
-            }
-            clearTimeout(isScrolling);
-            isScrolling = setTimeout(function() {
-                header.classList.remove('header-hidden');
-            }, 180);
-            lastScrollY = currentScrollY;
-        }, { passive: true });
+            }, { passive: true });
+        }
 
         // Mobile drawer
         const toggleBtn = document.getElementById('mobileMenuToggle');
@@ -521,127 +375,26 @@
         const backdrop = document.getElementById('mobileNavBackdrop');
 
         function openDrawer() {
-            drawer.classList.add('is-open');
-            backdrop.classList.add('is-open');
-            document.body.classList.add('drawer-open');
-            toggleBtn.setAttribute('aria-expanded', 'true');
+            if (drawer && backdrop) {
+                drawer.classList.add('is-open');
+                backdrop.classList.add('is-open');
+                document.body.classList.add('drawer-open');
+                if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
+            }
         }
 
         function closeDrawer() {
-            drawer.classList.remove('is-open');
-            backdrop.classList.remove('is-open');
-            document.body.classList.remove('drawer-open');
-            toggleBtn.setAttribute('aria-expanded', 'false');
+            if (drawer && backdrop) {
+                drawer.classList.remove('is-open');
+                backdrop.classList.remove('is-open');
+                document.body.classList.remove('drawer-open');
+                if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+            }
         }
 
         if (toggleBtn) toggleBtn.addEventListener('click', openDrawer);
         if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
         if (backdrop) backdrop.addEventListener('click', closeDrawer);
-
-        // AI Widget Interactions
-        const aiToggle = document.getElementById('ai-toggle-btn');
-        const aiPanel = document.getElementById('ai-navigator-panel');
-        const aiClose = document.getElementById('ai-close-btn');
-        const aiForm = document.getElementById('ai-chat-form');
-        const aiInput = document.getElementById('ai-message-input');
-        const aiMessages = document.getElementById('ai-messages');
-        const greetingCard = document.getElementById('ai-greeting-card');
-        const initialTyping = document.getElementById('ai-initial-typing');
-
-        function toggleAiPanel() {
-            const isOpen = aiPanel.classList.toggle('is-open');
-            aiToggle.setAttribute('aria-expanded', isOpen);
-            if (isOpen && initialTyping) {
-                setTimeout(() => {
-                    initialTyping.style.display = 'none';
-                }, 400);
-            }
-        }
-
-        if (aiToggle) aiToggle.addEventListener('click', toggleAiPanel);
-        if (aiClose) aiClose.addEventListener('click', () => {
-            aiPanel.classList.remove('is-open');
-            aiToggle.setAttribute('aria-expanded', 'false');
-        });
-
-        window.sendNavChip = function(query) {
-            if (greetingCard) greetingCard.style.display = 'none';
-            appendUserMessage(query);
-            simulateAiReply(query);
-        };
-
-        if (aiForm) {
-            aiForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const q = aiInput.value.trim();
-                if (!q) return;
-                aiInput.value = '';
-                if (greetingCard) greetingCard.style.display = 'none';
-                appendUserMessage(q);
-                simulateAiReply(q);
-            });
-        }
-
-        function appendUserMessage(msg) {
-            const row = document.createElement('div');
-            row.className = 'ai-row ai-row--user';
-            row.innerHTML = `<div class="ai-msg ai-msg--user">${escapeHtml(msg)}</div>`;
-            aiMessages.appendChild(row);
-            aiMessages.scrollTop = aiMessages.scrollHeight;
-        }
-
-        function simulateAiReply(userText) {
-            const loadingRow = document.createElement('div');
-            loadingRow.className = 'ai-row ai-row--reply';
-            loadingRow.innerHTML = `<div class="ai-msg ai-msg--reply ai-msg--loading"><div class="ai-loading-dots"><span></span><span></span><span></span></div></div>`;
-            aiMessages.appendChild(loadingRow);
-            aiMessages.scrollTop = aiMessages.scrollHeight;
-
-            fetch('{{ route("ai.chat") }}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ message: userText })
-            })
-            .then(res => res.json())
-            .then(data => {
-                loadingRow.remove();
-                const replyRow = document.createElement('div');
-                replyRow.className = 'ai-row ai-row--reply';
-                replyRow.innerHTML = `
-                    <div class="ai-msg ai-msg--reply">
-                        <span class="ai-cat-badge ai-badge-bkk">BKK & KARIER</span>
-                        <p>${escapeHtml(data.reply || 'Informasi terkait rekrutmen BKK telah dicatat. Silakan cek detail lowongan di dashboard siswa.')}</p>
-                        <a href="{{ route('siswa.bkk') }}" class="ai-cta-link">Buka Portal Karir &rarr;</a>
-                    </div>
-                `;
-                aiMessages.appendChild(replyRow);
-                aiMessages.scrollTop = aiMessages.scrollHeight;
-            })
-            .catch(() => {
-                loadingRow.remove();
-                const replyRow = document.createElement('div');
-                replyRow.className = 'ai-row ai-row--reply';
-                replyRow.innerHTML = `
-                    <div class="ai-msg ai-msg--reply">
-                        <span class="ai-cat-badge ai-badge-bkk">BKK & KARIER</span>
-                        <p>Untuk melamar pekerjaan atau mengecek jadwal rekrutmen mitra industri, pastikan CV Digital Anda sudah terisi lengkap di dashboard siswa.</p>
-                        <a href="{{ route('siswa.bkk') }}" class="ai-cta-link">Buka Portal Karir &rarr;</a>
-                    </div>
-                `;
-                aiMessages.appendChild(replyRow);
-                aiMessages.scrollTop = aiMessages.scrollHeight;
-            });
-        }
-
-        function escapeHtml(str) {
-            const div = document.createElement('div');
-            div.textContent = str;
-            return div.innerHTML;
-        }
     });
     </script>
 </body>

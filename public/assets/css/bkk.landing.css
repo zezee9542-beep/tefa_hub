@@ -1,15 +1,14 @@
 /* ============================================================
-   BKK LANDING PAGE CSS (PLUS JAKARTA SANS & MODERN AESTHETICS)
+   BKK LANDING PAGE CSS (PLUS JAKARTA SANS & HIGH PERFORMANCE)
    ============================================================ */
 
-/* ─── Base Imports & Reset ───────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+/* ─── Base Reset & Fonts ─────────────────────────────────── */
 
 /* ─── Hero Section with Tighter Eclipse Glow Backgrounds ──── */
 .bkk-hero-section {
     position: relative;
     overflow: hidden;
-    padding: 70px 0 90px;
+    padding: 60px 0 80px;
     background: #ffffff;
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
@@ -32,43 +31,45 @@
     transform: translate(0, 0) scale(1) !important;
 }
 
-/* 3 Titik Eclipse Blur (#2563EB) — Tighter & Focused */
+/* 3 Titik Eclipse Blur (#2563EB) — Tighter, Lightweight, Zero Lag */
 .bkk-bg-eclipse {
     position: absolute;
     border-radius: 50%;
     background: #2563eb;
     pointer-events: none;
     z-index: 0;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 /* Titik 1: Kanan Atas di belakang card image */
 .bkk-eclipse-1 {
-    width: 320px;
-    height: 320px;
+    width: 280px;
+    height: 280px;
     top: 20px;
-    right: 40px;
-    filter: blur(65px);
-    opacity: 0.15;
+    right: 30px;
+    filter: blur(50px);
+    opacity: 0.14;
 }
 
 /* Titik 2: Kiri Atas di belakang konten text */
 .bkk-eclipse-2 {
-    width: 280px;
-    height: 280px;
+    width: 250px;
+    height: 250px;
     top: 40px;
-    left: 40px;
-    filter: blur(60px);
-    opacity: 0.12;
+    left: 30px;
+    filter: blur(48px);
+    opacity: 0.11;
 }
 
 /* Titik 3: Tengah Bawah */
 .bkk-eclipse-3 {
-    width: 260px;
-    height: 260px;
+    width: 240px;
+    height: 240px;
     bottom: 20px;
     left: 36%;
-    filter: blur(55px);
-    opacity: 0.10;
+    filter: blur(45px);
+    opacity: 0.09;
 }
 
 /* Hero Grid Layout */
@@ -178,13 +179,13 @@
 .bkk-btn-pantau {
     background-color: #2563eb;
     color: #ffffff;
-    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.28);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28);
 }
 
 .bkk-btn-pantau:hover {
     background-color: #1d4ed8;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.38);
     color: #ffffff;
 }
 
@@ -213,7 +214,7 @@
     width: 100%;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 20px 40px rgba(0, 74, 198, 0.14));
+    filter: drop-shadow(0 16px 32px rgba(0, 74, 198, 0.12));
     transition: transform 0.3s ease;
 }
 
@@ -222,10 +223,10 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   BKK & BLUD CARD CATALOG SECTION (4X4 GRID = 16 CARDS)
+   BKK CARD CATALOG SECTION (4X4 GRID = 16 CARDS)
    ═══════════════════════════════════════════════════════════ */
 .bkk-catalog-section {
-    padding: 40px 0 90px;
+    padding: 30px 0 80px;
     background: #ffffff;
     border-top: none;
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -236,7 +237,7 @@
 .bkk-section-header {
     text-align: center;
     max-width: 680px;
-    margin: 0 auto 44px;
+    margin: 0 auto 40px;
     position: relative;
     z-index: 1;
 }
@@ -279,24 +280,26 @@
     z-index: 1;
 }
 
-/* Outer White Frame Card with Soft Rounded Corners */
+/* Outer White Frame Card with Soft Rounded Corners & Content-Visibility */
 .blud-card-frame {
     background-color: #ffffff;
     border-radius: 28px;
     padding: 14px;
-    box-shadow: 0 14px 34px -8px rgba(15, 23, 42, 0.08), 0 2px 10px rgba(15, 23, 42, 0.03);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.07), 0 2px 8px rgba(15, 23, 42, 0.03);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    content-visibility: auto;
+    contain-intrinsic-size: 380px;
 }
 
 .blud-card-frame:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 24px 48px -10px rgba(37, 99, 235, 0.16), 0 6px 18px rgba(15, 23, 42, 0.06);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -8px rgba(37, 99, 235, 0.15), 0 4px 14px rgba(15, 23, 42, 0.05);
 }
 
-/* Image Wrapper with Inner Vignette */
+/* Image Wrapper */
 .blud-card-image-wrap {
     position: relative;
     width: 100%;
@@ -306,27 +309,17 @@
     background-color: #f1f5f9;
 }
 
-.blud-card-image-wrap::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 22px;
-    box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.22), inset 0 0 8px rgba(0, 0, 0, 0.12);
-    pointer-events: none;
-    z-index: 2;
-}
-
 .blud-bg-img {
     width: 100%;
     height: 360px;
     object-fit: cover;
     display: block;
     border-radius: 22px;
-    transition: transform 0.4s ease;
+    transition: transform 0.35s ease;
 }
 
 .blud-card-frame:hover .blud-bg-img {
-    transform: scale(1.04);
+    transform: scale(1.03);
 }
 
 /* Rating Badge Top Left: ⭐ 4.9 */
@@ -335,9 +328,7 @@
     top: 14px;
     left: 14px;
     z-index: 3;
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(15, 23, 42, 0.78);
     color: #fbbf24;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 11px;
@@ -364,9 +355,7 @@
     top: 14px;
     right: 14px;
     z-index: 3;
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(15, 23, 42, 0.78);
     color: #ffffff;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 11px;
@@ -387,17 +376,17 @@
     z-index: 4;
     width: calc(100% - 20px);
     box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.82);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.75);
     border-radius: 18px;
     padding: 12px 14px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 8px;
-    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 6px 20px -3px rgba(0, 0, 0, 0.1);
 }
 
 .blud-inner-content {
@@ -446,7 +435,7 @@
     justify-content: center;
     text-decoration: none;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.22);
     border: none;
     cursor: pointer;
 }
@@ -454,7 +443,7 @@
 .blud-btn:hover {
     background: #1d4ed8;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.32);
     color: #ffffff;
 }
 
@@ -495,10 +484,10 @@
     }
 }
 
-/* Mobile: Clean 2-column grid instead of long vertical 1-by-1 */
+/* Mobile: Clean 2-column grid */
 @media (max-width: 768px) {
     .bkk-hero-section {
-        padding: 40px 0 50px;
+        padding: 36px 0 44px;
     }
     .bkk-bubble-badge {
         width: 270px;
@@ -527,10 +516,10 @@
 
     /* Mobile 2-Columns Catalog Grid */
     .bkk-catalog-section {
-        padding: 40px 0 60px;
+        padding: 30px 0 50px;
     }
     .bkk-section-header {
-        margin-bottom: 30px;
+        margin-bottom: 24px;
     }
     .bkk-cards-catalog-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -539,7 +528,7 @@
     .blud-card-frame {
         padding: 8px;
         border-radius: 18px;
-        box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.05);
     }
     .blud-card-image-wrap {
         height: 250px;

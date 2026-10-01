@@ -190,35 +190,9 @@
         <span id="toastLamarMessage">Lamaran berhasil dikirim ke mitra industri!</span>
     </div>
 
-    <!-- Responsive Sidebar Toggle Script & BKK Realtime Logic -->
+    <!-- Page-Specific Interactive Script & BKK Realtime Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const sidebar = document.querySelector('.sidebar');
-            const mainContent = document.querySelector('.main-content');
-            const toggleBtn = document.getElementById('sidebarToggleBtn');
-            const closeBtn = document.getElementById('sidebarCloseBtn');
-            const backdrop = document.getElementById('sidebarBackdrop');
-
-            function toggleSidebar() {
-                if (window.innerWidth <= 1024) {
-                    sidebar.classList.toggle('sidebar-mobile-open');
-                    backdrop.classList.toggle('active');
-                    document.body.classList.toggle('sidebar-no-scroll');
-                } else {
-                    sidebar.classList.toggle('sidebar-desktop-collapsed');
-                    mainContent.classList.toggle('content-expanded');
-                }
-            }
-
-            function closeSidebar() {
-                sidebar.classList.remove('sidebar-mobile-open');
-                backdrop.classList.remove('active');
-                document.body.classList.remove('sidebar-no-scroll');
-            }
-
-            if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
-            if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
-            if (backdrop) backdrop.addEventListener('click', closeSidebar);
 
             // Fetch Realtime BKK Data
             function loadBkkData() {
