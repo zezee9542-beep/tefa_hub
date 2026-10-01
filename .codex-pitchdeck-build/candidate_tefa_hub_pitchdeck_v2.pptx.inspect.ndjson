@@ -1,0 +1,122 @@
+{"kind":"deck","id":"pr/4rpg8s","name":"Deck"}
+{"kind":"layout","layoutId":"9a196ae2-1b04-42c6-ae81-99c7a9d88b8b","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"c9a6dfd4-fb68-4906-aa48-265425e38727","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/fv2vqe","slide":1,"title":"TEFA-Hub","textShapes":7}
+{"kind":"shape","id":"sh/cf61cby5","slide":1,"bbox":[0,0,1280,720]}
+{"kind":"shape","id":"sh/bex0jqxk","slide":1,"bbox":[0,0,510,720]}
+{"kind":"shape","id":"sh/qdojalgz","slide":1,"bbox":[964,0,316,720]}
+{"kind":"textbox","id":"sh/l4z2p0fm","slide":1,"text":"TEFA-Hub","textPreview":"TEFA-Hub","textChars":8,"textLines":1,"bbox":[137,64,230,34]}
+{"kind":"shape","id":"sh/0361gvy1","slide":1,"bbox":[72,166,290,34]}
+{"kind":"textbox","id":"sh/z2xknqxg","slide":1,"text":"BOOTCAMP & FINAL  •  WEB DEVELOPMENT","textPreview":"BOOTCAMP & FINAL  •  WEB DEVELOPMENT","textChars":36,"textLines":1,"bbox":[86,173,262,24]}
+{"kind":"textbox","id":"sh/y1ojelgv","slide":1,"text":"TEFA-Hub","textPreview":"TEFA-Hub","textChars":8,"textLines":1,"bbox":[72,224,350,32]}
+{"kind":"textbox","id":"sh/98z2t0fi","slide":1,"text":"Ekosistem digital terpadu untuk perjalanan siswa SMK","textPreview":"Ekosistem digital terpadu untuk perjalanan siswa SMK","textChars":52,"textLines":1,"bbox":[72,264,610,153]}
+{"kind":"textbox","id":"sh/87q1kved","slide":1,"text":"Platform TEFA-Hub menyatukan layanan akademik, karya BLUD, akses karier BKK, dan bantuan informasi dalam satu pengalaman web.","textPreview":"Platform TEFA-Hub menyatukan layanan akademik, karya BLUD, akses karier BKK, dan bantuan informasi dalam satu pengalaman web.","textChars":125,"textLines":1,"bbox":[75,434,540,72]}
+{"kind":"shape","id":"sh/2xo32d0z","slide":1,"bbox":[72,554,540,0]}
+{"kind":"textbox","id":"sh/3yxkbi1k","slide":1,"text":"Nama tim: [Isi nama tim]\nAnggota: [Isi nama anggota 1, 2, 3]\nAsal sekolah: [Isi nama sekolah]","textPreview":"Nama tim: [Isi nama tim] | Anggota: [Isi nama anggota 1, 2, 3] | Asal sekolah: [Isi nama sekolah]","textChars":93,"textLines":3,"bbox":[72,576,450,72]}
+{"kind":"textbox","id":"sh/4z6l4ni5","slide":1,"text":"Pitch deck proyek","textPreview":"Pitch deck proyek","textChars":17,"textLines":1,"bbox":[1032,663,170,22]}
+{"kind":"image","id":"im/edwjqlsj","slide":1,"name":"","alt":"Logo TEFA-Hub","bbox":[72,54,52,52]}
+{"kind":"image","id":"im/dc32x0by","slide":1,"name":"","alt":"Siswa pengguna TEFA-Hub","bbox":[704,102,500,577]}
+{"kind":"notes","id":"nt/fv2vqe","slide":1,"text":"Pembuka. Sampaikan bahwa TEFA-Hub menghubungkan kebutuhan belajar, produksi, dan karier siswa dalam satu platform. Ganti nama tim dan asal sekolah sebelum presentasi. Sumber visual: public/assets/logo.png dan public/assets/human.png."}
+{"kind":"slide","id":"sl/572ds7","slide":2,"title":"PRODUK","textShapes":17}
+{"kind":"textbox","id":"sh/mh47upc3","slide":2,"text":"PRODUK","textPreview":"PRODUK","textChars":6,"textLines":1,"bbox":[72,48,550,22]}
+{"kind":"textbox","id":"sh/9kv6pkvu","slide":2,"text":"Fitur dan teknologi","textPreview":"Fitur dan teknologi","textChars":19,"textLines":1,"bbox":[72,77,900,50]}
+{"kind":"shape","id":"sh/8jmpwfu9","slide":2,"bbox":[72,143,84,0]}
+{"kind":"textbox","id":"sh/v6dorudk","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1174,655,40,22]}
+{"kind":"shape","id":"sh/ul47ypcz","slide":2,"bbox":[1130,666,30,0]}
+{"kind":"textbox","id":"sh/h8v6t4vq","slide":2,"text":"TEFA-Hub menyediakan alur layanan yang berbeda sesuai peran pengguna.","textPreview":"TEFA-Hub menyediakan alur layanan yang berbeda sesuai peran pengguna.","textChars":69,"textLines":1,"bbox":[72,170,500,32]}
+{"kind":"textbox","id":"sh/w7mp0zu5","slide":2,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[76,242,30,28]}
+{"kind":"textbox","id":"sh/batofadg","slide":2,"text":"Akses berbasis peran","textPreview":"Akses berbasis peran","textChars":20,"textLines":1,"bbox":[122,241,336,25]}
+{"kind":"textbox","id":"sh/ap0nm5cv","slide":2,"text":"Halaman dan izin terpisah untuk siswa, guru, dan administrator dengan Spatie Permission.","textPreview":"Halaman dan izin terpisah untuk siswa, guru, dan administrator dengan Spatie Permission.","textChars":88,"textLines":1,"bbox":[122,270,350,52]}
+{"kind":"textbox","id":"sh/cbi54v2l","slide":2,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[76,352,30,28]}
+{"kind":"textbox","id":"sh/xcr6x036","slide":2,"text":"Modul vokasi","textPreview":"Modul vokasi","textChars":12,"textLines":1,"bbox":[122,351,336,25]}
+{"kind":"textbox","id":"sh/a90n2lkf","slide":2,"text":"Akademik, publikasi produk BLUD, lowongan serta lamaran BKK, profil, dan riwayat aktivitas.","textPreview":"Akademik, publikasi produk BLUD, lowongan serta lamaran BKK, profil, dan riwayat aktivitas.","textChars":91,"textLines":1,"bbox":[122,380,350,52]}
+{"kind":"textbox","id":"sh/ba9ovql0","slide":2,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[76,462,30,28]}
+{"kind":"textbox","id":"sh/kz258v2h","slide":2,"text":"Tanya Tefa AI","textPreview":"Tanya Tefa AI","textChars":13,"textLines":1,"bbox":[122,461,336,25]}
+{"kind":"textbox","id":"sh/l0b61032","slide":2,"text":"Navigator berbasis intent untuk PPDB, akademik, BLUD, BKK, bantuan akun, dan layanan administrasi.","textPreview":"Navigator berbasis intent untuk PPDB, akademik, BLUD, BKK, bantuan akun, dan layanan administrasi.","textChars":98,"textLines":1,"bbox":[122,490,350,52]}
+{"kind":"shape","id":"sh/yx0n65kb","slide":2,"bbox":[600,181,600,392]}
+{"kind":"textbox","id":"sh/zy9ozqlw","slide":2,"text":"Teknologi inti","textPreview":"Teknologi inti","textChars":14,"textLines":1,"bbox":[638,488,200,24]}
+{"kind":"textbox","id":"sh/03y5wb2d","slide":2,"text":"Laravel 13, PHP 8.5, Blade, MySQL, Vite, Tailwind CSS, JavaScript, dan Spatie Laravel Permission","textPreview":"Laravel 13, PHP 8.5, Blade, MySQL, Vite, Tailwind CSS, JavaScript, dan Spatie Laravel Permission","textChars":96,"textLines":1,"bbox":[638,519,514,44]}
+{"kind":"textbox","id":"sh/1476pg3y","slide":2,"text":"Implementasi aplikasi","textPreview":"Implementasi aplikasi","textChars":21,"textLines":1,"bbox":[72,612,172,18]}
+{"kind":"textbox","id":"sh/hofud8ra","slide":2,"text":"26 route aplikasi mencakup halaman publik, autentikasi, dashboard siswa, API data, AI Navigator, dan monitor admin.","textPreview":"26 route aplikasi mencakup halaman publik, autentikasi, dashboard siswa, API data, AI Navigator, dan monitor admin.","textChars":115,"textLines":1,"bbox":[72,638,975,24]}
+{"kind":"image","id":"im/fmdkbyps","slide":2,"name":"","alt":"Ilustrasi Tanya Tefa AI","bbox":[748,184,310,292]}
+{"kind":"notes","id":"nt/572ds7","slide":2,"text":"Jelaskan tiga kelompok fitur utama dan teknologi yang benar-benar ada di proyek. Sumber: routes/web.php, composer show --direct, package.json, app/Http/Controllers/AiNavigatorController.php."}
+{"kind":"slide","id":"sl/f2uimp","slide":3,"title":"PRODUKSI","textShapes":19}
+{"kind":"textbox","id":"sh/rmh8rul8","slide":3,"text":"PRODUKSI","textPreview":"PRODUKSI","textChars":8,"textLines":1,"bbox":[72,48,550,22]}
+{"kind":"textbox","id":"sh/cnq90z2t","slide":3,"text":"Optimasi dan strategi skalabilitas","textPreview":"Optimasi dan strategi skalabilitas","textChars":34,"textLines":1,"bbox":[72,77,900,50]}
+{"kind":"shape","id":"sh/dojqt43e","slide":3,"bbox":[72,143,84,0]}
+{"kind":"textbox","id":"sh/epsr29kz","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1174,655,40,22]}
+{"kind":"shape","id":"sh/zq18velk","slide":3,"bbox":[1130,666,30,0]}
+{"kind":"textbox","id":"sh/0ra94j2p","slide":3,"text":"Optimasi yang sudah dipakai menjaga proses deploy dan respons aplikasi tetap efisien.","textPreview":"Optimasi yang sudah dipakai menjaga proses deploy dan respons aplikasi tetap efisien.","textChars":85,"textLines":1,"bbox":[72,170,730,30]}
+{"kind":"shape","id":"sh/1sjqxo3a","slide":3,"bbox":[72,230,522,340]}
+{"kind":"textbox","id":"sh/mtsr69kv","slide":3,"text":"Sudah diimplementasikan","textPreview":"Sudah diimplementasikan","textChars":23,"textLines":1,"bbox":[104,262,300,24]}
+{"kind":"textbox","id":"sh/nu18zelg","slide":3,"text":"Cache aplikasi","textPreview":"Cache aplikasi","textChars":14,"textLines":1,"bbox":[104,308,160,24]}
+{"kind":"textbox","id":"sh/vql0nmlk","slide":3,"text":"Jawaban Tanya Tefa AI disimpan 2 sampai 24 jam sesuai sumber respons agar pertanyaan berulang tidak selalu memanggil API.","textPreview":"Jawaban Tanya Tefa AI disimpan 2 sampai 24 jam sesuai sumber respons agar pertanyaan berulang tidak selalu memanggil API.","textChars":121,"textLines":1,"bbox":[104,337,420,42]}
+{"kind":"textbox","id":"sh/u5cjehkz","slide":3,"text":"Cache saat deploy","textPreview":"Cache saat deploy","textChars":17,"textLines":1,"bbox":[104,397,180,24]}
+{"kind":"textbox","id":"sh/hs32pw3q","slide":3,"text":"Pipeline produksi membuat cache konfigurasi, route, dan view setelah migration dijalankan.","textPreview":"Pipeline produksi membuat cache konfigurasi, route, dan view setelah migration dijalankan.","textChars":90,"textLines":1,"bbox":[104,426,410,36]}
+{"kind":"textbox","id":"sh/wru1gr25","slide":3,"text":"Waktu tunggu AI","textPreview":"Waktu tunggu AI","textChars":15,"textLines":1,"bbox":[104,480,180,24]}
+{"kind":"textbox","id":"sh/n210jmlo","slide":3,"text":"Permintaan ke layanan AI memakai timeout 4 detik dan meneruskan fallback pengetahuan lokal bila layanan eksternal tidak tersedia.","textPreview":"Permintaan ke layanan AI memakai timeout 4 detik dan meneruskan fallback pengetahuan lokal bila layanan eksternal tidak tersedia.","textChars":129,"textLines":1,"bbox":[104,509,420,42]}
+{"kind":"shape","id":"sh/m1sjahk3","slide":3,"bbox":[640,230,560,340]}
+{"kind":"textbox","id":"sh/94jilc3u","slide":3,"text":"Saat traffic meningkat","textPreview":"Saat traffic meningkat","textChars":22,"textLines":1,"bbox":[674,262,340,24]}
+{"kind":"textbox","id":"sh/83a1c729","slide":3,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[675,326,22,24]}
+{"kind":"textbox","id":"sh/ry5kv6ls","slide":3,"text":"Pindahkan cache, session, dan queue dari database ke Redis.","textPreview":"Pindahkan cache, session, dan queue dari database ke Redis.","textChars":59,"textLines":1,"bbox":[716,324,420,25]}
+{"kind":"textbox","id":"sh/6xwjm1k7","slide":3,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[675,390,22,24]}
+{"kind":"textbox","id":"sh/250va98r","slide":3,"text":"Jalankan queue worker untuk proses yang tidak harus selesai di permintaan pengguna.","textPreview":"Jalankan queue worker untuk proses yang tidak harus selesai di permintaan pengguna.","textChars":83,"textLines":1,"bbox":[716,388,425,42]}
+{"kind":"textbox","id":"sh/n69c3e9c","slide":3,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[675,465,22,24]}
+{"kind":"textbox","id":"sh/oridczqx","slide":3,"text":"Tambahkan indeks database, pemantauan query lambat, reverse proxy, dan load balancer bila kapasitas satu server tidak cukup.","textPreview":"Tambahkan indeks database, pemantauan query lambat, reverse proxy, dan load balancer bila kapasitas satu server tidak cukup.","textChars":124,"textLines":1,"bbox":[716,463,430,57]}
+{"kind":"textbox","id":"sh/psre54ri","slide":3,"text":"Strategi berikutnya bergantung pada hasil benchmark nyata dan pola trafik pengguna.","textPreview":"Strategi berikutnya bergantung pada hasil benchmark nyata dan pola trafik pengguna.","textChars":83,"textLines":1,"bbox":[72,620,800,24]}
+{"kind":"notes","id":"nt/f2uimp","slide":3,"text":"Bedakan optimasi yang sudah terdapat dalam aplikasi dengan strategi skala berikutnya. Jangan menyampaikan rencana Redis atau load balancer sebagai fitur yang sudah aktif. Sumber: app/Http/Controllers/AiNavigatorController.php dan .github/workflows/deploy.yml."}
+{"kind":"slide","id":"sl/ynpuof","slide":4,"title":"VALIDASI","textShapes":14}
+{"kind":"textbox","id":"sh/dsf65gj6","slide":4,"text":"VALIDASI","textPreview":"VALIDASI","textChars":8,"textLines":1,"bbox":[72,48,550,22]}
+{"kind":"textbox","id":"sh/qponalkv","slide":4,"text":"Uji performa dan analisis","textPreview":"Uji performa dan analisis","textChars":25,"textLines":1,"bbox":[72,77,900,50]}
+{"kind":"shape","id":"sh/rqxo3q1g","slide":4,"bbox":[72,143,84,0]}
+{"kind":"textbox","id":"sh/4nm58b2p","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1174,655,40,22]}
+{"kind":"shape","id":"sh/pov61gja","slide":4,"bbox":[1130,666,30,0]}
+{"kind":"textbox","id":"sh/2l4n61kj","slide":4,"text":"Pengukuran beban perlu dilakukan dengan skenario yang merepresentasikan penggunaan nyata.","textPreview":"Pengukuran beban perlu dilakukan dengan skenario yang merepresentasikan penggunaan nyata.","textChars":89,"textLines":1,"bbox":[72,170,840,30]}
+{"kind":"shape","id":"sh/3mdoz614","slide":4,"bbox":[425,238,0,340]}
+{"kind":"shape","id":"sh/gjm54r2t","slide":4,"bbox":[838,238,0,340]}
+{"kind":"textbox","id":"sh/hkv6xwjy","slide":4,"text":"Validasi saat ini","textPreview":"Validasi saat ini","textChars":17,"textLines":1,"bbox":[72,231,250,25]}
+{"kind":"textbox","id":"sh/lgv6pgna","slide":4,"text":"Pengujian Laravel memverifikasi halaman utama mengembalikan HTTP 200. Cache Blade juga berhasil dibuat sebelum deploy.","textPreview":"Pengujian Laravel memverifikasi halaman utama mengembalikan HTTP 200. Cache Blade juga berhasil dibuat sebelum deploy.","textChars":118,"textLines":1,"bbox":[72,276,305,83]}
+{"kind":"textbox","id":"sh/0fm5wbmp","slide":4,"text":"Bukti yang tersedia","textPreview":"Bukti yang tersedia","textChars":19,"textLines":1,"bbox":[72,402,220,22]}
+{"kind":"textbox","id":"sh/zeton654","slide":4,"text":"php artisan test\nphp artisan view:cache\nRoute list aplikasi","textPreview":"php artisan test | php artisan view:cache | Route list aplikasi","textChars":59,"textLines":3,"bbox":[72,434,260,78]}
+{"kind":"textbox","id":"sh/ydknu14j","slide":4,"text":"Benchmark berikutnya","textPreview":"Benchmark berikutnya","textChars":20,"textLines":1,"bbox":[462,231,300,25]}
+{"kind":"textbox","id":"sh/dsb6lwny","slide":4,"text":"Lighthouse mengukur LCP, CLS, dan Total Blocking Time halaman publik.\n\nk6 atau ApacheBench menjalankan 20, 50, lalu 100 pengguna bersamaan pada halaman utama, login, dan API dashboard.\n\nLaravel Pail, access log, serta slow query log mencatat error dan titik bottleneck.","textPreview":"Lighthouse mengukur LCP, CLS, dan Total Blocking Time halaman publik. |  | k6 atau ApacheBench menjalankan 20, 50, lalu 100 pengguna bers...","textChars":269,"textLines":5,"bbox":[462,277,315,225]}
+{"kind":"textbox","id":"sh/cr25srmt","slide":4,"text":"Output keputusan","textPreview":"Output keputusan","textChars":16,"textLines":1,"bbox":[875,231,260,25]}
+{"kind":"textbox","id":"sh/bqtojm58","slide":4,"text":"Catat p95 latency, error rate, CPU, memori, dan waktu query.\n\nJika hasil melewati kapasitas server, prioritaskan Redis, indeks database, queue worker, dan cache aset statis.","textPreview":"Catat p95 latency, error rate, CPU, memori, dan waktu query. |  | Jika hasil melewati kapasitas server, prioritaskan Redis, indeks databa...","textChars":173,"textLines":3,"bbox":[875,277,302,148]}
+{"kind":"shape","id":"sh/qpknqh4n","slide":4,"bbox":[875,472,270,72]}
+{"kind":"textbox","id":"sh/pobmhwn2","slide":4,"text":"Catatan penting\nBelum ada angka benchmark yang direkam.","textPreview":"Catatan penting | Belum ada angka benchmark yang direkam.","textChars":55,"textLines":2,"bbox":[895,488,230,42]}
+{"kind":"textbox","id":"sh/oni5ormh","slide":4,"text":"Kejujuran data memperkuat presentasi teknis.","textPreview":"Kejujuran data memperkuat presentasi teknis.","textChars":44,"textLines":1,"bbox":[72,624,550,22]}
+{"kind":"notes","id":"nt/ynpuof","slide":4,"text":"Jelaskan bahwa validasi aplikasi sudah dilakukan, tetapi benchmark beban belum direkam sehingga deck tidak menampilkan angka fiktif. Jelaskan rencana uji dan metrik yang akan dipakai. Sumber: tests/Feature/ExampleTest.php, hasil php artisan view:cache, serta rancangan pengujian tim."}
+{"kind":"slide","id":"sl/6cttya","slide":5,"title":"RILIS","textShapes":11}
+{"kind":"textbox","id":"sh/xw7a50zi","slide":5,"text":"RILIS","textPreview":"RILIS","textChars":5,"textLines":1,"bbox":[72,48,550,22]}
+{"kind":"textbox","id":"sh/atgbulgr","slide":5,"text":"Hasil deploy website","textPreview":"Hasil deploy website","textChars":20,"textLines":1,"bbox":[72,77,900,50]}
+{"kind":"shape","id":"sh/vups3qhc","slide":5,"bbox":[72,143,84,0]}
+{"kind":"textbox","id":"sh/kjyt0vyt","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1174,655,40,22]}
+{"kind":"shape","id":"sh/5kra90fe","slide":5,"bbox":[1130,666,30,0]}
+{"kind":"textbox","id":"sh/ixgby5g3","slide":5,"text":"Tampilan landing page menunjukkan akses awal ke Akademik, BLUD, BKK, PPDB, dan autentikasi pengguna.","textPreview":"Tampilan landing page menunjukkan akses awal ke Akademik, BLUD, BKK, PPDB, dan autentikasi pengguna.","textChars":100,"textLines":1,"bbox":[72,170,812,30]}
+{"kind":"shape","id":"sh/jyps7axo","slide":5,"bbox":[72,226,690,388]}
+{"kind":"textbox","id":"sh/snit4fy5","slide":5,"text":"Target publik","textPreview":"Target publik","textChars":13,"textLines":1,"bbox":[825,236,180,20]}
+{"kind":"textbox","id":"sh/toradkfq","slide":5,"text":"tefahub.my.id","textPreview":"tefahub.my.id","textChars":13,"textLines":1,"bbox":[825,266,305,34]}
+{"kind":"shape","id":"sh/tgv6hgfm","slide":5,"bbox":[825,321,320,0]}
+{"kind":"textbox","id":"sh/sfmpoby1","slide":5,"text":"Alur deploy","textPreview":"Alur deploy","textChars":11,"textLines":1,"bbox":[825,347,180,22]}
+{"kind":"textbox","id":"sh/7edof6xg","slide":5,"text":"Push ke branch main memulai GitHub Actions. Workflow mengunggah aplikasi melalui SCP ke VPS Webuzo, memasang dependensi production, menjalankan migration, lalu membangun cache konfigurasi, route, dan view.","textPreview":"Push ke branch main memulai GitHub Actions. Workflow mengunggah aplikasi melalui SCP ke VPS Webuzo, memasang dependensi production, menja...","textChars":205,"textLines":1,"bbox":[825,381,325,132]}
+{"kind":"shape","id":"sh/6d47m1gb","slide":5,"bbox":[825,540,145,34]}
+{"kind":"textbox","id":"sh/h4fqlgfy","slide":5,"text":"GitHub Actions","textPreview":"GitHub Actions","textChars":14,"textLines":1,"bbox":[839,547,117,24]}
+{"kind":"shape","id":"sh/g36psbyd","slide":5,"bbox":[984,540,132,34]}
+{"kind":"textbox","id":"sh/f2xoj6xs","slide":5,"text":"Webuzo VPS","textPreview":"Webuzo VPS","textChars":10,"textLines":1,"bbox":[998,547,104,24]}
+{"kind":"textbox","id":"sh/uh47q1g7","slide":5,"text":"Screenshot UI berasal dari hasil implementasi proyek.","textPreview":"Screenshot UI berasal dari hasil implementasi proyek.","textChars":53,"textLines":1,"bbox":[72,638,540,20]}
+{"kind":"image","id":"im/e1sjutsn","slide":5,"name":"","geometry":"roundRect","alt":"Tampilan landing page TEFA-Hub yang telah dideploy","bbox":[87,241,660,358]}
+{"kind":"notes","id":"nt/6cttya","slide":5,"text":"Tunjukkan screenshot landing page. Jelaskan alur push sampai cache Laravel aktif di VPS. Sumber: public/preview2.png dan .github/workflows/deploy.yml."}
+{"kind":"slide","id":"sl/qkuq18","slide":6,"title":"Kesimpulan dan rencana pengembangan","textShapes":9}
+{"kind":"textbox","id":"sh/rexwbih4","slide":6,"text":"Kesimpulan dan rencana pengembangan","textPreview":"Kesimpulan dan rencana pengembangan","textChars":35,"textLines":1,"bbox":[72,145,930,58]}
+{"kind":"textbox","id":"sh/sz6x4nyp","slide":6,"text":"TEFA-Hub telah membangun fondasi platform vokasi yang memadukan layanan sekolah dan kebutuhan pengguna dalam satu aplikasi web.","textPreview":"TEFA-Hub telah membangun fondasi platform vokasi yang memadukan layanan sekolah dan kebutuhan pengguna dalam satu aplikasi web.","textChars":127,"textLines":1,"bbox":[72,220,900,56]}
+{"kind":"shape","id":"sh/t0zedsza","slide":6,"bbox":[72,316,1136,0]}
+{"kind":"textbox","id":"sh/i9ovytgn","slide":6,"text":"Capaian saat ini","textPreview":"Capaian saat ini","textChars":16,"textLines":1,"bbox":[72,355,300,25]}
+{"kind":"textbox","id":"sh/jaxw7yh8","slide":6,"text":"Akses per peran, modul Akademik, BLUD, BKK, AI Navigator, riwayat aktivitas, dan alur deploy otomatis sudah tersedia dalam proyek.","textPreview":"Akses per peran, modul Akademik, BLUD, BKK, AI Navigator, riwayat aktivitas, dan alur deploy otomatis sudah tersedia dalam proyek.","textChars":130,"textLines":1,"bbox":[72,397,468,92]}
+{"kind":"textbox","id":"sh/4b6d03yd","slide":6,"text":"Langkah berikutnya","textPreview":"Langkah berikutnya","textChars":18,"textLines":1,"bbox":[664,355,300,25]}
+{"kind":"textbox","id":"sh/5cfe98zy","slide":6,"text":"Merekam baseline performa, memperkuat cache dan queue, meningkatkan keamanan HTTPS, serta menambahkan monitoring uptime dan database.","textPreview":"Merekam baseline performa, memperkuat cache dan queue, meningkatkan keamanan HTTPS, serta menambahkan monitoring uptime dan database.","textChars":133,"textLines":1,"bbox":[664,397,454,92]}
+{"kind":"shape","id":"sh/258faxgr","slide":6,"bbox":[72,566,1136,1]}
+{"kind":"textbox","id":"sh/n6hwj2hc","slide":6,"text":"Terima kasih","textPreview":"Terima kasih","textChars":12,"textLines":1,"bbox":[72,605,340,38]}
+{"kind":"textbox","id":"sh/nmpwvm5g","slide":6,"text":"Nama tim: [Isi nama tim]  |  TEFA-Hub","textPreview":"Nama tim: [Isi nama tim]  |  TEFA-Hub","textChars":37,"textLines":1,"bbox":[72,651,440,22]}
+{"kind":"textbox","id":"sh/2lgvmh4v","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1175,655,40,22]}
+{"kind":"image","id":"im/65s7qdkf","slide":6,"name":"","alt":"Logo TEFA-Hub","bbox":[72,58,48,48]}
+{"kind":"notes","id":"nt/qkuq18","slide":6,"text":"Tutup dengan capaian yang sudah ada, lalu tunjukkan bahwa pengembangan berikutnya terukur dan realistis. Ganti nama tim sebelum presentasi. Sumber: rangkuman fitur, workflow deploy, dan rencana teknis tim."}

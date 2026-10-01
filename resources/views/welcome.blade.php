@@ -8,8 +8,8 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/logo.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v=2.1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v=3.0.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
@@ -104,7 +104,7 @@
                 </p>
 
                 <div class="search-wrap">
-                    <form action="#search" method="GET" class="search-box" role="search">
+                    <form id="heroSearchForm" class="search-box" role="search">
                         <span class="s-icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <circle cx="11" cy="11" r="7"/>
@@ -112,13 +112,13 @@
                             </svg>
                         </span>
                         <input
-                            type="text" name="q"
+                            type="text" name="q" id="heroSearchInput"
                             class="s-input"
                             placeholder="Cari informasi yang kamu butuhkan..."
                             aria-label="Cari informasi"
                             autocomplete="off"
                         >
-                        <button type="submit" class="s-btn" aria-label="Cari">
+                        <button type="submit" class="s-btn" id="heroSearchBtn" aria-label="Cari">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <line x1="5" y1="12" x2="19" y2="12" stroke-linecap="round"/>
                                 <polyline points="12 5 19 12 12 19" stroke-linecap="round" stroke-linejoin="round"/>
@@ -131,49 +131,115 @@
             {{-- Right: visual composition --}}
             <section class="hero-visual reveal delay-1" aria-label="Visualisasi Siswa Tefa-Hub">
 
-                {{-- Fast Aura glow --}}
-                <div class="aura-wrap" aria-hidden="true">
-                    <div class="orb orb-b"></div>
-                    <div class="orb orb-p"></div>
-                    <div class="orb orb-v"></div>
-                    <div class="orb orb-k"></div>
+                {{-- Modern Organic Vector Wavy Background (Unique Fluid Wave Shapes & Ambient Glow) --}}
+                <div class="hero-bubble-art" aria-hidden="true">
+                    <svg class="hero-wave-svg" viewBox="0 0 580 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="waveGradPrimary" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#1d4ed8"/>
+                                <stop offset="30%" stop-color="#2563eb"/>
+                                <stop offset="65%" stop-color="#6366f1"/>
+                                <stop offset="100%" stop-color="#8b5cf6"/>
+                            </linearGradient>
+                            <linearGradient id="waveGradCyan" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#0284c7" stop-opacity="0.7"/>
+                                <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.85"/>
+                                <stop offset="100%" stop-color="#818cf8" stop-opacity="0.7"/>
+                            </linearGradient>
+                            <linearGradient id="waveStrokeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.9"/>
+                                <stop offset="100%" stop-color="#c084fc" stop-opacity="0.3"/>
+                            </linearGradient>
+                            <linearGradient id="waveStrokeGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8"/>
+                                <stop offset="100%" stop-color="#818cf8" stop-opacity="0.2"/>
+                            </linearGradient>
+                            <filter id="softWaveGlow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="20" result="blur"/>
+                                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                            </filter>
+                        </defs>
+
+                        {{-- Ambient Glow Layer --}}
+                        <path d="M 120,180 C 80,80 260,30 400,60 C 520,90 560,260 480,390 C 400,500 210,480 130,410 C 60,340 140,260 120,180 Z" 
+                              fill="url(#waveGradCyan)" opacity="0.35" filter="url(#softWaveGlow)"/>
+
+                        {{-- Main Organic Wavy Fluid Body --}}
+                        <path class="wave-shape-fluid" d="M 140,150 C 120,60 280,40 420,70 C 520,100 555,230 500,350 C 450,460 300,470 190,420 C 100,380 90,260 130,180 C 135,170 138,160 140,150 Z" 
+                              fill="url(#waveGradPrimary)" filter="drop-shadow(0 16px 36px rgba(37,99,235,0.25))"/>
+
+                        {{-- Secondary Overlay Wave Crescent --}}
+                        <path d="M 160,80 C 270,45 420,75 490,140 C 420,170 290,160 200,230 C 170,180 155,120 160,80 Z" 
+                              fill="url(#waveGradCyan)" opacity="0.45"/>
+
+                        {{-- Decorative Flowing Wave Lines --}}
+                        <path d="M 60,190 Q 210,120 370,220 T 560,180" 
+                              stroke="url(#waveStrokeGrad1)" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8" stroke-dasharray="6 8"/>
+
+                        <path d="M 90,400 Q 250,460 420,370 T 550,410" 
+                              stroke="url(#waveStrokeGrad2)" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.65"/>
+
+                        {{-- Floating Geometric & Wave Accents --}}
+                        <circle cx="95" cy="130" r="14" stroke="#60a5fa" stroke-width="2.5" fill="none" opacity="0.75"/>
+                        <circle cx="490" cy="95" r="7" fill="#38bdf8" opacity="0.85"/>
+                        <circle cx="525" cy="405" r="10" stroke="#a855f7" stroke-width="2" fill="none" opacity="0.7"/>
+                    </svg>
+
+                    {{-- Tilted Accent Gradient Pills --}}
+                    <div class="bubble-pill-1"></div>
+                    <div class="bubble-pill-2"></div>
+                    
+                    {{-- Left dot matrix --}}
+                    <div class="bubble-dots-left">
+                        @for ($i = 0; $i < 12; $i++)
+                            <span class="b-dot"></span>
+                        @endfor
+                    </div>
+
+                    {{-- Right dot matrix --}}
+                    <div class="bubble-dots-right">
+                        @for ($i = 0; $i < 12; $i++)
+                            <span class="b-dot"></span>
+                        @endfor
+                    </div>
                 </div>
 
-                {{-- Dot matrix --}}
-                <div class="dots" aria-hidden="true">
-                    @for ($i = 0; $i < 42; $i++)
-                        <span class="dot"></span>
-                    @endfor
+                {{-- Tagline "Siap Berkarya untuk Negeri" --}}
+                <div class="hero-tagline-quote" aria-hidden="true">
+                    <span>Siap<br>Berkarya<br>untuk Negeri</span>
                 </div>
 
-                {{-- Students photo --}}
+                {{-- Students 3D character photo --}}
                 <div class="students-wrap">
                     <img
-                        src="{{ asset('assets/human.png') }}"
+                        src="{{ asset('assets/image.png') }}"
                         alt="Siswa dan Siswi SMK Tefa-Hub"
                         class="students-img"
                     >
                 </div>
 
-                {{-- Floating feature cards --}}
+                {{-- Floating 2 feature cards (Centered, Equal Size, Original Style) --}}
                 @php
-                    $cards = [
-                        ['icon' => 'card.png', 'title' => 'BKK Instan',  'desc' => 'Temukan informasi lowongan dan peluang kerja terbaru.',      'href' => '#bkk'],
-                        ['icon' => 'book.png', 'title' => 'PPDB Kilat',  'desc' => 'Daftar sebagai calon peserta didik baru dengan mudah.',       'href' => '#ppdb'],
+                    $heroCards = [
+                        ['icon' => 'card.png', 'title' => 'BKK Instan',  'desc' => 'Temukan informasi lowongan dan peluang kerja terbaru.',      'href' => '#career-center'],
+                        ['icon' => 'book.png', 'title' => 'PPDB Kilat',  'desc' => 'Daftar sebagai calon peserta didik baru dengan mudah.',       'href' => '#layanan'],
                     ];
                 @endphp
 
                 <div class="cards-row reveal delay-2">
-                    @foreach ($cards as $card)
+                    @foreach ($heroCards as $card)
                         <div class="card" role="button" tabindex="0"
                              onclick="window.location.href='{{ $card['href'] }}'">
-                            <div class="card-head">
-                                <div class="card-icon">
-                                    <img src="{{ asset('assets/' . $card['icon']) }}" alt="Icon {{ $card['title'] }}">
-                                </div>
-                                <h2 class="card-title">{{ $card['title'] }}</h2>
+                            {{-- Icon kiri --}}
+                            <div class="card-icon">
+                                <img src="{{ asset('assets/' . $card['icon']) }}" alt="Icon {{ $card['title'] }}">
                             </div>
-                            <p class="card-desc">{{ $card['desc'] }}</p>
+                            {{-- Title + desc tengah --}}
+                            <div class="card-head">
+                                <h2 class="card-title">{{ $card['title'] }}</h2>
+                                <p class="card-desc">{{ $card['desc'] }}</p>
+                            </div>
+                            {{-- Arrow button biru bulat kanan --}}
                             <div class="card-foot">
                                 <button class="btn-arrow" title="Buka {{ $card['title'] }}">
                                     <img src="{{ asset('assets/back.png') }}" alt="Lanjut">
@@ -674,6 +740,53 @@
         navLinks.forEach(link => {
             link.addEventListener('click', closeDrawer);
         });
+
+        // ── Hero Search Box Interactive Functionality ────────────────────────
+        const heroSearchForm = document.getElementById('heroSearchForm');
+        const heroSearchInput = document.getElementById('heroSearchInput');
+        
+        if (heroSearchForm && heroSearchInput) {
+            heroSearchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const query = heroSearchInput.value.trim();
+                if (!query) {
+                    heroSearchInput.focus();
+                    return;
+                }
+                
+                const qLower = query.toLowerCase();
+                let targetId = null;
+                
+                if (qLower.includes('karir') || qLower.includes('bkk') || qLower.includes('kerja') || qLower.includes('loker') || qLower.includes('lowongan')) {
+                    targetId = 'career-center';
+                } else if (qLower.includes('blud') || qLower.includes('produk') || qLower.includes('tefa') || qLower.includes('katalog') || qLower.includes('toko') || qLower.includes('jual')) {
+                    targetId = 'blud';
+                } else if (qLower.includes('akademik') || qLower.includes('nilai') || qLower.includes('jadwal') || qLower.includes('guru') || qLower.includes('siswa') || qLower.includes('kurikulum') || qLower.includes('pelajaran')) {
+                    targetId = 'akademik';
+                } else if (qLower.includes('layanan') || qLower.includes('fitur') || qLower.includes('ppdb') || qLower.includes('daftar')) {
+                    targetId = 'layanan';
+                } else if (qLower.includes('tentang') || qLower.includes('profil') || qLower.includes('sekolah') || qLower.includes('smk') || qLower.includes('apa itu')) {
+                    targetId = 'tentang';
+                }
+                
+                if (targetId) {
+                    const targetEl = document.getElementById(targetId);
+                    if (targetEl) {
+                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+                
+                // Also trigger Tanya Tefa AI assistant for comprehensive guidance
+                if (window.sendNavChip) {
+                    window.sendNavChip(query);
+                    const aiPanel = document.getElementById('ai-navigator-panel');
+                    const aiToggleBtn = document.getElementById('ai-toggle-btn');
+                    if (aiPanel && !aiPanel.classList.contains('is-open')) {
+                        if (aiToggleBtn) aiToggleBtn.click();
+                    }
+                }
+            });
+        }
     });
 
     // ── AI Chat Assistant Logic (Bug-Free & Smooth) ──────────────────────────
