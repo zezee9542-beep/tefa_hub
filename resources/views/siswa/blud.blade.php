@@ -254,7 +254,7 @@
 
                 container.innerHTML = allItems.map(item => {
                     const priceFormatted = item.harga ? ('Rp ' + Number(item.harga).toLocaleString('id-ID')) : 'Mulai 50rb';
-                    const imgUrl = item.visual_path ? ('/' + item.visual_path) : '{{ asset("assets/Background (14).png") }}';
+                    const imgUrl = item.visual_url || '{{ asset("assets/Background (14).png") }}';
                     const category = item.kategori || 'JASA LAYANAN';
                     const title = item.nama_produk || 'Produk Inovasi Siswa';
 

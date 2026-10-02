@@ -10,7 +10,9 @@ use App\Models\ProdukBlud;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class SiswaController extends Controller
 {
@@ -74,20 +76,16 @@ class SiswaController extends Controller
             'tempat_lahir' => ['required', 'string', 'max:100'],
             'tanggal_lahir' => ['required', 'string'],
             'jenis_kelamin' => ['required', 'string', 'in:Laki-laki,Perempuan'],
-            'foto' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+            'foto' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
         ]);
 
         $avatarUrl = session('siswa_profile.avatar', asset('assets/orng.png'));
 
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
-            $filename = 'avatar_'.time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
-            $destinationPath = public_path('uploads/avatars');
-            if (! file_exists($destinationPath)) {
-                mkdir($destinationPath, 0755, true);
-            }
-            $file->move($destinationPath, $filename);
-            $avatarUrl = asset('uploads/avatars/'.$filename);
+            $filename = 'avatar_'.str()->uuid().'.'.$file->extension();
+            $file->storeAs('uploads/avatars', $filename, 'local');
+            $avatarUrl = $this->uploadUrl('avatars', $filename);
         }
 
         $profileData = [
@@ -144,18 +142,14 @@ class SiswaController extends Controller
             'kategori_produk' => ['required', 'string', 'max:255'],
             'deskripsi_produk' => ['required', 'string'],
             'harga' => ['nullable', 'numeric', 'min:0'],
-            'visual_produk' => ['nullable', 'file', 'image', 'max:15360'],
+            'visual_produk' => ['nullable', 'file', 'image', 'mimes:jpeg,png,jpg,webp', 'max:15360'],
         ]);
 
         $visualPath = null;
         if ($request->hasFile('visual_produk')) {
             $file = $request->file('visual_produk');
-            $filename = 'produk_'.time().'_'.uniqid().'.'.$file->getClientOriginalExtension();
-            $destinationPath = public_path('uploads/produk');
-            if (! file_exists($destinationPath)) {
-                mkdir($destinationPath, 0755, true);
-            }
-            $file->move($destinationPath, $filename);
+            $filename = 'produk_'.str()->uuid().'.'.$file->extension();
+            $file->storeAs('uploads/produk', $filename, 'local');
             $visualPath = 'uploads/produk/'.$filename;
         }
 
@@ -319,8 +313,8 @@ class SiswaController extends Controller
         return response()->json([
             'success' => true,
             'stats' => $stats,
-            'user_produks' => $produks,
-            'katalog_publik' => $katalogPublik,
+            'user_produks' => $produks->map(fn (ProdukBlud $produk) => $this->productPayload($produk)),
+            'katalog_publik' => $katalogPublik->map(fn (ProdukBlud $produk) => $this->productPayload($produk)),
         ]);
     }
 
@@ -461,5 +455,55 @@ class SiswaController extends Controller
             'activeMenu' => 'tanya-tefa',
             'user' => $this->getUserData(),
         ]);
+    }
+
+    /**
+     * Serve an authenticated student's uploaded image from private storage.
+     */
+    public function showUpload(string $directory, string $filename): StreamedResponse
+    {
+        if ($directory === 'avatars') {
+            $avatarUrl = (string) session('siswa_profile.avatar', '');
+            $avatarFilename = basename((string) parse_url($avatarUrl, PHP_URL_PATH));
+
+            abort_unless(hash_equals($avatarFilename, $filename), 403);
+        }
+
+        if ($directory === 'produk') {
+            /** @var User $user */
+            $user = auth()->user();
+            $product = ProdukBlud::where('visual_path', "uploads/produk/{$filename}")->firstOrFail();
+
+            abort_unless($product->user_id === $user->id || $product->status === 'disetujui', 403);
+        }
+
+        return Storage::disk('local')->response("uploads/{$directory}/{$filename}");
+    }
+
+    /**
+     * Build the application URL for a private uploaded image.
+     */
+    private function uploadUrl(string $directory, string $filename): string
+    {
+        return route('siswa.uploads.show', compact('directory', 'filename'));
+    }
+
+    /**
+     * @return array{id: int, nama_produk: string, kategori: string, deskripsi: string, status: string, harga: mixed, jumlah_terjual: int, visual_url: string|null}
+     */
+    private function productPayload(ProdukBlud $produk): array
+    {
+        $filename = $produk->visual_path === null ? null : basename($produk->visual_path);
+
+        return [
+            'id' => $produk->id,
+            'nama_produk' => $produk->nama_produk,
+            'kategori' => $produk->kategori,
+            'deskripsi' => $produk->deskripsi,
+            'status' => $produk->status,
+            'harga' => $produk->harga,
+            'jumlah_terjual' => $produk->jumlah_terjual,
+            'visual_url' => $filename === null ? null : $this->uploadUrl('produk', $filename),
+        ];
     }
 }

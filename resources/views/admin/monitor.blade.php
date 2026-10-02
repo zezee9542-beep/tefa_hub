@@ -660,18 +660,38 @@
         // Activity Feed
         const feed = document.getElementById('activityFeed');
         if (data.activity && data.activity.length) {
-            feed.innerHTML = data.activity.map(item => {
-                const initials  = (item.name || 'U').split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
-                const roleClass = ['admin','guru','siswa'].includes(item.role) ? item.role : 'siswa';
-                return `<div class="feed-item">
-                    <div class="feed-avatar ${roleClass}">${initials}</div>
-                    <div class="feed-info">
-                        <div class="feed-name">${item.name} <span class="role-chip ${roleClass}">${item.role}</span></div>
-                        <div class="feed-meta">Terdaftar ${item.ago}</div>
-                    </div>
-                    <div class="feed-time">${item.created_at}</div>
-                </div>`;
-            }).join('');
+            feed.replaceChildren(...data.activity.map(item => {
+                const name = String(item.name || 'U');
+                const role = ['admin', 'guru', 'siswa'].includes(item.role) ? item.role : 'siswa';
+                const initials = name.split(' ').map(word => word[0]).join('').toUpperCase().slice(0, 2);
+                const row = document.createElement('div');
+                row.className = 'feed-item';
+
+                const avatar = document.createElement('div');
+                avatar.className = `feed-avatar ${role}`;
+                avatar.textContent = initials;
+
+                const info = document.createElement('div');
+                info.className = 'feed-info';
+                const nameElement = document.createElement('div');
+                nameElement.className = 'feed-name';
+                nameElement.append(name, ' ');
+                const roleChip = document.createElement('span');
+                roleChip.className = `role-chip ${role}`;
+                roleChip.textContent = role;
+                nameElement.appendChild(roleChip);
+                const meta = document.createElement('div');
+                meta.className = 'feed-meta';
+                meta.textContent = `Terdaftar ${item.ago || '-'}`;
+                info.append(nameElement, meta);
+
+                const time = document.createElement('div');
+                time.className = 'feed-time';
+                time.textContent = item.created_at || '-';
+                row.append(avatar, info, time);
+
+                return row;
+            }));
         } else {
             feed.innerHTML = '<div style="padding:1.5rem;text-align:center;color:var(--text-muted);font-size:0.85rem;">Belum ada aktivitas.</div>';
         }

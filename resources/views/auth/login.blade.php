@@ -143,7 +143,11 @@
 
             <!-- Card Footer Note -->
             <footer class="card-footer-note">
-                Belum punya akun? <a href="{{ route('register') }}" class="link-register">Daftar sekarang</a> atau <a href="#admin" class="link-admin">Hubungi Admin</a>
+                @if (Route::has('register'))
+                    Belum punya akun? <a href="{{ route('register') }}" class="link-register">Daftar sekarang</a> atau <a href="#admin" class="link-admin">Hubungi Admin</a>
+                @else
+                    Belum punya akun? <a href="#admin" class="link-admin">Hubungi Admin</a> untuk aktivasi akun.
+                @endif
             </footer>
 
         </div>
