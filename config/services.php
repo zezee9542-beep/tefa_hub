@@ -38,7 +38,8 @@ return [
     'ai_navigator' => [
         'key' => env('AI_NAVIGATOR_API_KEY'),
         'url' => env('AI_NAVIGATOR_API_URL', 'https://generativelanguage.googleapis.com/v1beta/models'),
-        'model' => env('AI_NAVIGATOR_MODEL', 'gemini-flash-lite-latest'),
+        'model' => env('AI_NAVIGATOR_MODEL', 'gemini-flash-latest'),
+        'fallback_model' => env('AI_NAVIGATOR_FALLBACK_MODEL', 'gemini-3.5-flash-lite'),
     ],
 
 ];

@@ -15,7 +15,7 @@ class AiNavigatorController extends Controller
      * System prompt sent to Gemini to keep it on-topic, helpful, and concise.
      */
     private const SYSTEM_PROMPT = <<<'PROMPT'
-        Kamu adalah Tanya Tefa AI, asisten virtual dan NAVIGATOR RESMI platform TEFA-Hub (Teaching Factory Hub) — ekosistem digital terpadu SMK di Indonesia.
+        Kamu adalah Tanya Tefa AI, asisten virtual resmi platform TEFA-Hub (Teaching Factory Hub) — ekosistem digital terpadu SMK di Indonesia.
 
         TUGAS UTAMA SEBAGAI NAVIGATOR PERAN (ROLE-BASED NAVIGATOR):
         1. MENGANALISIS PERAN & KEBUTUHAN PENGGUNA:
@@ -30,7 +30,8 @@ class AiNavigatorController extends Controller
         - Format jawaban TERSTRUKTUR & RAMAH: Gunakan langkah bernomor 1, 2, 3 untuk prosedur atau poin ringkas (•) untuk rincian.
         - Ringkas & Jelas: Maksimal 3-6 kalimat padat dan informatif.
         - Selalu berikan navigasi yang jelas atau arahkan ke menu/portal terkait.
-        - Jika ada pertanyaan di luar ekosistem sekolah dan TEFA-Hub, tolak dengan sopan dan kembalikan ke topik TEFA-Hub/Sekolah.
+        - Jawab semua pertanyaan umum dengan benar, ramah, dan langsung pada inti pertanyaannya. Jika pertanyaan terkait TEFA-Hub, gunakan konteks layanan TEFA-Hub di atas.
+        - Untuk informasi yang tidak dapat dipastikan, jelaskan keterbatasannya dan jangan mengarang fakta.
         - Jangan sebut diri sebagai Gemini/Google. Kamu adalah Tanya Tefa AI Navigator.
         PROMPT;
 
@@ -263,8 +264,8 @@ class AiNavigatorController extends Controller
 
             // ─── BLUD & TEACHING FACTORY ────────────────────────────────────
             [
-                'intents' => ['cara publikasi produk', 'cara publish produk', 'upload produk blud', 'ajukan produk blud', 'tombol publikasi produk', 'unggah karya blud'],
-                'keywords' => ['publikasi produk', 'publish produk', 'upload produk', 'ajukan produk', 'tambah karya blud', 'publikasi karya'],
+                'intents' => ['cara publikasi produk', 'cara publish produk', 'cara mempublikasikan project', 'cara mempublikasikan proyek', 'publikasikan project', 'publikasikan proyek', 'publikasi project', 'publikasi proyek', 'upload produk blud', 'ajukan produk blud', 'tombol publikasi produk', 'unggah karya blud'],
+                'keywords' => ['publikasi produk', 'publish produk', 'mempublikasikan', 'publikasikan project', 'publikasikan proyek', 'publikasi project', 'publikasi proyek', 'upload produk', 'ajukan produk', 'tambah karya blud', 'publikasi karya'],
                 'category' => 'BLUD',
                 'answer' => "Cara Publikasi Karya/Produk Siswa di BLUD:\n1. Buka halaman BLUD Teaching Factory.\n2. Klik tombol \"+ Publikasi Produk\" pada card header atas.\n3. Di pop-up yang muncul: unggah foto/video visual produk (maks. 15MB), isi Nama Produk, pilih Kategori Kejuruan, dan jelaskan Deskripsi spesifikasi produk.\n4. Klik tombol \"Ajukan Publikasi\" untuk mengirimkan karya ke tahap kurasi resmi sekolah.",
                 'route' => 'blud',
@@ -550,27 +551,7 @@ class AiNavigatorController extends Controller
             return response()->json(Cache::get($cacheKey));
         }
 
-        // 1. Off-topic filter
-        if ($this->isOffTopic($userMessage)) {
-            $result = [
-                'answer' => "Maaf, saya dirancang khusus sebagai **Navigator TEFA-Hub** untuk memandu:\n• 👨‍👩‍👧 Orang Tua / Calon Siswa: Info PPDB, syarat berkas & jurusan\n• 🎓 Siswa: Unit Produksi BLUD, Nilai Rapor & Magang\n• 💼 Alumni: Lowongan Kerja BKK & Legalisir Ijazah\n• 🏢 Industri: Kerjasama Teaching Factory\n• 🏛️ Administrasi: Reset sandi, profil & bantuan TU\n\nSilakan ajukan pertanyaan yang berkaitan dengan layanan sekolah dan TEFA-Hub ya! 😊",
-                'route' => null,
-                'label' => null,
-                'category' => 'FILTER',
-                'suggestions' => [
-                    'Cara Daftar PPDB Online',
-                    'Pilihan Jurusan & Keahlian',
-                    'Cara Publikasi Produk BLUD',
-                    'Cara Melamar Lowongan BKK',
-                ],
-                'source' => 'filter',
-            ];
-            Cache::put($cacheKey, $result, now()->addHours(6));
-
-            return response()->json($result);
-        }
-
-        // 2. Intent-based knowledge base matching (instant, accurate, 100% offline resilient)
+        // 1. Intent-based knowledge base matching (instant, accurate, 100% offline resilient)
         $local = $this->matchIntent($userMessage);
         if ($local !== null) {
             $result = [
@@ -589,7 +570,7 @@ class AiNavigatorController extends Controller
             return response()->json($result);
         }
 
-        // 3. Try Gemini API as intelligent supplementary reasoning
+        // 2. Try Gemini API for questions not covered by the TEFA-Hub knowledge base.
         try {
             $geminiAnswer = $this->askGemini($userMessage);
             if ($geminiAnswer !== null) {
@@ -611,59 +592,8 @@ class AiNavigatorController extends Controller
             Log::info('Gemini API fallback triggered: '.$e->getMessage());
         }
 
-        // 4. Smart contextual fallback
-        $fallback = $this->generateSmartFallback($userMessage);
-        Cache::put($cacheKey, $fallback, now()->addHours(2));
-
-        return response()->json($fallback);
-    }
-
-    /**
-     * Determine if a user query is clearly off-topic.
-     */
-    private function isOffTopic(string $message): bool
-    {
-        $lower = mb_strtolower($message);
-
-        // On-topic keywords
-        $onTopic = [
-            'tefa', 'blud', 'bkk', 'ppdb', 'smk', 'sekolah', 'siswa', 'guru', 'kelas',
-            'nilai', 'rapor', 'absen', 'hadir', 'jadwal', 'mapel', 'pelajaran', 'akademik',
-            'magang', 'pkl', 'prakerin', 'internship', 'kerja', 'lowongan', 'loker', 'karir',
-            'portofolio', 'sertifikasi', 'lsp', 'bnsp', 'uji kompetensi', 'sertifikat',
-            'produk', 'pesanan', 'komisi', 'produksi', 'katalog', 'beli', 'order', 'pesan',
-            'publikasi', 'kurasi', 'validasi', 'tayang', 'revisi', 'upload', 'unggah',
-            'login', 'daftar', 'pendaftaran', 'akun', 'password', 'sandi', 'reset', 'masuk',
-            'rpl', 'tkj', 'tjkt', 'dkv', 'kejuruan', 'kompetensi', 'mesin', 'otomotif', 'jurusan',
-            'website', 'fitur', 'menu', 'sistem', 'platform', 'aplikasi', 'admin', 'bantuan',
-            'wali', 'murid', 'orang tua', 'ortu', 'ayah', 'ibu', 'izin', 'sakit', 'alfa', 'berkas', 'dokumen', 'tu',
-            'syarat', 'jalur', 'zonasi', 'prestasi', 'afirmasi', 'biaya', 'spp', 'uang gedung', 'beasiswa',
-            'fasilitas', 'bengkel', 'lab', 'laboratorium', 'alumni', 'industri', 'perusahaan', 'dudi', 'kerjasama',
-        ];
-
-        foreach ($onTopic as $kw) {
-            if (str_contains($lower, $kw)) {
-                return false;
-            }
-        }
-
-        // Explicit Off-topic patterns
-        $offTopic = [
-            'ibukota', 'presiden', 'sejarah dunia', 'matematika', 'fisika', 'kimia',
-            'biologi', 'rumus', 'integral', 'turunan', 'pythagoras',
-            'resep', 'masak', 'makanan', 'minuman', 'kuliner',
-            'film', 'musik', 'lagu', 'artis', 'youtuber', 'streaming', 'netflix', 'game',
-            'politik', 'partai', 'pemilu', 'pilpres', 'gubernur',
-            'cuaca', 'hujan', 'prakiraan cuaca', 'horoskop', 'zodiak',
-        ];
-
-        foreach ($offTopic as $p) {
-            if (str_contains($lower, $p)) {
-                return true;
-            }
-        }
-
-        return false;
+        // 3. Smart contextual fallback when the AI provider is unavailable.
+        return response()->json($this->generateSmartFallback($userMessage));
     }
 
     /**
@@ -727,12 +657,14 @@ class AiNavigatorController extends Controller
             return null;
         }
 
-        $models = [
-            'gemini-3.5-flash',
-            'gemini-3.6-flash',
-            'gemini-3.8-flash',
-            'gemini-3.7-flash',
-        ];
+        $model = trim((string) config('services.ai_navigator.model'));
+        $fallbackModel = trim((string) config('services.ai_navigator.fallback_model'));
+
+        if ($model === '') {
+            return null;
+        }
+
+        $models = array_unique(array_filter([$model, $fallbackModel]));
 
         $promptText = self::SYSTEM_PROMPT."\n\nPertanyaan pengguna: ".$userMessage;
         $payload = [
@@ -752,9 +684,13 @@ class AiNavigatorController extends Controller
 
         foreach ($models as $model) {
             try {
-                $url = "{$baseUrl}/{$model}:generateContent?key={$apiKey}";
-                $response = Http::timeout(4)
-                    ->withHeaders(['Content-Type' => 'application/json'])
+                $url = "{$baseUrl}/{$model}:generateContent";
+                $response = Http::connectTimeout(2)
+                    ->timeout(8)
+                    ->withHeaders([
+                        'Content-Type' => 'application/json',
+                        'X-goog-api-key' => $apiKey,
+                    ])
                     ->post($url, $payload);
 
                 if ($response->successful()) {
@@ -762,7 +698,7 @@ class AiNavigatorController extends Controller
                     $parts = $data['candidates'][0]['content']['parts'] ?? [];
 
                     foreach ($parts as $part) {
-                        if (! empty($part['text']) && ! isset($part['thoughtSignature'])) {
+                        if (! empty($part['text'])) {
                             return trim($part['text']);
                         }
                     }
@@ -870,7 +806,7 @@ class AiNavigatorController extends Controller
             return 'profile';
         }
 
-        return 'dashboard';
+        return null;
     }
 
     private function detectRelevantLabel(string $message): string
