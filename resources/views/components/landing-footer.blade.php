@@ -7,8 +7,8 @@
         {{-- Main Footer Columns --}}
         <div class="footer-grid">
 
-            {{-- Column 1: Brand & Socials (Full width on mobile top) --}}
-            <div class="footer-col footer-col-brand reveal">
+            {{-- Column 1: Brand & Socials --}}
+            <div class="footer-col footer-col-brand">
                 <a href="{{ url('/') }}" class="brand" aria-label="Tefa-Hub Beranda">
                     <img src="{{ asset('assets/logo.png') }}" alt="Logo Tefa-Hub" width="34" height="34">
                     <span class="brand-name">Tefa<span>-Hub</span></span>
@@ -34,21 +34,20 @@
                 </div>
             </div>
 
-            {{-- Column 2: Navigasi (Sisi Kiri di Mobile) --}}
-            <div class="footer-col footer-col-nav reveal delay-1">
+            {{-- Column 2: Navigasi --}}
+            <div class="footer-col footer-col-nav">
                 <h3 class="footer-col-title">NAVIGASI</h3>
                 <ul class="footer-links">
                     <li><a href="{{ url('/') }}">Beranda</a></li>
-                    <li><a href="{{ url('/#tentang') }}">Tentang</a></li>
-                    <li><a href="{{ url('/#layanan') }}">Layanan</a></li>
                     <li><a href="{{ url('/#akademik') }}">Akademik</a></li>
                     <li><a href="{{ url('/#blud') }}">BLUD</a></li>
-                    <li><a href="{{ route('bkk') }}">BKK (Karier)</a></li>
+                    <li><a href="{{ url('/#pkl') }}">PKL &amp; Industri</a></li>
+                    <li><a href="{{ route('bkk') }}">Career Center (BKK)</a></li>
                 </ul>
             </div>
 
-            {{-- Column 3: Layanan TEFA (Sisi Kanan di Mobile) --}}
-            <div class="footer-col footer-col-services reveal delay-2">
+            {{-- Column 3: Layanan TEFA --}}
+            <div class="footer-col footer-col-services">
                 <h3 class="footer-col-title">LAYANAN TEFA</h3>
                 <ul class="footer-links">
                     <li><a href="{{ route('siswa.akademik') }}">E-Rapor Vokasi</a></li>
@@ -59,9 +58,9 @@
                 </ul>
             </div>
 
-            {{-- Column 4: Informasi & Newsletter (Full width on mobile bottom) --}}
-            <div class="footer-col footer-col-newsletter reveal delay-3">
-                <h3 class="footer-col-title">INFORMASI & KONTAK</h3>
+            {{-- Column 4: Informasi & Kontak --}}
+            <div class="footer-col footer-col-newsletter">
+                <h3 class="footer-col-title">INFORMASI &amp; KONTAK</h3>
                 <p class="newsletter-desc">
                     Dapatkan kabar kegiatan sekolah, update BLUD, dan lowongan karir industri terbaru.
                 </p>

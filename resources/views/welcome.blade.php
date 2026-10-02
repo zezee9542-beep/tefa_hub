@@ -17,66 +17,8 @@
     {{-- Ambient background glow --}}
     <div class="glow-tl" aria-hidden="true"></div>
 
-    {{-- ═══════════════════════════════════════════
-         HEADER / NAVBAR
-         ═══════════════════════════════════════════ --}}
-    <header class="site-header">
-        <div class="wrap">
-            <a href="{{ url('/') }}" class="brand" aria-label="Tefa-Hub Beranda">
-                <img src="{{ asset('assets/logo.png') }}" alt="Logo Tefa-Hub">
-                <span class="brand-name">Tefa<span>-Hub</span></span>
-            </a>
-
-            <nav aria-label="Navigasi Utama">
-                <ul class="nav-links">
-                    <li><a href="#akademik">Akademik</a></li>
-                    <li><a href="#blud">BLUD</a></li>
-                    <li><a href="#pkl">PKL &amp; Industri</a></li>
-                    <li><a href="{{ route('bkk') }}">Career Center (BKK)</a></li>
-                </ul>
-            </nav>
-
-            <div class="header-actions">
-                <a href="{{ route('login') }}" class="btn-masuk">
-                    Masuk
-                </a>
-                <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu Navigasi" aria-expanded="false">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-            </div>
-        </div>
-    </header>
-    <div class="site-header-spacer" aria-hidden="true"></div>
-
-    {{-- Mobile Navigation Drawer & Backdrop --}}
-    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
-    <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Menu Navigasi Mobile">
-        <div class="mobile-nav-header">
-            <a href="{{ url('/') }}" class="brand">
-                <img src="{{ asset('assets/logo.png') }}" alt="Logo Tefa-Hub">
-                <span class="brand-name">Tefa<span>-Hub</span></span>
-            </a>
-            <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Tutup Menu Navigasi">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-        </div>
-        <ul class="mobile-nav-links">
-            <li><a href="#akademik" class="mobile-nav-link">Akademik</a></li>
-            <li><a href="#blud" class="mobile-nav-link">BLUD</a></li>
-            <li><a href="#pkl" class="mobile-nav-link">PKL &amp; Industri</a></li>
-            <li><a href="{{ route('bkk') }}" class="mobile-nav-link">Career Center (BKK)</a></li>
-        </ul>
-        <div class="mobile-nav-footer">
-            <a href="{{ route('login') }}" class="btn-masuk-mobile">
-                Masuk ke Portal Siswa
-            </a>
-        </div>
-    </div>
+    {{-- Unified Landing Header & Navbar --}}
+    <x-landing-header />
 
     {{-- ═══════════════════════════════════════════
          HERO SECTION
@@ -604,73 +546,6 @@
         } else {
             revealElements.forEach(el => el.classList.add('is-revealed'));
         }
-
-        // Sticky Header: Hide on Active Scroll, Show on Scroll Stop
-        const siteHeader = document.querySelector('.site-header');
-        if (siteHeader) {
-            let navScrollTimer = null;
-            window.addEventListener('scroll', function() {
-                const currentY = window.pageYOffset || document.documentElement.scrollTop;
-
-                if (currentY <= 15) {
-                    siteHeader.classList.remove('nav-hidden');
-                    siteHeader.classList.remove('nav-scrolled');
-                    if (navScrollTimer) clearTimeout(navScrollTimer);
-                    return;
-                }
-
-                siteHeader.classList.add('nav-scrolled');
-                siteHeader.classList.add('nav-hidden');
-
-                if (navScrollTimer) clearTimeout(navScrollTimer);
-                navScrollTimer = setTimeout(function() {
-                    siteHeader.classList.remove('nav-hidden');
-                }, 180);
-            }, { passive: true });
-        }
-
-        // Mobile Navigation Drawer
-        const toggleBtn = document.getElementById('mobileMenuToggle');
-        const closeBtn = document.getElementById('mobileNavClose');
-        const drawer = document.getElementById('mobileNavDrawer');
-        const backdrop = document.getElementById('mobileNavBackdrop');
-        const navLinks = document.querySelectorAll('.mobile-nav-link');
-
-        function openDrawer() {
-            if (drawer && backdrop) {
-                drawer.classList.add('is-open');
-                backdrop.classList.add('is-open');
-                if (toggleBtn) {
-                    toggleBtn.classList.add('is-active');
-                    toggleBtn.setAttribute('aria-expanded', 'true');
-                }
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeDrawer() {
-            if (drawer && backdrop) {
-                drawer.classList.remove('is-open');
-                backdrop.classList.remove('is-open');
-                if (toggleBtn) {
-                    toggleBtn.classList.remove('is-active');
-                    toggleBtn.setAttribute('aria-expanded', 'false');
-                }
-                document.body.style.overflow = '';
-            }
-        }
-
-        if (toggleBtn) toggleBtn.addEventListener('click', () => {
-            if (drawer && drawer.classList.contains('is-open')) closeDrawer();
-            else openDrawer();
-        });
-
-        if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-        if (backdrop) backdrop.addEventListener('click', closeDrawer);
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', closeDrawer);
-        });
 
         // Hero Search Box Interactive Functionality
         const heroSearchForm = document.getElementById('heroSearchForm');

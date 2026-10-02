@@ -14,73 +14,13 @@
 
     <!-- CSS Assets -->
     <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v=3.4.0">
-    <link rel="stylesheet" href="{{ asset('assets/css/bkk.landing.css') }}?v=1.3.0">
+    <link rel="stylesheet" href="{{ asset('assets/css/bkk.landing.css') }}?v=1.3.1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 
-    {{-- ═══════════════════════════════════════════
-         HEADER / NAVBAR (MULTIPAGE COMPATIBLE)
-         ═══════════════════════════════════════════ --}}
-    <header class="site-header">
-        <div class="wrap">
-            <a href="{{ url('/') }}" class="brand" aria-label="Tefa-Hub Beranda">
-                <img src="{{ asset('assets/logo.png') }}" alt="Logo Tefa-Hub">
-                <span class="brand-name">Tefa<span>-Hub</span></span>
-            </a>
-
-            <nav aria-label="Navigasi Utama">
-                <ul class="nav-links">
-                    <li><a href="{{ url('/#tentang') }}">Tentang</a></li>
-                    <li><a href="{{ url('/#layanan') }}">Layanan</a></li>
-                    <li><a href="{{ url('/#akademik') }}">Akademik</a></li>
-                    <li><a href="{{ url('/#blud') }}">BLUD</a></li>
-                    <li><a href="{{ route('bkk') }}" class="active-nav-link" style="color: #2563eb; font-weight: 700;">BKK</a></li>
-                </ul>
-            </nav>
-
-            <div class="header-actions">
-                <a href="{{ route('login') }}" class="btn-masuk">
-                    Masuk
-                </a>
-                <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Buka Menu Navigasi" aria-expanded="false">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-            </div>
-        </div>
-    </header>
-    <div class="site-header-spacer" aria-hidden="true"></div>
-
-    {{-- Mobile Navigation Drawer & Backdrop --}}
-    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
-    <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Menu Navigasi Mobile">
-        <div class="mobile-nav-header">
-            <a href="{{ url('/') }}" class="brand">
-                <img src="{{ asset('assets/logo.png') }}" alt="Logo Tefa-Hub">
-                <span class="brand-name">Tefa<span>-Hub</span></span>
-            </a>
-            <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Tutup Menu Navigasi">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-        </div>
-        <ul class="mobile-nav-links">
-            <li><a href="{{ url('/#tentang') }}" class="mobile-nav-link">Tentang Platform</a></li>
-            <li><a href="{{ url('/#layanan') }}" class="mobile-nav-link">Layanan Unggulan</a></li>
-            <li><a href="{{ url('/#akademik') }}" class="mobile-nav-link">Akademik Terpadu</a></li>
-            <li><a href="{{ url('/#blud') }}" class="mobile-nav-link">Teaching Factory (BLUD)</a></li>
-            <li><a href="{{ route('bkk') }}" class="mobile-nav-link" style="color: #2563eb; font-weight: 700;">BKK (Pusat Karier)</a></li>
-        </ul>
-        <div class="mobile-nav-footer">
-            <a href="{{ route('login') }}" class="btn-masuk-mobile">
-                Masuk ke Portal Siswa
-            </a>
-        </div>
-    </div>
+    {{-- Unified Landing Header & Navbar --}}
+    <x-landing-header :active="'bkk'" />
 
     {{-- ═══════════════════════════════════════════
          BKK HERO SECTION WITH 3 ECLIPSE GLOWS
@@ -95,7 +35,7 @@
             <div class="bkk-hero-grid">
 
                 {{-- Left Content --}}
-                <div class="bkk-hero-content reveal-left">
+                <div class="bkk-hero-content">
                     
                     {{-- 1. Bubble Badge: 280x22px, #DBE1FF --}}
                     <div class="bkk-bubble-badge">
@@ -141,7 +81,7 @@
                 </div>
 
                 {{-- Right Visual: Purely jasa.png Image --}}
-                <div class="bkk-hero-visual reveal-right delay-1">
+                <div class="bkk-hero-visual">
                     <img src="{{ asset('assets/jasa.png') }}" alt="Karier & BLUD Jasa Layanan Mockup" class="bkk-hero-img">
                 </div>
 
@@ -271,11 +211,12 @@
 
     <section class="bkk-catalog-section" id="katalog-layanan">
         <div class="wrap">
-            <div class="bkk-cards-catalog-grid">
+            <div class="bkk-cards-catalog-grid" id="bkkCatalogGrid">
                 @foreach ($bkkServices as $index => $item)
-                    <div class="blud-card-frame reveal delay-{{ ($index % 4) + 1 }}">
+                    <div class="blud-card-frame bkk-card-reveal" data-delay="{{ ($index % 4) * 70 }}">
                         <div class="blud-card-image-wrap">
-                            <img src="{{ asset('assets/' . $item['img']) }}" alt="{{ $item['title'] }}" class="blud-bg-img" onerror="this.onerror=null; this.src='{{ asset('assets/Background (14).png') }}';">
+                            <img src="{{ asset('assets/' . $item['img']) }}" alt="{{ $item['title'] }}" class="blud-bg-img" onerror="this.onerror=null; this.src='{{ asset('assets/Background (14).png') }}';"
+                                loading="lazy">
                             
                             {{-- Top Left Rating Badge --}}
                             <span class="blud-rating-badge">
@@ -319,74 +260,24 @@
          ═══════════════════════════════════════════ --}}
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // High-Performance Scroll Reveal Observer
-        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
+
+        // ── STAGGERED CARD REVEAL (per-card delay, smooth) ──────────
+        const cardEls = document.querySelectorAll('.bkk-card-reveal');
+        if ('IntersectionObserver' in window && cardEls.length) {
+            const cardObserver = new IntersectionObserver(function(entries, obs) {
+                entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('is-revealed');
-                        obs.unobserve(entry.target);
+                        const el = entry.target;
+                        const delay = parseInt(el.dataset.delay || 0, 10);
+                        setTimeout(function() {
+                            el.classList.add('bkk-card-revealed');
+                        }, delay);
+                        obs.unobserve(el);
                     }
                 });
-            }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
-            reveals.forEach(el => observer.observe(el));
-        } else {
-            reveals.forEach(el => el.classList.add('is-revealed'));
+            }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+            cardEls.forEach(function(el) { cardObserver.observe(el); });
         }
-
-        // Fixed navbar show/hide on scroll
-        const header = document.querySelector('.site-header');
-        if (header) {
-            let isScrolling = null;
-            let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
-
-            window.addEventListener('scroll', function() {
-                const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
-                if (currentScrollY <= 40) {
-                    header.classList.remove('header-hidden');
-                    if (isScrolling) clearTimeout(isScrolling);
-                    lastScrollY = currentScrollY;
-                    return;
-                }
-                if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                    header.classList.add('header-hidden');
-                }
-                if (isScrolling) clearTimeout(isScrolling);
-                isScrolling = setTimeout(function() {
-                    header.classList.remove('header-hidden');
-                }, 180);
-                lastScrollY = currentScrollY;
-            }, { passive: true });
-        }
-
-        // Mobile drawer
-        const toggleBtn = document.getElementById('mobileMenuToggle');
-        const closeBtn = document.getElementById('mobileNavClose');
-        const drawer = document.getElementById('mobileNavDrawer');
-        const backdrop = document.getElementById('mobileNavBackdrop');
-
-        function openDrawer() {
-            if (drawer && backdrop) {
-                drawer.classList.add('is-open');
-                backdrop.classList.add('is-open');
-                document.body.classList.add('drawer-open');
-                if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
-            }
-        }
-
-        function closeDrawer() {
-            if (drawer && backdrop) {
-                drawer.classList.remove('is-open');
-                backdrop.classList.remove('is-open');
-                document.body.classList.remove('drawer-open');
-                if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
-            }
-        }
-
-        if (toggleBtn) toggleBtn.addEventListener('click', openDrawer);
-        if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-        if (backdrop) backdrop.addEventListener('click', closeDrawer);
     });
     </script>
 </body>

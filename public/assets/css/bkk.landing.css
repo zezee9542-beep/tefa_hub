@@ -419,48 +419,67 @@
     color: #ffffff;
 }
 
-/* ─── ANIMATION KEYFRAMES ────────────────────────────────── */
+/* ─── CARD REVEAL ANIMATIONS (SMOOTH STAGGERED ENTRY) ─── */
+.bkk-card-reveal {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.bkk-card-reveal.bkk-card-revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.blud-card-frame.bkk-card-revealed:hover {
+    transform: translate3d(0, -6px, 0);
+    box-shadow: 0 20px 42px -8px rgba(37, 99, 235, 0.18), 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+/* ─── ANIMATION KEYFRAMES (HARDWARE ACCELERATED) ────────── */
 @keyframes heroFadeInUp {
     0% {
         opacity: 0;
-        transform: translateY(28px);
+        transform: translate3d(0, 22px, 0);
     }
     100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
 @keyframes heroPopIn {
     0% {
         opacity: 0;
-        transform: scale(0.92) translateY(12px);
-    }
-    70% {
-        transform: scale(1.02) translateY(0);
+        transform: translate3d(0, 14px, 0) scale(0.96);
     }
     100% {
         opacity: 1;
-        transform: scale(1) translateY(0);
+        transform: translate3d(0, 0, 0) scale(1);
     }
 }
 
 @keyframes floatHero {
     0%, 100% {
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
     }
     50% {
-        transform: translateY(-9px);
+        transform: translate3d(0, -8px, 0);
     }
 }
 
 @keyframes eclipseGlow {
     0%, 100% {
-        transform: scale(1);
+        transform: translate3d(0, 0, 0) scale(1);
         opacity: 0.12;
     }
     50% {
-        transform: scale(1.15);
+        transform: translate3d(0, 0, 0) scale(1.12);
         opacity: 0.20;
     }
 }
