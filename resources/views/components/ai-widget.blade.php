@@ -9,10 +9,13 @@
     'topics' => null
 ])
 
+{{-- Backdrop Overlay (Closes panel on tap outside) --}}
+<div id="ai-navigator-backdrop" class="ai-backdrop" aria-hidden="true"></div>
+
 {{-- Floating Trigger Button --}}
 <button id="ai-toggle-btn" class="ai-trigger" type="button" aria-label="Buka Tanya Tefa AI" aria-expanded="false" aria-controls="ai-navigator-panel" title="Tanya Tefa AI">
     <div class="ai-trigger-inner">
-        <img src="{{ asset('assets/ai.png') }}" alt="Asisten Tanya Tefa AI" class="ai-trigger-img" width="38" height="38" loading="lazy">
+        <img src="{{ asset('assets/ai.png') }}" alt="Asisten Tanya Tefa AI" class="ai-trigger-img" width="42" height="42" loading="lazy">
         <span class="ai-online-dot"></span>
     </div>
     <div class="ai-trigger-copy">
@@ -111,7 +114,7 @@
     </div>
 </div>
 
-{{-- Unified High-Performance Chat Logic (Deduplicated) --}}
+{{-- Unified High-Performance Chat Logic --}}
 <script>
 (function () {
     'use strict';
@@ -122,11 +125,12 @@
     const CHAT_URL   = '{{ route("ai.chat") }}';
     const CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]')?.content || '';
 
-    let panel, toggleBtn, closeBtn, conversation, form, field, submitBtn, quickActions, badge, greetCard, initLoading;
+    let panel, backdrop, toggleBtn, closeBtn, conversation, form, field, submitBtn, quickActions, badge, greetCard, initLoading;
     let isOpen = false, isBusy = false, greeted = false;
 
     function initAiWidget() {
         panel        = document.getElementById('ai-navigator-panel');
+        backdrop     = document.getElementById('ai-navigator-backdrop');
         toggleBtn    = document.getElementById('ai-toggle-btn');
         closeBtn     = document.getElementById('ai-close-btn');
         conversation = document.getElementById('ai-messages');
@@ -144,7 +148,10 @@
             isOpen = true;
             panel.classList.add('is-open');
             panel.setAttribute('aria-hidden', 'false');
+            if (backdrop) backdrop.classList.add('is-open');
             toggleBtn.setAttribute('aria-expanded', 'true');
+            toggleBtn.classList.add('is-hidden');
+            document.body.classList.add('ai-panel-open');
             if (badge) badge.style.display = 'none';
             
             setTimeout(() => { if (field) field.focus(); }, 120);
@@ -155,11 +162,15 @@
             isOpen = false;
             panel.classList.remove('is-open');
             panel.setAttribute('aria-hidden', 'true');
+            if (backdrop) backdrop.classList.remove('is-open');
             toggleBtn.setAttribute('aria-expanded', 'false');
+            toggleBtn.classList.remove('is-hidden');
+            document.body.classList.remove('ai-panel-open');
         }
 
         toggleBtn.addEventListener('click', () => isOpen ? closePanel() : openPanel());
         if (closeBtn) closeBtn.addEventListener('click', closePanel);
+        if (backdrop) backdrop.addEventListener('click', closePanel);
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && isOpen) closePanel();

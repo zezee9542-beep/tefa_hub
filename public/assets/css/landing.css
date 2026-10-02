@@ -1385,20 +1385,37 @@ body {
 /* ============================================================
    FLOATING AI WIDGET & CHAT POPUP (PREMIUM & FAST)
    ============================================================ */
+/* Backdrop Overlay (Dims background on mobile/desktop) */
+.ai-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 9995;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ai-backdrop.is-open {
+    opacity: 1;
+    pointer-events: all;
+}
+
 .ai-trigger {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 9999;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9990;
     display: flex;
     align-items: center;
     gap: 10px;
     background: #ffffff;
-    border: 1.5px solid rgba(226, 232, 240, 0.9);
+    border: 1.5px solid rgba(226, 232, 240, 0.95);
     border-radius: 9999px;
     padding: 6px 18px 6px 6px;
     cursor: pointer;
-    box-shadow: 0 10px 30px -4px rgba(37, 99, 235, 0.25), 0 4px 12px rgba(15, 23, 42, 0.08);
+    box-shadow: 0 10px 30px -4px rgba(37, 99, 235, 0.28), 0 4px 12px rgba(15, 23, 42, 0.08);
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     -webkit-tap-highlight-color: transparent;
 }
@@ -1409,10 +1426,19 @@ body {
 }
 .ai-trigger:active { transform: translateY(0) scale(0.98); }
 
+/* Hide floating trigger when chat panel is open */
+.ai-trigger.is-hidden,
+body.ai-panel-open .ai-trigger {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(18px) scale(0.8) !important;
+    visibility: hidden !important;
+}
+
 .ai-trigger-inner {
     position: relative;
-    width: 54px;
-    height: 54px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     background: linear-gradient(135deg, #eff6ff, #dbeafe);
     display: flex;
@@ -1422,8 +1448,8 @@ body {
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 .ai-trigger-img {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
     object-fit: contain;
     display: block;
     pointer-events: none;
@@ -1465,16 +1491,16 @@ body {
 .ai-panel {
     position: fixed;
     bottom: 96px;
-    right: 24px;
+    right: 28px;
     z-index: 9998;
-    width: 400px;
+    width: 410px;
     max-width: calc(100vw - 32px);
     height: 560px;
     max-height: calc(100vh - 120px);
     background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.2), 0 10px 24px -5px rgba(37, 99, 235, 0.12);
-    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 25px 60px -12px rgba(15, 23, 42, 0.25), 0 10px 24px -5px rgba(37, 99, 235, 0.15);
+    border: 1px solid rgba(226, 232, 240, 0.9);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -1482,7 +1508,7 @@ body {
     opacity: 0;
     transform: translateY(16px) scale(0.96);
     pointer-events: none;
-    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .ai-panel.is-open {
     opacity: 1;
@@ -2031,121 +2057,181 @@ body {
     }
     .legal-links { justify-content: center; flex-wrap: wrap; gap: 8px; }
 
-    /* Floating AI trigger on mobile */
+    /* ── Floating AI Trigger on Mobile (Comfortable Thumb Zone & Elevated) ── */
     .ai-trigger {
-        right: 12px;
-        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-        padding: 4px 12px 4px 4px;
+        right: 18px;
+        bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+        padding: 4px;
+        border-radius: 9999px;
+        box-shadow: 0 10px 26px -2px rgba(37, 99, 235, 0.35), 0 4px 12px rgba(15, 23, 42, 0.12);
+        background: #ffffff;
     }
+    .ai-trigger-copy { display: none; }
     .ai-trigger-inner {
-        width: 46px;
-        height: 46px;
+        width: 52px;
+        height: 52px;
     }
     .ai-trigger-img {
-        width: 38px;
-        height: 38px;
+        width: 42px;
+        height: 42px;
     }
-    .ai-trigger-copy strong { font-size: 12.5px; }
-    .ai-trigger-copy small { font-size: 10px; }
+    .ai-online-dot {
+        width: 13px;
+        height: 13px;
+        bottom: 2px;
+        right: 2px;
+    }
 
+    /* ── Floating AI Chat Panel on Mobile (Compact Floating Card with Top Headroom) ── */
     .ai-panel {
-        right: 0;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        max-height: 70vh;
-        max-height: 70dvh;
-        border-radius: 20px 20px 0 0;
-        border: 1px solid #e2e8f0;
-        border-bottom: none;
-        box-shadow: 0 -10px 30px rgba(15, 23, 42, 0.15);
-        transform: translateY(100%);
+        right: 14px;
+        left: 14px;
+        bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+        width: auto;
+        max-width: 430px;
+        margin: 0 auto;
+        height: min(520px, 64vh);
+        max-height: 64dvh;
+        border-radius: 22px;
+        border: 1px solid rgba(226, 232, 240, 0.95);
+        box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.35), 0 10px 24px -5px rgba(37, 99, 235, 0.2);
+        transform: translateY(22px) scale(0.96);
     }
     .ai-panel.is-open {
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
-    .ai-header { padding: 10px 14px; }
-    .ai-header-avatar { width: 32px; height: 32px; }
-    .ai-avatar-img { width: 26px; height: 26px; }
-    .ai-header-title { font-size: 13.5px; }
-    .ai-header-sub { font-size: 10.5px; }
-    .ai-close-btn { width: 28px; height: 28px; border-radius: 6px; }
+
+    .ai-header {
+        padding: 11px 15px;
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .ai-header-avatar {
+        width: 34px;
+        height: 34px;
+    }
+    .ai-avatar-img {
+        width: 28px;
+        height: 28px;
+    }
+    .ai-header-title {
+        font-size: 14px;
+        font-weight: 800;
+    }
+    .ai-header-sub {
+        font-size: 10.5px;
+        font-weight: 600;
+    }
+    .ai-close-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #f1f5f9;
+        border: 1px solid #e2e8f0;
+    }
+
     .ai-greeting-card {
         margin: 8px 10px 0;
         padding: 10px 12px;
         border-radius: 12px;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
     }
-    .ai-greeting-kicker { font-size: 8.5px; margin-bottom: 2px; }
-    .ai-greeting-label { font-size: 12.5px; margin-bottom: 2px; }
+    .ai-greeting-kicker {
+        font-size: 8.5px;
+        margin-bottom: 2px;
+    }
+    .ai-greeting-label {
+        font-size: 13px;
+        margin-bottom: 2px;
+    }
     .ai-greeting-sub {
-        font-size: 10px;
-        margin-bottom: 6px;
-        line-height: 1.35;
+        font-size: 10.5px;
+        margin-bottom: 8px;
+        line-height: 1.4;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
-    .ai-role-label { font-size: 9px; margin-bottom: 4px; }
+    .ai-role-label {
+        font-size: 9.5px;
+        margin-bottom: 5px;
+    }
     .ai-nav-categories {
         grid-template-columns: repeat(2, 1fr);
         gap: 5px;
     }
     .ai-nav-cat {
-        padding: 5px 8px;
-        border-radius: 6px;
-        gap: 5px;
+        padding: 6px 8px;
+        border-radius: 8px;
+        gap: 6px;
     }
-    .ai-nav-cat-icon { font-size: 13px; }
-    .ai-nav-cat strong { font-size: 9.5px; line-height: 1.15; }
-    .ai-nav-cat span { font-size: 8px; line-height: 1.15; }
-    .ai-nav-cat-wide { grid-column: span 2; }
+    .ai-nav-cat-icon {
+        font-size: 14px;
+    }
+    .ai-nav-cat strong {
+        font-size: 10px;
+        line-height: 1.2;
+    }
+    .ai-nav-cat span {
+        font-size: 8.5px;
+        line-height: 1.15;
+    }
+    .ai-nav-cat-wide {
+        grid-column: span 2;
+    }
+
     .ai-conversation {
-        padding: 8px 10px;
+        padding: 8px 12px;
         gap: 8px;
     }
     .ai-msg {
-        max-width: 90%;
-        padding: 7px 11px;
-        font-size: 11.5px;
-        line-height: 1.45;
-        border-radius: 10px;
+        max-width: 88%;
+        padding: 8px 12px;
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 12px;
     }
     .ai-cta-link {
-        padding: 4px 10px;
-        font-size: 10.5px;
-        border-radius: 6px;
+        padding: 5px 11px;
+        font-size: 11px;
+        border-radius: 8px;
+        margin-top: 6px;
     }
     .ai-quick-actions {
         padding: 0 10px 6px;
-        gap: 4px;
+        gap: 5px;
     }
     .ai-action-chip {
-        font-size: 10px;
-        padding: 4px 9px;
+        font-size: 10.5px;
+        padding: 4px 10px;
     }
     .ai-input-wrap {
-        padding: 6px 10px calc(8px + env(safe-area-inset-bottom, 0px));
+        padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px));
+        background: #ffffff;
+        border-top: 1px solid #e2e8f0;
     }
     .ai-form {
-        padding: 2px 3px 2px 10px;
+        padding: 3px 4px 3px 12px;
         border-radius: 999px;
-        min-height: 38px;
-        gap: 4px;
+        min-height: 40px;
+        background: #f8fafc;
+        border: 1.5px solid #cbd5e1;
+        gap: 6px;
     }
     .ai-field {
-        font-size: 12px;
+        font-size: 12.5px;
         padding: 2px 0;
     }
     .ai-submit {
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
     }
     .ai-powered {
-        font-size: 8.5px;
-        margin-top: 3px;
+        font-size: 9px;
+        margin-top: 4px;
     }
 }
 
@@ -2185,10 +2271,6 @@ body {
     .card-title { font-size: 10.5px; }
     .card-desc { font-size: 8.5px; line-height: 1.3; }
     .btn-arrow { width: 22px; height: 22px; }
-    .btn-arrow img { width: 9px; height: 9px; }
-
-    .ai-trigger-copy { display: none; }
-    .ai-trigger { padding: 3px; border-radius: 50%; }
     .brand-name { font-size: 17px; }
     .brand img { height: 30px; }
     .btn-masuk { padding: 7px 14px; font-size: 12.5px; }
@@ -2216,8 +2298,6 @@ body {
     .mobile-nav-drawer { width: min(90vw, 280px); }
     .services-grid { gap: 10px; }
     .showcase-card-1 { max-width: 260px !important; }
-    .ai-trigger { bottom: 10px; right: 10px; }
-    .ai-panel { max-height: 72dvh; }
 }
 
 @media (max-width: 320px) {
