@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v=4.1.1">
+    <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v=4.4.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
@@ -203,22 +203,78 @@
     <section class="partners-section" aria-label="Mitra dan Partner Tefa-Hub">
         <p class="partners-label">Didukung oleh Mitra &amp; Partner Industri</p>
         <div class="partners-track-wrapper" id="partnersWrapper">
-            {{-- Only ONE set — JS will clone it to create seamless loop --}}
             <div class="partners-track" id="partnersTrack">
-                <div class="partner-logo-item">
-                    <img src="{{ asset('assets/L1.png') }}" alt="Jagoan Hosting Innovation Competition">
+                {{-- Group 1 --}}
+                <div class="partners-track-group">
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L1.png') }}" alt="Jagoan Hosting Innovation Competition">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L2.png') }}" alt="Jagoan Hosting">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L3.png') }}" alt="Komdigi">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L4.png') }}" alt="Garuda Spark Innovation Hub">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L5.png') }}" alt="Ngalup.co">
+                    </div>
                 </div>
-                <div class="partner-logo-item">
-                    <img src="{{ asset('assets/L2.png') }}" alt="Jagoan Hosting">
+                {{-- Group 2 --}}
+                <div class="partners-track-group" aria-hidden="true">
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L1.png') }}" alt="">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L2.png') }}" alt="">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L3.png') }}" alt="">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L4.png') }}" alt="">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L5.png') }}" alt="">
+                    </div>
                 </div>
-                <div class="partner-logo-item">
-                    <img src="{{ asset('assets/L3.png') }}" alt="Komdigi">
+                {{-- Group 3 --}}
+                <div class="partners-track-group" aria-hidden="true">
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L1.png') }}" alt="">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L2.png') }}" alt="">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L3.png') }}" alt="">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L4.png') }}" alt="">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L5.png') }}" alt="">
+                    </div>
                 </div>
-                <div class="partner-logo-item">
-                    <img src="{{ asset('assets/L4.png') }}" alt="Garuda Spark Innovation Hub">
-                </div>
-                <div class="partner-logo-item">
-                    <img src="{{ asset('assets/L5.png') }}" alt="Ngalup.co">
+                {{-- Group 4 --}}
+                <div class="partners-track-group" aria-hidden="true">
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L1.png') }}" alt="">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L2.png') }}" alt="">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L3.png') }}" alt="">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L4.png') }}" alt="">
+                    </div>
+                    <div class="partner-logo-item">
+                        <img src="{{ asset('assets/L5.png') }}" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -442,14 +498,15 @@
     <x-ai-widget subtitle="Pusat Bantuan 24/7" />
 
     {{-- ═══════════════════════════════════════════
-         SCRIPTS: SCROLL ANIMATIONS, DRAWER & SEARCH
+         SCRIPTS: SCROLL REVEALS & SEARCH (120HZ OPTIMIZED)
          ═══════════════════════════════════════════ --}}
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // High-Performance Scroll Reveal Observer
+
+        // ── 1. HIGH-PERFORMANCE 120HZ SCROLL REVEAL OBSERVER ────────
         const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
         
-        if ('IntersectionObserver' in window) {
+        if ('IntersectionObserver' in window && revealElements.length) {
             const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -458,9 +515,8 @@
                     }
                 });
             }, {
-                root: null,
-                threshold: 0.12,
-                rootMargin: '0px 0px -40px 0px'
+                threshold: 0.06,
+                rootMargin: '0px 0px -30px 0px'
             });
 
             revealElements.forEach(el => observer.observe(el));
@@ -468,7 +524,7 @@
             revealElements.forEach(el => el.classList.add('is-revealed'));
         }
 
-        // Hero Search Box Interactive Functionality
+        // ── 2. HERO SEARCH BOX INTERACTIVE NAVIGATION ───────────────
         const heroSearchForm = document.getElementById('heroSearchForm');
         const heroSearchInput = document.getElementById('heroSearchInput');
         
