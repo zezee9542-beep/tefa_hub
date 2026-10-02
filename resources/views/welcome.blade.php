@@ -9,10 +9,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v=3.9.0">
+    <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v=4.1.1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
+
+    {{-- Premium Modern Onboarding Splash Preloader Animation --}}
+    <x-onboarding />
 
     {{-- Ambient background glow --}}
     <div class="glow-tl" aria-hidden="true"></div>
@@ -220,88 +223,6 @@
             </div>
         </div>
     </section>
-
-    <script>
-    (function() {
-        var track = document.getElementById('partnersTrack');
-        var wrapper = document.getElementById('partnersWrapper');
-        if (!track) return;
-
-        track.style.animation = 'none';
-
-        var origItems = Array.from(track.children);
-        var origCount = origItems.length;
-        if (origCount === 0) return;
-
-        // Clone sets so we have 6 full sets (30 items total) to fill any viewport width seamlessly
-        var totalSets = 6;
-        for (var c = 1; c < totalSets; c++) {
-            origItems.forEach(function(item) {
-                track.appendChild(item.cloneNode(true));
-            });
-        }
-
-        var setWidth = 0;
-        var pos = 0;
-        var speedPxPerSec = 52;
-        var paused = false;
-        var lastTime = null;
-
-        function computeSetWidth() {
-            if (track.children.length > origCount && track.children[origCount].offsetLeft > 0) {
-                setWidth = track.children[origCount].offsetLeft - track.children[0].offsetLeft;
-            } else if (track.scrollWidth > 0) {
-                setWidth = track.scrollWidth / totalSets;
-            }
-            if (setWidth > 0 && pos === 0) {
-                pos = -setWidth;
-            }
-        }
-
-        if (wrapper) {
-            wrapper.addEventListener('mouseenter', function() { paused = true; });
-            wrapper.addEventListener('mouseleave', function() { paused = false; });
-            wrapper.addEventListener('touchstart', function() { paused = true; }, { passive: true });
-            wrapper.addEventListener('touchend', function() { paused = false; }, { passive: true });
-        }
-
-        var imgs = track.querySelectorAll('img');
-        imgs.forEach(function(img) {
-            if (img.complete) {
-                computeSetWidth();
-            } else {
-                img.addEventListener('load', computeSetWidth);
-            }
-        });
-
-        window.addEventListener('resize', computeSetWidth);
-        window.addEventListener('load', computeSetWidth);
-
-        function tick(timestamp) {
-            if (!lastTime) lastTime = timestamp;
-            var dt = (timestamp - lastTime) / 1000;
-            lastTime = timestamp;
-
-            if (dt > 0.1) dt = 0.1;
-
-            if (!paused && setWidth > 0) {
-                pos += speedPxPerSec * dt;
-                while (pos >= 0) {
-                    pos -= setWidth;
-                }
-                track.style.transform = 'translate3d(' + pos.toFixed(2) + 'px, 0, 0)';
-            }
-
-            requestAnimationFrame(tick);
-        }
-
-        computeSetWidth();
-        if (setWidth > 0) {
-            pos = -setWidth;
-        }
-        requestAnimationFrame(tick);
-    })();
-    </script>
 
     {{-- ═══════════════════════════════════════════
          ABOUT SECTION
