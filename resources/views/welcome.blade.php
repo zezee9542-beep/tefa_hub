@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v=3.7.0">
+    <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v=3.8.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
@@ -29,11 +29,10 @@
 
             <nav aria-label="Navigasi Utama">
                 <ul class="nav-links">
-                    <li><a href="#tentang">Tentang</a></li>
-                    <li><a href="#layanan">Layanan</a></li>
                     <li><a href="#akademik">Akademik</a></li>
                     <li><a href="#blud">BLUD</a></li>
-                    <li><a href="{{ route('bkk') }}">BKK</a></li>
+                    <li><a href="#pkl">PKL &amp; Industri</a></li>
+                    <li><a href="{{ route('bkk') }}">Career Center (BKK)</a></li>
                 </ul>
             </nav>
 
@@ -67,11 +66,10 @@
             </button>
         </div>
         <ul class="mobile-nav-links">
-            <li><a href="#tentang" class="mobile-nav-link">Tentang Platform</a></li>
-            <li><a href="#layanan" class="mobile-nav-link">Layanan Unggulan</a></li>
-            <li><a href="#akademik" class="mobile-nav-link">Akademik Terpadu</a></li>
-            <li><a href="#blud" class="mobile-nav-link">Teaching Factory (BLUD)</a></li>
-            <li><a href="{{ route('bkk') }}" class="mobile-nav-link">BKK (Pusat Karier)</a></li>
+            <li><a href="#akademik" class="mobile-nav-link">Akademik</a></li>
+            <li><a href="#blud" class="mobile-nav-link">BLUD</a></li>
+            <li><a href="#pkl" class="mobile-nav-link">PKL &amp; Industri</a></li>
+            <li><a href="{{ route('bkk') }}" class="mobile-nav-link">Career Center (BKK)</a></li>
         </ul>
         <div class="mobile-nav-footer">
             <a href="{{ route('login') }}" class="btn-masuk-mobile">
