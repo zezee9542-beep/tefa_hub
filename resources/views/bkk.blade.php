@@ -271,14 +271,6 @@
 
     <section class="bkk-catalog-section" id="katalog-layanan">
         <div class="wrap">
-            <div class="bkk-section-header reveal">
-                <span class="bkk-section-tag">KATALOG JASA & PRODUK VOKASI</span>
-                <h2 class="bkk-section-title">Layanan Unggulan Teaching Factory</h2>
-                <p class="bkk-section-desc">
-                    Pilihan jasa profesional dan produk inovasi buatan siswa siap melayani kebutuhan publik dan mitra industri.
-                </p>
-            </div>
-
             <div class="bkk-cards-catalog-grid">
                 @foreach ($bkkServices as $index => $item)
                     <div class="blud-card-frame reveal delay-{{ ($index % 4) + 1 }}">
