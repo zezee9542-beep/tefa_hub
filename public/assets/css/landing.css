@@ -735,6 +735,113 @@ body {
     transform: translateX(2px);
 }
 
+/* ── PARTNER / MITRA LOGOS MARQUEE ─────────────────────── */
+.partners-section {
+    position: relative;
+    padding: 40px 0 44px;
+    background: #ffffff;
+    overflow: hidden;
+    border-top: 1px solid rgba(226, 232, 240, 0.8);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.partners-label {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 24px;
+}
+
+/* Mask edges for smooth fade-in/out gradient effect */
+.partners-track-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 8px 0;
+}
+.partners-track-wrapper::before,
+.partners-track-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 90px;
+    z-index: 2;
+    pointer-events: none;
+}
+.partners-track-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, #ffffff 60%, rgba(255, 255, 255, 0));
+}
+.partners-track-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, #ffffff 60%, rgba(255, 255, 255, 0));
+}
+
+/* The scrolling track — Hardware accelerated rAF driven */
+.partners-track {
+    display: flex;
+    align-items: center;
+    gap: 72px;
+    width: max-content;
+    will-change: transform;
+    animation: none;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Each logo item — Vibrant, full color, crisp display */
+.partner-logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    opacity: 0.95;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    cursor: default;
+}
+.partner-logo-item:hover {
+    opacity: 1;
+    transform: scale(1.06);
+}
+.partner-logo-item img {
+    height: 64px;
+    width: auto;
+    max-width: 220px;
+    object-fit: contain;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    filter: none;
+}
+
+@media (max-width: 1024px) {
+    .partner-logo-item img { height: 56px; max-width: 180px; }
+    .partners-track { gap: 56px; }
+}
+
+@media (max-width: 768px) {
+    .partners-section { padding: 30px 0 34px; }
+    .partners-label { margin-bottom: 18px; font-size: 11px; }
+    .partners-track { gap: 44px; }
+    .partners-track-wrapper::before,
+    .partners-track-wrapper::after { width: 50px; }
+    .partner-logo-item img { height: 48px; max-width: 150px; }
+}
+
+@media (max-width: 480px) {
+    .partners-section { padding: 22px 0 26px; }
+    .partner-logo-item img { height: 38px; max-width: 120px; }
+    .partners-track { gap: 36px; }
+    .partners-track-wrapper::before,
+    .partners-track-wrapper::after { width: 36px; }
+}
+
 /* ── ABOUT SECTION ───────────────────────────────────────── */
 .about-section {
     position: relative;
