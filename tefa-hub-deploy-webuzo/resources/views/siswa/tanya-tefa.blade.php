@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <x-pwa />
     <title>Tanya Tefa AI — TEFA-Hub</title>
 
     <!-- Google Fonts: Plus Jakarta Sans -->
@@ -11,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Siswa Dashboard & Shared CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/siswa.dashboard.css') }}?v=2.1.0">
+    <link rel="stylesheet" href="{{ asset('assets/css/siswa.dashboard.css') }}?v=2.5.0">
 
     <style>
         /* ─── AI Navigator & Needs Analysis Styling ─── */
@@ -345,36 +346,9 @@
 
     </div>
 
-    <!-- Responsive Sidebar & Interactive Chat Script -->
+    <!-- Interactive Chat Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Sidebar responsive controls
-            const sidebar = document.querySelector('.sidebar');
-            const mainContent = document.querySelector('.main-content');
-            const toggleBtn = document.getElementById('sidebarToggleBtn');
-            const closeBtn = document.getElementById('sidebarCloseBtn');
-            const backdrop = document.getElementById('sidebarBackdrop');
-
-            function toggleSidebar() {
-                if (window.innerWidth <= 1024) {
-                    sidebar.classList.toggle('sidebar-mobile-open');
-                    backdrop.classList.toggle('active');
-                    document.body.classList.toggle('sidebar-no-scroll');
-                } else {
-                    sidebar.classList.toggle('sidebar-desktop-collapsed');
-                    mainContent.classList.toggle('content-expanded');
-                }
-            }
-
-            function closeSidebar() {
-                sidebar.classList.remove('sidebar-mobile-open');
-                backdrop.classList.remove('active');
-                document.body.classList.remove('sidebar-no-scroll');
-            }
-
-            if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
-            if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
-            if (backdrop) backdrop.addEventListener('click', closeSidebar);
 
             // Initialize Automated Needs Analysis Greeting
             loadAutomatedGreeting();

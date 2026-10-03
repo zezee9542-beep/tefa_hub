@@ -42,14 +42,14 @@
         <!-- Notification Button Circle -->
         <button type="button" class="header-circle-btn" aria-label="Notifikasi" title="Notifikasi">
             <div class="icon-with-badge">
-                <img src="{{ asset('assets/notif.png') }}" alt="Notifikasi" class="header-btn-icon" width="18" height="18">
+                <img src="{{ asset('assets/notif.webp') }}" alt="Notifikasi" class="header-btn-icon" width="18" height="18">
                 <span class="notif-red-badge" aria-label="Ada notifikasi baru"></span>
             </div>
         </button>
 
         <!-- History Button Circle -->
         <button type="button" class="header-circle-btn" aria-label="Riwayat Aktivitas" title="Riwayat Aktivitas">
-            <img src="{{ asset('assets/riwayat.png') }}" alt="Riwayat" class="header-btn-icon" width="18" height="18">
+            <img src="{{ asset('assets/riwayat.webp') }}" alt="Riwayat" class="header-btn-icon" width="18" height="18">
         </button>
 
         <!-- User Profile Text -->
@@ -71,3 +71,44 @@
         </form>
     </div>
 </header>
+
+<script>
+(function() {
+    if (window.__siswaHeaderScrollAttached) return;
+    window.__siswaHeaderScrollAttached = true;
+
+    function initHeaderScroll() {
+        const header = document.querySelector('.siswa-top-header');
+        if (!header) return;
+
+        let scrollTimer = null;
+
+        window.addEventListener('scroll', function() {
+            const currentY = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (currentY <= 15) {
+                header.classList.remove('nav-hidden');
+                header.classList.remove('nav-scrolled');
+                if (scrollTimer) clearTimeout(scrollTimer);
+                return;
+            }
+
+            header.classList.add('nav-scrolled');
+            // Hide navbar while actively scrolling
+            header.classList.add('nav-hidden');
+
+            // Reveal navbar once scrolling stops
+            if (scrollTimer) clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(function() {
+                header.classList.remove('nav-hidden');
+            }, 180);
+        }, { passive: true });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initHeaderScroll);
+    } else {
+        initHeaderScroll();
+    }
+})();
+</script>

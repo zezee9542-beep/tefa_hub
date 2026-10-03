@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <x-pwa />
     <title>Akademik Siswa — TEFA-Hub</title>
 
     <!-- Google Fonts: Plus Jakarta Sans -->
@@ -11,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Siswa Dashboard & Shared CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/siswa.dashboard.css') }}?v=2.1.0">
+    <link rel="stylesheet" href="{{ asset('assets/css/siswa.dashboard.css') }}?v=2.5.0">
 </head>
 <body>
 
@@ -51,7 +52,7 @@
                         <div>
                             <div class="akademik-card-top">
                                 <div class="akademik-icon-box bg-dbe1ff">
-                                    <img src="{{ asset('assets/Container (9).png') }}" alt="Akademik Icon" class="akademik-icon-img" onerror="this.onerror=null; this.src='{{ asset('assets/Container.png') }}';">
+                                    <img src="{{ asset('assets/Container (9).webp') }}" alt="Akademik Icon" class="akademik-icon-img" onerror="this.onerror=null; this.src='{{ asset('assets/Container.webp') }}';">
                                 </div>
                                 <span class="akademik-badge badge-blue-pill">AKADEMIK</span>
                             </div>
@@ -85,7 +86,7 @@
                             <!-- Row 2: Modul Prakerin -->
                             <div class="akademik-item-pill">
                                 <div class="akademik-item-left">
-                                    <img src="{{ asset('assets/Container (11).png') }}" alt="Modul" class="akademik-item-icon" onerror="this.onerror=null; this.src='{{ asset('assets/Container copy.png') }}';">
+                                    <img src="{{ asset('assets/Container (11).webp') }}" alt="Modul" class="akademik-item-icon" onerror="this.onerror=null; this.src='{{ asset('assets/Container copy.webp') }}';">
                                     <span class="akademik-item-text">3 Modul Prakerin Baru</span>
                                 </div>
                                 <span class="text-muted-status">Siap Unduh</span>
@@ -108,7 +109,7 @@
                         <div>
                             <div class="akademik-card-top">
                                 <div class="akademik-icon-box bg-eaddff">
-                                    <img src="{{ asset('assets/mar.png') }}" alt="TEFA Icon" class="akademik-icon-img" onerror="this.onerror=null; this.src='{{ asset('assets/Container (9).png') }}';">
+                                    <img src="{{ asset('assets/mar.webp') }}" alt="TEFA Icon" class="akademik-icon-img" onerror="this.onerror=null; this.src='{{ asset('assets/Container (9).webp') }}';">
                                 </div>
                                 <span class="akademik-badge badge-purple-pill">BLUD TEFA</span>
                             </div>
@@ -158,7 +159,7 @@
                         <div>
                             <div class="akademik-card-top">
                                 <div class="akademik-icon-box bg-ffedd5">
-                                    <img src="{{ asset('assets/Container.png') }}" alt="Portofolio Icon" class="akademik-icon-img">
+                                    <img src="{{ asset('assets/Container.webp') }}" alt="Portofolio Icon" class="akademik-icon-img">
                                 </div>
                                 <span class="akademik-badge badge-orange-pill">0% LENGKAP</span>
                             </div>
@@ -203,7 +204,7 @@
 
                         <!-- Action Button -->
                         <a href="#" class="akademik-action-btn btn-light-blue-academic">
-                            <img src="{{ asset('assets/Container copy.png') }}" alt="Kelola" class="akademik-btn-icon" onerror="this.onerror=null; this.src='{{ asset('assets/Container.png') }}';">
+                            <img src="{{ asset('assets/Container copy.webp') }}" alt="Kelola" class="akademik-btn-icon" onerror="this.onerror=null; this.src='{{ asset('assets/Container.webp') }}';">
                             <span>Kelola Data & Portofolio</span>
                         </a>
                     </div>
@@ -214,7 +215,7 @@
                         <div>
                             <div class="akademik-card-top">
                                 <div class="akademik-icon-box bg-85f8c4">
-                                    <img src="{{ asset('assets/Container (12).png') }}" alt="BKK Career Icon" class="akademik-icon-img" onerror="this.onerror=null; this.src='{{ asset('assets/Container (9).png') }}';">
+                                    <img src="{{ asset('assets/Container (12).webp') }}" alt="BKK Career Icon" class="akademik-icon-img" onerror="this.onerror=null; this.src='{{ asset('assets/Container (9).webp') }}';">
                                 </div>
                                 <span class="akademik-badge badge-teal-pill">BKK KARIR</span>
                             </div>
@@ -240,7 +241,7 @@
 
                             <!-- Interview Schedule Card -->
                             <div class="akademik-interview-card">
-                                <img src="{{ asset('assets/Container (13).png') }}" alt="Kalender Interview" class="interview-icon" onerror="this.onerror=null; this.src='{{ asset('assets/calen.png') }}';">
+                                <img src="{{ asset('assets/Container (13).webp') }}" alt="Kalender Interview" class="interview-icon" onerror="this.onerror=null; this.src='{{ asset('assets/calen.webp') }}';">
                                 <div class="interview-info">
                                     <h3 class="interview-title">Belum Ada Jadwal</h3>
                                     <p class="interview-sub">Menunggu Undangan DUDI</p>
@@ -286,7 +287,7 @@
                         <!-- ── CARD 1: UI/UX KASIR DIGITAL BLUD (BLUE GRADIENT) ── -->
                         <div class="tugas-card card-blue-gradient">
                             <div class="tugas-card-top">
-                                <img src="{{ asset('assets/comp.png') }}" alt="UI/UX Icon" class="tugas-icon-img" onerror="this.onerror=null; this.src='{{ asset('assets/Container (9).png') }}';">
+                                <img src="{{ asset('assets/comp.webp') }}" alt="UI/UX Icon" class="tugas-icon-img" onerror="this.onerror=null; this.src='{{ asset('assets/Container (9).webp') }}';">
                                 <span class="tugas-badge badge-blue-white">Modul 4</span>
                             </div>
                             
@@ -312,7 +313,7 @@
                         <!-- ── CARD 2: MESIN CNC OTOMATISASI (AMBER GRADIENT) ── -->
                         <div class="tugas-card card-amber-gradient">
                             <div class="tugas-card-top">
-                                <img src="{{ asset('assets/Overlay copy.png') }}" alt="CNC Icon" class="tugas-icon-img" onerror="this.onerror=null; this.src='{{ asset('assets/Overlay.png') }}';">
+                                <img src="{{ asset('assets/Overlay copy.webp') }}" alt="CNC Icon" class="tugas-icon-img" onerror="this.onerror=null; this.src='{{ asset('assets/Overlay.webp') }}';">
                                 <span class="tugas-badge badge-amber-chip">Praktik TEFA</span>
                             </div>
                             
@@ -338,7 +339,7 @@
                         <!-- ── CARD 3: SMART IRIGASI SAWAH SMK (PURPLE GRADIENT) ── -->
                         <div class="tugas-card card-purple-gradient">
                             <div class="tugas-card-top">
-                                <img src="{{ asset('assets/Overlay copy 2.png') }}" alt="IoT Icon" class="tugas-icon-img" onerror="this.onerror=null; this.src='{{ asset('assets/Overlay (1).png') }}';">
+                                <img src="{{ asset('assets/Overlay copy 2.webp') }}" alt="IoT Icon" class="tugas-icon-img" onerror="this.onerror=null; this.src='{{ asset('assets/Overlay (1).webp') }}';">
                                 <span class="tugas-badge badge-purple-chip">IoT Lab</span>
                             </div>
                             
@@ -446,43 +447,9 @@
 
     </div>
 
-    <!-- Responsive Sidebar Toggle & Filter Buttons Script -->
+    <!-- Page-Specific Interactive Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const sidebar = document.querySelector('.sidebar');
-            const mainContent = document.querySelector('.main-content');
-            const toggleBtn = document.getElementById('sidebarToggleBtn');
-            const closeBtn = document.getElementById('sidebarCloseBtn');
-            const backdrop = document.getElementById('sidebarBackdrop');
-
-            function toggleSidebar() {
-                if (window.innerWidth <= 1024) {
-                    sidebar.classList.toggle('sidebar-mobile-open');
-                    backdrop.classList.toggle('active');
-                    document.body.classList.toggle('sidebar-no-scroll');
-                } else {
-                    sidebar.classList.toggle('sidebar-desktop-collapsed');
-                    mainContent.classList.toggle('content-expanded');
-                }
-            }
-
-            function closeSidebar() {
-                sidebar.classList.remove('sidebar-mobile-open');
-                backdrop.classList.remove('active');
-                document.body.classList.remove('sidebar-no-scroll');
-            }
-
-            if (toggleBtn) {
-                toggleBtn.addEventListener('click', toggleSidebar);
-            }
-
-            if (closeBtn) {
-                closeBtn.addEventListener('click', closeSidebar);
-            }
-
-            if (backdrop) {
-                backdrop.addEventListener('click', closeSidebar);
-            }
 
             // Tugas filter buttons toggle
             const btnMingguIni = document.getElementById('btnMingguIni');

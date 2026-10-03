@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <x-pwa />
     <title>Daftar Akun — TEFA-Hub Ekosistem Vokasi</title>
     <meta name="description" content="Buat akun baru siswa TEFA-Hub dan mulai perjalanan vokasi digital Anda.">
     
@@ -30,7 +31,7 @@
             <!-- Header Block -->
             <header class="card-header">
                 <div class="logo-badge" title="Logo TEFA-Hub">
-                    <img src="{{ asset('assets/logo.png') }}" alt="TEFA-Hub Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="{{ asset('assets/logo.webp') }}" alt="TEFA-Hub Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <svg class="logo-icon-svg" style="display:none;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="40" height="40" rx="10" fill="#2563EB"/>
                         <path d="M12 14H28M20 14V28" stroke="white" stroke-width="4" stroke-linecap="round"/>

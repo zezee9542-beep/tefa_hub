@@ -123,6 +123,8 @@ class AuthController extends Controller
      */
     public function showRegisterForm(): View|RedirectResponse
     {
+        abort_unless(config('security.allow_self_registration'), 404);
+
         if (Auth::check()) {
             return $this->redirectByRole();
         }
@@ -137,6 +139,8 @@ class AuthController extends Controller
      */
     public function register(Request $request): RedirectResponse
     {
+        abort_unless(config('security.allow_self_registration'), 404);
+
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:users,email'],

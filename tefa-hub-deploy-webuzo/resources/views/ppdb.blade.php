@@ -1993,6 +1993,11 @@
         window.addEventListener('DOMContentLoaded', function() {
             setTimeout(openPpdbPosterModal, 300);
         });
+
+        // Reset scroll and state when navigating back (bfcache)
+        window.addEventListener('pageshow', function() {
+            document.body.style.overflow = '';
+        });
     </script>
 
 </body>

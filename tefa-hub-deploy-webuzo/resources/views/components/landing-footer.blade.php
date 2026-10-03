@@ -1,0 +1,105 @@
+{{-- ═══════════════════════════════════════════
+     UNIFIED HIGH-PERFORMANCE LANDING FOOTER
+     ═══════════════════════════════════════════ --}}
+<footer class="site-footer" id="kontak" role="contentinfo">
+    <div class="wrap">
+
+        {{-- Main Footer Columns --}}
+        <div class="footer-grid">
+
+            {{-- Column 1: Brand & Socials --}}
+            <div class="footer-col footer-col-brand">
+                <a href="{{ url('/') }}" class="brand" aria-label="Tefa-Hub Beranda">
+                    <img src="{{ asset('assets/logo.webp') }}" alt="Logo Tefa-Hub" width="34" height="34">
+                    <span class="brand-name">Tefa<span>-Hub</span></span>
+                </a>
+
+                <p class="footer-bio">
+                    Platform ekosistem digital terpadu untuk pendidikan vokasi SMK: Akademik, Teaching Factory (BLUD), dan Bursa Kerja Khusus (BKK).
+                </p>
+
+                <div class="footer-socials">
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Tefa-Hub" title="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram Tefa-Hub" title="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            {{-- Column 2: Navigasi --}}
+            <div class="footer-col footer-col-nav">
+                <h3 class="footer-col-title">NAVIGASI</h3>
+                <ul class="footer-links">
+                    <li><a href="{{ url('/') }}">Beranda</a></li>
+                    <li><a href="{{ route('ppdb') }}">PPDB</a></li>
+                    <li><a href="{{ url('/#blud') }}">BLUD</a></li>
+                    <li><a href="{{ url('/#pkl') }}">PKL &amp; Industri</a></li>
+                    <li><a href="{{ route('bkk') }}">Career Center (BKK)</a></li>
+                </ul>
+            </div>
+
+            {{-- Column 3: Layanan TEFA --}}
+            <div class="footer-col footer-col-services">
+                <h3 class="footer-col-title">LAYANAN TEFA</h3>
+                <ul class="footer-links">
+                    <li><a href="{{ route('siswa.akademik') }}">E-Rapor Vokasi</a></li>
+                    <li><a href="{{ route('siswa.blud') }}">Katalog BLUD</a></li>
+                    <li><a href="{{ route('siswa.bkk') }}">Portal Karir BKK</a></li>
+                    <li><a href="{{ route('siswa.riwayat') }}">Riwayat Aktivitas</a></li>
+                    <li><a href="{{ route('siswa.tanya-tefa') }}">Tanya Tefa AI</a></li>
+                </ul>
+            </div>
+
+            {{-- Column 4: Informasi & Kontak --}}
+            <div class="footer-col footer-col-newsletter">
+                <h3 class="footer-col-title">INFORMASI &amp; KONTAK</h3>
+                <p class="newsletter-desc">
+                    Dapatkan kabar kegiatan sekolah, update BLUD, dan lowongan karir industri terbaru.
+                </p>
+                <div class="footer-contact-mini">
+                    <span class="contact-pill">Email: info@tefahub.sch.id</span>
+                    <span class="contact-pill">WA: +62 812-3456-7890</span>
+                </div>
+                <form action="#newsletter" method="POST" class="newsletter-box" onsubmit="event.preventDefault(); alert('Terima kasih telah berlangganan!');">
+                    @csrf
+                    <input
+                        type="email"
+                        placeholder="Alamat email Anda..."
+                        class="newsletter-input"
+                        required
+                        aria-label="Alamat email newsletter"
+                    >
+                    <button type="submit" class="newsletter-btn" aria-label="Kirim langganan">
+                        <span>Kirim</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px; height:14px;" aria-hidden="true">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        {{-- Bottom Bar: Copyright & Legal Links --}}
+        <div class="footer-bottom">
+            <p class="copyright">
+                &copy; {{ date('Y') }} TEFA-HUB. Seluruh Hak Cipta Dilindungi.
+            </p>
+            <div class="legal-links">
+                <a href="{{ url('/') }}">Kebijakan Privasi</a>
+                <span class="legal-divider">•</span>
+                <a href="{{ url('/') }}">Syarat &amp; Ketentuan</a>
+            </div>
+        </div>
+
+    </div>
+</footer>

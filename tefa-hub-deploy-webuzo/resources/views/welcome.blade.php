@@ -534,30 +534,48 @@
          SCRIPTS: SCROLL REVEALS & SEARCH (120HZ OPTIMIZED)
          ═══════════════════════════════════════════ --}}
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-
+    (function() {
         // ── 1. HIGH-PERFORMANCE 120HZ SCROLL REVEAL OBSERVER ────────
-        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-        
-        if ('IntersectionObserver' in window && revealElements.length) {
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-revealed');
-                        obs.unobserve(entry.target);
+        function initWelcomeReveal() {
+            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+            
+            if ('IntersectionObserver' in window && revealElements.length) {
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-revealed');
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.05,
+                    rootMargin: '0px 0px -20px 0px'
+                });
+
+                revealElements.forEach(el => {
+                    if (!el.classList.contains('is-revealed')) {
+                        observer.observe(el);
                     }
                 });
-            }, {
-                threshold: 0.06,
-                rootMargin: '0px 0px -30px 0px'
-            });
-
-            revealElements.forEach(el => observer.observe(el));
-        } else {
-            revealElements.forEach(el => el.classList.add('is-revealed'));
+            } else {
+                revealElements.forEach(el => el.classList.add('is-revealed'));
+            }
         }
 
-        // ── 2. HERO SEARCH BOX INTERACTIVE NAVIGATION ───────────────
+        document.addEventListener('DOMContentLoaded', initWelcomeReveal);
+        window.addEventListener('pageshow', function() {
+            document.body.style.overflow = '';
+            initWelcomeReveal();
+        });
+
+        // Fail-safe: ensure elements never remain invisible
+        setTimeout(function() {
+            document.querySelectorAll('.reveal:not(.is-revealed), .reveal-left:not(.is-revealed), .reveal-right:not(.is-revealed), .reveal-scale:not(.is-revealed)').forEach(function(el) {
+                el.classList.add('is-revealed');
+            });
+        }, 500);
+
+        document.addEventListener('DOMContentLoaded', function() {
         const heroSearchForm = document.getElementById('heroSearchForm');
         const heroSearchInput = document.getElementById('heroSearchInput');
         
@@ -599,6 +617,7 @@
             });
         }
     });
+    })();
     </script>
 </body>
 </html>

@@ -52,18 +52,21 @@ class AiNavigatorController extends Controller
      */
     private function resolveRoute(string $target): string
     {
-        $isSiswa = auth()->check() && (auth()->user()->role ?? '') === 'siswa';
+        $role = auth()->check() ? (auth()->user()->role ?? '') : '';
 
         return match ($target) {
-            'blud' => $isSiswa ? '/siswa/blud' : '/#blud',
-            'bkk' => $isSiswa ? '/siswa/bkk' : '/#bkk',
-            'akademik' => $isSiswa ? '/siswa/akademik' : '/#akademik',
-            'dashboard' => $isSiswa ? '/siswa/dashboard' : '/',
-            'profile' => $isSiswa ? '/siswa/dashboard' : '/login',
+            'blud' => $role === 'siswa' ? '/siswa/blud' : '/#blud',
+            'bkk' => $role === 'siswa' ? '/siswa/bkk' : '/bkk',
+            'pkl' => '/pkl',
+            'akademik' => $role === 'siswa' ? '/siswa/akademik' : '/login',
+            'dashboard' => $role === 'admin' ? '/admin/dashboard' : ($role === 'guru' ? '/guru/dashboard' : ($role === 'siswa' ? '/siswa/dashboard' : '/')),
+            'guru_dashboard' => $role === 'guru' ? '/guru/dashboard' : '/login',
+            'admin_dashboard' => $role === 'admin' ? '/admin/dashboard' : '/login',
+            'profile' => $role ? "/{$role}/dashboard" : '/login',
             'login' => '/login',
             'register' => '/register',
-            'ppdb' => '/#ppdb',
-            'tanya_tefa' => $isSiswa ? '/siswa/tanya-tefa' : '/#tanya-tefa',
+            'ppdb' => '/ppdb',
+            'tanya_tefa' => $role === 'siswa' ? '/siswa/tanya-tefa' : '/#tanya-tefa',
             default => '/',
         };
     }
@@ -76,6 +79,17 @@ class AiNavigatorController extends Controller
     private function buildIntents(): array
     {
         return [
+            // ─── PUSAT PPDB & PENDAFTARAN SISWA BARU ──────────────────────
+            [
+                'intents' => ['ppdb', 'daftar ppdb', 'pendaftaran ppdb', 'info ppdb', 'halaman ppdb', 'buka ppdb', 'link ppdb', 'ppdb smk', 'mau daftar', 'daftar sekolah', 'penerimaan siswa baru', 'ppdb online'],
+                'keywords' => ['ppdb', 'daftar', 'pendaftaran', 'calon siswa', 'murid baru', 'registrasi siswa', 'formulir'],
+                'category' => 'PPDB',
+                'answer' => "Pusat Pendaftaran Peserta Didik Baru (PPDB Online) TEFA-Hub telah dibuka!\n\nLayanan PPDB menyediakan:\n1. 📝 Pendaftaran Online & Pengisian Formulir Biodata\n2. 📄 Unggah & Verifikasi Berkas (KK, Akta, SKL/Rapor SMP, NISN)\n3. 🎯 Pilihan 5 Konsentrasi Keahlian / Jurusan Unggulan\n4. 💰 Program Potongan Biaya & Beasiswa Prestasi\n5. 📅 Jadwal & Alur Seleksi Transparan\n\nKlik tombol navigasi di bawah untuk langsung menuju ke halaman PPDB:",
+                'route' => 'ppdb',
+                'label' => 'Buka Halaman PPDB Online',
+                'suggestions' => ['Cara Daftar PPDB Online', 'Syarat Berkas PPDB', 'Jadwal PPDB', 'Pilihan Jurusan & Keahlian'],
+            ],
+
             // ─── NAVIGASI PERAN UTAMA (ROLE ORIENTATION) ────────────────────
             [
                 'intents' => ['saya orang tua', 'saya wali murid', 'role orang tua', 'info orang tua', 'saya calon siswa', 'calon murid baru', 'wali calon siswa'],
@@ -87,10 +101,19 @@ class AiNavigatorController extends Controller
                 'suggestions' => ['Cara Daftar PPDB Online', 'Syarat Berkas PPDB', 'Pilihan Jurusan & Keahlian', 'Biaya Sekolah & SPP'],
             ],
             [
+                'intents' => ['saya guru', 'saya guru pembimbing', 'role guru', 'pendidik', 'tenaga pendidik', 'guru kejuruan', 'pembimbing pkl'],
+                'keywords' => ['guru', 'guru pembimbing', 'pembimbing pkl', 'wali kelas', 'tenaga pendidik', 'portal guru'],
+                'category' => 'GURU',
+                'answer' => "Selamat datang Bapak/Ibu Guru Pembimbing & Tenaga Pendidik! 👨‍🏫\nPlatform TEFA-Hub siap mendukung efisiensi pengajaran & pembimbingan vokasi Anda:\n1. 📋 Monitoring & Penilaian Logbook Harian Siswa Magang/PKL.\n2. 🏭 Validasi & Kurasi Produk Siswa yang diajukan ke Unit BLUD.\n3. 🎓 Input & Sinkronisasi Nilai Rapor Vokasi dan Rekap Absensi.\n4. 📊 Pemantauan Kesiapan Kerja & Sertifikasi Siswa Bimbingan.",
+                'route' => 'guru_dashboard',
+                'label' => 'Masuk ke Portal Guru Pembimbing',
+                'suggestions' => ['Cara Validasi Produk BLUD', 'Monitoring Siswa PKL', 'Input Nilai Akademik', 'Bantuan Akun Guru'],
+            ],
+            [
                 'intents' => ['saya siswa aktif', 'role siswa', 'saya siswa smk', 'info siswa', 'murid aktif'],
                 'keywords' => ['siswa aktif', 'murid aktif', 'saya siswa', 'kelas 10', 'kelas 11', 'kelas 12'],
-                'category' => 'NAVIGASI',
-                'answer' => "Halo Siswa Hebat TEFA-Hub! 🎓\nSebagai siswa aktif, Anda memiliki akses penuh ke fitur vokasi terpadu:\n1. 🏭 BLUD: Publikasikan karya/proyek kejuruan & raih komisi hasil kerja.\n2. 💼 BKK: Cek rekomendasi magang/PKL & lamar lowongan kerja mitra.\n3. 🎓 Akademik: Pantau nilai rapor semester & rekap absensi harian.\n4. 🛡️ Akun: Edit profil biodata & reset password secara mandiri.",
+                'category' => 'SISWA',
+                'answer' => "Halo Siswa Hebat TEFA-Hub! 🎓\nSebagai siswa aktif, Anda memiliki akses penuh ke fitur vokasi terpadu:\n1. 🏭 BLUD: Publikasikan karya/proyek kejuruan & raih komisi hasil kerja.\n2. 💼 BKK & PKL: Cek rekomendasi magang/PKL & lamar lowongan kerja mitra.\n3. 🎓 Akademik: Pantau nilai rapor semester & rekap absensi harian.\n4. 🛡️ Akun: Edit profil biodata & kelola portofolio digital mandiri.",
                 'route' => 'dashboard',
                 'label' => 'Buka Dashboard Siswa',
                 'suggestions' => ['Cara Publikasi Produk BLUD', 'Cara Daftar Magang PKL', 'Cara Cek Nilai Rapor', 'Cara Edit Profil Siswa'],
@@ -105,13 +128,22 @@ class AiNavigatorController extends Controller
                 'suggestions' => ['Cara Melamar Lowongan BKK', 'Legalisir Ijazah Online', 'Kesiapan Kerja BKK', 'Sertifikasi BNSP LSP'],
             ],
             [
-                'intents' => ['saya mitra industri', 'saya perusahaan', 'role industri', 'mitra dudi', 'kerjasama sekolah', 'order jasa industri', 'rekrut alumni'],
-                'keywords' => ['mitra industri', 'perusahaan', 'dudi', 'kerjasama tefa', 'rekrut lulusan', 'pesan jasa industri', 'mou sekolah'],
+                'intents' => ['saya mitra industri', 'saya perusahaan', 'role industri', 'mitra dudi', 'kerjasama sekolah', 'order jasa industri', 'rekrut alumni', 'dudi'],
+                'keywords' => ['mitra industri', 'perusahaan', 'dudi', 'kerjasama tefa', 'rekrut lulusan', 'pesan jasa industri', 'mou sekolah', 'order jasa'],
                 'category' => 'INDUSTRI',
                 'answer' => "Selamat datang Bapak/Ibu Pimpinan Mitra Dunia Usaha & Industri (DUDI)! 🏢\nTEFA-Hub membuka kemitraan strategis dengan fasilitas unggulan:\n1. 🤝 Kerjasama Teaching Factory (TEFA): Pengerjaan pesanan manufaktur, software & multimedia berstandar industri.\n2. 👥 Rekrutmen Eksklusif: Rekrut lulusan kompeten bersertifikat BNSP melalui BKK.\n3. 🛠️ Program Prakerin / Magang Industri: Penempatan talenta vokasi terbaik.\n4. 📦 Pemesanan Produk/Jasa BLUD berbadan hukum resmi.",
-                'route' => 'blud',
-                'label' => 'Kemitraan & Katalog BLUD',
+                'route' => 'pkl',
+                'label' => 'Eksplorasi Mitra & Lowongan PKL',
                 'suggestions' => ['Kerjasama Teaching Factory', 'Rekrutmen Tenaga Kerja BKK', 'Cara Pemesanan Produk BLUD', 'Hubungi Hubungan Industri'],
+            ],
+            [
+                'intents' => ['saya admin', 'role admin', 'pengelola sistem', 'administrator', 'operator sekolah', 'petugas tu'],
+                'keywords' => ['admin', 'administrator', 'operator', 'petugas tu', 'kelola sistem', 'monitoring server'],
+                'category' => 'ADMIN',
+                'answer' => "Selamat bertugas Administrator & Pengelola Sistem! 🏛️\nModul pengelolaan operasional TEFA-Hub tersedia terpadu:\n1. 👥 Manajemen Pengguna: Verifikasi akun siswa, guru, dan mitra industri.\n2. 📈 Monitoring Sistem: Pantau metrik server, beban CPU/RAM, dan log keamanan real-time.\n3. 📄 Layanan TU: Pengelolaan surat keterangan, dispensasi magang, dan reset password mandiri.\n4. 🗂️ Sinkronisasi Data PPDB & E-Rapor Vokasi.",
+                'route' => 'admin_dashboard',
+                'label' => 'Buka Dashboard Admin',
+                'suggestions' => ['Monitoring Sistem & Metrik', 'Reset Password Akun', 'Manajemen Pengguna', 'Jam Layanan TU'],
             ],
             [
                 'intents' => ['saya tamu', 'layanan umum', 'tata usaha sekolah', 'keperluan tu', 'urus administrasi'],
@@ -445,48 +477,48 @@ class AiNavigatorController extends Controller
             'answer' => "Halo, {$userName}! 👋 Saya **Tanya Tefa AI Navigator**.\n\nSaya hadir untuk memandu Anda berdasarkan peran dan kebutuhan Anda hari ini. Silakan pilih peran/kategori Anda untuk panduan langsung tanpa antre bertanya ke admin sekolah:",
             'roles' => [
                 [
+                    'icon' => '🏢',
+                    'role_key' => 'mitra_industri',
+                    'title' => 'Mitra Industri / Perusahaan',
+                    'desc' => 'Kerjasama Teaching Factory (TEFA), PKL & rekrutmen alumni',
+                    'prompt' => 'Saya Mitra Industri / Perusahaan',
+                    'badge' => 'Mitra Industri',
+                    'color' => '#0284C7',
+                ],
+                [
                     'icon' => '👨‍👩‍👧',
                     'role_key' => 'ortu_ppdb',
-                    'title' => 'Orang Tua / Calon Siswa',
+                    'title' => 'Orang Tua & Calon Siswa',
                     'desc' => 'Info PPDB Online, syarat berkas, pilihan jurusan & biaya',
                     'prompt' => 'Saya Orang Tua / Calon Siswa (Info PPDB)',
                     'badge' => 'PPDB Online',
                     'color' => '#E07B00',
                 ],
                 [
+                    'icon' => '👨‍🏫',
+                    'role_key' => 'guru_pembimbing',
+                    'title' => 'Guru Pembimbing & Pendidik',
+                    'desc' => 'Monitoring siswa PKL, kurasi karya BLUD & input nilai rapor',
+                    'prompt' => 'Saya Guru Pembimbing / Pendidik',
+                    'badge' => 'Guru Pembimbing',
+                    'color' => '#8B5CF6',
+                ],
+                [
                     'icon' => '🎓',
                     'role_key' => 'siswa_aktif',
-                    'title' => 'Siswa Aktif SMK',
-                    'desc' => 'Magang/PKL, publikasi produk BLUD, komisi & nilai rapor',
+                    'title' => 'Siswa Aktif & Alumni',
+                    'desc' => 'Magang/PKL, publikasi karya BLUD, bursa kerja & rapor',
                     'prompt' => 'Saya Siswa Aktif SMK',
-                    'badge' => 'Siswa Aktif',
+                    'badge' => 'Siswa & Alumni',
                     'color' => '#004AC6',
                 ],
                 [
-                    'icon' => '💼',
-                    'role_key' => 'alumni_karir',
-                    'title' => 'Alumni & Pencari Kerja',
-                    'desc' => 'Lowongan kerja BKK mitra industri & legalisir ijazah online',
-                    'prompt' => 'Saya Alumni / Pencari Kerja',
-                    'badge' => 'BKK & Karir',
-                    'color' => '#712AE2',
-                ],
-                [
-                    'icon' => '🏢',
-                    'role_key' => 'mitra_industri',
-                    'title' => 'Mitra Industri / Perusahaan',
-                    'desc' => 'Kerjasama Teaching Factory (TEFA) & rekrutmen alumni',
-                    'prompt' => 'Saya Mitra Industri / Perusahaan',
-                    'badge' => 'Mitra Industri',
-                    'color' => '#0284C7',
-                ],
-                [
                     'icon' => '🏛️',
-                    'role_key' => 'layanan_tu',
-                    'title' => 'Tamu / Layanan Tata Usaha',
-                    'desc' => 'Jam operasional TU, surat keterangan & reset akun',
-                    'prompt' => 'Saya Butuh Layanan Tata Usaha (TU)',
-                    'badge' => 'Layanan TU',
+                    'role_key' => 'admin_tu',
+                    'title' => 'Admin & Tata Usaha (TU)',
+                    'desc' => 'Layanan surat menyurat, reset akun mandiri & jam operasional',
+                    'prompt' => 'Saya Admin / Pengelola Sistem',
+                    'badge' => 'Admin & TU',
                     'color' => '#16A34A',
                 ],
             ],
@@ -544,7 +576,7 @@ class AiNavigatorController extends Controller
         ])->validate();
 
         $userMessage = trim((string) $request->input('message'));
-        $cacheKey = 'ai_nav_v3_'.md5(mb_strtolower($userMessage));
+        $cacheKey = 'ai_nav_v5_'.md5(mb_strtolower($userMessage));
 
         // Serve cached response if available
         if (Cache::has($cacheKey)) {

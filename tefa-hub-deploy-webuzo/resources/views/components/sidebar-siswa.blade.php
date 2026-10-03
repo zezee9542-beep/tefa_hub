@@ -4,7 +4,7 @@
     <!-- Brand Logo & Title Header -->
     <div class="sidebar-header-top">
         <a href="{{ route('home') }}" class="sidebar-brand">
-            <img src="{{ asset('assets/logo.png') }}" alt="Tefa-Hub Logo" class="sidebar-logo" onerror="this.onerror=null; this.src='{{ asset('assets/1.png') }}';">
+            <img src="{{ asset('assets/logo.webp') }}" alt="Tefa-Hub Logo" class="sidebar-logo" onerror="this.onerror=null; this.src='{{ asset('assets/1.webp') }}';">
             <div class="brand-text-group">
                 <span class="brand-title">Tefa-Hub</span>
                 <span class="brand-subtitle">DIGITAL VOKASI</span>
@@ -76,3 +76,47 @@
         </form>
     </div>
 </aside>
+
+<script>
+(function() {
+    if (window.__siswaSidebarInit) return;
+    window.__siswaSidebarInit = true;
+
+    function initSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
+        const toggleBtn = document.getElementById('sidebarToggleBtn');
+        const closeBtn = document.getElementById('sidebarCloseBtn');
+        const backdrop = document.getElementById('sidebarBackdrop');
+
+        function toggleSidebar() {
+            if (!sidebar) return;
+            if (window.innerWidth <= 1024) {
+                sidebar.classList.toggle('sidebar-mobile-open');
+                if (backdrop) backdrop.classList.toggle('active');
+                document.body.classList.toggle('sidebar-no-scroll');
+            } else {
+                sidebar.classList.toggle('sidebar-desktop-collapsed');
+                if (mainContent) mainContent.classList.toggle('content-expanded');
+            }
+        }
+
+        function closeSidebar() {
+            if (!sidebar) return;
+            sidebar.classList.remove('sidebar-mobile-open');
+            if (backdrop) backdrop.classList.remove('active');
+            document.body.classList.remove('sidebar-no-scroll');
+        }
+
+        if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+        if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+        if (backdrop) backdrop.addEventListener('click', closeSidebar);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSidebar);
+    } else {
+        initSidebar();
+    }
+})();
+</script>
