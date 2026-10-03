@@ -17,6 +17,10 @@ Route::get('/bkk', function () {
     return view('bkk');
 })->name('bkk');
 
+Route::get('/pkl', function () {
+    return view('pkl');
+})->name('pkl');
+
 // ─── Auth Routes (hanya bisa diakses saat belum login) ─────────────────────
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

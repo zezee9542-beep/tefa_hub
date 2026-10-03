@@ -19,7 +19,7 @@
                     <a href="{{ url('/#blud') }}" class="{{ $active === 'blud' ? 'active-nav-link' : '' }}">BLUD</a>
                 </li>
                 <li>
-                    <a href="{{ url('/#pkl') }}" class="{{ $active === 'pkl' ? 'active-nav-link' : '' }}">PKL &amp; Industri</a>
+                    <a href="{{ route('pkl') }}" class="{{ $active === 'pkl' ? 'active-nav-link' : '' }}">PKL &amp; Industri</a>
                 </li>
                 <li>
                     <a href="{{ route('bkk') }}" class="{{ $active === 'bkk' ? 'active-nav-link' : '' }}">Career Center (BKK)</a>
@@ -59,7 +59,7 @@
     <ul class="mobile-nav-links">
         <li><a href="{{ url('/#akademik') }}" class="mobile-nav-link {{ $active === 'akademik' ? 'active' : '' }}">Akademik</a></li>
         <li><a href="{{ url('/#blud') }}" class="mobile-nav-link {{ $active === 'blud' ? 'active' : '' }}">BLUD</a></li>
-        <li><a href="{{ url('/#pkl') }}" class="mobile-nav-link {{ $active === 'pkl' ? 'active' : '' }}">PKL &amp; Industri</a></li>
+        <li><a href="{{ route('pkl') }}" class="mobile-nav-link {{ $active === 'pkl' ? 'active' : '' }}">PKL &amp; Industri</a></li>
         <li><a href="{{ route('bkk') }}" class="mobile-nav-link {{ $active === 'bkk' ? 'active' : '' }}">Career Center (BKK)</a></li>
     </ul>
     <div class="mobile-nav-footer">

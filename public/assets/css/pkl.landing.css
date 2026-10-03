@@ -1,0 +1,616 @@
+/* ============================================================
+   TEFA-HUB PKL & INDUSTRI LANDING PAGE CSS
+   Typography: Plus Jakarta Sans | 1216x444 Hero Card Specification
+   ============================================================ */
+
+/* ─── Hero Section Container ──────────────────────────────── */
+.pkl-hero-section {
+    position: relative;
+    padding: 36px 0 60px;
+    background: #ffffff;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow: hidden;
+}
+
+/* Ambient glow background accents */
+.pkl-bg-glow {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(60px);
+    opacity: 0.12;
+}
+.pkl-glow-1 {
+    width: 380px;
+    height: 380px;
+    background: #2563eb;
+    top: -50px;
+    right: 5%;
+}
+.pkl-glow-2 {
+    width: 320px;
+    height: 320px;
+    background: #60a5fa;
+    bottom: 10px;
+    left: 8%;
+}
+
+/* ─── Main PKL Hero Card (Balanced & Well-Proportioned) ─── */
+.pkl-banner-card {
+    position: relative;
+    width: 100%;
+    max-width: 1140px;
+    height: 380px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 28px;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+    box-shadow: 0 16px 36px -10px rgba(37, 99, 235, 0.08), 0 3px 12px rgba(15, 23, 42, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+/* ── Left Content (Text, Badge, Buttons) ──────────────────── */
+.pkl-card-content {
+    position: relative;
+    z-index: 4;
+    padding: 0 0 0 44px;
+    width: 52%;
+    max-width: 540px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+/* 1. Badge Pill ("PUSAT KEMITRAAN VOKASI & PENYALURAN KERJA") */
+.pkl-bubble-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #dbe4fe;
+    border: 1px solid rgba(199, 210, 254, 0.8);
+    border-radius: 9999px;
+    padding: 4px 12px 4px 9px;
+    margin-bottom: 14px;
+    box-sizing: border-box;
+}
+
+.pkl-bubble-badge svg {
+    width: 13px;
+    height: 13px;
+    color: #2563eb;
+    flex-shrink: 0;
+}
+
+.pkl-bubble-badge span {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #1e293b;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* 2. Heading Title */
+.pkl-card-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.18;
+    letter-spacing: -0.03em;
+    color: #0f172a;
+    margin: 0 0 10px 0;
+}
+
+/* 3. Description */
+.pkl-card-desc {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: #475569;
+    max-width: 470px;
+    margin: 0 0 20px 0;
+}
+
+/* 4. Buttons Row */
+.pkl-card-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pkl-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 40px;
+    padding: 0 18px;
+    border-radius: 9999px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    white-space: nowrap;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pkl-btn svg {
+    width: 15px;
+    height: 15px;
+    stroke-width: 2.2;
+    flex-shrink: 0;
+}
+
+/* Primary Button: #2563EB */
+.pkl-btn-primary {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.28);
+}
+
+.pkl-btn-primary:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.38);
+    color: #ffffff;
+}
+
+/* Secondary Button: #EEF2FF */
+.pkl-btn-secondary {
+    background-color: #eef2ff;
+    color: #0f172a;
+    border: 1px solid rgba(219, 234, 254, 0.85);
+}
+
+.pkl-btn-secondary svg {
+    color: #2563eb;
+}
+
+.pkl-btn-secondary:hover {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* ── Right Visual (Artwork Background + Student Illustration) ── */
+.pkl-card-visual {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 55%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Layer 1: Background Vector/Architectural Scenery Artwork (image copy.png) */
+.pkl-bg-artwork {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: right center;
+    opacity: 0.95;
+    z-index: 1;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Layer 2: Main Student & Floating Cards (image copy 4.png) */
+.pkl-illustration-wrap {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+.pkl-hero-img {
+    height: 98%;
+    max-height: 375px;
+    width: auto;
+    object-fit: contain;
+    object-position: bottom right;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+    filter: drop-shadow(0 10px 24px rgba(15, 23, 42, 0.08));
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pkl-banner-card:hover .pkl-hero-img {
+    transform: scale(1.015) translateY(-3px);
+}
+
+/* ─── Filter & Search Bar Section ─────────────────────────── */
+.pkl-search-section {
+    padding: 40px 0 20px;
+    background: #fafcff;
+    border-top: 1px solid #f1f5f9;
+}
+
+.pkl-search-bar {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 10px 14px;
+    display: grid;
+    grid-template-columns: 1.8fr 1.2fr 1fr auto;
+    gap: 12px;
+    align-items: center;
+    box-shadow: 0 8px 30px -6px rgba(15, 23, 42, 0.05);
+}
+
+.pkl-input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+    border-right: 1px solid #f1f5f9;
+}
+.pkl-input-group:last-of-type { border-right: none; }
+
+.pkl-input-group svg {
+    color: #94a3b8;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.pkl-search-input,
+.pkl-select-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 13.5px;
+    color: #0f172a;
+    background: transparent;
+}
+.pkl-search-input::placeholder { color: #94a3b8; }
+
+.pkl-btn-cari {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 11px 24px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+.pkl-btn-cari:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+/* ─── Opportunity Grid Section ────────────────────────────── */
+.pkl-listings-section {
+    padding: 40px 0 80px;
+    background: #fafcff;
+}
+
+.pkl-section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.pkl-section-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+}
+
+.pkl-section-sub {
+    font-size: 14px;
+    color: #64748b;
+}
+
+.pkl-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.pkl-item-card {
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+}
+
+.pkl-item-card:hover {
+    transform: translateY(-5px);
+    border-color: #bfdbfe;
+    box-shadow: 0 16px 36px -6px rgba(37, 99, 235, 0.12);
+}
+
+.pkl-item-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.pkl-company-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #f8fafc;
+    border: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+}
+.pkl-company-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.pkl-badge-type {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.pkl-badge-type.pkl { background: #eff6ff; color: #2563eb; }
+.pkl-badge-type.magang { background: #fdf4ff; color: #c026d3; }
+.pkl-badge-type.rekrutmen { background: #ecfdf5; color: #059669; }
+
+.pkl-item-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+    line-height: 1.35;
+}
+
+.pkl-item-company {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2563eb;
+    margin-bottom: 12px;
+}
+
+.pkl-item-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.pkl-meta-tag {
+    font-size: 11.5px;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 3px 8px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pkl-item-footer {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pkl-item-quota {
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.pkl-item-btn {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #2563eb;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease;
+}
+.pkl-item-btn:hover { color: #1d4ed8; }
+
+/* ─── Responsive Breakpoints ──────────────────────────────── */
+@media (max-width: 1240px) {
+    .pkl-banner-card {
+        max-width: calc(100vw - 36px);
+    }
+}
+
+@media (max-width: 1024px) {
+    .pkl-banner-card {
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+        border-radius: 26px;
+    }
+    .pkl-card-content {
+        width: 100%;
+        max-width: 100%;
+        padding: 36px 28px 20px;
+        align-items: center;
+        text-align: center;
+    }
+    .pkl-card-desc {
+        margin: 0 auto 24px;
+    }
+    .pkl-card-actions {
+        justify-content: center;
+    }
+    .pkl-card-visual {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: 360px;
+        justify-content: center;
+    }
+    .pkl-bg-artwork {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center bottom;
+    }
+    .pkl-illustration-wrap {
+        width: 100%;
+        justify-content: center;
+        padding-right: 0;
+    }
+    .pkl-hero-img {
+        max-height: 360px;
+        object-position: bottom center;
+    }
+    .pkl-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .pkl-search-bar {
+        grid-template-columns: 1fr 1fr;
+    }
+    .pkl-btn-cari {
+        grid-column: span 2;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .pkl-hero-section { padding: 18px 0 36px; }
+    .pkl-banner-card {
+        border-radius: 22px;
+        box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.08), 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    .pkl-card-content {
+        padding: 24px 16px 14px;
+    }
+    .pkl-bubble-badge {
+        padding: 4px 10px;
+        margin-bottom: 12px;
+    }
+    .pkl-bubble-badge span {
+        font-size: 9.5px;
+    }
+    .pkl-card-title {
+        font-size: 22px;
+        line-height: 1.22;
+        margin-bottom: 8px;
+    }
+    .pkl-card-desc {
+        font-size: 12.5px;
+        line-height: 1.5;
+        margin: 0 auto 16px;
+    }
+    .pkl-card-actions {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .pkl-btn {
+        width: 100%;
+        font-size: 12.5px;
+        height: 38px;
+        padding: 0 16px;
+    }
+    .pkl-card-visual {
+        position: relative;
+        width: 100%;
+        height: 230px;
+        min-height: 230px;
+        margin-top: 4px;
+    }
+    .pkl-hero-img {
+        max-height: 225px;
+    }
+    .pkl-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .pkl-search-bar {
+        grid-template-columns: 1fr;
+    }
+    .pkl-input-group {
+        border-right: none;
+        border-bottom: 1px solid #f1f5f9;
+        padding-bottom: 8px;
+    }
+    .pkl-btn-cari {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .pkl-banner-card {
+        border-radius: 18px;
+    }
+    .pkl-card-content {
+        padding: 20px 14px 12px;
+    }
+    .pkl-bubble-badge {
+        padding: 3px 9px;
+        margin-bottom: 10px;
+    }
+    .pkl-bubble-badge span {
+        font-size: 8.5px;
+    }
+    .pkl-card-title {
+        font-size: 19px;
+    }
+    .pkl-card-desc {
+        font-size: 11.5px;
+    }
+    .pkl-card-visual {
+        height: 200px;
+        min-height: 200px;
+    }
+    .pkl-hero-img {
+        max-height: 195px;
+    }
+}

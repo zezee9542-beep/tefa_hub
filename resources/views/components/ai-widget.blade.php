@@ -18,10 +18,6 @@
         <img src="{{ asset('assets/ai.png') }}" alt="Asisten Tanya Tefa AI" class="ai-trigger-img" width="42" height="42" loading="lazy">
         <span class="ai-online-dot"></span>
     </div>
-    <div class="ai-trigger-copy">
-        <strong>Tanya Tefa AI</strong>
-        <small>{{ $subtitle }}</small>
-    </div>
     <span class="ai-trigger-badge" id="ai-notif-badge" style="display:none;"></span>
 </button>
 

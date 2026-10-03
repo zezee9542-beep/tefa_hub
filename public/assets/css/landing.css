@@ -1624,11 +1624,13 @@ body.onboarding-active {
     z-index: 9990;
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
     background: #ffffff;
     border: 1.5px solid rgba(226, 232, 240, 0.95);
-    border-radius: 9999px;
-    padding: 6px 18px 6px 6px;
+    border-radius: 50%;
+    padding: 0;
     cursor: pointer;
     box-shadow: 0 10px 30px -4px rgba(37, 99, 235, 0.28), 0 4px 12px rgba(15, 23, 42, 0.08);
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1660,7 +1662,6 @@ body.ai-panel-open .ai-trigger {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 .ai-trigger-img {
     width: 44px;
@@ -1685,21 +1686,7 @@ body.ai-panel-open .ai-trigger {
 }
 
 .ai-trigger-copy {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-.ai-trigger-copy strong {
-    font-size: 14px;
-    font-weight: 800;
-    color: #0f172a;
-    line-height: 1.2;
-}
-.ai-trigger-copy small {
-    font-size: 11px;
-    font-weight: 600;
-    color: #2563eb;
-    margin-top: 2px;
+    display: none;
 }
 
 /* Chat Panel Modal */
