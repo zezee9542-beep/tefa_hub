@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-pwa />
-    <x-welcome-voice-greeting />
     <meta name="description" content="Tefa-Hub — Satu ekosistem digital terpadu untuk akademik, BLUD teaching factory, dan career center siswa SMK.">
     <title>Tefa-Hub | Satu Ekosistem Digital untuk Seluruh Perjalanan Siswa</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
@@ -60,7 +59,7 @@
                         <input
                             type="text" name="q" id="heroSearchInput"
                             class="s-input"
-                            placeholder="Cari info jurusan, lowongan PKL/BKK, produk BLUD..."
+                            placeholder="Cari info jurusan, PKL, BKK, atau BLUD..."
                             aria-label="Cari informasi"
                             autocomplete="off"
                         >
@@ -167,8 +166,8 @@
                 {{-- Floating 2 feature cards (Centered, Equal Size, Original Style) --}}
                 @php
                     $heroCards = [
-                        ['icon' => 'card.webp', 'title' => 'BKK & Mitra Industri',  'desc' => 'Akses lowongan kerja & magang terverifikasi dari mitra DUDI resmi.',      'href' => route('bkk')],
-                        ['icon' => 'book.webp', 'title' => 'PPDB Vokasi Digital',  'desc' => 'Daftar calon peserta didik baru terakreditasi A secara instan & transparan.',       'href' => route('ppdb')],
+                        ['icon' => 'card.webp', 'title' => 'BKK & Mitra Industri',  'desc' => 'Akses lowongan kerja & magang mitra industri resmi.',      'href' => route('bkk')],
+                        ['icon' => 'book.webp', 'title' => 'PPDB Vokasi Digital',  'desc' => 'Daftar calon peserta didik baru terakreditasi A secara instan.',       'href' => route('ppdb')],
                     ];
                 @endphp
 

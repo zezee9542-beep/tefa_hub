@@ -120,9 +120,40 @@
     const GREET_URL  = '{{ route("ai.greet") }}';
     const CHAT_URL   = '{{ route("ai.chat") }}';
     const CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]')?.content || '';
+    const AI_GREETING_KEY = 'tefa-hub-ai-greeting-played-v1';
 
     let panel, backdrop, toggleBtn, closeBtn, conversation, form, field, submitBtn, quickActions, badge, greetCard, initLoading;
     let isOpen = false, isBusy = false, greeted = false;
+    let hasPlayedAiGreeting = sessionStorage.getItem(AI_GREETING_KEY) === 'played';
+
+    function speakAiGreeting() {
+        if (hasPlayedAiGreeting || !('speechSynthesis' in window)) {
+            return;
+        }
+
+        hasPlayedAiGreeting = true;
+        sessionStorage.setItem(AI_GREETING_KEY, 'played');
+
+        const voices = window.speechSynthesis.getVoices();
+        const indonesianVoices = voices.filter((voice) => voice.lang.toLowerCase().startsWith('id'));
+        const voice = indonesianVoices.find((availableVoice) => /female|woman|perempuan/i.test(availableVoice.name))
+            ?? indonesianVoices.find((availableVoice) => /google|microsoft/i.test(availableVoice.name))
+            ?? indonesianVoices[0]
+            ?? voices.find((availableVoice) => availableVoice.lang.toLowerCase().startsWith('id'));
+        const utterance = new SpeechSynthesisUtterance('Halo, saya adalah Asisten TefaHub. Adakah yang bisa saya bantu?');
+
+        utterance.lang = 'id-ID';
+        utterance.rate = 0.88;
+        utterance.pitch = 1.08;
+        utterance.volume = 0.9;
+
+        if (voice) {
+            utterance.voice = voice;
+        }
+
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(utterance);
+    }
 
     function initAiWidget() {
         panel        = document.getElementById('ai-navigator-panel');
@@ -142,6 +173,7 @@
 
         function openPanel() {
             isOpen = true;
+            speakAiGreeting();
             panel.classList.add('is-open');
             panel.setAttribute('aria-hidden', 'false');
             if (backdrop) backdrop.classList.add('is-open');
