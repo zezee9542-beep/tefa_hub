@@ -58,14 +58,14 @@ class AiNavigatorController extends Controller
             'blud' => $role === 'siswa' ? '/siswa/blud' : '/#blud',
             'bkk' => $role === 'siswa' ? '/siswa/bkk' : '/bkk',
             'pkl' => '/pkl',
-            'akademik' => $role === 'siswa' ? '/siswa/akademik' : '/#ppdb',
+            'akademik' => $role === 'siswa' ? '/siswa/akademik' : '/login',
             'dashboard' => $role === 'admin' ? '/admin/dashboard' : ($role === 'guru' ? '/guru/dashboard' : ($role === 'siswa' ? '/siswa/dashboard' : '/')),
             'guru_dashboard' => $role === 'guru' ? '/guru/dashboard' : '/login',
             'admin_dashboard' => $role === 'admin' ? '/admin/dashboard' : '/login',
             'profile' => $role ? "/{$role}/dashboard" : '/login',
             'login' => '/login',
             'register' => '/register',
-            'ppdb' => route('ppdb', absolute: false),
+            'ppdb' => '/ppdb',
             'tanya_tefa' => $role === 'siswa' ? '/siswa/tanya-tefa' : '/#tanya-tefa',
             default => '/',
         };
@@ -79,10 +79,21 @@ class AiNavigatorController extends Controller
     private function buildIntents(): array
     {
         return [
+            // ─── PUSAT PPDB & PENDAFTARAN SISWA BARU ──────────────────────
+            [
+                'intents' => ['ppdb', 'daftar ppdb', 'pendaftaran ppdb', 'info ppdb', 'halaman ppdb', 'buka ppdb', 'link ppdb', 'ppdb smk', 'mau daftar', 'daftar sekolah', 'penerimaan siswa baru', 'ppdb online'],
+                'keywords' => ['ppdb', 'daftar', 'pendaftaran', 'calon siswa', 'murid baru', 'registrasi siswa', 'formulir'],
+                'category' => 'PPDB',
+                'answer' => "Pusat Pendaftaran Peserta Didik Baru (PPDB Online) TEFA-Hub telah dibuka!\n\nLayanan PPDB menyediakan:\n1. 📝 Pendaftaran Online & Pengisian Formulir Biodata\n2. 📄 Unggah & Verifikasi Berkas (KK, Akta, SKL/Rapor SMP, NISN)\n3. 🎯 Pilihan 5 Konsentrasi Keahlian / Jurusan Unggulan\n4. 💰 Program Potongan Biaya & Beasiswa Prestasi\n5. 📅 Jadwal & Alur Seleksi Transparan\n\nKlik tombol navigasi di bawah untuk langsung menuju ke halaman PPDB:",
+                'route' => 'ppdb',
+                'label' => 'Buka Halaman PPDB Online',
+                'suggestions' => ['Cara Daftar PPDB Online', 'Syarat Berkas PPDB', 'Jadwal PPDB', 'Pilihan Jurusan & Keahlian'],
+            ],
+
             // ─── NAVIGASI PERAN UTAMA (ROLE ORIENTATION) ────────────────────
             [
-                'intents' => ['saya orang tua', 'saya wali murid', 'role orang tua', 'info orang tua', 'saya calon siswa', 'calon murid baru', 'wali calon siswa', 'info ppdb'],
-                'keywords' => ['orang tua', 'wali murid', 'calon siswa', 'wali calon', 'ortu', 'daftar anak', 'ppdb'],
+                'intents' => ['saya orang tua', 'saya wali murid', 'role orang tua', 'info orang tua', 'saya calon siswa', 'calon murid baru', 'wali calon siswa'],
+                'keywords' => ['orang tua', 'wali murid', 'calon siswa', 'wali calon', 'ortu', 'daftar anak'],
                 'category' => 'PPDB',
                 'answer' => "Selamat datang Bapak/Ibu Orang Tua & Calon Siswa! 👋\nSaya siap memandu Anda mengenai pendaftaran dan informasi sekolah:\n1. 📝 Pendaftaran PPDB Online & Alur Seleksi\n2. 📋 Persyaratan Berkas Dokumen Masuk\n3. 🎯 Pilihan Konsentrasi Keahlian / Jurusan SMK\n4. 💰 Informasi Bebas Biaya & Fasilitas Sekolah\n\nSilakan pilih topik panduan di bawah ini untuk melihat rincian lengkapnya:",
                 'route' => 'ppdb',
@@ -565,7 +576,7 @@ class AiNavigatorController extends Controller
         ])->validate();
 
         $userMessage = trim((string) $request->input('message'));
-        $cacheKey = 'ai_nav_v4_'.md5(mb_strtolower($userMessage));
+        $cacheKey = 'ai_nav_v5_'.md5(mb_strtolower($userMessage));
 
         // Serve cached response if available
         if (Cache::has($cacheKey)) {

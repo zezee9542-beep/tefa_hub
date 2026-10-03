@@ -1,5 +1,5 @@
 {{-- ═══════════════════════════════════════════
-     PREMIUM TEFA-HUB ONBOARDING SPLASH ANIMATION
+     PREMIUM TEFA-HUB ONBOARDING SPLASH ANIMATION (ONCE PER SESSION)
      ═══════════════════════════════════════════ --}}
 <div id="tefaOnboarding" class="onboarding-overlay" role="presentation" aria-hidden="false">
     <div class="onboarding-container">
@@ -21,12 +21,31 @@
 <script>
 (function() {
     'use strict';
-    const onboardingEl = document.getElementById('tefaOnboarding');
-    const logoCircle   = document.getElementById('onboardingLogoCircle');
-    const logoImg      = document.getElementById('onboardingLogoImg');
-    const brandReveal  = document.getElementById('onboardingBrandReveal');
+    const ONBOARDING_KEY = 'tefa_hub_onboarding_seen';
+    const onboardingEl   = document.getElementById('tefaOnboarding');
+    const logoCircle     = document.getElementById('onboardingLogoCircle');
+    const logoImg        = document.getElementById('onboardingLogoImg');
+    const brandReveal    = document.getElementById('onboardingBrandReveal');
 
     if (!onboardingEl) return;
+
+    // Check if user has already seen onboarding in this session
+    try {
+        if (sessionStorage.getItem(ONBOARDING_KEY)) {
+            onboardingEl.classList.add('is-done');
+            onboardingEl.style.display = 'none';
+            onboardingEl.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('onboarding-active');
+            return;
+        }
+    } catch (e) {
+        // Fallback if sessionStorage is disabled
+    }
+
+    // Mark as seen immediately so subsequent navigations don't show it again
+    try {
+        sessionStorage.setItem(ONBOARDING_KEY, '1');
+    } catch (e) {}
 
     // Lock body scroll during onboarding sequence
     document.body.classList.add('onboarding-active');
@@ -61,6 +80,7 @@
             // Remove from interaction tree after smooth fade-out
             setTimeout(function() {
                 onboardingEl.classList.add('is-done');
+                onboardingEl.style.display = 'none';
                 onboardingEl.setAttribute('aria-hidden', 'true');
             }, 850);
         }, 4750);

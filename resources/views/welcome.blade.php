@@ -315,7 +315,7 @@
     {{-- ═══════════════════════════════════════════
          SERVICES / 4 CARDS SECTION
          ═══════════════════════════════════════════ --}}
-    <section class="services-section" id="ppdb">
+    <section class="services-section" id="layanan">
         <div class="wrap">
 
             <div class="services-header reveal">
@@ -331,14 +331,14 @@
                     [
                         'icon' => '1.webp',
                         'title' => 'Penerimaan Peserta Didik Baru',
-                        'desc' => 'Dokumentasi lengkap kegiatan industri. Memudahkan pengisian Logbook Harian dan pemantauan real-time oleh sekolah dan mitra industri.',
-                        'link' => '#ppdb',
+                        'desc' => 'Pusat informasi dan pendaftaran calon peserta didik baru SMK secara online, transparan, dan terintegrasi.',
+                        'link' => route('ppdb'),
                     ],
                     [
                         'icon' => '2.webp',
                         'title' => 'Akademik Terintegrasi',
                         'desc' => 'Pusat pengelolaan pembelajaran digital mulai dari materi, tugas, hingga transparansi nilai dan Rapor Digital dalam satu akses.',
-                        'link' => '#akademik',
+                        'link' => route('siswa.akademik'),
                     ],
                     [
                         'icon' => '3.webp',
@@ -393,16 +393,15 @@
                     ke pasar luas secara profesional.
                 </p>
 
-                <a href="#produk" class="showcase-btn">
+                <a href="{{ route('bkk') }}" class="showcase-btn">
                     Lihat Selengkapnya
                 </a>
             </div>
 
-            {{-- Right: Cards (Mobile: Single Image, Desktop: 2 Layered Cards) --}}
+            {{-- Right: Visual Mockup matching BKK page --}}
             <div class="showcase-visual reveal-right delay-1">
                 <div class="showcase-cards">
-                    <img src="{{ asset('assets/card2.webp') }}" alt="Card Jasa Layanan" class="showcase-card showcase-card-1">
-                    <img src="{{ asset('assets/card1.webp') }}" alt="Card Teaching Factory" class="showcase-card showcase-card-2">
+                    <img src="{{ asset('assets/jasa.webp') }}" alt="Karier & BLUD Jasa Layanan Mockup" class="showcase-card-bkk">
                 </div>
             </div>
 
