@@ -10,7 +10,7 @@
             {{-- Column 1: Brand & Socials --}}
             <div class="footer-col footer-col-brand">
                 <a href="{{ url('/') }}" class="brand" aria-label="Tefa-Hub Beranda">
-                    <img src="{{ asset('assets/logo.png') }}" alt="Logo Tefa-Hub" width="34" height="34">
+                    <img src="{{ asset('assets/logo.webp') }}" alt="Logo Tefa-Hub" width="34" height="34">
                     <span class="brand-name">Tefa<span>-Hub</span></span>
                 </a>
 

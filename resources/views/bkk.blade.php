@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Pusat Karier & Penyaluran Industri (BKK Tefa-Hub) — Pantau progres lamaran PKL & kerja, jadwal tes rekrutmen mitra DUDI, serta kelola kesiapan CV digital.">
     <title>Pusat Karier & Penyaluran Industri (BKK) — Tefa-Hub</title>
-    <link rel="icon" type="image/png" href="{{ asset('assets/logo.png') }}">
+    <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
 
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,9 +80,9 @@
 
                 </div>
 
-                {{-- Right Visual: Purely jasa.png Image --}}
+                {{-- Right Visual: Purely jasa.webp Image --}}
                 <div class="bkk-hero-visual">
-                    <img src="{{ asset('assets/jasa.png') }}" alt="Karier & BLUD Jasa Layanan Mockup" class="bkk-hero-img">
+                    <img src="{{ asset('assets/jasa.webp') }}" alt="Karier & BLUD Jasa Layanan Mockup" class="bkk-hero-img">
                 </div>
 
             </div>
@@ -97,112 +97,112 @@
             [
                 'rating' => '4.9',
                 'price' => 'Mulai 50rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Servis Berkala & Ganti Oli Mesin',
             ],
             [
                 'rating' => '4.9',
                 'price' => 'Mulai 65rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Tune-Up Injeksi & Servis Motor',
             ],
             [
                 'rating' => '5.0',
                 'price' => 'Mulai 80rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Ganti Kampas Rem & Setel Rantai',
             ],
             [
                 'rating' => '4.8',
                 'price' => 'Mulai 45rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Pembersihan Throttle Body & CVT',
             ],
             [
                 'rating' => '4.9',
                 'price' => 'Mulai 75rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Uji Emisi & Diagnosa Scanner Motor',
             ],
             [
                 'rating' => '4.9',
                 'price' => 'Mulai 55rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Penggantian Aki & Kelistrikan Motor',
             ],
             [
                 'rating' => '4.8',
                 'price' => 'Mulai 40rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Servis Karburator & Filter Udara',
             ],
             [
                 'rating' => '5.0',
                 'price' => 'Mulai 95rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Overhaul Mesin & Penggantian Piston',
             ],
             [
                 'rating' => '4.9',
                 'price' => 'Mulai 50rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Servis Berkala & Ganti Oli Mesin',
             ],
             [
                 'rating' => '4.8',
                 'price' => 'Mulai 35rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Tambal Ban Tubeless & Cek Tekanan',
             ],
             [
                 'rating' => '4.9',
                 'price' => 'Mulai 60rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Ganti Shockbreaker & Komstir Depan',
             ],
             [
                 'rating' => '5.0',
                 'price' => 'Mulai 70rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Restorasi Lampu LED & Wiring Motor',
             ],
             [
                 'rating' => '4.9',
                 'price' => 'Mulai 50rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Servis Berkala & Ganti Oli Mesin',
             ],
             [
                 'rating' => '4.8',
                 'price' => 'Mulai 85rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Ganti Vanbelt & Roller Matic Presisi',
             ],
             [
                 'rating' => '4.9',
                 'price' => 'Mulai 60rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Kuras Radiator & Coolant Treatment',
             ],
             [
                 'rating' => '5.0',
                 'price' => 'Mulai 110rb',
-                'img' => 'image copy 3.png',
+                'img' => 'image copy 3.webp',
                 'tag' => 'JASA LAYANAN',
                 'title' => 'Paket Komplit Servis Motor Vokasi',
             ],
@@ -215,7 +215,7 @@
                 @foreach ($bkkServices as $index => $item)
                     <div class="blud-card-frame bkk-card-reveal" data-delay="{{ ($index % 4) * 70 }}">
                         <div class="blud-card-image-wrap">
-                            <img src="{{ asset('assets/' . $item['img']) }}" alt="{{ $item['title'] }}" class="blud-bg-img" onerror="this.onerror=null; this.src='{{ asset('assets/Background (14).png') }}';"
+                            <img src="{{ asset('assets/' . $item['img']) }}" alt="{{ $item['title'] }}" class="blud-bg-img" onerror="this.onerror=null; this.src='{{ asset('assets/Background (14).webp') }}';"
                                 loading="lazy">
                             
                             {{-- Top Left Rating Badge --}}

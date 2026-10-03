@@ -204,7 +204,7 @@
     pointer-events: none;
 }
 
-/* Layer 1: Background Vector/Architectural Scenery Artwork (image copy.png) */
+/* Layer 1: Background Vector/Architectural Scenery Artwork (image copy.webp) */
 .pkl-bg-artwork {
     position: absolute;
     right: 0;
@@ -221,7 +221,7 @@
     -webkit-user-drag: none;
 }
 
-/* Layer 2: Main Student & Floating Cards (image copy 4.png) */
+/* Layer 2: Main Student & Floating Cards (image copy 4.webp) */
 .pkl-illustration-wrap {
     position: relative;
     z-index: 2;

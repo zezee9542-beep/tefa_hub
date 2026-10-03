@@ -3,7 +3,7 @@
     <!-- Header Riwayat -->
     <div class="riwayat-header-row">
         <div class="riwayat-title-left">
-            <img src="{{ asset('assets/riw.png') }}" alt="Riwayat Icon" class="riwayat-header-icon" width="22" height="22">
+            <img src="{{ asset('assets/riw.webp') }}" alt="Riwayat Icon" class="riwayat-header-icon" width="22" height="22">
             <h2 class="riwayat-title-text">Riwayat & Log Aktivitas Otomatis</h2>
         </div>
         <div class="riwayat-sync-text" id="riwayatSyncStatus">

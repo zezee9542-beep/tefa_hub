@@ -5,7 +5,7 @@
     <div class="onboarding-container">
         {{-- Pure White Circular Logo Wrapper with Soft Light Shadow (No dark overlay) --}}
         <div class="onboarding-logo-circle" id="onboardingLogoCircle">
-            <img src="{{ asset('assets/logo.png') }}" alt="Logo Tefa-Hub" class="onboarding-logo-img" id="onboardingLogoImg">
+            <img src="{{ asset('assets/logo.webp') }}" alt="Logo Tefa-Hub" class="onboarding-logo-img" id="onboardingLogoImg">
         </div>
 
         {{-- Expanding Brand Text ("Tefa-Hub") Emerging gradually & gracefully from the Logo --}}

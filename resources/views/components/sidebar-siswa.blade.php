@@ -4,7 +4,7 @@
     <!-- Brand Logo & Title Header -->
     <div class="sidebar-header-top">
         <a href="{{ route('home') }}" class="sidebar-brand">
-            <img src="{{ asset('assets/logo.png') }}" alt="Tefa-Hub Logo" class="sidebar-logo" onerror="this.onerror=null; this.src='{{ asset('assets/1.png') }}';">
+            <img src="{{ asset('assets/logo.webp') }}" alt="Tefa-Hub Logo" class="sidebar-logo" onerror="this.onerror=null; this.src='{{ asset('assets/1.webp') }}';">
             <div class="brand-text-group">
                 <span class="brand-title">Tefa-Hub</span>
                 <span class="brand-subtitle">DIGITAL VOKASI</span>

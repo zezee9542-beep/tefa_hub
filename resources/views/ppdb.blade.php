@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Penerimaan Peserta Didik Baru (PPDB) SMK Antartika 1 Sidoarjo Tahun Ajaran {{ $currentYear }}/{{ (int)$currentYear + 1 }}. Wujudkan masa depanmu bersama ekosistem pendidikan vokasi unggul dan siap industri.">
     <title>PPDB SMK Antartika 1 Sidoarjo TA {{ $currentYear }}/{{ (int)$currentYear + 1 }} — TEFA-Hub</title>
-    <link rel="icon" type="image/png" href="{{ asset('assets/logo.png') }}">
+    <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
 
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +37,7 @@
     <main class="ppdb-main-wrap">
 
         <!-- ═══════════════════════════════════════════════════════════
-             1. HERO BANNER SECTION (WITH IMAGE COPY 7.PNG)
+             1. HERO BANNER SECTION (WITH IMAGE COPY 7.WEBP)
              ═══════════════════════════════════════════════════════════ -->
         <section class="ppdb-hero-section" aria-label="Hero PPDB SMK Antartika 1 Sidoarjo">
             <div class="ppdb-hero-card">
@@ -88,10 +88,10 @@
                     </div>
                 </div>
 
-                <!-- Right Illustration Media (image copy 8.png) -->
+                <!-- Right Illustration Media (image copy 8.webp) -->
                 <div class="ppdb-hero-media">
                     <img 
-                        src="{{ asset('assets/image copy 8.png') }}" 
+                        src="{{ asset('assets/image copy 8.webp') }}"
                         alt="Siswa-Siswi SMK Antartika 1 Sidoarjo — Jadi Bagian dari Masa Depan Muda!" 
                         class="ppdb-hero-img"
                         width="720" 

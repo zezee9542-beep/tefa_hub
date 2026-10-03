@@ -82,7 +82,7 @@
                         <div id="uploadVisualPreview" class="upload-visual-preview" style="display: none;">
                             <img id="previewVisualImg" src="" alt="Preview Produk" class="preview-visual-thumbnail">
                             <div class="preview-visual-info">
-                                <span id="previewVisualName" class="preview-name-text">filename.png</span>
+                                <span id="previewVisualName" class="preview-name-text">filename.webp</span>
                                 <span id="previewVisualSize" class="preview-size-text">0 KB</span>
                             </div>
                             <button type="button" class="btn-remove-visual" onclick="removeVisualSelected(event)" aria-label="Hapus file">

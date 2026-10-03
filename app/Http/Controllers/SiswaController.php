@@ -38,7 +38,7 @@ class SiswaController extends Controller
             'tempat_lahir' => $profile['tempat_lahir'] ?? 'Bandung',
             'tanggal_lahir' => $profile['tanggal_lahir'] ?? '2007-05-14',
             'jenis_kelamin' => $profile['jenis_kelamin'] ?? 'Perempuan',
-            'avatar' => $profile['avatar'] ?? asset('assets/orng.png'),
+            'avatar' => $profile['avatar'] ?? asset('assets/orng.webp'),
         ];
     }
 
@@ -79,7 +79,7 @@ class SiswaController extends Controller
             'foto' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
         ]);
 
-        $avatarUrl = session('siswa_profile.avatar', asset('assets/orng.png'));
+        $avatarUrl = session('siswa_profile.avatar', asset('assets/orng.webp'));
 
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
@@ -245,13 +245,18 @@ class SiswaController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        $totalProduk = ProdukBlud::where('user_id', $user->id)->count();
-        $produkTayang = ProdukBlud::where('user_id', $user->id)->where('status', 'disetujui')->count();
+        $productStats = ProdukBlud::query()
+            ->where('user_id', $user->id)
+            ->selectRaw('COUNT(*) as total_produk')
+            ->selectRaw("SUM(CASE WHEN status = 'disetujui' THEN 1 ELSE 0 END) as produk_tayang")
+            ->first();
         $totalLowongan = LowonganBkk::where('is_active', true)->count();
         $totalLamaran = LamaranKerja::where('user_id', $user->id)->count();
 
-        $nilaiList = NilaiAkademik::where('user_id', $user->id)->get();
-        $rataRataNilai = $nilaiList->count() > 0 ? round($nilaiList->avg('nilai_akhir'), 1) : 0;
+        $nilaiStats = NilaiAkademik::query()
+            ->where('user_id', $user->id)
+            ->selectRaw('COUNT(*) as total_nilai_terdata, AVG(nilai_akhir) as rata_rata_nilai')
+            ->first();
 
         $aktivitas = AktivitasSiswa::where('user_id', $user->id)
             ->latest('waktu_aktivitas')
@@ -272,12 +277,12 @@ class SiswaController extends Controller
         return response()->json([
             'success' => true,
             'stats' => [
-                'total_produk' => $totalProduk,
-                'produk_tayang' => $produkTayang,
+                'total_produk' => (int) $productStats->total_produk,
+                'produk_tayang' => (int) $productStats->produk_tayang,
                 'total_lowongan' => $totalLowongan,
                 'total_lamaran' => $totalLamaran,
-                'rata_rata_nilai' => $rataRataNilai,
-                'total_nilai_terdata' => $nilaiList->count(),
+                'rata_rata_nilai' => $nilaiStats->rata_rata_nilai === null ? 0 : round((float) $nilaiStats->rata_rata_nilai, 1),
+                'total_nilai_terdata' => (int) $nilaiStats->total_nilai_terdata,
             ],
             'aktivitas' => $aktivitas,
         ]);
@@ -331,7 +336,7 @@ class SiswaController extends Controller
 
         $lowongans = LowonganBkk::where('is_active', true)->latest()->get();
         $userLamaran = LamaranKerja::where('user_id', $user->id)->with('lowongan')->latest()->get();
-        $appliedIds = $userLamaran->pluck('lowongan_bkk_id')->toArray();
+        $appliedIds = $userLamaran->pluck('lowongan_bkk_id')->flip();
 
         // Calculate readiness score dynamically based on user portfolio & grades
         $nilaiCount = NilaiAkademik::where('user_id', $user->id)->count();
@@ -358,7 +363,7 @@ class SiswaController extends Controller
                     'deskripsi' => $job->deskripsi,
                     'pelamar_count' => $job->pelamar_count,
                     'batas_daftar' => $job->batas_daftar ? $job->batas_daftar->format('d M Y') : 'Segera',
-                    'is_applied' => in_array($job->id, $appliedIds),
+                    'is_applied' => $appliedIds->has($job->id),
                 ];
             }),
             'lamaran_saya' => $userLamaran,
@@ -377,15 +382,15 @@ class SiswaController extends Controller
         }
 
         $nilais = NilaiAkademik::where('user_id', $user->id)->get();
-        $avgNilai = $nilais->count() > 0 ? round($nilais->avg('nilai_akhir'), 1) : 0;
-        $totalSks = $nilais->count();
+        $totalNilais = $nilais->count();
+        $avgNilai = $totalNilais > 0 ? round($nilais->avg('nilai_akhir'), 1) : 0;
 
         return response()->json([
             'success' => true,
             'stats' => [
                 'rata_rata_nilai' => $avgNilai,
-                'total_mapel' => $totalSks,
-                'kehadiran_persen' => $nilais->count() > 0 ? '98.5%' : '0%',
+                'total_mapel' => $totalNilais,
+                'kehadiran_persen' => $totalNilais > 0 ? '98.5%' : '0%',
             ],
             'nilai_list' => $nilais,
         ]);

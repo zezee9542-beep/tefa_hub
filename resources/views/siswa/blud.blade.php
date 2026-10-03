@@ -38,7 +38,7 @@
                 <!-- ═══════════════════════════════════════════
                      HERO CARD HEADER BLUD
                      ═══════════════════════════════════════════ -->
-                <div class="blud-hero-banner" style="background-image: url('{{ asset('assets/Container (16).png') }}');" role="region" aria-label="Header Teaching Factory & Unit Produksi BLUD">
+                <div class="blud-hero-banner" style="background-image: url('{{ asset('assets/Container (16).webp') }}');" role="region" aria-label="Header Teaching Factory & Unit Produksi BLUD">
                     <div class="blud-hero-content">
                         <div class="blud-hero-badge">
                             <svg class="blud-badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -74,7 +74,7 @@
                         <div class="blud-stat-top">
                             <span class="blud-stat-label">TOTAL PRODUK<br>DIAJUKAN</span>
                             <div class="blud-stat-icon-wrap bg-icon-blue">
-                                <img src="{{ asset('assets/Container (17).png') }}" alt="Total Produk Diajukan" class="blud-stat-icon-img">
+                                <img src="{{ asset('assets/Container (17).webp') }}" alt="Total Produk Diajukan" class="blud-stat-icon-img">
                             </div>
                         </div>
                         <div class="blud-stat-bottom">
@@ -83,7 +83,7 @@
                                 <span class="blud-stat-unit">Karya / Unit</span>
                             </div>
                             <div class="blud-stat-sub-row text-blue">
-                                <img src="{{ asset('assets/Container (21).png') }}" alt="Icon" class="blud-sub-icon-img">
+                                <img src="{{ asset('assets/Container (21).webp') }}" alt="Icon" class="blud-sub-icon-img">
                                 <span class="blud-sub-text">Tahun Ajaran 2026/2027</span>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                         <div class="blud-stat-top">
                             <span class="blud-stat-label text-green">TERVALIDASI &amp;<br>TAYANG</span>
                             <div class="blud-stat-icon-wrap bg-icon-green">
-                                <img src="{{ asset('assets/Container (18).png') }}" alt="Tervalidasi & Tayang" class="blud-stat-icon-img">
+                                <img src="{{ asset('assets/Container (18).webp') }}" alt="Tervalidasi & Tayang" class="blud-stat-icon-img">
                             </div>
                         </div>
                         <div class="blud-stat-bottom">
@@ -104,7 +104,7 @@
                                 <span class="blud-stat-unit">Telah Kurasi</span>
                             </div>
                             <div class="blud-stat-sub-row text-green">
-                                <img src="{{ asset('assets/Container (22).png') }}" alt="Icon" class="blud-sub-icon-img">
+                                <img src="{{ asset('assets/Container (22).webp') }}" alt="Icon" class="blud-sub-icon-img">
                                 <span class="blud-sub-text">Aktif di Katalog Publik</span>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                         <div class="blud-stat-top">
                             <span class="blud-stat-label">MENUNGGU<br>VALIDASI</span>
                             <div class="blud-stat-icon-wrap bg-icon-purple">
-                                <img src="{{ asset('assets/Container (19).png') }}" alt="Menunggu Validasi" class="blud-stat-icon-img">
+                                <img src="{{ asset('assets/Container (19).webp') }}" alt="Menunggu Validasi" class="blud-stat-icon-img">
                             </div>
                         </div>
                         <div class="blud-stat-bottom">
@@ -125,7 +125,7 @@
                                 <span class="blud-stat-unit">Antrean Uji</span>
                             </div>
                             <div class="blud-stat-sub-row text-purple">
-                                <img src="{{ asset('assets/Container (23).png') }}" alt="Icon" class="blud-sub-icon-img">
+                                <img src="{{ asset('assets/Container (23).webp') }}" alt="Icon" class="blud-sub-icon-img">
                                 <span class="blud-sub-text">Estimasi 1x24 jam kurasi</span>
                             </div>
                         </div>
@@ -137,7 +137,7 @@
                         <div class="blud-stat-top">
                             <span class="blud-stat-label text-red">PERLU REVISI</span>
                             <div class="blud-stat-icon-wrap bg-icon-red">
-                                <img src="{{ asset('assets/Container (20).png') }}" alt="Perlu Revisi" class="blud-stat-icon-img">
+                                <img src="{{ asset('assets/Container (20).webp') }}" alt="Perlu Revisi" class="blud-stat-icon-img">
                             </div>
                         </div>
                         <div class="blud-stat-bottom">
@@ -146,7 +146,7 @@
                                 <span class="blud-stat-unit">Catatan Teknis</span>
                             </div>
                             <div class="blud-stat-sub-row text-red">
-                                <img src="{{ asset('assets/Container (24).png') }}" alt="Icon" class="blud-sub-icon-img">
+                                <img src="{{ asset('assets/Container (24).webp') }}" alt="Icon" class="blud-sub-icon-img">
                                 <span class="blud-sub-text">Dari Guru Pembimbing</span>
                             </div>
                         </div>
@@ -254,14 +254,14 @@
 
                 container.innerHTML = allItems.map(item => {
                     const priceFormatted = item.harga ? ('Rp ' + Number(item.harga).toLocaleString('id-ID')) : 'Mulai 50rb';
-                    const imgUrl = item.visual_url || '{{ asset("assets/Background (14).png") }}';
+                    const imgUrl = item.visual_url || '{{ asset("assets/Background (14).webp") }}';
                     const category = item.kategori || 'JASA LAYANAN';
                     const title = item.nama_produk || 'Produk Inovasi Siswa';
 
                     return `
                         <div class="blud-card-frame">
                             <div class="blud-card-image-wrap">
-                                <img src="${imgUrl}" alt="${escapeHtml(title)}" class="blud-bg-img" onerror="this.onerror=null; this.src='{{ asset('assets/Background (14).png') }}';">
+                                <img src="${imgUrl}" alt="${escapeHtml(title)}" class="blud-bg-img" onerror="this.onerror=null; this.src='{{ asset('assets/Background (14).webp') }}';">
                                 <span class="blud-price-badge">${escapeHtml(priceFormatted)}</span>
                                 
                                 <div class="blud-inner-card">

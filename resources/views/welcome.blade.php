@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tefa-Hub — Satu ekosistem digital terpadu untuk akademik, BLUD teaching factory, dan career center siswa SMK.">
     <title>Tefa-Hub | Satu Ekosistem Digital untuk Seluruh Perjalanan Siswa</title>
-    <link rel="icon" type="image/png" href="{{ asset('assets/logo.png') }}">
+    <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -156,7 +156,7 @@
                 {{-- Students 3D character photo --}}
                 <div class="students-wrap">
                     <img
-                        src="{{ asset('assets/image.png') }}"
+                        src="{{ asset('assets/image.webp') }}"
                         alt="Siswa dan Siswi SMK Tefa-Hub"
                         class="students-img"
                     >
@@ -165,8 +165,8 @@
                 {{-- Floating 2 feature cards (Centered, Equal Size, Original Style) --}}
                 @php
                     $heroCards = [
-                        ['icon' => 'card.png', 'title' => 'BKK Instan',  'desc' => 'Temukan informasi lowongan dan peluang kerja terbaru.',      'href' => route('bkk')],
-                        ['icon' => 'book.png', 'title' => 'PPDB Kilat',  'desc' => 'Daftar sebagai calon peserta didik baru dengan mudah.',       'href' => '#ppdb'],
+                        ['icon' => 'card.webp', 'title' => 'BKK Instan',  'desc' => 'Temukan informasi lowongan dan peluang kerja terbaru.',      'href' => route('bkk')],
+                        ['icon' => 'book.webp', 'title' => 'PPDB Kilat',  'desc' => 'Daftar sebagai calon peserta didik baru dengan mudah.',       'href' => '#ppdb'],
                     ];
                 @endphp
 
@@ -186,7 +186,7 @@
                             {{-- Arrow button biru bulat kanan --}}
                             <div class="card-foot">
                                 <button class="btn-arrow" title="Buka {{ $card['title'] }}">
-                                    <img src="{{ asset('assets/back.png') }}" alt="Lanjut">
+                                    <img src="{{ asset('assets/back.webp') }}" alt="Lanjut">
                                 </button>
                             </div>
                         </div>
@@ -207,73 +207,73 @@
                 {{-- Group 1 --}}
                 <div class="partners-track-group">
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L1.png') }}" alt="Jagoan Hosting Innovation Competition">
+                        <img src="{{ asset('assets/L1.webp') }}" alt="Jagoan Hosting Innovation Competition">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L2.png') }}" alt="Jagoan Hosting">
+                        <img src="{{ asset('assets/L2.webp') }}" alt="Jagoan Hosting">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L3.png') }}" alt="Komdigi">
+                        <img src="{{ asset('assets/L3.webp') }}" alt="Komdigi">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L4.png') }}" alt="Garuda Spark Innovation Hub">
+                        <img src="{{ asset('assets/L4.webp') }}" alt="Garuda Spark Innovation Hub">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L5.png') }}" alt="Ngalup.co">
+                        <img src="{{ asset('assets/L5.webp') }}" alt="Ngalup.co">
                     </div>
                 </div>
                 {{-- Group 2 --}}
                 <div class="partners-track-group" aria-hidden="true">
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L1.png') }}" alt="">
+                        <img src="{{ asset('assets/L1.webp') }}" alt="">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L2.png') }}" alt="">
+                        <img src="{{ asset('assets/L2.webp') }}" alt="">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L3.png') }}" alt="">
+                        <img src="{{ asset('assets/L3.webp') }}" alt="">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L4.png') }}" alt="">
+                        <img src="{{ asset('assets/L4.webp') }}" alt="">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L5.png') }}" alt="">
+                        <img src="{{ asset('assets/L5.webp') }}" alt="">
                     </div>
                 </div>
                 {{-- Group 3 --}}
                 <div class="partners-track-group" aria-hidden="true">
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L1.png') }}" alt="">
+                        <img src="{{ asset('assets/L1.webp') }}" alt="">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L2.png') }}" alt="">
+                        <img src="{{ asset('assets/L2.webp') }}" alt="">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L3.png') }}" alt="">
+                        <img src="{{ asset('assets/L3.webp') }}" alt="">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L4.png') }}" alt="">
+                        <img src="{{ asset('assets/L4.webp') }}" alt="">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L5.png') }}" alt="">
+                        <img src="{{ asset('assets/L5.webp') }}" alt="">
                     </div>
                 </div>
                 {{-- Group 4 --}}
                 <div class="partners-track-group" aria-hidden="true">
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L1.png') }}" alt="">
+                        <img src="{{ asset('assets/L1.webp') }}" alt="">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L2.png') }}" alt="">
+                        <img src="{{ asset('assets/L2.webp') }}" alt="">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L3.png') }}" alt="">
+                        <img src="{{ asset('assets/L3.webp') }}" alt="">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L4.png') }}" alt="">
+                        <img src="{{ asset('assets/L4.webp') }}" alt="">
                     </div>
                     <div class="partner-logo-item">
-                        <img src="{{ asset('assets/L5.png') }}" alt="">
+                        <img src="{{ asset('assets/L5.webp') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -288,7 +288,7 @@
 
             {{-- Left: Logo Image --}}
             <div class="about-visual reveal-left">
-                <img src="{{ asset('assets/logo2.png') }}" alt="Logo Tefa-Hub" class="about-logo-img">
+                <img src="{{ asset('assets/logo2.webp') }}" alt="Logo Tefa-Hub" class="about-logo-img">
             </div>
 
             {{-- Right: Content --}}
@@ -328,25 +328,25 @@
             @php
                 $services = [
                     [
-                        'icon' => '1.png',
+                        'icon' => '1.webp',
                         'title' => 'Penerimaan Peserta Didik Baru',
                         'desc' => 'Dokumentasi lengkap kegiatan industri. Memudahkan pengisian Logbook Harian dan pemantauan real-time oleh sekolah dan mitra industri.',
                         'link' => '#ppdb',
                     ],
                     [
-                        'icon' => '2.png',
+                        'icon' => '2.webp',
                         'title' => 'Akademik Terintegrasi',
                         'desc' => 'Pusat pengelolaan pembelajaran digital mulai dari materi, tugas, hingga transparansi nilai dan Rapor Digital dalam satu akses.',
                         'link' => '#akademik',
                     ],
                     [
-                        'icon' => '3.png',
+                        'icon' => '3.webp',
                         'title' => 'Produk Unggulan (BLUD)',
                         'desc' => 'Wadah publikasi karya dan jasa hasil kreativitas siswa. Mendukung kewirausahaan dengan menampilkan produk langsung di landing page publik.',
                         'link' => '#blud',
                     ],
                     [
-                        'icon' => '4.png',
+                        'icon' => '4.webp',
                         'title' => 'Career Center (BKK)',
                         'desc' => 'Jembatan menuju dunia kerja. Membantu siswa dan alumni melamar pekerjaan menggunakan CV Digital & Portofolio ke jaringan mitra industri.',
                         'link' => route('bkk'),
@@ -400,8 +400,8 @@
             {{-- Right: Cards (Mobile: Single Image, Desktop: 2 Layered Cards) --}}
             <div class="showcase-visual reveal-right delay-1">
                 <div class="showcase-cards">
-                    <img src="{{ asset('assets/card2.png') }}" alt="Card Jasa Layanan" class="showcase-card showcase-card-1">
-                    <img src="{{ asset('assets/card1.png') }}" alt="Card Teaching Factory" class="showcase-card showcase-card-2">
+                    <img src="{{ asset('assets/card2.webp') }}" alt="Card Jasa Layanan" class="showcase-card showcase-card-1">
+                    <img src="{{ asset('assets/card1.webp') }}" alt="Card Teaching Factory" class="showcase-card showcase-card-2">
                 </div>
             </div>
 
@@ -414,9 +414,9 @@
     <section class="ai-section" id="tanya-tefa">
         <div class="wrap">
 
-            {{-- Left: ai.png Image --}}
+            {{-- Left: ai.webp Image --}}
             <div class="ai-visual reveal-left">
-                <img src="{{ asset('assets/ai.png') }}" alt="Tefa AI Assistant" class="ai-img">
+                <img src="{{ asset('assets/ai.webp') }}" alt="Tefa AI Assistant" class="ai-img">
             </div>
 
             {{-- Right: Content & 3 Cards --}}
@@ -434,17 +434,17 @@
                 @php
                     $aiFeatures = [
                         [
-                            'icon' => '11.png',
+                            'icon' => '11.webp',
                             'title' => 'Layanan Bantuan 24/7',
                             'desc' => 'Chatbot AI menyediakan pusat bantuan interaktif yang siap kapan saja.',
                         ],
                         [
-                            'icon' => '12.png',
+                            'icon' => '12.webp',
                             'title' => 'Respon Cepat (Fast)',
                             'desc' => 'Kecepatan dalam memberikan informasi secara instan dan tepat.',
                         ],
                         [
-                            'icon' => '13.png',
+                            'icon' => '13.webp',
                             'title' => 'Efisiensi Signifikan',
                             'desc' => 'Mengurangi hingga lebih dari 80% pertanyaan rutin berulang.',
                         ],

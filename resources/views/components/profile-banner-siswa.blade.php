@@ -8,7 +8,7 @@
     <!-- Sisi Kiri: Foto Profil & Tombol Edit -->
     <div class="profile-card-left">
         <div class="profile-avatar-wrapper">
-            <img src="{{ $user['avatar'] ?? asset('assets/orng.png') }}" alt="{{ $user['name'] ?? 'Foto Profil Siswa' }}" class="profile-avatar-img">
+            <img src="{{ $user['avatar'] ?? asset('assets/orng.webp') }}" alt="{{ $user['name'] ?? 'Foto Profil Siswa' }}" class="profile-avatar-img">
         </div>
         <button type="button" class="btn-edit-profile" aria-label="Edit profil" onclick="openEditProfileModal()">
             Edit profil
@@ -25,7 +25,7 @@
             </div>
             
             <div class="profile-nisn-info">
-                <img src="{{ asset('assets/lis.png') }}" alt="Verified NISN" class="icon-verified-lis" width="16" height="16">
+                <img src="{{ asset('assets/lis.webp') }}" alt="Verified NISN" class="icon-verified-lis" width="16" height="16">
                 <span>NISN: {{ $user['nisn'] ?? '0064829104' }} • {{ $user['class'] ?? 'XII RPL 1' }}</span>
             </div>
         </div>
@@ -40,7 +40,7 @@
         <div class="role-transition-box">
             <div class="transition-header">
                 <div class="transition-title-wrap">
-                    <img src="{{ asset('assets/run.png') }}" alt="Role Status Icon" class="transition-icon" width="16" height="16">
+                    <img src="{{ asset('assets/run.webp') }}" alt="Role Status Icon" class="transition-icon" width="16" height="16">
                     <span class="transition-title">Status Role & Transisi Alumni</span>
                 </div>
                 <span class="badge-terintegrasi">Terintegrasi</span>

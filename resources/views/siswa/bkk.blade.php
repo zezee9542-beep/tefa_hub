@@ -38,7 +38,7 @@
                 <!-- ═══════════════════════════════════════════
                      HERO CARD HEADER BKK (BURSA KERJA KHUSUS)
                      ═══════════════════════════════════════════ -->
-                <div class="bkk-hero-banner" style="background-image: url('{{ asset('assets/Container (16).png') }}');" role="region" aria-label="Header Bursa Kerja Khusus BKK">
+                <div class="bkk-hero-banner" style="background-image: url('{{ asset('assets/Container (16).webp') }}');" role="region" aria-label="Header Bursa Kerja Khusus BKK">
                     <div class="bkk-hero-content">
                         <div class="bkk-hero-badge">
                             <svg class="bkk-badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -146,7 +146,7 @@
                     <!-- Section Header -->
                     <div class="bkk-jobs-header">
                         <div class="bkk-jobs-badge-plain">
-                            <img src="{{ asset('assets/Container (26).png') }}" alt="Peluang Baru" class="bkk-badge-plain-img">
+                            <img src="{{ asset('assets/Container (26).webp') }}" alt="Peluang Baru" class="bkk-badge-plain-img">
                             <span class="bkk-badge-plain-text">PELUANG BARU MINGGU INI</span>
                         </div>
                         <h2 class="bkk-jobs-title">Rekomendasi Lowongan Sesuai Keahlian</h2>

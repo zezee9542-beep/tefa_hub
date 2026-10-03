@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Eksplorasi Peluang PKL & Karier Industri Mitra — Jembatan resmi siswa dan alumni Tefa-Hub menuju dunia usaha dan dunia industri (DUDI).">
     <title>Eksplorasi Peluang PKL & Karier Industri Mitra — Tefa-Hub</title>
-    <link rel="icon" type="image/png" href="{{ asset('assets/logo.png') }}">
+    <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
 
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,12 +87,12 @@
                 {{-- Right Visual Column --}}
                 <div class="pkl-card-visual">
                     {{-- Layer 1: Vector & Building Scenery Artwork --}}
-                    <img src="{{ asset('assets/image copy.png') }}" alt="" class="pkl-bg-artwork" aria-hidden="true">
+                    <img src="{{ asset('assets/image copy.webp') }}" alt="" class="pkl-bg-artwork" aria-hidden="true">
 
                     {{-- Layer 2: Main Student & Floating Cards Illustration --}}
                     <div class="pkl-illustration-wrap">
                         <img
-                            src="{{ asset('assets/image copy 4.png') }}"
+                            src="{{ asset('assets/image copy 4.webp') }}"
                             alt="Siswa Vokasi dan Peluang PKL Industri Mitra Tefa-Hub"
                             class="pkl-hero-img"
                         >
@@ -167,7 +167,7 @@
             @php
                 $opportunities = [
                     [
-                        'logo' => 'L2.png',
+                        'logo' => 'L2.webp',
                         'company' => 'PT Jagoan Hosting Indonesia',
                         'title' => 'Cloud & DevOps Junior Apprentice',
                         'type' => 'pkl',
@@ -177,7 +177,7 @@
                         'quota' => 'Sisa 4 Kuota',
                     ],
                     [
-                        'logo' => 'L4.png',
+                        'logo' => 'L4.webp',
                         'company' => 'Garuda Spark Innovation Hub',
                         'title' => 'Frontend UI/UX Implementation Intern',
                         'type' => 'magang',
@@ -187,7 +187,7 @@
                         'quota' => 'Sisa 6 Kuota',
                     ],
                     [
-                        'logo' => 'L5.png',
+                        'logo' => 'L5.webp',
                         'company' => 'Ngalup Collaborative Network',
                         'title' => 'Digital Marketing & Content Strategy',
                         'type' => 'pkl',
@@ -197,7 +197,7 @@
                         'quota' => 'Sisa 3 Kuota',
                     ],
                     [
-                        'logo' => 'L3.png',
+                        'logo' => 'L3.webp',
                         'company' => 'Mitra BPSDMP Komdigi RI',
                         'title' => 'Junior Cyber Security Support',
                         'type' => 'magang',
@@ -207,7 +207,7 @@
                         'quota' => 'Sisa 5 Kuota',
                     ],
                     [
-                        'logo' => 'L1.png',
+                        'logo' => 'L1.webp',
                         'company' => 'Innovation Tech Partners Lab',
                         'title' => 'Junior Fullstack Web Developer',
                         'type' => 'rekrutmen',
@@ -217,7 +217,7 @@
                         'quota' => 'Sisa 2 Kuota',
                     ],
                     [
-                        'logo' => 'logo.png',
+                        'logo' => 'logo.webp',
                         'company' => 'BLUD & Teaching Factory Tefa-Hub',
                         'title' => 'Teknisi Sistem Jaringan & Perangkat',
                         'type' => 'pkl',

@@ -42,14 +42,14 @@
         <!-- Notification Button Circle -->
         <button type="button" class="header-circle-btn" aria-label="Notifikasi" title="Notifikasi">
             <div class="icon-with-badge">
-                <img src="{{ asset('assets/notif.png') }}" alt="Notifikasi" class="header-btn-icon" width="18" height="18">
+                <img src="{{ asset('assets/notif.webp') }}" alt="Notifikasi" class="header-btn-icon" width="18" height="18">
                 <span class="notif-red-badge" aria-label="Ada notifikasi baru"></span>
             </div>
         </button>
 
         <!-- History Button Circle -->
         <button type="button" class="header-circle-btn" aria-label="Riwayat Aktivitas" title="Riwayat Aktivitas">
-            <img src="{{ asset('assets/riwayat.png') }}" alt="Riwayat" class="header-btn-icon" width="18" height="18">
+            <img src="{{ asset('assets/riwayat.webp') }}" alt="Riwayat" class="header-btn-icon" width="18" height="18">
         </button>
 
         <!-- User Profile Text -->

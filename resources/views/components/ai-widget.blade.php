@@ -15,7 +15,7 @@
 {{-- Floating Trigger Button --}}
 <button id="ai-toggle-btn" class="ai-trigger" type="button" aria-label="Buka Tanya Tefa AI" aria-expanded="false" aria-controls="ai-navigator-panel" title="Tanya Tefa AI">
     <div class="ai-trigger-inner">
-        <img src="{{ asset('assets/ai.png') }}" alt="Asisten Tanya Tefa AI" class="ai-trigger-img" width="42" height="42" loading="lazy">
+        <img src="{{ asset('assets/ai.webp') }}" alt="Asisten Tanya Tefa AI" class="ai-trigger-img" width="42" height="42" loading="lazy">
         <span class="ai-online-dot"></span>
     </div>
     <span class="ai-trigger-badge" id="ai-notif-badge" style="display:none;"></span>
@@ -28,7 +28,7 @@
     <div class="ai-header">
         <div class="ai-header-brand">
             <div class="ai-header-avatar">
-                <img src="{{ asset('assets/ai.png') }}" alt="Tanya Tefa AI" class="ai-avatar-img" width="28" height="28">
+                <img src="{{ asset('assets/ai.webp') }}" alt="Tanya Tefa AI" class="ai-avatar-img" width="28" height="28">
                 <span class="ai-status-pulse"></span>
             </div>
             <div class="ai-header-info">
