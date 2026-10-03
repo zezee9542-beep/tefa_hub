@@ -13,7 +13,7 @@
         <nav aria-label="Navigasi Utama">
             <ul class="nav-links">
                 <li>
-                    <a href="{{ url('/#akademik') }}" class="{{ $active === 'akademik' ? 'active-nav-link' : '' }}">Akademik</a>
+                    <a href="{{ url('/#ppdb') }}" class="{{ $active === 'ppdb' ? 'active-nav-link' : '' }}">PPDB</a>
                 </li>
                 <li>
                     <a href="{{ url('/#blud') }}" class="{{ $active === 'blud' ? 'active-nav-link' : '' }}">BLUD</a>
@@ -57,7 +57,7 @@
         </button>
     </div>
     <ul class="mobile-nav-links">
-        <li><a href="{{ url('/#akademik') }}" class="mobile-nav-link {{ $active === 'akademik' ? 'active' : '' }}">Akademik</a></li>
+        <li><a href="{{ url('/#ppdb') }}" class="mobile-nav-link {{ $active === 'ppdb' ? 'active' : '' }}">PPDB</a></li>
         <li><a href="{{ url('/#blud') }}" class="mobile-nav-link {{ $active === 'blud' ? 'active' : '' }}">BLUD</a></li>
         <li><a href="{{ route('pkl') }}" class="mobile-nav-link {{ $active === 'pkl' ? 'active' : '' }}">PKL &amp; Industri</a></li>
         <li><a href="{{ route('bkk') }}" class="mobile-nav-link {{ $active === 'bkk' ? 'active' : '' }}">Career Center (BKK)</a></li>

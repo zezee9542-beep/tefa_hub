@@ -50,27 +50,27 @@
         <p class="ai-greeting-kicker">{{ $greetingKicker }}</p>
         <p class="ai-greeting-label">{{ $greetingTitle }} <span aria-hidden="true">👋</span></p>
         <p class="ai-greeting-sub">{{ $greetingSub }}</p>
-        <p class="ai-role-label">Saya ingin mencari:</p>
+        <p class="ai-role-label">Pilih Peran Anda Untuk Navigasi Cepat:</p>
         <div class="ai-nav-categories">
+            <button class="ai-nav-cat" type="button" onclick="window.sendNavChip && window.sendNavChip('Saya Mitra Industri / Perusahaan')">
+                <span class="ai-nav-cat-icon">🏢</span>
+                <div><strong>Mitra Industri</strong><span>Kerjasama TEFA & PKL</span></div>
+            </button>
             <button class="ai-nav-cat" type="button" onclick="window.sendNavChip && window.sendNavChip('Saya Orang Tua / Calon Siswa (Info PPDB)')">
                 <span class="ai-nav-cat-icon">👨‍👩‍👧</span>
                 <div><strong>Orang Tua & Calon</strong><span>PPDB & Jurusan</span></div>
             </button>
+            <button class="ai-nav-cat" type="button" onclick="window.sendNavChip && window.sendNavChip('Saya Guru Pembimbing / Pendidik')">
+                <span class="ai-nav-cat-icon">👨‍🏫</span>
+                <div><strong>Guru Pembimbing</strong><span>Monitoring PKL & Nilai</span></div>
+            </button>
             <button class="ai-nav-cat" type="button" onclick="window.sendNavChip && window.sendNavChip('Saya Siswa Aktif SMK')">
                 <span class="ai-nav-cat-icon">🎓</span>
-                <div><strong>Siswa Aktif</strong><span>BLUD, PKL & Nilai</span></div>
+                <div><strong>Siswa Aktif</strong><span>BLUD, Magang & Rapor</span></div>
             </button>
-            <button class="ai-nav-cat" type="button" onclick="window.sendNavChip && window.sendNavChip('Saya Alumni / Pencari Kerja')">
-                <span class="ai-nav-cat-icon">💼</span>
-                <div><strong>Alumni & Karir</strong><span>Loker & Legalisir</span></div>
-            </button>
-            <button class="ai-nav-cat" type="button" onclick="window.sendNavChip && window.sendNavChip('Saya Mitra Industri / Perusahaan')">
-                <span class="ai-nav-cat-icon">🏢</span>
-                <div><strong>Mitra Industri</strong><span>Kerjasama TEFA</span></div>
-            </button>
-            <button class="ai-nav-cat ai-nav-cat-wide" type="button" onclick="window.sendNavChip && window.sendNavChip('Saya Butuh Layanan Tata Usaha (TU)')">
+            <button class="ai-nav-cat ai-nav-cat-wide" type="button" onclick="window.sendNavChip && window.sendNavChip('Saya Admin / Pengelola Sistem')">
                 <span class="ai-nav-cat-icon">🏛️</span>
-                <div><strong>Layanan Tata Usaha & Akun</strong><span>Jam operasional TU & bantuan</span></div>
+                <div><strong>Admin & Tata Usaha (TU)</strong><span>Layanan surat, akun & operasional</span></div>
             </button>
         </div>
     </div>
@@ -223,11 +223,11 @@
             if (data.suggestions && data.suggestions.length) {
                 buildQuickActions(data.suggestions);
             } else {
-                buildQuickActions(['Info PPDB & Pendaftaran', 'Katalog Produk BLUD', 'Peluang Karir BKK', 'Kurikulum Akademik']);
+                buildQuickActions(['Saya Mitra Industri / Perusahaan', 'Info PPDB & Pendaftaran', 'Saya Guru Pembimbing', 'Katalog Produk BLUD', 'Peluang Karir BKK']);
             }
         } catch {
             if (initLoading) initLoading.remove();
-            buildQuickActions(['Info PPDB & Pendaftaran', 'Katalog Produk BLUD', 'Peluang Karir BKK', 'Kurikulum Akademik']);
+            buildQuickActions(['Saya Mitra Industri / Perusahaan', 'Info PPDB & Pendaftaran', 'Saya Guru Pembimbing', 'Katalog Produk BLUD', 'Peluang Karir BKK']);
         }
     }
 
@@ -262,12 +262,14 @@
         const sugg  = (typeof data === 'object' && Array.isArray(data.suggestions)) ? data.suggestions : [];
 
         let badgeCls = 'ai-badge-umum', badgeTxt = 'Tanya Tefa AI';
-        if (cat.includes('PPDB'))                            { badgeCls = 'ai-badge-ppdb';     badgeTxt = '👨‍👩‍👧 Info PPDB'; }
-        else if (cat.includes('INDUSTRI'))                   { badgeCls = 'ai-badge-industri'; badgeTxt = '🏢 Kemitraan Industri'; }
-        else if (cat.includes('BLUD'))                       { badgeCls = 'ai-badge-blud';     badgeTxt = '🏭 Teaching Factory BLUD'; }
-        else if (cat.includes('BKK') || cat.includes('KARIR')) { badgeCls = 'ai-badge-bkk';    badgeTxt = '💼 Karir & Lowongan BKK'; }
-        else if (cat.includes('AKADEMIK'))                   { badgeCls = 'ai-badge-akademik'; badgeTxt = '🎓 Pembelajaran Akademik'; }
-        else if (cat.includes('ADMIN') || cat.includes('FAQ')) { badgeCls = 'ai-badge-admin';  badgeTxt = '🏛️ Layanan Tata Usaha'; }
+        if (cat.includes('PPDB'))                              { badgeCls = 'ai-badge-ppdb';     badgeTxt = '👨‍👩‍👧 Info Calon / PPDB'; }
+        else if (cat.includes('INDUSTRI'))                     { badgeCls = 'ai-badge-industri'; badgeTxt = '🏢 Mitra Industri / DUDI'; }
+        else if (cat.includes('GURU'))                         { badgeCls = 'ai-badge-guru';     badgeTxt = '👨‍🏫 Guru Pembimbing'; }
+        else if (cat.includes('SISWA'))                        { badgeCls = 'ai-badge-siswa';    badgeTxt = '🎓 Siswa Aktif SMK'; }
+        else if (cat.includes('BLUD'))                         { badgeCls = 'ai-badge-blud';     badgeTxt = '🏭 Teaching Factory BLUD'; }
+        else if (cat.includes('BKK') || cat.includes('KARIR')) { badgeCls = 'ai-badge-bkk';      badgeTxt = '💼 Karir & Lowongan BKK'; }
+        else if (cat.includes('AKADEMIK'))                     { badgeCls = 'ai-badge-akademik'; badgeTxt = '🎓 Pembelajaran Akademik'; }
+        else if (cat.includes('ADMIN') || cat.includes('FAQ')) { badgeCls = 'ai-badge-admin';    badgeTxt = '🏛️ Layanan Admin / TU'; }
 
         const ctaHtml = (route && label)
             ? `<a href="${route}" class="ai-cta-link">${esc(label)} <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>`

@@ -166,7 +166,7 @@
                 @php
                     $heroCards = [
                         ['icon' => 'card.png', 'title' => 'BKK Instan',  'desc' => 'Temukan informasi lowongan dan peluang kerja terbaru.',      'href' => route('bkk')],
-                        ['icon' => 'book.png', 'title' => 'PPDB Kilat',  'desc' => 'Daftar sebagai calon peserta didik baru dengan mudah.',       'href' => '#layanan'],
+                        ['icon' => 'book.png', 'title' => 'PPDB Kilat',  'desc' => 'Daftar sebagai calon peserta didik baru dengan mudah.',       'href' => '#ppdb'],
                     ];
                 @endphp
 
@@ -314,7 +314,7 @@
     {{-- ═══════════════════════════════════════════
          SERVICES / 4 CARDS SECTION
          ═══════════════════════════════════════════ --}}
-    <section class="services-section" id="layanan">
+    <section class="services-section" id="ppdb">
         <div class="wrap">
 
             <div class="services-header reveal">
@@ -377,7 +377,7 @@
     {{-- ═══════════════════════════════════════════
          SHOWCASE / TEFA TO PUBLIC SECTION
          ═══════════════════════════════════════════ --}}
-    <section class="showcase-section" id="produk">
+    <section class="showcase-section" id="blud">
         <div class="wrap">
 
             {{-- Left: Text & CTA --}}

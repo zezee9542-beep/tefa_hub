@@ -252,8 +252,7 @@
 /* ─── Filter & Search Bar Section ─────────────────────────── */
 .pkl-search-section {
     padding: 40px 0 20px;
-    background: #fafcff;
-    border-top: 1px solid #f1f5f9;
+    background: #ffffff;
 }
 
 .pkl-search-bar {
@@ -318,7 +317,7 @@
 /* ─── Opportunity Grid Section ────────────────────────────── */
 .pkl-listings-section {
     padding: 40px 0 80px;
-    background: #fafcff;
+    background: #ffffff;
 }
 
 .pkl-section-header {

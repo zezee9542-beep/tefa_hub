@@ -1140,9 +1140,7 @@ body.onboarding-active {
 /* ── SERVICES SECTION ────────────────────────────────────── */
 .services-section {
     padding: 70px 0 90px;
-    background: #fafcff;
-    border-top: 1px solid #f1f5f9;
-    border-bottom: 1px solid #f1f5f9;
+    background: #ffffff;
     width: 100%;
     overflow-x: hidden;
 }
@@ -1168,8 +1166,8 @@ body.onboarding-active {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     width: 100%;
 }
 .service-card {
@@ -1312,8 +1310,7 @@ body.onboarding-active {
 /* ── AI SECTION ──────────────────────────────────────────── */
 .ai-section {
     padding: 80px 0 95px;
-    background: #fafcff;
-    border-top: 1px solid #f1f5f9;
+    background: #ffffff;
     width: 100%;
     overflow-x: hidden;
 }
@@ -1945,6 +1942,8 @@ body.ai-panel-open .ai-trigger {
 }
 .ai-badge-ppdb { background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
 .ai-badge-industri { background: #f0f9ff; color: #0369a1; border: 1px solid #bae6fd; }
+.ai-badge-guru { background: #faf5ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+.ai-badge-siswa { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
 .ai-badge-blud { background: #eef2ff; color: #4338ca; border: 1px solid #c7d2fe; }
 .ai-badge-bkk { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
 .ai-badge-akademik { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
@@ -2099,6 +2098,11 @@ body.ai-panel-open .ai-trigger {
     }
     .ai-content { align-items: center; }
     .ai-desc { margin: 0 auto 24px; }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
 
     .footer-grid {
         grid-template-columns: repeat(2, 1fr);
