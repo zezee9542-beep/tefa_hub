@@ -6,4 +6,5 @@
             navigator.serviceWorker.register('{{ asset('sw.js') }}', { scope: '/' }).catch(() => {});
         });
     }
+
 </script>
