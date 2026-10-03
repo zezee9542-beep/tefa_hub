@@ -14,8 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- CSS Assets -->
-    <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v=4.4.0">
-    <link rel="stylesheet" href="{{ asset('assets/css/bkk.landing.css') }}?v=1.3.2">
+    <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v={{ filemtime(public_path('assets/css/landing.css')) }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bkk.landing.css') }}?v={{ filemtime(public_path('assets/css/bkk.landing.css')) }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>

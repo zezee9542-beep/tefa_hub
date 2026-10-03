@@ -26,10 +26,14 @@
 
 <IfModule mod_headers.c>
     <Files "sw.js">
-        Header set Cache-Control "no-cache"
+        Header always set Cache-Control "no-cache, no-store, must-revalidate"
     </Files>
 
-    <FilesMatch "\.(?:avif|webp|css|js|woff2?)$">
+    <FilesMatch "\.(?:avif|webp|woff2?)$">
         Header set Cache-Control "public, max-age=604800"
+    </FilesMatch>
+
+    <FilesMatch "\.(?:css|js)$">
+        Header always set Cache-Control "no-cache, must-revalidate"
     </FilesMatch>
 </IfModule>
