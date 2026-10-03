@@ -14,8 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- CSS Assets -->
-    <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v=4.4.0">
-    <link rel="stylesheet" href="{{ asset('assets/css/bkk.landing.css') }}?v=1.3.2">
+    <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v=3.9.0">
+    <link rel="stylesheet" href="{{ asset('assets/css/bkk.landing.css') }}?v=1.3.1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
@@ -284,48 +284,26 @@
          SCRIPTS: SCROLL ANIMATIONS & NAVBAR
          ═══════════════════════════════════════════ --}}
     <script>
-    (function() {
-        function initBkkCardReveal() {
-            const cardEls = document.querySelectorAll('.bkk-card-reveal');
-            if (!cardEls.length) return;
+    document.addEventListener('DOMContentLoaded', function() {
 
-            if ('IntersectionObserver' in window) {
-                const cardObserver = new IntersectionObserver(function(entries, obs) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            const el = entry.target;
-                            const delay = parseInt(el.dataset.delay || 0, 10);
-                            setTimeout(function() {
-                                el.classList.add('bkk-card-revealed');
-                            }, delay);
-                            obs.unobserve(el);
-                        }
-                    });
-                }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
-
-                cardEls.forEach(function(el) {
-                    if (!el.classList.contains('bkk-card-revealed')) {
-                        cardObserver.observe(el);
+        // ── STAGGERED CARD REVEAL (per-card delay, smooth) ──────────
+        const cardEls = document.querySelectorAll('.bkk-card-reveal');
+        if ('IntersectionObserver' in window && cardEls.length) {
+            const cardObserver = new IntersectionObserver(function(entries, obs) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const delay = parseInt(el.dataset.delay || 0, 10);
+                        setTimeout(function() {
+                            el.classList.add('bkk-card-revealed');
+                        }, delay);
+                        obs.unobserve(el);
                     }
                 });
-            } else {
-                cardEls.forEach(function(el) { el.classList.add('bkk-card-revealed'); });
-            }
+            }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+            cardEls.forEach(function(el) { cardObserver.observe(el); });
         }
-
-        document.addEventListener('DOMContentLoaded', initBkkCardReveal);
-        window.addEventListener('pageshow', function(e) {
-            document.body.style.overflow = '';
-            initBkkCardReveal();
-        });
-
-        // Fail-safe: ensure cards never stay hidden
-        setTimeout(function() {
-            document.querySelectorAll('.bkk-card-reveal:not(.bkk-card-revealed)').forEach(function(el) {
-                el.classList.add('bkk-card-revealed');
-            });
-        }, 500);
-    })();
+    });
     </script>
 </body>
 </html>

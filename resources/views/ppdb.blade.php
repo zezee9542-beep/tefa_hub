@@ -66,11 +66,10 @@
 
                     <div class="ppdb-btn-group">
                         <a 
-                            href="https://www.instagram.com/smkantartika1sda?stkn=ZWU5OXBpbzFjMzEw" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
+                            href="javascript:void(0)" 
+                            onclick="openPpdbRegisterModal()" 
                             class="btn-ppdb-primary"
-                            aria-label="Daftar Sekarang ke Instagram Resmi SMK Antartika 1 Sidoarjo"
+                            aria-label="Pendaftaran Online PPDB SMK Antartika 1 Sidoarjo"
                         >
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
@@ -619,6 +618,419 @@
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════
+         INTERACTIVE PPDB REGISTRATION WIZARD MODAL (6 STEPS)
+         ═══════════════════════════════════════════════════════════ -->
+    <div id="ppdbRegisterModalOverlay" class="ppdb-modal-overlay" role="dialog" aria-modal="true" tabindex="-1" style="display: none;">
+        <div class="ppdb-modal-card ppdb-reg-modal-card">
+            
+            <!-- Modal Header -->
+            <div class="ppdb-modal-header ppdb-reg-header">
+                <div class="ppdb-reg-title-wrap">
+                    <div class="ppdb-reg-badge">
+                        <span class="pulse-dot"></span>
+                        <span>PPDB Online TP 2026/2027</span>
+                    </div>
+                    <h3 class="ppdb-modal-title">Formulir Pendaftaran Calon Siswa Baru</h3>
+                    <p class="ppdb-modal-subtitle">SMK Antartika 1 Sidoarjo &bull; Terakreditasi A &bull; SMK Pusat Keunggulan</p>
+                </div>
+                <button type="button" class="btn-ppdb-modal-close" onclick="closePpdbRegisterModal()" aria-label="Tutup Form Pendaftaran">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Stepper Progress Bar -->
+            <div class="ppdb-reg-stepper" id="ppdbRegStepper">
+                <div class="ppdb-step-pill active" id="stepPill1">
+                    <span class="step-num">1</span>
+                    <span class="step-label">Akun &amp; NISN</span>
+                </div>
+                <div class="ppdb-step-line" id="stepLine1"></div>
+                <div class="ppdb-step-pill" id="stepPill2">
+                    <span class="step-num">2</span>
+                    <span class="step-label">Biodata</span>
+                </div>
+                <div class="ppdb-step-line" id="stepLine2"></div>
+                <div class="ppdb-step-pill" id="stepPill3">
+                    <span class="step-num">3</span>
+                    <span class="step-label">Berkas</span>
+                </div>
+                <div class="ppdb-step-line" id="stepLine3"></div>
+                <div class="ppdb-step-pill" id="stepPill4">
+                    <span class="step-num">4</span>
+                    <span class="step-label">Jurusan</span>
+                </div>
+                <div class="ppdb-step-line" id="stepLine4"></div>
+                <div class="ppdb-step-pill" id="stepPill5">
+                    <span class="step-num">5</span>
+                    <span class="step-label">Review</span>
+                </div>
+                <div class="ppdb-step-line" id="stepLine5"></div>
+                <div class="ppdb-step-pill" id="stepPill6">
+                    <span class="step-num">6</span>
+                    <span class="step-label">Bukti</span>
+                </div>
+            </div>
+
+            <!-- Modal Body Form Steps -->
+            <div class="ppdb-modal-body ppdb-reg-body">
+                <form id="ppdbRegisterForm" onsubmit="event.preventDefault();">
+                    
+                    <!-- STEP 1: Akun Calon Siswa (NISN, Nama Lengkap, WA) -->
+                    <div class="ppdb-form-step active" id="ppdbStep1">
+                        <div class="form-step-header">
+                            <h4 class="form-step-title">Langkah 1: Akun &amp; Kontak Calon Siswa</h4>
+                            <p class="form-step-desc">Isi NISN, Nama Lengkap, dan Nomor WhatsApp aktif untuk memulai pendaftaran.</p>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label class="form-label" for="reg_nisn">NISN (Nomor Induk Siswa Nasional) <span class="req">*</span></label>
+                                <input type="number" id="reg_nisn" class="form-control" placeholder="Contoh: 0071234567 (10 digit)" required>
+                                <small class="form-help">NISN dapat dilihat pada kartu pelajar, rapor SMP, atau ijazah SD.</small>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="reg_nama">Nama Lengkap Calon Siswa <span class="req">*</span></label>
+                                <input type="text" id="reg_nama" class="form-control" placeholder="Sesuai Ijazah SMP / Akta Kelahiran" required>
+                            </div>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label class="form-label" for="reg_wa">Nomor WhatsApp Aktif Siswa/Wali <span class="req">*</span></label>
+                                <div class="input-with-icon">
+                                    <span class="input-prefix">+62</span>
+                                    <input type="tel" id="reg_wa" class="form-control" placeholder="81234567890" required>
+                                </div>
+                                <small class="form-help">Informasi jadwal tes &amp; konfirmasi kelulusan dikirim ke nomor ini.</small>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="reg_email">Email Aktif (Opsional)</label>
+                                <input type="email" id="reg_email" class="form-control" placeholder="contoh: calon.siswa@gmail.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Biodata Diri & Orang Tua/Wali -->
+                    <div class="ppdb-form-step" id="ppdbStep2">
+                        <div class="form-step-header">
+                            <h4 class="form-step-title">Langkah 2: Biodata Diri &amp; Data Orang Tua/Wali</h4>
+                            <p class="form-step-desc">Lengkapi identitas pribadi dan informasi kontak orang tua/wali siswa.</p>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label class="form-label">Jenis Kelamin <span class="req">*</span></label>
+                                <div class="radio-option-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="reg_jk" value="Laki-laki" checked>
+                                        <span>Laki-laki</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="reg_jk" value="Perempuan">
+                                        <span>Perempuan</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="reg_asal_sekolah">Asal Sekolah (SMP / MTs) <span class="req">*</span></label>
+                                <input type="text" id="reg_asal_sekolah" class="form-control" placeholder="Contoh: SMP Negeri 1 Sidoarjo" required>
+                            </div>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label class="form-label" for="reg_tempat_lahir">Tempat Lahir <span class="req">*</span></label>
+                                <input type="text" id="reg_tempat_lahir" class="form-control" placeholder="Contoh: Sidoarjo" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="reg_tanggal_lahir">Tanggal Lahir <span class="req">*</span></label>
+                                <input type="date" id="reg_tanggal_lahir" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="reg_alamat">Alamat Lengkap Domisili <span class="req">*</span></label>
+                            <textarea id="reg_alamat" class="form-control" rows="2" placeholder="Nama Jalan, RT/RW, Kelurahan/Desa, Kecamatan, Kota/Kabupaten" required></textarea>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label class="form-label" for="reg_nama_ortu">Nama Orang Tua / Wali <span class="req">*</span></label>
+                                <input type="text" id="reg_nama_ortu" class="form-control" placeholder="Nama lengkap Ayah/Ibu/Wali" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="reg_pekerjaan_ortu">Pekerjaan Orang Tua / Wali</label>
+                                <select id="reg_pekerjaan_ortu" class="form-control">
+                                    <option value="Karyawan Swasta">Karyawan Swasta</option>
+                                    <option value="Wiraswasta / Pengusaha">Wiraswasta / Pengusaha</option>
+                                    <option value="PNS / TNI / POLRI">PNS / TNI / POLRI</option>
+                                    <option value="Buruh / Petani / Nelayan">Buruh / Petani / Nelayan</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Unggah Berkas Dokumen -->
+                    <div class="ppdb-form-step" id="ppdbStep3">
+                        <div class="form-step-header">
+                            <h4 class="form-step-title">Langkah 3: Unggah Berkas Dokumen Persyaratan</h4>
+                            <p class="form-step-desc">Format berkas didukung: JPG, PNG, atau PDF (Maksimal 2MB per file).</p>
+                        </div>
+                        <div class="upload-grid">
+                            <!-- File 1: KK -->
+                            <div class="upload-card">
+                                <div class="upload-card-header">
+                                    <h5 class="upload-title">Kartu Keluarga (KK)</h5>
+                                    <span class="upload-badge">Wajib</span>
+                                </div>
+                                <label class="upload-dropzone" id="dropzone_kk" for="file_kk">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="17 8 12 3 7 8"></polyline>
+                                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                                    </svg>
+                                    <span class="upload-prompt" id="file_kk_name">Pilih foto/scan KK</span>
+                                    <input type="file" id="file_kk" class="upload-input" accept="image/*,application/pdf" onchange="handleFileUpload(this, 'file_kk_name', 'dropzone_kk')">
+                                </label>
+                            </div>
+
+                            <!-- File 2: Akta Lahir -->
+                            <div class="upload-card">
+                                <div class="upload-card-header">
+                                    <h5 class="upload-title">Akta Kelahiran</h5>
+                                    <span class="upload-badge">Wajib</span>
+                                </div>
+                                <label class="upload-dropzone" id="dropzone_akta" for="file_akta">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="17 8 12 3 7 8"></polyline>
+                                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                                    </svg>
+                                    <span class="upload-prompt" id="file_akta_name">Pilih foto/scan Akta</span>
+                                    <input type="file" id="file_akta" class="upload-input" accept="image/*,application/pdf" onchange="handleFileUpload(this, 'file_akta_name', 'dropzone_akta')">
+                                </label>
+                            </div>
+
+                            <!-- File 3: SKL / Rapor SMP -->
+                            <div class="upload-card">
+                                <div class="upload-card-header">
+                                    <h5 class="upload-title">SKL / Nilai Rapor SMP</h5>
+                                    <span class="upload-badge">Wajib</span>
+                                </div>
+                                <label class="upload-dropzone" id="dropzone_skl" for="file_skl">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="17 8 12 3 7 8"></polyline>
+                                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                                    </svg>
+                                    <span class="upload-prompt" id="file_skl_name">Pilih file SKL / Rapor</span>
+                                    <input type="file" id="file_skl" class="upload-input" accept="image/*,application/pdf" onchange="handleFileUpload(this, 'file_skl_name', 'dropzone_skl')">
+                                </label>
+                            </div>
+
+                            <!-- File 4: Pas Foto -->
+                            <div class="upload-card">
+                                <div class="upload-card-header">
+                                    <h5 class="upload-title">Pas Foto Berwarna 3x4</h5>
+                                    <span class="upload-badge">Wajib</span>
+                                </div>
+                                <label class="upload-dropzone" id="dropzone_foto" for="file_foto">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="17 8 12 3 7 8"></polyline>
+                                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                                    </svg>
+                                    <span class="upload-prompt" id="file_foto_name">Pilih pas foto 3x4</span>
+                                    <input type="file" id="file_foto" class="upload-input" accept="image/*" onchange="handleFileUpload(this, 'file_foto_name', 'dropzone_foto')">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="upload-info-alert">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                            <span>Jika berkas fisik belum lengkap, Anda tetap dapat melanjutkan pendaftaran dan membawanya saat verifikasi langsung di Ruang PPDB.</span>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: Pilih Konsentrasi Keahlian (Jurusan) -->
+                    <div class="ppdb-form-step" id="ppdbStep4">
+                        <div class="form-step-header">
+                            <h4 class="form-step-title">Langkah 4: Pilih Konsentrasi Keahlian (Jurusan)</h4>
+                            <p class="form-step-desc">Pilih 1 Jurusan Prioritas Utama dan 1 Jurusan Alternatif Cadangan.</p>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label class="form-label" for="reg_jurusan_1">Jurusan Pilihan 1 (Prioritas Utama) <span class="req">*</span></label>
+                                <select id="reg_jurusan_1" class="form-control" required>
+                                    <option value="" disabled selected>-- Pilih Konsentrasi Keahlian Utama --</option>
+                                    <option value="Rekayasa Perangkat Lunak (RPL)">Rekayasa Perangkat Lunak (RPL)</option>
+                                    <option value="Teknik Kendaraan Ringan (TKR)">Teknik Kendaraan Ringan (TKR)</option>
+                                    <option value="Teknik Pemesinan (TPM)">Teknik Pemesinan (TPM)</option>
+                                    <option value="Teknik Instalasi Tenaga Listrik (TITL)">Teknik Instalasi Tenaga Listrik (TITL)</option>
+                                    <option value="Teknik Elektronika Industri (TEI)">Teknik Elektronika Industri (TEI)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="reg_jurusan_2">Jurusan Pilihan 2 (Alternatif Cadangan)</label>
+                                <select id="reg_jurusan_2" class="form-control">
+                                    <option value="Tidak Memilih Alternatif">-- Tidak Memilih Alternatif --</option>
+                                    <option value="Rekayasa Perangkat Lunak (RPL)">Rekayasa Perangkat Lunak (RPL)</option>
+                                    <option value="Teknik Kendaraan Ringan (TKR)">Teknik Kendaraan Ringan (TKR)</option>
+                                    <option value="Teknik Pemesinan (TPM)">Teknik Pemesinan (TPM)</option>
+                                    <option value="Teknik Instalasi Tenaga Listrik (TITL)">Teknik Instalasi Tenaga Listrik (TITL)</option>
+                                    <option value="Teknik Elektronika Industri (TEI)">Teknik Elektronika Industri (TEI)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 10px;">
+                            <label class="form-label">Jalur / Gelombang Pendaftaran <span class="req">*</span></label>
+                            <div class="radio-option-cards">
+                                <label class="radio-card active">
+                                    <input type="radio" name="reg_gelombang" value="Gelombang 1 (Promo Diskon SPI)" checked>
+                                    <div class="radio-card-content">
+                                        <div class="radio-card-top">
+                                            <span class="badge-gelombang">GELOMBANG 1</span>
+                                            <span class="badge-discount">Diskon Spesial</span>
+                                        </div>
+                                        <strong class="radio-card-name">Gelombang 1 (s.d 31 Maret 2026)</strong>
+                                        <p class="radio-card-sub">Bebas biaya formulir + potongan biaya SPI s.d Rp 1.000.000,-</p>
+                                    </div>
+                                </label>
+                                <label class="radio-card">
+                                    <input type="radio" name="reg_gelombang" value="Gelombang 2 (Reguler)">
+                                    <div class="radio-card-content">
+                                        <div class="radio-card-top">
+                                            <span class="badge-gelombang secondary">GELOMBANG 2</span>
+                                        </div>
+                                        <strong class="radio-card-name">Gelombang 2 (Reguler)</strong>
+                                        <p class="radio-card-sub">Pendaftaran reguler pemenuhan sisa kuota jurusan.</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 5: Ringkasan Biodata & Submit -->
+                    <div class="ppdb-form-step" id="ppdbStep5">
+                        <div class="form-step-header">
+                            <h4 class="form-step-title">Langkah 5: Ringkasan &amp; Konfirmasi Pendaftaran</h4>
+                            <p class="form-step-desc">Pastikan seluruh data yang Anda masukkan sudah sesuai sebelum mengirim.</p>
+                        </div>
+                        
+                        <div class="summary-card" id="ppdbSummaryContent">
+                            <!-- Populated dynamically by JavaScript -->
+                        </div>
+
+                        <div class="agreement-box">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="reg_agreement" required checked>
+                                <span>Saya menyatakan bahwa data yang saya isikan adalah benar dan bersedia mengikuti seluruh tahapan seleksi PPDB SMK Antartika 1 Sidoarjo.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- STEP 6: Bukti Pendaftaran Digital (Sukses) -->
+                    <div class="ppdb-form-step" id="ppdbStep6">
+                        <div class="success-screen">
+                            <div class="success-icon-badge">
+                                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <h4 class="success-title">Pendaftaran Berhasil Dikirim!</h4>
+                            <p class="success-subtitle">Terima kasih telah mendaftar di SMK Antartika 1 Sidoarjo. Simpan nomor pendaftaran digital Anda di bawah ini.</p>
+
+                            <!-- Digital Proof Slip Card -->
+                            <div class="reg-proof-card" id="regProofPrintable">
+                                <div class="proof-card-header">
+                                    <div class="proof-brand">
+                                        <img src="{{ asset('assets/logo antartika.webp') }}" alt="Logo SMK" class="proof-logo">
+                                        <div>
+                                            <h5 class="proof-school">SMK ANTARTIKA 1 SIDOARJO</h5>
+                                            <span class="proof-tagline">BUKTI PENDAFTARAN PPDB ONLINE TP 2026/2027</span>
+                                        </div>
+                                    </div>
+                                    <span class="proof-status-badge">MENUNGGU VERIFIKASI</span>
+                                </div>
+                                
+                                <div class="proof-body-grid">
+                                    <div class="proof-item">
+                                        <span class="proof-item-label">Nomor Pendaftaran</span>
+                                        <strong class="proof-item-val highlight" id="proof_no_reg">PPDB-2026-08129</strong>
+                                    </div>
+                                    <div class="proof-item">
+                                        <span class="proof-item-label">Waktu Pendaftaran</span>
+                                        <strong class="proof-item-val" id="proof_tgl_daftar">-</strong>
+                                    </div>
+                                    <div class="proof-item">
+                                        <span class="proof-item-label">NISN Siswa</span>
+                                        <strong class="proof-item-val" id="proof_nisn">-</strong>
+                                    </div>
+                                    <div class="proof-item">
+                                        <span class="proof-item-label">Nama Lengkap</span>
+                                        <strong class="proof-item-val" id="proof_nama">-</strong>
+                                    </div>
+                                    <div class="proof-item">
+                                        <span class="proof-item-label">Asal Sekolah SMP</span>
+                                        <strong class="proof-item-val" id="proof_sekolah">-</strong>
+                                    </div>
+                                    <div class="proof-item">
+                                        <span class="proof-item-label">No. WhatsApp Siswa</span>
+                                        <strong class="proof-item-val" id="proof_wa">-</strong>
+                                    </div>
+                                    <div class="proof-item full-width">
+                                        <span class="proof-item-label">Pilihan Konsentrasi Keahlian</span>
+                                        <strong class="proof-item-val primary-text" id="proof_jurusan">-</strong>
+                                    </div>
+                                </div>
+
+                                <div class="proof-footer-notice">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                    <span>Tunjukkan bukti pendaftaran ini saat hadir verifikasi fisik di Ruang PPDB SMK Antartika 1 Sidoarjo.</span>
+                                </div>
+                            </div>
+
+                            <!-- Success Action Buttons -->
+                            <div class="success-actions">
+                                <button type="button" class="btn-reg-action btn-print" onclick="printRegProof()">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                                        <rect x="6" y="14" width="12" height="8"></rect>
+                                    </svg>
+                                    <span>Unduh / Cetak Bukti</span>
+                                </button>
+                                <a href="https://wa.me/6281234567890?text=Halo%20Panitia%20PPDB%20SMK%20Antartika%201%20Sidoarjo,%20saya%20sudah%20mendaftar%20online." target="_blank" rel="noopener noreferrer" class="btn-reg-action btn-wa">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                                    </svg>
+                                    <span>Hubungi Panitia (WA)</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Modal Footer Controls -->
+            <div class="ppdb-modal-footer ppdb-reg-footer" id="ppdbRegFooter">
+                <button type="button" class="btn-reg-nav btn-reg-prev" id="btnRegPrev" onclick="prevRegStep()" style="display: none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    <span>Kembali</span>
+                </button>
+                <div class="footer-step-counter" id="stepCounterText">
+                    Langkah <strong>1</strong> dari 5
+                </div>
+                <button type="button" class="btn-reg-nav btn-reg-next" id="btnRegNext" onclick="nextRegStep()">
+                    <span id="btnRegNextText">Lanjutkan</span>
+                    <svg id="btnRegNextIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
          INTERACTIVE DETAIL MODAL POPUP
          ═══════════════════════════════════════════════════════════ -->
     <div id="ppdbModalOverlay" class="ppdb-modal-overlay" role="dialog" aria-modal="true" tabindex="-1" style="display: none;">
@@ -641,17 +1053,8 @@
             </div>
 
             <div class="ppdb-modal-footer">
-                <a 
-                    href="https://www.instagram.com/smkantartika1sda?stkn=ZWU5OXBpbzFjMzEw" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="btn-ppdb-primary"
-                    style="height: 36px; padding: 0 18px; font-size: 12.5px;"
-                >
-                    <span>Daftar via Instagram Resmi</span>
-                </a>
-                <button type="button" class="btn-ppdb-secondary" onclick="closePpdbModal()" style="height: 36px; padding: 0 16px; font-size: 12.5px;">
-                    Tutup
+                <button type="button" class="btn-ppdb-primary" onclick="closePpdbModal()" style="height: 38px; padding: 0 24px; font-size: 13px; font-weight:700;">
+                    <span>Tutup Panduan</span>
                 </button>
             </div>
         </div>
@@ -1019,6 +1422,77 @@
                     </div>
                 `
             },
+            online: {
+                title: 'Alur Lengkap Pendaftaran PPDB Online',
+                subtitle: 'Tahapan pendaftaran calon peserta didik baru melalui sistem online TEFA-Hub',
+                content: `
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                        <div style="background:#EFF6FF; border:1px solid #BFDBFE; border-radius:12px; padding:12px 16px; display:flex; align-items:center; gap:12px;">
+                            <div style="width:36px; height:36px; border-radius:10px; background:#004AC6; color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 style="margin:0; font-size:13.5px; font-weight:800; color:#0F172A;">Alur Lengkap Pendaftaran PPDB Online</h4>
+                                <p style="margin:2px 0 0; font-size:11.5px; color:#475569;">Ikuti tahapan registrasi online calon peserta didik baru di bawah ini:</p>
+                            </div>
+                        </div>
+
+                        <div style="display:flex; flex-direction:column; gap:10px;">
+                            <div style="background:#FAFCFF; border:1px solid #E2E8F0; border-radius:12px; padding:13px 16px; display:flex; gap:14px; align-items:flex-start;">
+                                <span style="width:28px; height:28px; border-radius:8px; background:#004AC6; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0;">1</span>
+                                <div style="font-size:13px; color:#1E293B; line-height:1.5;">
+                                    Buka portal PPDB online melalui halaman Beranda TEFA-Hub.
+                                </div>
+                            </div>
+
+                            <div style="background:#FAFCFF; border:1px solid #E2E8F0; border-radius:12px; padding:13px 16px; display:flex; gap:14px; align-items:flex-start;">
+                                <span style="width:28px; height:28px; border-radius:8px; background:#004AC6; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0;">2</span>
+                                <div style="font-size:13px; color:#1E293B; line-height:1.5;">
+                                    Klik tombol <strong>"Daftar Akun Calon Siswa"</strong> dan isi NISN, Nama Lengkap, serta Nomor WhatsApp aktif.
+                                </div>
+                            </div>
+
+                            <div style="background:#FAFCFF; border:1px solid #E2E8F0; border-radius:12px; padding:13px 16px; display:flex; gap:14px; align-items:flex-start;">
+                                <span style="width:28px; height:28px; border-radius:8px; background:#004AC6; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0;">3</span>
+                                <div style="font-size:13px; color:#1E293B; line-height:1.5;">
+                                    Lengkapi formulir biodata diri dan data orang tua/wali.
+                                </div>
+                            </div>
+
+                            <div style="background:#FAFCFF; border:1px solid #E2E8F0; border-radius:12px; padding:13px 16px; display:flex; gap:14px; align-items:flex-start;">
+                                <span style="width:28px; height:28px; border-radius:8px; background:#004AC6; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0;">4</span>
+                                <div style="font-size:13px; color:#1E293B; line-height:1.5;">
+                                    Unggah berkas dokumen (KK, Akta Lahir, SKL/Nilai Rapor SMP, dan Pas Foto).
+                                </div>
+                            </div>
+
+                            <div style="background:#FAFCFF; border:1px solid #E2E8F0; border-radius:12px; padding:13px 16px; display:flex; gap:14px; align-items:flex-start;">
+                                <span style="width:28px; height:28px; border-radius:8px; background:#004AC6; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0;">5</span>
+                                <div style="font-size:13px; color:#1E293B; line-height:1.5;">
+                                    Pilih 1 atau 2 Konsentrasi Keahlian (Jurusan) yang diminati.
+                                </div>
+                            </div>
+
+                            <div style="background:#FAFCFF; border:1px solid #E2E8F0; border-radius:12px; padding:13px 16px; display:flex; gap:14px; align-items:flex-start;">
+                                <span style="width:28px; height:28px; border-radius:8px; background:#004AC6; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0;">6</span>
+                                <div style="font-size:13px; color:#1E293B; line-height:1.5;">
+                                    Unduh Bukti Pendaftaran dan tunggu jadwal verifikasi &amp; pengumuman hasil seleksi.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top:16px;">
+                            <button type="button" onclick="closePpdbModal(); openPpdbRegisterModal();" class="btn-ppdb-primary" style="width:100%; height:44px; justify-content:center; font-size:13.5px; font-weight:700;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                </svg>
+                                <span>Buka Formulir Pendaftaran Sekarang</span>
+                            </button>
+                        </div>
+                    </div>
+                `
+            },
             'jurusan-all': {
                 title: 'Seluruh Program Keahlian (5 Jurusan Unggulan)',
                 subtitle: 'Kurikulum berbasis industri dan sertifikasi kompetensi nasional LSP-P1',
@@ -1151,6 +1625,292 @@
             setTimeout(() => modal.classList.add('active'), 10);
         }
 
+        /* ─── PPDB Interactive Registration Wizard Logic ─── */
+        let currentRegStep = 1;
+        const regFiles = {};
+
+        function openPpdbRegisterModal() {
+            // Close detail modal if open
+            closePpdbModal();
+            closePpdbPosterModal();
+
+            const modal = document.getElementById('ppdbRegisterModalOverlay');
+            if (!modal) return;
+            goToRegStep(1);
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => modal.classList.add('active'), 10);
+        }
+
+        function closePpdbRegisterModal() {
+            const modal = document.getElementById('ppdbRegisterModalOverlay');
+            if (!modal) return;
+
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 250);
+        }
+
+        function goToRegStep(step) {
+            currentRegStep = step;
+
+            // Update step bodies and indicators
+            for (let i = 1; i <= 6; i++) {
+                const stepElem = document.getElementById(`ppdbStep${i}`);
+                if (stepElem) stepElem.classList.toggle('active', i === currentRegStep);
+                
+                const pillElem = document.getElementById(`stepPill${i}`);
+                if (pillElem) {
+                    pillElem.classList.toggle('active', i === currentRegStep);
+                    pillElem.classList.toggle('completed', i < currentRegStep);
+                }
+
+                const lineElem = document.getElementById(`stepLine${i}`);
+                if (lineElem) {
+                    lineElem.classList.toggle('active', i < currentRegStep);
+                }
+            }
+
+            // Update footer controls
+            const btnPrev = document.getElementById('btnRegPrev');
+            const btnNext = document.getElementById('btnRegNext');
+            const btnNextText = document.getElementById('btnRegNextText');
+            const stepCounter = document.getElementById('stepCounterText');
+            const footer = document.getElementById('ppdbRegFooter');
+
+            if (currentRegStep === 6) {
+                if (footer) footer.style.display = 'none';
+            } else {
+                if (footer) footer.style.display = 'flex';
+                if (btnPrev) btnPrev.style.display = currentRegStep > 1 ? 'inline-flex' : 'none';
+                
+                if (currentRegStep === 5) {
+                    if (btnNextText) btnNextText.innerText = 'Kirim Pendaftaran';
+                    if (btnNext) {
+                        btnNext.style.background = '#10B981';
+                        btnNext.style.boxShadow = '0 4px 12px rgba(16, 185, 129, 0.3)';
+                    }
+                    updateSummary();
+                } else {
+                    if (btnNextText) btnNextText.innerText = 'Lanjutkan';
+                    if (btnNext) {
+                        btnNext.style.background = '#004AC6';
+                        btnNext.style.boxShadow = '0 4px 12px rgba(0, 74, 198, 0.25)';
+                    }
+                }
+
+                if (stepCounter) {
+                    stepCounter.innerHTML = `Langkah <strong>${currentRegStep}</strong> dari 5`;
+                }
+            }
+
+            // Scroll modal body to top
+            const body = document.querySelector('.ppdb-reg-body');
+            if (body) body.scrollTop = 0;
+        }
+
+        function validateCurrentStep() {
+            if (currentRegStep === 1) {
+                const nisn = document.getElementById('reg_nisn').value.trim();
+                const nama = document.getElementById('reg_nama').value.trim();
+                const wa = document.getElementById('reg_wa').value.trim();
+
+                if (!nisn || nisn.length < 5) {
+                    alert('Mohon masukkan NISN yang valid (minimal 5-10 digit angka).');
+                    document.getElementById('reg_nisn').focus();
+                    return false;
+                }
+                if (!nama) {
+                    alert('Mohon masukkan Nama Lengkap calon siswa.');
+                    document.getElementById('reg_nama').focus();
+                    return false;
+                }
+                if (!wa || wa.length < 8) {
+                    alert('Mohon masukkan Nomor WhatsApp aktif yang valid.');
+                    document.getElementById('reg_wa').focus();
+                    return false;
+                }
+                return true;
+            }
+
+            if (currentRegStep === 2) {
+                const asalSekolah = document.getElementById('reg_asal_sekolah').value.trim();
+                const tempatLahir = document.getElementById('reg_tempat_lahir').value.trim();
+                const tglLahir = document.getElementById('reg_tanggal_lahir').value.trim();
+                const alamat = document.getElementById('reg_alamat').value.trim();
+                const namaOrtu = document.getElementById('reg_nama_ortu').value.trim();
+
+                if (!asalSekolah) {
+                    alert('Mohon masukkan Asal Sekolah SMP/MTs.');
+                    document.getElementById('reg_asal_sekolah').focus();
+                    return false;
+                }
+                if (!tempatLahir) {
+                    alert('Mohon masukkan Tempat Lahir.');
+                    document.getElementById('reg_tempat_lahir').focus();
+                    return false;
+                }
+                if (!tglLahir) {
+                    alert('Mohon pilih Tanggal Lahir.');
+                    document.getElementById('reg_tanggal_lahir').focus();
+                    return false;
+                }
+                if (!alamat) {
+                    alert('Mohon masukkan Alamat Domisili lengkap.');
+                    document.getElementById('reg_alamat').focus();
+                    return false;
+                }
+                if (!namaOrtu) {
+                    alert('Mohon masukkan Nama Orang Tua / Wali.');
+                    document.getElementById('reg_nama_ortu').focus();
+                    return false;
+                }
+                return true;
+            }
+
+            if (currentRegStep === 3) {
+                return true;
+            }
+
+            if (currentRegStep === 4) {
+                const jurusan1 = document.getElementById('reg_jurusan_1').value;
+                if (!jurusan1) {
+                    alert('Mohon pilih Jurusan Pilihan 1 (Prioritas Utama).');
+                    document.getElementById('reg_jurusan_1').focus();
+                    return false;
+                }
+                return true;
+            }
+
+            if (currentRegStep === 5) {
+                const agreement = document.getElementById('reg_agreement').checked;
+                if (!agreement) {
+                    alert('Mohon centang pernyataan persetujuan pendaftaran.');
+                    return false;
+                }
+                return true;
+            }
+
+            return true;
+        }
+
+        function nextRegStep() {
+            if (!validateCurrentStep()) return;
+
+            if (currentRegStep < 5) {
+                goToRegStep(currentRegStep + 1);
+            } else if (currentRegStep === 5) {
+                submitRegistration();
+            }
+        }
+
+        function prevRegStep() {
+            if (currentRegStep > 1) {
+                goToRegStep(currentRegStep - 1);
+            }
+        }
+
+        function handleFileUpload(input, labelId, dropzoneId) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                const label = document.getElementById(labelId);
+                const dropzone = document.getElementById(dropzoneId);
+                if (label) label.innerText = '✓ ' + file.name;
+                if (dropzone) dropzone.classList.add('has-file');
+                regFiles[labelId] = file.name;
+            }
+        }
+
+        function updateSummary() {
+            const nisn = document.getElementById('reg_nisn')?.value || '-';
+            const nama = document.getElementById('reg_nama')?.value || '-';
+            const wa = '+62 ' + (document.getElementById('reg_wa')?.value || '-');
+            const jk = document.querySelector('input[name="reg_jk"]:checked')?.value || 'Laki-laki';
+            const asalSekolah = document.getElementById('reg_asal_sekolah')?.value || '-';
+            const ttl = (document.getElementById('reg_tempat_lahir')?.value || '-') + ', ' + (document.getElementById('reg_tanggal_lahir')?.value || '-');
+            const alamat = document.getElementById('reg_alamat')?.value || '-';
+            const namaOrtu = document.getElementById('reg_nama_ortu')?.value || '-';
+            const pekerjaanOrtu = document.getElementById('reg_pekerjaan_ortu')?.value || '-';
+            const jurusan1 = document.getElementById('reg_jurusan_1')?.value || '-';
+            const jurusan2 = document.getElementById('reg_jurusan_2')?.value || '-';
+            const gelombang = document.querySelector('input[name="reg_gelombang"]:checked')?.value || 'Gelombang 1';
+
+            const summaryElem = document.getElementById('ppdbSummaryContent');
+            if (!summaryElem) return;
+
+            summaryElem.innerHTML = `
+                <div class="summary-section">
+                    <div class="summary-title">Identitas Calon Siswa</div>
+                    <div class="summary-grid">
+                        <div class="summary-row"><span class="summary-key">NISN</span><span class="summary-val">${nisn}</span></div>
+                        <div class="summary-row"><span class="summary-key">Nama Lengkap</span><span class="summary-val">${nama}</span></div>
+                        <div class="summary-row"><span class="summary-key">Jenis Kelamin</span><span class="summary-val">${jk}</span></div>
+                        <div class="summary-row"><span class="summary-key">Tempat, Tgl Lahir</span><span class="summary-val">${ttl}</span></div>
+                        <div class="summary-row"><span class="summary-key">WhatsApp</span><span class="summary-val">${wa}</span></div>
+                        <div class="summary-row"><span class="summary-key">Asal Sekolah</span><span class="summary-val">${asalSekolah}</span></div>
+                    </div>
+                </div>
+
+                <div class="summary-section">
+                    <div class="summary-title">Orang Tua / Wali &amp; Alamat</div>
+                    <div class="summary-grid">
+                        <div class="summary-row"><span class="summary-key">Nama Orang Tua</span><span class="summary-val">${namaOrtu}</span></div>
+                        <div class="summary-row"><span class="summary-key">Pekerjaan</span><span class="summary-val">${pekerjaanOrtu}</span></div>
+                        <div class="summary-row" style="grid-column: span 2;"><span class="summary-key">Alamat</span><span class="summary-val">${alamat}</span></div>
+                    </div>
+                </div>
+
+                <div class="summary-section">
+                    <div class="summary-title">Pilihan Keahlian &amp; Jalur</div>
+                    <div class="summary-grid">
+                        <div class="summary-row"><span class="summary-key">Jurusan Pilihan 1</span><span class="summary-val" style="color:#004AC6;">${jurusan1}</span></div>
+                        <div class="summary-row"><span class="summary-key">Jurusan Alternatif</span><span class="summary-val">${jurusan2}</span></div>
+                        <div class="summary-row" style="grid-column: span 2;"><span class="summary-key">Jalur Gelombang</span><span class="summary-val">${gelombang}</span></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function submitRegistration() {
+            showPpdbToast('Mengirim pendaftaran PPDB online...');
+
+            // Generate registration receipt
+            const randomCode = Math.floor(10000 + Math.random() * 90000);
+            const regNumber = `PPDB-2026-${randomCode}`;
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }) + ' WIB';
+
+            const nama = document.getElementById('reg_nama')?.value || 'Calon Siswa';
+            const nisn = document.getElementById('reg_nisn')?.value || '-';
+            const sekolah = document.getElementById('reg_asal_sekolah')?.value || '-';
+            const wa = '+62 ' + (document.getElementById('reg_wa')?.value || '-');
+            const jurusan = document.getElementById('reg_jurusan_1')?.value || 'Rekayasa Perangkat Lunak';
+
+            document.getElementById('proof_no_reg').innerText = regNumber;
+            document.getElementById('proof_tgl_daftar').innerText = dateStr;
+            document.getElementById('proof_nisn').innerText = nisn;
+            document.getElementById('proof_nama').innerText = nama;
+            document.getElementById('proof_sekolah').innerText = sekolah;
+            document.getElementById('proof_wa').innerText = wa;
+            document.getElementById('proof_jurusan').innerText = jurusan;
+
+            setTimeout(() => {
+                goToRegStep(6);
+                showPpdbToast('Selamat! Pendaftaran Anda berhasil dikirim.');
+            }, 600);
+        }
+
+        function printRegProof() {
+            window.print();
+        }
+
+        // Close Registration modal on backdrop click
+        document.getElementById('ppdbRegisterModalOverlay')?.addEventListener('click', function(e) {
+            if (e.target === this) closePpdbRegisterModal();
+        });
+
         function openJurusanDetail(code) {
             const item = JURUSAN_DETAIL_DATA[code];
             if (!item) return;
@@ -1203,7 +1963,10 @@
                 return;
             }
 
-            if (e.key === 'Escape') closePpdbModal();
+            if (e.key === 'Escape') {
+                closePpdbModal();
+                closePpdbRegisterModal();
+            }
         });
 
         // Download Brosur PDF
@@ -1229,6 +1992,11 @@
         // Auto-open poster popup when visiting the PPDB page
         window.addEventListener('DOMContentLoaded', function() {
             setTimeout(openPpdbPosterModal, 300);
+        });
+
+        // Reset scroll and state when navigating back (bfcache)
+        window.addEventListener('pageshow', function() {
+            document.body.style.overflow = '';
         });
     </script>
 

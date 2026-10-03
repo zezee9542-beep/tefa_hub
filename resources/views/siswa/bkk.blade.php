@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Siswa Dashboard & Shared CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/siswa.dashboard.css') }}?v=2.3.0">
+    <link rel="stylesheet" href="{{ asset('assets/css/siswa.dashboard.css') }}?v=2.5.0">
 </head>
 <body>
 
@@ -173,6 +173,24 @@
 
                 </section>
 
+                <!-- ═══════════════════════════════════════════
+                     SECTION RIWAYAT LAMARAN SAYA
+                     ═══════════════════════════════════════════ -->
+                <section class="bkk-riwayat-section" id="riwayatLamaranSection" style="display: none;">
+                    <div class="bkk-jobs-header" style="margin-bottom: 16px;">
+                        <div class="bkk-jobs-badge-plain">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#004AC6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                            <span class="bkk-badge-plain-text">PROGRES SELEKSI SISWA</span>
+                        </div>
+                        <h2 class="bkk-jobs-title" style="font-size: 20px;">Riwayat Lamaran &amp; Seleksi Saya</h2>
+                        <p class="bkk-jobs-subtitle">Pantau status seleksi berkas, jadwal wawancara, dan verifikasi mitra industri</p>
+                    </div>
+
+                    <div id="bkkLamaranListContainer">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </section>
+
             </div>
 
         </main>
@@ -180,6 +198,117 @@
         <!-- Sidebar Overlay Backdrop for Responsive Mobile/Tablet -->
         <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         MODAL DETAIL LOWONGAN KERJA / PKL (SISWA)
+         ═══════════════════════════════════════════ -->
+    <div id="modalBkkJobDetailOverlay" class="bkk-modal-overlay" role="dialog" aria-modal="true" tabindex="-1">
+        <div class="bkk-modal-card">
+            <div class="bkk-modal-header">
+                <div>
+                    <h3 id="bkkModalJobTitle" class="bkk-modal-title">Posisi Lowongan</h3>
+                    <p id="bkkModalJobCompany" class="bkk-modal-company">Nama Perusahaan Mitra</p>
+                </div>
+                <button type="button" class="bkk-modal-close-btn" onclick="closeBkkJobDetail()" aria-label="Tutup Dialog">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="bkk-modal-body">
+                <div class="bkk-modal-grid-stats">
+                    <div class="bkk-modal-stat-box">
+                        <span class="bkk-modal-stat-label">Lokasi</span>
+                        <span class="bkk-modal-stat-val" id="bkkModalJobLocation">-</span>
+                    </div>
+                    <div class="bkk-modal-stat-box">
+                        <span class="bkk-modal-stat-label">Tipe Kerja</span>
+                        <span class="bkk-modal-stat-val" id="bkkModalJobType">-</span>
+                    </div>
+                    <div class="bkk-modal-stat-box">
+                        <span class="bkk-modal-stat-label">Gaji / Saku</span>
+                        <span class="bkk-modal-stat-val" id="bkkModalJobSalary" style="color:#004AC6;">-</span>
+                    </div>
+                    <div class="bkk-modal-stat-box">
+                        <span class="bkk-modal-stat-label">Batas Lamar</span>
+                        <span class="bkk-modal-stat-val" id="bkkModalJobDeadline">-</span>
+                    </div>
+                    <div class="bkk-modal-stat-box">
+                        <span class="bkk-modal-stat-label">Total Pelamar</span>
+                        <span class="bkk-modal-stat-val" id="bkkModalJobApplicants">0 Siswa</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="bkk-modal-sec-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        <span>Deskripsi Pekerjaan</span>
+                    </h4>
+                    <p class="bkk-modal-sec-text" id="bkkModalJobDesc">Deskripsi belum dicantumkan.</p>
+                </div>
+
+                <div>
+                    <h4 class="bkk-modal-sec-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
+                        <span>Persyaratan &amp; Kualifikasi</span>
+                    </h4>
+                    <p class="bkk-modal-sec-text" id="bkkModalJobReq">Persyaratan kejuruan standar.</p>
+                </div>
+            </div>
+            <div class="bkk-modal-footer">
+                <button type="button" class="btn-job-detail" onclick="closeBkkJobDetail()" style="flex:initial; padding:0 18px;">Tutup</button>
+                <div id="bkkModalActionContainer">
+                    <!-- Dynamic button inserted by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         MODAL DETAIL STATUS LAMARAN SAYA
+         ═══════════════════════════════════════════ -->
+    <div id="modalBkkLamaranDetailOverlay" class="bkk-modal-overlay" role="dialog" aria-modal="true" tabindex="-1">
+        <div class="bkk-modal-card">
+            <div class="bkk-modal-header">
+                <div>
+                    <h3 id="lamaranModalTitle" class="bkk-modal-title">Detail Lamaran Siswa</h3>
+                    <p id="lamaranModalSubtitle" class="bkk-modal-company">Status &amp; Verifikasi Industri</p>
+                </div>
+                <button type="button" class="bkk-modal-close-btn" onclick="closeBkkLamaranDetail()" aria-label="Tutup Dialog">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="bkk-modal-body">
+                <div class="bkk-modal-grid-stats" style="grid-template-columns: repeat(2, 1fr);">
+                    <div class="bkk-modal-stat-box">
+                        <span class="bkk-modal-stat-label">Status Lamaran</span>
+                        <span class="bkk-modal-stat-val" id="lamaranModalStatus">-</span>
+                    </div>
+                    <div class="bkk-modal-stat-box">
+                        <span class="bkk-modal-stat-label">Tanggal Dikirim</span>
+                        <span class="bkk-modal-stat-val" id="lamaranModalDate">-</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="bkk-modal-sec-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                        <span>Perusahaan &amp; Posisi Terkait</span>
+                    </h4>
+                    <p class="bkk-modal-sec-text" id="lamaranModalJobInfo">-</p>
+                </div>
+
+                <div>
+                    <h4 class="bkk-modal-sec-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                        <span>Catatan / Surat Pengantar Lamaran</span>
+                    </h4>
+                    <p class="bkk-modal-sec-text" id="lamaranModalCoverLetter">Tidak ada catatan pengantar.</p>
+                </div>
+            </div>
+            <div class="bkk-modal-footer">
+                <button type="button" class="btn-job-apply" onclick="closeBkkLamaranDetail()" style="flex:initial; padding:0 24px;">Selesai</button>
+            </div>
+        </div>
     </div>
 
     <!-- Toast Notification Lamar Sukses -->
@@ -194,6 +323,8 @@
     <!-- Page-Specific Interactive Script & BKK Realtime Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            let currentJobs = [];
+            let currentLamaran = [];
 
             // Fetch Realtime BKK Data
             function loadBkkData() {
@@ -201,8 +332,11 @@
                     .then(res => res.json())
                     .then(data => {
                         if (data.success) {
+                            currentJobs = data.lowongans || [];
+                            currentLamaran = data.lamaran_saya || [];
                             renderBkkScore(data.match_score);
-                            renderBkkJobs(data.lowongans);
+                            renderBkkJobs(currentJobs);
+                            renderBkkLamaran(currentLamaran);
                         }
                     })
                     .catch(err => console.error('Error fetching BKK data:', err));
@@ -276,16 +410,20 @@
                             </div>
 
                             <div class="job-card-action">
+                                <button type="button" class="btn-job-detail" onclick="openBkkJobDetail(${job.id})" aria-label="Lihat Detail ${escapeHtml(job.posisi)}">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                    <span>Detail</span>
+                                </button>
                                 ${applied ? `
                                     <button type="button" class="btn-job-apply" style="background:#00BA34; cursor:default;" disabled>
-                                        <span style="display:inline-flex; align-items:center; gap:6px;">
-                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                            Sudah Dilamar
+                                        <span style="display:inline-flex; align-items:center; gap:5px;">
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                            Dilamar
                                         </span>
                                     </button>
                                 ` : `
                                     <button type="button" class="btn-job-apply" onclick="handleLamarJob(${job.id}, this)">
-                                        <span>Lamar Sekarang</span>
+                                        <span>Lamar</span>
                                     </button>
                                 `}
                             </div>
@@ -293,6 +431,155 @@
                     `;
                 }).join('');
             }
+
+            function renderBkkLamaran(lamarans) {
+                const section = document.getElementById('riwayatLamaranSection');
+                const container = document.getElementById('bkkLamaranListContainer');
+                if (!section || !container) return;
+
+                if (!lamarans || lamarans.length === 0) {
+                    section.style.display = 'none';
+                    container.innerHTML = '';
+                    return;
+                }
+
+                section.style.display = 'block';
+
+                container.innerHTML = lamarans.map((item, idx) => {
+                    const job = item.lowongan || {};
+                    const status = item.status || 'diajukan';
+                    let statusClass = 'diajukan';
+                    let statusText = 'Diajukan / Menunggu Review';
+
+                    if (status === 'diproses' || status === 'review') {
+                        statusClass = 'diproses';
+                        statusText = 'Sedang Ditinjau Perusahaan';
+                    } else if (status === 'diterima' || status === 'lolos') {
+                        statusClass = 'diterima';
+                        statusText = 'Lolos / Diterima';
+                    } else if (status === 'ditolak') {
+                        statusClass = 'ditolak';
+                        statusText = 'Belum Lolos';
+                    }
+
+                    const dateStr = item.tanggal_lamar ? new Date(item.tanggal_lamar).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Hari ini';
+
+                    return `
+                        <div class="bkk-riwayat-card">
+                            <div>
+                                <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                                    <span class="bkk-status-pill ${statusClass}">
+                                        <span style="width:6px; height:6px; border-radius:50%; background:currentColor; display:inline-block;"></span>
+                                        ${statusText}
+                                    </span>
+                                    <span style="font-size:12px; color:#94A3B8;">• Diajukan pada ${dateStr}</span>
+                                </div>
+                                <h4 style="font-size:15px; font-weight:800; color:#0F172A; margin:0 0 2px;">${escapeHtml(job.posisi || 'Posisi Industri')}</h4>
+                                <p style="font-size:13px; color:#004AC6; font-weight:600; margin:0;">${escapeHtml(job.nama_perusahaan || 'Mitra Industri')}</p>
+                            </div>
+                            <div>
+                                <button type="button" class="btn-job-detail" onclick="openBkkLamaranDetail(${idx})" style="padding:0 16px; height:34px;">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                    <span>Lihat Detail</span>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            /* ─── Modal Detail Job Handlers ─── */
+            const jobModalOverlay = document.getElementById('modalBkkJobDetailOverlay');
+
+            window.openBkkJobDetail = function(jobId) {
+                const job = currentJobs.find(j => j.id == jobId);
+                if (!job || !jobModalOverlay) return;
+
+                document.getElementById('bkkModalJobTitle').textContent = job.posisi;
+                document.getElementById('bkkModalJobCompany').textContent = job.nama_perusahaan;
+                document.getElementById('bkkModalJobLocation').textContent = job.lokasi || 'Jawa Timur';
+                document.getElementById('bkkModalJobType').textContent = job.tipe_kerja || 'Full-time';
+                
+                const salary = job.gaji_max ? (job.gaji_max + ' / bln') : (job.gaji_min ? job.gaji_min : 'Sesuai UMK');
+                document.getElementById('bkkModalJobSalary').textContent = salary;
+                document.getElementById('bkkModalJobDeadline').textContent = job.batas_daftar || 'Aktif';
+                document.getElementById('bkkModalJobApplicants').textContent = (job.pelamar_count || 0) + ' Siswa';
+
+                document.getElementById('bkkModalJobDesc').textContent = job.deskripsi || 'Program kerja industri bagi siswa bertalenta.';
+                document.getElementById('bkkModalJobReq').textContent = job.persyaratan || 'Memahami kompetensi kejuruan dan memiliki komitmen kerja tinggi.';
+
+                const actionContainer = document.getElementById('bkkModalActionContainer');
+                if (actionContainer) {
+                    if (job.is_applied) {
+                        actionContainer.innerHTML = `
+                            <button type="button" class="btn-job-apply" style="background:#00BA34; cursor:default;" disabled>
+                                <span>Sudah Dilamar</span>
+                            </button>
+                        `;
+                    } else {
+                        actionContainer.innerHTML = `
+                            <button type="button" class="btn-job-apply" onclick="handleLamarJob(${job.id}, this); closeBkkJobDetail();">
+                                <span>Lamar Posisi Ini</span>
+                            </button>
+                        `;
+                    }
+                }
+
+                jobModalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            window.closeBkkJobDetail = function() {
+                if (jobModalOverlay) {
+                    jobModalOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            };
+
+            /* ─── Modal Detail Lamaran Handlers ─── */
+            const lamaranModalOverlay = document.getElementById('modalBkkLamaranDetailOverlay');
+
+            window.openBkkLamaranDetail = function(idx) {
+                const item = currentLamaran[idx];
+                if (!item || !lamaranModalOverlay) return;
+
+                const job = item.lowongan || {};
+                const status = item.status || 'diajukan';
+                const dateStr = item.tanggal_lamar ? new Date(item.tanggal_lamar).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '-';
+
+                document.getElementById('lamaranModalTitle').textContent = 'Lamaran: ' + (job.posisi || 'Lowongan Industri');
+                document.getElementById('lamaranModalSubtitle').textContent = job.nama_perusahaan || 'Mitra DUDI';
+                document.getElementById('lamaranModalStatus').textContent = status.toUpperCase();
+                document.getElementById('lamaranModalDate').textContent = dateStr;
+                document.getElementById('lamaranModalJobInfo').textContent = `${job.posisi || '-'} di ${job.nama_perusahaan || '-'} (${job.lokasi || '-'}) • ${job.tipe_kerja || 'PKL/Magang'}`;
+                document.getElementById('lamaranModalCoverLetter').textContent = item.surat_lamaran || 'Lamaran resmi diajukan secara langsung melalui sistem terintegrasi TEFA-Hub.';
+
+                lamaranModalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            window.closeBkkLamaranDetail = function() {
+                if (lamaranModalOverlay) {
+                    lamaranModalOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            };
+
+            // Overlay click dismissals
+            jobModalOverlay?.addEventListener('click', function(e) {
+                if (e.target === jobModalOverlay) closeBkkJobDetail();
+            });
+            lamaranModalOverlay?.addEventListener('click', function(e) {
+                if (e.target === lamaranModalOverlay) closeBkkLamaranDetail();
+            });
+
+            // ESC key dismissal
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (jobModalOverlay?.classList.contains('active')) closeBkkJobDetail();
+                    if (lamaranModalOverlay?.classList.contains('active')) closeBkkLamaranDetail();
+                }
+            });
 
             window.handleLamarJob = function(jobId, btnElement) {
                 if (!confirm('Apakah Anda yakin ingin mengajukan lamaran untuk lowongan ini?')) return;
@@ -320,7 +607,7 @@
                         alert(data.message || 'Gagal mengirim lamaran');
                         if (btnElement) {
                             btnElement.disabled = false;
-                            btnElement.innerHTML = '<span>Lamar Sekarang</span>';
+                            btnElement.innerHTML = '<span>Lamar</span>';
                         }
                     }
                 })

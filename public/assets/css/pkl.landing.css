@@ -447,17 +447,429 @@
     color: #475569;
 }
 
+.pkl-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pkl-item-detail-btn {
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s ease;
+}
+
+.pkl-item-detail-btn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+    border-color: #cbd5e1;
+}
+
 .pkl-item-btn {
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 700;
-    color: #2563eb;
+    color: #ffffff;
+    background: #2563eb;
+    border-radius: 8px;
+    padding: 6px 12px;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
 }
-.pkl-item-btn:hover { color: #1d4ed8; }
+.pkl-item-btn:hover { 
+    background: #1d4ed8; 
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+/* ─── PKL Opportunity Detail Modal ────────────────────────── */
+.pkl-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease;
+}
+
+.pkl-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.pkl-modal-card {
+    background: #ffffff;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 760px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25), 0 0 0 1px rgba(226, 232, 240, 0.8);
+    overflow: hidden;
+    transform: scale(0.95) translateY(10px);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pkl-modal-overlay.active .pkl-modal-card {
+    transform: scale(1) translateY(0);
+}
+
+/* Modal Header */
+.pkl-modal-header {
+    padding: 24px 28px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    background: #fafcff;
+}
+
+.pkl-modal-header-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.pkl-modal-company-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
+}
+
+.pkl-modal-company-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.pkl-modal-title-area {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.pkl-modal-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+}
+
+.pkl-modal-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.pkl-modal-company-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2563eb;
+    margin: 0;
+}
+
+.pkl-modal-close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.pkl-modal-close-btn:hover {
+    background: #fee2e2;
+    color: #ef4444;
+    border-color: #fecaca;
+    transform: rotate(90deg);
+}
+
+/* Modal Body */
+.pkl-modal-body {
+    padding: 24px 28px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.pkl-modal-badges-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 14px 16px;
+}
+
+.pkl-modal-badge-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.pkl-modal-badge-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.pkl-modal-badge-value {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.pkl-modal-badge-value svg {
+    color: #2563eb;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.pkl-modal-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pkl-modal-section-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.pkl-modal-section-title svg {
+    color: #2563eb;
+    width: 16px;
+    height: 16px;
+}
+
+.pkl-modal-desc {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #475569;
+    margin: 0;
+}
+
+.pkl-modal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pkl-modal-list-item {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #334155;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.pkl-modal-list-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #eff6ff;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.pkl-modal-list-icon svg {
+    width: 11px;
+    height: 11px;
+    stroke-width: 3;
+}
+
+.pkl-modal-list-icon.purple {
+    background: #faf5ff;
+    color: #9333ea;
+}
+
+.pkl-modal-list-icon.green {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+/* Timeline steps */
+.pkl-timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.pkl-timeline-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.pkl-timeline-num {
+    font-size: 11px;
+    font-weight: 800;
+    color: #2563eb;
+    background: #dbeafe;
+    padding: 2px 7px;
+    border-radius: 6px;
+    align-self: flex-start;
+}
+
+.pkl-timeline-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.pkl-timeline-desc {
+    font-size: 11px;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Modal Footer */
+.pkl-modal-footer {
+    padding: 16px 28px;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    background: #fafcff;
+}
+
+.pkl-modal-btn-close {
+    padding: 10px 20px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #475569;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pkl-modal-btn-close:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+.pkl-modal-btn-apply {
+    padding: 10px 24px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #ffffff;
+    background: #2563eb;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+    transition: all 0.2s ease;
+}
+
+.pkl-modal-btn-apply:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .pkl-modal-header {
+        padding: 18px 20px 16px;
+    }
+    .pkl-modal-body {
+        padding: 18px 20px;
+        gap: 18px;
+    }
+    .pkl-modal-badges-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .pkl-timeline-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .pkl-modal-footer {
+        padding: 14px 20px;
+    }
+    .pkl-item-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .pkl-item-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
 
 /* ─── Responsive Breakpoints ──────────────────────────────── */
 @media (max-width: 1240px) {

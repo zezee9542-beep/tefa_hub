@@ -6,23 +6,49 @@
 <header class="site-header" id="siteHeader">
     <div class="wrap">
         <a href="{{ url('/') }}" class="brand" aria-label="Tefa-Hub Beranda">
-            <img src="{{ asset('assets/logo.png') }}" alt="Logo Tefa-Hub" width="36" height="36">
+            <img src="{{ asset('assets/logo.webp') }}" alt="Logo Tefa-Hub" width="36" height="36">
             <span class="brand-name">Tefa<span>-Hub</span></span>
         </a>
 
         <nav aria-label="Navigasi Utama">
             <ul class="nav-links">
+                {{-- Beranda --}}
                 <li>
-                    <a href="{{ route('ppdb') }}" class="{{ $active === 'ppdb' ? 'active-nav-link' : '' }}">PPDB</a>
+                    <a href="{{ url('/') }}" class="{{ (in_array($active, ['home', 'beranda', '']) && request()->is('/')) ? 'active-nav-link' : '' }}">Beranda</a>
                 </li>
-                <li>
-                    <a href="{{ url('/#blud') }}" class="{{ $active === 'blud' ? 'active-nav-link' : '' }}">BLUD</a>
+
+                {{-- Layanan Dropdown (PPDB, BLUD, BKK, PKL) --}}
+                <li class="nav-dropdown {{ in_array($active, ['ppdb', 'blud', 'bkk', 'pkl']) ? 'has-active' : '' }}">
+                    <button type="button" class="nav-dropdown-toggle {{ in_array($active, ['ppdb', 'blud', 'bkk', 'pkl']) ? 'active-nav-link' : '' }}" aria-expanded="false" aria-haspopup="true">
+                        <span>Layanan</span>
+                        <svg class="dropdown-chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="{{ route('ppdb') }}" class="dropdown-item {{ $active === 'ppdb' ? 'active-item' : '' }}">PPDB</a>
+                        <a href="{{ url('/#blud') }}" class="dropdown-item {{ $active === 'blud' ? 'active-item' : '' }}">BLUD</a>
+                        <a href="{{ route('bkk') }}" class="dropdown-item {{ $active === 'bkk' ? 'active-item' : '' }}">BKK</a>
+                        <a href="{{ route('pkl') }}" class="dropdown-item {{ $active === 'pkl' ? 'active-item' : '' }}">PKL</a>
+                    </div>
                 </li>
-                <li>
-                    <a href="{{ route('pkl') }}" class="{{ $active === 'pkl' ? 'active-nav-link' : '' }}">PKL &amp; Industri</a>
+
+                {{-- Tentang Dropdown (Profil Sekolah) --}}
+                <li class="nav-dropdown {{ in_array($active, ['tentang', 'profil']) ? 'has-active' : '' }}">
+                    <button type="button" class="nav-dropdown-toggle {{ in_array($active, ['tentang', 'profil']) ? 'active-nav-link' : '' }}" aria-expanded="false" aria-haspopup="true">
+                        <span>Tentang</span>
+                        <svg class="dropdown-chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="{{ url('/#tentang') }}" class="dropdown-item {{ in_array($active, ['tentang', 'profil']) ? 'active-item' : '' }}">Profil Sekolah</a>
+                    </div>
                 </li>
+
+                {{-- Kontak --}}
                 <li>
-                    <a href="{{ route('bkk') }}" class="{{ $active === 'bkk' ? 'active-nav-link' : '' }}">Career Center (BKK)</a>
+                    <a href="{{ url('/#kontak') }}" class="{{ $active === 'kontak' ? 'active-nav-link' : '' }}">Kontak</a>
                 </li>
             </ul>
         </nav>
@@ -46,7 +72,7 @@
 <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Menu Navigasi Mobile">
     <div class="mobile-nav-header">
         <a href="{{ url('/') }}" class="brand">
-            <img src="{{ asset('assets/logo.png') }}" alt="Logo Tefa-Hub" width="32" height="32">
+            <img src="{{ asset('assets/logo.webp') }}" alt="Logo Tefa-Hub" width="32" height="32">
             <span class="brand-name">Tefa<span>-Hub</span></span>
         </a>
         <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Tutup Menu Navigasi">
@@ -56,15 +82,49 @@
             </svg>
         </button>
     </div>
+
     <ul class="mobile-nav-links">
-        <li><a href="{{ route('ppdb') }}" class="mobile-nav-link {{ $active === 'ppdb' ? 'active' : '' }}">PPDB</a></li>
-        <li><a href="{{ url('/#blud') }}" class="mobile-nav-link {{ $active === 'blud' ? 'active' : '' }}">BLUD</a></li>
-        <li><a href="{{ route('pkl') }}" class="mobile-nav-link {{ $active === 'pkl' ? 'active' : '' }}">PKL &amp; Industri</a></li>
-        <li><a href="{{ route('bkk') }}" class="mobile-nav-link {{ $active === 'bkk' ? 'active' : '' }}">Career Center (BKK)</a></li>
+        <li>
+            <a href="{{ url('/') }}" class="mobile-nav-link {{ (in_array($active, ['home', 'beranda', '']) && request()->is('/')) ? 'active' : '' }}">Beranda</a>
+        </li>
+
+        {{-- Mobile Group: Layanan --}}
+        <li class="mobile-nav-group group-open">
+            <button type="button" class="mobile-group-header">
+                <span>Layanan</span>
+                <svg class="mobile-group-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </button>
+            <ul class="mobile-sublinks">
+                <li><a href="{{ route('ppdb') }}" class="mobile-sublink {{ $active === 'ppdb' ? 'active' : '' }}">PPDB</a></li>
+                <li><a href="{{ url('/#blud') }}" class="mobile-sublink {{ $active === 'blud' ? 'active' : '' }}">BLUD</a></li>
+                <li><a href="{{ route('bkk') }}" class="mobile-sublink {{ $active === 'bkk' ? 'active' : '' }}">BKK</a></li>
+                <li><a href="{{ route('pkl') }}" class="mobile-sublink {{ $active === 'pkl' ? 'active' : '' }}">PKL</a></li>
+            </ul>
+        </li>
+
+        {{-- Mobile Group: Tentang --}}
+        <li class="mobile-nav-group group-open">
+            <button type="button" class="mobile-group-header">
+                <span>Tentang</span>
+                <svg class="mobile-group-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </button>
+            <ul class="mobile-sublinks">
+                <li><a href="{{ url('/#tentang') }}" class="mobile-sublink {{ in_array($active, ['tentang', 'profil']) ? 'active' : '' }}">Profil Sekolah</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="{{ url('/#kontak') }}" class="mobile-nav-link {{ $active === 'kontak' ? 'active' : '' }}">Kontak</a>
+        </li>
     </ul>
+
     <div class="mobile-nav-footer">
         <a href="{{ route('login') }}" class="btn-masuk-mobile">
-            Masuk ke Portal Siswa
+            Masuk
         </a>
     </div>
 </div>
@@ -143,11 +203,23 @@
         if (closeBtn) closeBtn.onclick = closeDrawer;
         if (backdrop) backdrop.onclick = closeDrawer;
 
-        // Close drawer on link click
+        // Close drawer on sublink / link click
         if (drawer) {
             const links = drawer.querySelectorAll('a');
             links.forEach(function(link) {
                 link.addEventListener('click', closeDrawer);
+            });
+
+            // Mobile group accordion toggles
+            const groupHeaders = drawer.querySelectorAll('.mobile-group-header');
+            groupHeaders.forEach(function(gh) {
+                gh.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const parent = gh.closest('.mobile-nav-group');
+                    if (parent) {
+                        parent.classList.toggle('group-open');
+                    }
+                });
             });
         }
     }
