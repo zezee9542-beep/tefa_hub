@@ -8,17 +8,34 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SystemMonitorController;
 use Illuminate\Support\Facades\Route;
 
-// ─── Landing Page ──────────────────────────────────────────────────────────
+// ─── Landing Page & Multipage Routes ─────────────────────────────────────────
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('/bkk', function () {
+    return view('bkk');
+})->name('bkk');
+
+Route::get('/pkl', function () {
+    return view('pkl');
+})->name('pkl');
+
+Route::get('/ppdb', function () {
+    return view('ppdb');
+})->name('ppdb');
 
 // ─── Auth Routes (hanya bisa diakses saat belum login) ─────────────────────
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-    Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+
+    if (config('security.allow_self_registration')) {
+        Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+        Route::post('/register', [AuthController::class, 'register'])
+            ->middleware('throttle:registration')
+            ->name('register.post');
+    }
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])
@@ -46,6 +63,10 @@ Route::prefix('siswa')
         Route::get('/api/bkk-data', [SiswaController::class, 'getBkkData'])->name('api.bkk');
         Route::post('/api/bkk-lamar', [SiswaController::class, 'lamarPekerjaan'])->name('api.bkk.lamar');
         Route::get('/api/akademik-data', [SiswaController::class, 'getAkademikData'])->name('api.akademik');
+        Route::get('/uploads/{directory}/{filename}', [SiswaController::class, 'showUpload'])
+            ->whereIn('directory', ['avatars', 'produk'])
+            ->where('filename', '[A-Za-z0-9_-]+\\.(?:jpe?g|png|webp)')
+            ->name('uploads.show');
     });
 
 // ─── Guru Routes (hanya untuk role guru) ───────────────────────────────────
@@ -71,5 +92,7 @@ Route::prefix('ai-navigator')
     ->name('ai.')
     ->group(function () {
         Route::get('/greet', [AiNavigatorController::class, 'greet'])->name('greet');
-        Route::post('/chat', [AiNavigatorController::class, 'chat'])->name('chat');
+        Route::post('/chat', [AiNavigatorController::class, 'chat'])
+            ->middleware('throttle:ai-chat')
+            ->name('chat');
     });

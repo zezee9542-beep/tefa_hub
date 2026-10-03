@@ -21,6 +21,10 @@ Route::get('/pkl', function () {
     return view('pkl');
 })->name('pkl');
 
+Route::get('/ppdb', function () {
+    return view('ppdb');
+})->name('ppdb');
+
 // ─── Auth Routes (hanya bisa diakses saat belum login) ─────────────────────
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
