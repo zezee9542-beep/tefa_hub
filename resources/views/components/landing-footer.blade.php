@@ -1,7 +1,7 @@
 {{-- ═══════════════════════════════════════════
      UNIFIED HIGH-PERFORMANCE LANDING FOOTER
      ═══════════════════════════════════════════ --}}
-<footer class="site-footer" role="contentinfo">
+<footer class="site-footer" id="kontak" role="contentinfo">
     <div class="wrap">
 
         {{-- Main Footer Columns --}}
@@ -39,7 +39,7 @@
                 <h3 class="footer-col-title">NAVIGASI</h3>
                 <ul class="footer-links">
                     <li><a href="{{ url('/') }}">Beranda</a></li>
-                    <li><a href="{{ url('/#ppdb') }}">PPDB</a></li>
+                    <li><a href="{{ route('ppdb') }}">PPDB</a></li>
                     <li><a href="{{ url('/#blud') }}">BLUD</a></li>
                     <li><a href="{{ url('/#pkl') }}">PKL &amp; Industri</a></li>
                     <li><a href="{{ route('bkk') }}">Career Center (BKK)</a></li>

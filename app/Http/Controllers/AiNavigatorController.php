@@ -65,7 +65,7 @@ class AiNavigatorController extends Controller
             'profile' => $role ? "/{$role}/dashboard" : '/login',
             'login' => '/login',
             'register' => '/register',
-            'ppdb' => '/#ppdb',
+            'ppdb' => route('ppdb', absolute: false),
             'tanya_tefa' => $role === 'siswa' ? '/siswa/tanya-tefa' : '/#tanya-tefa',
             default => '/',
         };
@@ -565,7 +565,7 @@ class AiNavigatorController extends Controller
         ])->validate();
 
         $userMessage = trim((string) $request->input('message'));
-        $cacheKey = 'ai_nav_v3_'.md5(mb_strtolower($userMessage));
+        $cacheKey = 'ai_nav_v4_'.md5(mb_strtolower($userMessage));
 
         // Serve cached response if available
         if (Cache::has($cacheKey)) {

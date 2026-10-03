@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <x-pwa />
     <meta name="description" content="Tefa-Hub — Satu ekosistem digital terpadu untuk akademik, BLUD teaching factory, dan career center siswa SMK.">
     <title>Tefa-Hub | Satu Ekosistem Digital untuk Seluruh Perjalanan Siswa</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
@@ -166,7 +167,7 @@
                 @php
                     $heroCards = [
                         ['icon' => 'card.webp', 'title' => 'BKK Instan',  'desc' => 'Temukan informasi lowongan dan peluang kerja terbaru.',      'href' => route('bkk')],
-                        ['icon' => 'book.webp', 'title' => 'PPDB Kilat',  'desc' => 'Daftar sebagai calon peserta didik baru dengan mudah.',       'href' => '#ppdb'],
+                        ['icon' => 'book.webp', 'title' => 'PPDB Kilat',  'desc' => 'Daftar sebagai calon peserta didik baru dengan mudah.',       'href' => route('ppdb')],
                     ];
                 @endphp
 

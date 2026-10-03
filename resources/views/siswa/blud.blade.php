@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <x-pwa />
     <title>BLUD Teaching Factory — TEFA-Hub</title>
 
     <!-- Google Fonts: Plus Jakarta Sans -->

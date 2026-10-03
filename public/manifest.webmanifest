@@ -1,0 +1,16 @@
+{
+    "id": "/",
+    "name": "Tefa-Hub",
+    "short_name": "Tefa-Hub",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#f8fafc",
+    "theme_color": "#2563eb",
+    "icons": [
+        {
+            "src": "/assets/logo.webp",
+            "type": "image/webp"
+        }
+    ]
+}

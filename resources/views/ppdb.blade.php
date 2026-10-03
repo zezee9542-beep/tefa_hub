@@ -15,6 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <x-pwa />
     <meta name="description" content="Penerimaan Peserta Didik Baru (PPDB) SMK Antartika 1 Sidoarjo Tahun Ajaran {{ $currentYear }}/{{ (int)$currentYear + 1 }}. Wujudkan masa depanmu bersama ekosistem pendidikan vokasi unggul dan siap industri.">
     <title>PPDB SMK Antartika 1 Sidoarjo TA {{ $currentYear }}/{{ (int)$currentYear + 1 }} — TEFA-Hub</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
@@ -301,8 +302,8 @@
                             <div class="step-icon-badge">
                                 <span>3</span>
                             </div>
-                            <h4 class="step-title-text">Tes &amp; Wawancara</h4>
-                            <p class="step-desc-text">Peminatan kejuruan</p>
+                            <h4 class="step-title-text">Verifikasi Berkas</h4>
+                            <p class="step-desc-text">Cek kelengkapan dokumen</p>
                         </div>
 
                         <div class="alur-step-arrow" aria-hidden="true">
@@ -327,7 +328,7 @@
                             <div class="step-icon-badge">
                                 <span>5</span>
                             </div>
-                            <h4 class="step-title-text">Seragam &amp; TEFA</h4>
+                            <h4 class="step-title-text">Seragam</h4>
                             <p class="step-desc-text">Fitting &amp; siap MPLS</p>
                         </div>
 
@@ -943,8 +944,8 @@
                             <div style="background:#FAFCFF; border:1px solid #E2E8F0; border-radius:12px; padding:14px 16px; display:flex; gap:14px; align-items:flex-start;">
                                 <span style="width:30px; height:30px; border-radius:8px; background:#004AC6; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0;">3</span>
                                 <div>
-                                    <strong style="color:#0F172A; font-size:13.5px;">Tes Pemetaan Minat Bakat &amp; Wawancara Kejuruan</strong>
-                                    <p style="margin:4px 0 0; font-size:12px; color:#475569; line-height:1.5;">Mengikuti tes kesehatan sederhana (bebas buta warna untuk program keahlian teknik) serta wawancara peminatan dan komitmen belajar bersama Orang Tua/Wali Murid.</p>
+                                    <strong style="color:#0F172A; font-size:13.5px;">Verifikasi Kelengkapan Berkas &amp; Penjurusan</strong>
+                                    <p style="margin:4px 0 0; font-size:12px; color:#475569; line-height:1.5;">Panitia PPDB melakukan pengecekan kelengkapan berkas fisik, penentuan kelas peminatan jurusan, serta penandatanganan komitmen tata tertib bersama Orang Tua/Wali Murid.</p>
                                 </div>
                             </div>
 
@@ -961,8 +962,8 @@
                             <div style="background:#FAFCFF; border:1px solid #E2E8F0; border-radius:12px; padding:14px 16px; display:flex; gap:14px; align-items:flex-start;">
                                 <span style="width:30px; height:30px; border-radius:8px; background:#10B981; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0;">5</span>
                                 <div>
-                                    <strong style="color:#0F172A; font-size:13.5px;">Pengukuran Seragam &amp; Aktivasi Akun TEFA-Hub (MPLS)</strong>
-                                    <p style="margin:4px 0 0; font-size:12px; color:#475569; line-height:1.5;">Pengambilan paket seragam sekolah dan kejuruan, pembagian atribut, aktivasi akun portal digital TEFA-Hub, dan pembekalan Masa Pengenalan Lingkungan Sekolah (MPLS).</p>
+                                    <strong style="color:#0F172A; font-size:13.5px;">Pengukuran Seragam &amp; Persiapan MPLS</strong>
+                                    <p style="margin:4px 0 0; font-size:12px; color:#475569; line-height:1.5;">Pengambilan paket seragam sekolah dan kejuruan, pembagian atribut, serta pembekalan Masa Pengenalan Lingkungan Sekolah (MPLS).</p>
                                 </div>
                             </div>
                         </div>

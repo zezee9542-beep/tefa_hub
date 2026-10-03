@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <x-pwa />
     <meta name="description" content="Eksplorasi Peluang PKL & Karier Industri Mitra — Jembatan resmi siswa dan alumni Tefa-Hub menuju dunia usaha dan dunia industri (DUDI).">
     <title>Eksplorasi Peluang PKL & Karier Industri Mitra — Tefa-Hub</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <x-pwa />
     <meta name="description" content="Pusat Karier & Penyaluran Industri (BKK Tefa-Hub) — Pantau progres lamaran PKL & kerja, jadwal tes rekrutmen mitra DUDI, serta kelola kesiapan CV digital.">
     <title>Pusat Karier & Penyaluran Industri (BKK) — Tefa-Hub</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">

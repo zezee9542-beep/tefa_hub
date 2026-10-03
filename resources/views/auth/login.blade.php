@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <x-pwa />
     <title>Masuk — TEFA-Hub Ekosistem Vokasi</title>
     <meta name="description" content="Halaman masuk siswa dan alumni TEFA-Hub. Silakan masukkan detail akun Anda untuk melanjutkan.">
     

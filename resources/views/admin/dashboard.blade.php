@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <x-pwa />
     <title>Dashboard Admin — TEFA-Hub</title>
     <meta name="description" content="Panel administrasi TEFA-Hub. Kelola pengguna, pantau aktivitas sistem, dan konfigurasi aplikasi.">
 

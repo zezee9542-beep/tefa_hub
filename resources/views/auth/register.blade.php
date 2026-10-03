@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <x-pwa />
     <title>Daftar Akun — TEFA-Hub Ekosistem Vokasi</title>
     <meta name="description" content="Buat akun baru siswa TEFA-Hub dan mulai perjalanan vokasi digital Anda.">
     

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <x-pwa />
     <title>Monitor Sistem — TEFA-Hub Admin</title>
     <meta name="description" content="Dashboard monitoring realtime TEFA-Hub: pantau status database, pengguna, server, dan aktivitas sistem secara live.">
     <meta name="csrf-token" content="{{ csrf_token() }}">
