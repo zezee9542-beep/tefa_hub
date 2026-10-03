@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-pwa />
-    <meta name="description" content="Pusat Karier & Penyaluran Industri (BKK Tefa-Hub) — Pantau progres lamaran PKL & kerja, jadwal tes rekrutmen mitra DUDI, serta kelola kesiapan CV digital.">
+    <meta name="description" content="Pusat Karier & Penyaluran Industri (BKK Tefa-Hub) — Akses lowongan terverifikasi dari mitra DUDI nasional, pantau proses seleksi kerja & PKL, serta bangun CV Digital dan portofolio kompetensi berstandar SKKNI.">
     <title>Pusat Karier & Penyaluran Industri (BKK) — Tefa-Hub</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
 
@@ -44,17 +44,17 @@
                             <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
                             <polyline points="16 7 22 7 22 13"></polyline>
                         </svg>
-                        <span>DASHBOARD REKRUTMEN SISWA & DUDI</span>
+                        <span>JARINGAN RESMI REKRUTMEN VOKASI &amp; DUDI</span>
                     </div>
 
                     {{-- 2. Title: 48px Extra Bold, Hitam --}}
                     <h1 class="bkk-hero-title">
-                        Pusat Karier & Penyaluran Industri (BKK Tefa–Hub)
+                        Pusat Karier &amp; Penyaluran Industri (BKK Tefa–Hub)
                     </h1>
 
                     {{-- 3. Description: 16px Regular, #434655 --}}
                     <p class="bkk-hero-desc">
-                        Pantau progres lamaran PKL & kerja, jadwal tes rekrutmen mitra DUDI, serta kelola kesiapan CV digital Anda secara terpusat dengan transparansi asesmen sekolah.
+                        Jembatan terpercaya antara talenta vokasi kompeten dengan ekosistem industri nasional. Pantau tahapan lamaran secara transparan, ikuti jadwal seleksi mitra resmi, dan kelola CV Digital berbasis portofolio kompetensi terverifikasi.
                     </p>
 
                     {{-- 4. Two Buttons: 232x44px --}}

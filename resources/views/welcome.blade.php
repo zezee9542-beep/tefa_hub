@@ -34,7 +34,7 @@
             <section class="hero-content reveal">
                 <div class="pill-badge">
                     <span class="pill-dot" aria-hidden="true"></span>
-                    <span class="pill-text">Ekosistem Pendidikan Vokasi Terpadu</span>
+                    <span class="pill-text">Platform Resmi SMK Pusat Keunggulan &amp; BLUD</span>
                 </div>
 
                 <h1 class="hero-title">
@@ -44,8 +44,8 @@
                 </h1>
 
                 <p class="hero-desc">
-                    Cari, kelola, dan pantau semua kegiatan sekolahmu di satu tempat —
-                    mulai dari pembelajaran akademik, teaching factory BLUD, hingga peluang karir industri.
+                    Akselerasikan potensi dan karier kejuruanmu dalam satu ekosistem terpercaya —
+                    dari pembelajaran kurikulum industri berbasis SKKNI, unit produksi BLUD Teaching Factory, hingga rekrutmen kerja terverifikasi ke mitra DUDI nasional.
                 </p>
 
                 <div class="search-wrap">
@@ -59,7 +59,7 @@
                         <input
                             type="text" name="q" id="heroSearchInput"
                             class="s-input"
-                            placeholder="Cari informasi yang kamu butuhkan..."
+                            placeholder="Cari info jurusan, lowongan PKL/BKK, produk BLUD..."
                             aria-label="Cari informasi"
                             autocomplete="off"
                         >
@@ -151,7 +151,7 @@
 
                 {{-- Tagline "Siap Berkarya untuk Negeri" --}}
                 <div class="hero-tagline-quote" aria-hidden="true">
-                    <span>Siap<br>Berkarya<br>untuk Negeri</span>
+                    <span>Kompeten<br>Kreatif &amp;<br>Siap Kerja</span>
                 </div>
 
                 {{-- Students 3D character photo --}}
@@ -166,8 +166,8 @@
                 {{-- Floating 2 feature cards (Centered, Equal Size, Original Style) --}}
                 @php
                     $heroCards = [
-                        ['icon' => 'card.webp', 'title' => 'BKK Instan',  'desc' => 'Temukan informasi lowongan dan peluang kerja terbaru.',      'href' => route('bkk')],
-                        ['icon' => 'book.webp', 'title' => 'PPDB Kilat',  'desc' => 'Daftar sebagai calon peserta didik baru dengan mudah.',       'href' => route('ppdb')],
+                        ['icon' => 'card.webp', 'title' => 'BKK & Mitra Industri',  'desc' => 'Akses lowongan kerja & magang terverifikasi dari mitra DUDI resmi.',      'href' => route('bkk')],
+                        ['icon' => 'book.webp', 'title' => 'PPDB Vokasi Digital',  'desc' => 'Daftar calon peserta didik baru terakreditasi A secara instan & transparan.',       'href' => route('ppdb')],
                     ];
                 @endphp
 
@@ -202,7 +202,7 @@
          PARTNER / MITRA LOGOS MARQUEE
          ═══════════════════════════════════════════ --}}
     <section class="partners-section" aria-label="Mitra dan Partner Tefa-Hub">
-        <p class="partners-label">Didukung oleh Mitra &amp; Partner Industri</p>
+        <p class="partners-label">Didukung &amp; Terintegrasi Bersama Mitra Industri Nasional</p>
         <div class="partners-track-wrapper" id="partnersWrapper">
             <div class="partners-track" id="partnersTrack">
                 {{-- Group 1 --}}
@@ -294,18 +294,14 @@
 
             {{-- Right: Content --}}
             <div class="about-content reveal-right delay-1">
-                <span class="about-category">SOLUSI DIGITAL TERPADU</span>
+                <span class="about-category">STANDARISASI PENDIDIKAN VOKASI 4.0</span>
 
                 <h2 class="about-title">
                     Apa itu <span class="gradient-text">Tefa–Hub</span> ?
                 </h2>
 
                 <p class="about-desc">
-                    Tefa-Hub adalah platform digital terintegrasi yang dirancang untuk mengelola
-                    seluruh ekosistem pendidikan dan pengembangan kompetensi di sekolah
-                    dalam satu sistem. Platform ini mengintegrasikan berbagai layanan strategis,
-                    mulai dari kurikulum sekolah, unit bisnis Teaching Factory (BLUD), Praktik Kerja
-                    Lapangan (PKL), hingga penelusuran lulusan dan rekrutmen kerja industri.
+                    Tefa-Hub adalah platform ekosistem digital resmi yang mengintegrasikan seluruh pilar pendidikan vokasi unggul dalam satu sistem terpusat. Mengadopsi standar industri modern dan regulasi Teaching Factory (BLUD), Tefa-Hub menyelaraskan kurikulum kompetensi (SKKNI), transparansi asesmen belajar, hilirisasi produk inovasi siswa, hingga percepatan rekrutmen kerja bersama jaringan mitra Dunia Usaha dan Dunia Industri (DUDI) bereputasi tinggi.
                 </p>
             </div>
 
@@ -319,10 +315,9 @@
         <div class="wrap">
 
             <div class="services-header reveal">
-                <h2 class="services-title">Semua Kebutuhan Siswa, Satu Platform</h2>
+                <h2 class="services-title">Solusi Vokasi Komprehensif Berstandar Industri</h2>
                 <p class="services-desc">
-                    Akses berbagai layanan sekolah yang terintegrasi untuk mendukung perjalananmu dari
-                    pembelajaran hingga persiapan dunia kerja.
+                    Dirancang untuk memastikan setiap siswa memiliki rekam jejak kompetensi terverifikasi, keahlian nyata berbasis proyek, dan akses jalur karier profesional.
                 </p>
             </div>
 
@@ -331,33 +326,33 @@
                     [
                         'icon' => '1.webp',
                         'title' => 'Penerimaan Peserta Didik Baru',
-                        'desc' => 'Pusat informasi dan pendaftaran calon peserta didik baru SMK secara online, transparan, dan terintegrasi.',
+                        'desc' => 'Pusat informasi dan registrasi digital calon peserta didik baru SMK Terakreditasi A dengan validasi dokumen transparan, realtime, dan akuntabel.',
                         'link' => route('ppdb'),
                     ],
                     [
                         'icon' => '2.webp',
-                        'title' => 'Akademik Terintegrasi',
-                        'desc' => 'Pusat pengelolaan pembelajaran digital mulai dari materi, tugas, hingga transparansi nilai dan Rapor Digital dalam satu akses.',
+                        'title' => 'Akademik & Asesmen Digital',
+                        'desc' => 'Akses materi berbasis proyek industri, rekapitulasi tugas, hingga transparansi nilai dan Rapor Digital terpusat untuk memantau progres kompetensi.',
                         'link' => route('siswa.akademik'),
                     ],
                     [
                         'icon' => '3.webp',
-                        'title' => 'Produk Unggulan (BLUD)',
-                        'desc' => 'Wadah publikasi karya dan jasa hasil kreativitas siswa. Mendukung kewirausahaan dengan menampilkan produk langsung di landing page publik.',
+                        'title' => 'Produk & Jasa Unggulan (BLUD)',
+                        'desc' => 'Etalase komersialisasi resmi karya dan jasa siswa Teaching Factory dengan standar kendali mutu profesional, siap melayani kebutuhan masyarakat umum.',
                         'link' => '#blud',
                     ],
                     [
                         'icon' => '4.webp',
-                        'title' => 'Career Center (BKK)',
-                        'desc' => 'Jembatan menuju dunia kerja. Membantu siswa dan alumni melamar pekerjaan menggunakan CV Digital & Portofolio ke jaringan mitra industri.',
+                        'title' => 'Bursa Kerja Khusus & Karier DUDI',
+                        'desc' => 'Gerbang percepatan karier dengan CV Digital otomatis, portofolio terverifikasi, serta penyaluran kerja dan magang langsung ke mitra industri nasional.',
                         'link' => route('bkk'),
                     ],
                 ];
             @endphp
 
-            <div class="services-grid">
+            <div class="services-grid stagger-group reveal">
                 @foreach ($services as $index => $service)
-                    <div class="service-card reveal delay-{{ $index + 1 }}">
+                    <div class="service-card">
                         <div class="service-card-body">
                             <div class="service-icon">
                                 <img src="{{ asset('assets/' . $service['icon']) }}" alt="{{ $service['title'] }}">
@@ -383,14 +378,12 @@
 
             {{-- Left: Text & CTA --}}
             <div class="showcase-content reveal-left">
-                <span class="showcase-category">TEACHING FACTORY KE PUBLIK</span>
+                <span class="showcase-category">PENGALAMAN &amp; KOMPETENSI NYATA</span>
 
-                <h2 class="showcase-title">Dari Karya Menjadi Produk</h2>
+                <h2 class="showcase-title">Dari Karya Menjadi Produk Layak Pasar</h2>
 
                 <p class="showcase-desc">
-                    Tefa-Hub menghubungkan kegiatan Teaching Factory dengan layanan BLUD untuk
-                    memperkenalkan, mengelola, dan mengembangkan produk unggulan hasil karya siswa
-                    ke pasar luas secara profesional.
+                    Melalui model pembelajaran Teaching Factory berbasis BLUD, setiap karya dan layanan siswa diproduksi dengan standar kendali mutu industri. Kami memastikan keahlian teknis siswa tidak hanya teruji di ruang praktik, namun diakui dan bernilai guna langsung bagi pasar komersial.
                 </p>
 
                 <a href="{{ route('bkk') }}" class="showcase-btn">
@@ -454,14 +447,12 @@
 
             {{-- Right: Content & 3 Cards --}}
             <div class="ai-content reveal-right delay-1">
-                <span class="ai-category">PUSAT BANTUAN CERDAS</span>
+                <span class="ai-category">ASISTEN KECERDASAN VOKASI</span>
 
-                <h2 class="ai-title">Butuh Informasi ? Tanya Tefa</h2>
+                <h2 class="ai-title">Pusat Layanan Cerdas &amp; Informasi 24/7</h2>
 
                 <p class="ai-desc">
-                    Tanyakan berbagai informasi seputar akademik, PKL, BLUD, hingga Career
-                    Center dan dapatkan jawaban dengan lebih mudah melalui Tefa, asisten
-                    digital Tefa-Hub.
+                    Dapatkan panduan resmi dan jawaban terverifikasi seputar kurikulum, jadwal PKL, persyaratan PPDB, hingga prosedur rekrutmen BKK secara presisi, instan, dan akurat bersama Tanya Tefa.
                 </p>
 
                 @php
@@ -469,24 +460,24 @@
                         [
                             'icon' => '11.webp',
                             'title' => 'Layanan Bantuan 24/7',
-                            'desc' => 'Chatbot AI menyediakan pusat bantuan interaktif yang siap kapan saja.',
+                            'desc' => 'Asisten pintar interaktif yang siap melayani kebutuhan informasi kapan saja tanpa jeda.',
                         ],
                         [
                             'icon' => '12.webp',
-                            'title' => 'Respon Cepat (Fast)',
-                            'desc' => 'Kecepatan dalam memberikan informasi secara instan dan tepat.',
+                            'title' => 'Akurasi & Respon Cepat',
+                            'desc' => 'Menyajikan data resmi institusi secara instan dan tepat sasaran sesuai kebutuhan pengguna.',
                         ],
                         [
                             'icon' => '13.webp',
-                            'title' => 'Efisiensi Signifikan',
-                            'desc' => 'Mengurangi hingga lebih dari 80% pertanyaan rutin berulang.',
+                            'title' => 'Efisiensi Layanan Maksimal',
+                            'desc' => 'Menyederhanakan proses konsultasi akademik dan rekrutmen hingga lebih dari 80%.',
                         ],
                     ];
                 @endphp
 
-                <div class="ai-cards">
+                <div class="ai-cards stagger-group reveal delay-2">
                     @foreach ($aiFeatures as $index => $feat)
-                        <div class="ai-card reveal delay-{{ $index + 1 }}">
+                        <div class="ai-card">
                             <div class="ai-card-icon">
                                 <img src="{{ asset('assets/' . $feat['icon']) }}" alt="{{ $feat['title'] }}">
                             </div>
@@ -507,14 +498,14 @@
         <div class="wrap">
             <div class="cta-banner-card reveal-scale">
                 <h2 class="cta-banner-title">
-                    Wujudkan Potensi Kejuruan &amp;<br>
-                    Siapkan Kariermu Bersama<br>
+                    Akselerasikan Potensi Kejuruan &amp;<br>
+                    Raih Masa Depan Industri Bersama<br>
                     Tefa–Hub
                 </h2>
 
                 <p class="cta-banner-desc">
-                    Dari sinkronisasi kurikulum, validasi produk BLUD, hingga rekrutmen industri<br>
-                    otomatis dalam satu ekosistem terpadu.
+                    Dari sinkronisasi kurikulum berbasis SKKNI, sertifikasi produk BLUD, hingga<br>
+                    penyaluran kerja profesional dalam satu ekosistem terpadu.
                 </p>
 
                 <a href="{{ Route::has('login') ? route('login') : '#login' }}" class="cta-banner-btn">
@@ -537,9 +528,10 @@
     (function() {
         // ── 1. HIGH-PERFORMANCE 120HZ SCROLL REVEAL OBSERVER ────────
         function initWelcomeReveal() {
-            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-            
-            if ('IntersectionObserver' in window && revealElements.length) {
+            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-group');
+            if (!revealElements.length) return;
+
+            if ('IntersectionObserver' in window) {
                 const observer = new IntersectionObserver((entries, obs) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -548,8 +540,8 @@
                         }
                     });
                 }, {
-                    threshold: 0.05,
-                    rootMargin: '0px 0px -20px 0px'
+                    threshold: 0.08,
+                    rootMargin: '0px 0px -40px 0px'
                 });
 
                 revealElements.forEach(el => {
@@ -562,61 +554,59 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', initWelcomeReveal);
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initWelcomeReveal);
+        } else {
+            initWelcomeReveal();
+        }
+
         window.addEventListener('pageshow', function() {
             document.body.style.overflow = '';
             initWelcomeReveal();
         });
 
-        // Fail-safe: ensure elements never remain invisible
-        setTimeout(function() {
-            document.querySelectorAll('.reveal:not(.is-revealed), .reveal-left:not(.is-revealed), .reveal-right:not(.is-revealed), .reveal-scale:not(.is-revealed)').forEach(function(el) {
-                el.classList.add('is-revealed');
-            });
-        }, 500);
-
         document.addEventListener('DOMContentLoaded', function() {
-        const heroSearchForm = document.getElementById('heroSearchForm');
-        const heroSearchInput = document.getElementById('heroSearchInput');
-        
-        if (heroSearchForm && heroSearchInput) {
-            heroSearchForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const query = heroSearchInput.value.trim();
-                if (!query) {
-                    heroSearchInput.focus();
-                    return;
-                }
-                
-                const qLower = query.toLowerCase();
-                let targetId = null;
-                
-                if (qLower.includes('karir') || qLower.includes('bkk') || qLower.includes('kerja') || qLower.includes('loker') || qLower.includes('lowongan')) {
-                    targetId = 'career-center';
-                } else if (qLower.includes('blud') || qLower.includes('produk') || qLower.includes('tefa') || qLower.includes('katalog') || qLower.includes('toko') || qLower.includes('jual')) {
-                    targetId = 'blud';
-                } else if (qLower.includes('akademik') || qLower.includes('nilai') || qLower.includes('jadwal') || qLower.includes('guru') || qLower.includes('siswa') || qLower.includes('kurikulum') || qLower.includes('pelajaran')) {
-                    targetId = 'akademik';
-                } else if (qLower.includes('layanan') || qLower.includes('fitur') || qLower.includes('ppdb') || qLower.includes('daftar')) {
-                    targetId = 'layanan';
-                } else if (qLower.includes('tentang') || qLower.includes('profil') || qLower.includes('sekolah') || qLower.includes('smk') || qLower.includes('apa itu')) {
-                    targetId = 'tentang';
-                }
-                
-                if (targetId) {
-                    const targetEl = document.getElementById(targetId);
-                    if (targetEl) {
-                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const heroSearchForm = document.getElementById('heroSearchForm');
+            const heroSearchInput = document.getElementById('heroSearchInput');
+            
+            if (heroSearchForm && heroSearchInput) {
+                heroSearchForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const query = heroSearchInput.value.trim();
+                    if (!query) {
+                        heroSearchInput.focus();
+                        return;
                     }
-                }
-                
-                // Trigger Tanya Tefa AI assistant for comprehensive guidance
-                if (window.sendNavChip) {
-                    window.sendNavChip(query);
-                }
-            });
-        }
-    });
+                    
+                    const qLower = query.toLowerCase();
+                    let targetId = null;
+                    
+                    if (qLower.includes('karir') || qLower.includes('bkk') || qLower.includes('kerja') || qLower.includes('loker') || qLower.includes('lowongan')) {
+                        targetId = 'career-center';
+                    } else if (qLower.includes('blud') || qLower.includes('produk') || qLower.includes('tefa') || qLower.includes('katalog') || qLower.includes('toko') || qLower.includes('jual')) {
+                        targetId = 'blud';
+                    } else if (qLower.includes('akademik') || qLower.includes('nilai') || qLower.includes('jadwal') || qLower.includes('guru') || qLower.includes('siswa') || qLower.includes('kurikulum') || qLower.includes('pelajaran')) {
+                        targetId = 'akademik';
+                    } else if (qLower.includes('layanan') || qLower.includes('fitur') || qLower.includes('ppdb') || qLower.includes('daftar')) {
+                        targetId = 'layanan';
+                    } else if (qLower.includes('tentang') || qLower.includes('profil') || qLower.includes('sekolah') || qLower.includes('smk') || qLower.includes('apa itu')) {
+                        targetId = 'tentang';
+                    }
+                    
+                    if (targetId) {
+                        const targetEl = document.getElementById(targetId);
+                        if (targetEl) {
+                            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                    
+                    // Trigger Tanya Tefa AI assistant for comprehensive guidance
+                    if (window.sendNavChip) {
+                        window.sendNavChip(query);
+                    }
+                });
+            }
+        });
     })();
     </script>
 </body>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-pwa />
-    <meta name="description" content="Eksplorasi Peluang PKL & Karier Industri Mitra — Jembatan resmi siswa dan alumni Tefa-Hub menuju dunia usaha dan dunia industri (DUDI).">
+    <meta name="description" content="Eksplorasi Peluang PKL & Karier Industri Mitra — Jembatan resmi talenta vokasi Tefa-Hub menuju DUDI melalui program Praktik Kerja Lapangan bersertifikasi, magang industri, dan rekrutmen kerja terpercaya.">
     <title>Eksplorasi Peluang PKL & Karier Industri Mitra — Tefa-Hub</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
 
@@ -45,7 +45,7 @@
                             <polyline points="2 17 12 22 22 17"></polyline>
                             <polyline points="2 12 12 17 22 12"></polyline>
                         </svg>
-                        <span>PUSAT KEMITRAAN VOKASI &amp; PENYALURAN KERJA</span>
+                        <span>KEMITRAAN INDUSTRI &amp; MAGANG BERSERTIFIKAT RESMI</span>
                     </div>
 
                     {{-- 2. Title --}}
@@ -56,7 +56,7 @@
 
                     {{-- 3. Description --}}
                     <p class="pkl-card-desc">
-                        Jembatan resmi siswa dan alumni Tefa-Hub menuju dunia usaha dan dunia industri (DUDI). Temukan lowongan praktik kerja lapangan (PKL), program magang bersertifikat, dan rekrutmen kerja dengan jadwal interview terintegrasi secara transparan.
+                        Jembatan resmi talenta vokasi Tefa-Hub menuju Dunia Usaha &amp; Dunia Industri (DUDI). Dapatkan pengalaman kerja nyata melalui program Praktik Kerja Lapangan (PKL) bersertifikasi industri, magang terstandar, dan seleksi kerja terintegrasi bersama mentor profesional.
                     </p>
 
                     {{-- 4. Two Buttons --}}

@@ -52,7 +52,7 @@
                             <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
                             <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
                         </svg>
-                        <span>Penerimaan Peserta Didik Baru</span>
+                        <span>Penerimaan Peserta Didik Baru (PPDB) Resmi</span>
                     </div>
 
                     <h1 class="ppdb-hero-title">
@@ -61,7 +61,7 @@
                     </h1>
 
                     <p class="ppdb-hero-desc">
-                        Wujudkan masa depanmu bersama kami. Daftar sekarang dan jadilah bagian dari generasi unggul, kreatif, dan siap menghadapi dunia industri.
+                        Wujudkan masa depan karier gemilang bersama SMK Pusat Keunggulan Terakreditasi A. Kurikulum selaras industri (SKKNI), fasilitas workshop modern, dan jaminan sertifikasi kompetensi kejuruan.
                     </p>
 
                     <div class="ppdb-btn-group">
@@ -81,7 +81,7 @@
                         <a href="#pilihan-jurusan" class="btn-ppdb-secondary" aria-label="Lihat Pilihan Jurusan">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                <circle cx="12" cy="12" r="3"></circle>
+                                <circle cx="12" cy="10" r="3"></circle>
                             </svg>
                             <span>Lihat Jurusan</span>
                         </a>
@@ -115,8 +115,8 @@
                     </svg>
                 </div>
                 <div class="ppdb-value-text-group">
-                    <h4 class="ppdb-value-title">Sekolah Terakreditasi A</h4>
-                    <p class="ppdb-value-sub">Terpercaya dan berkualitas</p>
+                    <h4 class="ppdb-value-title">Sekolah Terakreditasi A BAN-SM</h4>
+                    <p class="ppdb-value-sub">Standar mutu pendidikan vokasi terpercaya</p>
                 </div>
             </div>
 
@@ -129,8 +129,8 @@
                     </svg>
                 </div>
                 <div class="ppdb-value-text-group">
-                    <h4 class="ppdb-value-title">Fasilitas Lengkap &amp; Modern</h4>
-                    <p class="ppdb-value-sub">Mendukung pembelajaran berbasis industri</p>
+                    <h4 class="ppdb-value-title">Lab &amp; Workshop Standar Industri</h4>
+                    <p class="ppdb-value-sub">Peralatan mutakhir Teaching Factory</p>
                 </div>
             </div>
 
@@ -145,8 +145,8 @@
                     </svg>
                 </div>
                 <div class="ppdb-value-text-group">
-                    <h4 class="ppdb-value-title">Guru Profesional dan Berpengalaman</h4>
-                    <p class="ppdb-value-sub">Berkomitmen mencetak lulusan terbaik</p>
+                    <h4 class="ppdb-value-title">Instruktur &amp; Asesor BNSP Ahli</h4>
+                    <p class="ppdb-value-sub">Didampingi praktisi industri berkompeten</p>
                 </div>
             </div>
 
@@ -159,8 +159,8 @@
                     </svg>
                 </div>
                 <div class="ppdb-value-text-group">
-                    <h4 class="ppdb-value-title">Lulusan Siap Kerja &amp; Kuliah</h4>
-                    <p class="ppdb-value-sub">Diterima di dunia industri dan perguruan tinggi</p>
+                    <h4 class="ppdb-value-title">Penyaluran Kerja Mitra DUDI</h4>
+                    <p class="ppdb-value-sub">Akses langsung bursa kerja &amp; perguruan tinggi</p>
                 </div>
             </div>
 
