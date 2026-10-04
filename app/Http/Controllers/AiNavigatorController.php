@@ -15,23 +15,29 @@ class AiNavigatorController extends Controller
      * System prompt sent to Gemini to keep it on-topic, helpful, and concise.
      */
     private const SYSTEM_PROMPT = <<<'PROMPT'
-        Kamu adalah Tanya Tefa AI, asisten virtual resmi platform TEFA-Hub (Teaching Factory Hub) — ekosistem digital terpadu SMK di Indonesia.
+        Kamu adalah Tanya Tefa AI, asisten virtual resmi platform TEFA-Hub (Teaching Factory Hub) di SMK Antartika 1 Sidoarjo.
+
+        KNOWLEDGE BASE 5 JURUSAN / KONSENTRASI KEAHLIAN RESMI:
+        Sekolah HANYA memiliki 5 program keahlian resmi berikut (JANGAN sebutkan jurusan lain seperti TKJ, DKV, Akuntansi, dll):
+        1. TPM / TP (Teknik Pemesinan): CNC bubut & frais presisi, manufaktur, fabrikasi, CAD/CAM.
+        2. TKR (Teknik Kendaraan Ringan): Diagnostik otomotif, EFI injeksi, pemeliharaan mesin, tune up kendaraan.
+        3. RPL (Rekayasa Perangkat Lunak): Web & mobile apps, basis data, cloud computing, UI/UX design, AI.
+        4. TITL (Teknik Instalasi Tenaga Listrik): Instalasi industri, panel distribusi, motor listrik, kontrol PLC, otomasi energi.
+        5. TEI (Teknik Elektronika Industri): Otomasi industri, robotika, IoT (Internet of Things), mikrokontroler, instrumentasi.
 
         TUGAS UTAMA SEBAGAI NAVIGATOR PERAN (ROLE-BASED NAVIGATOR):
         1. MENGANALISIS PERAN & KEBUTUHAN PENGGUNA:
-           - Orang Tua / Calon Siswa: Panduan pendaftaran PPDB Online, syarat berkas, pilihan jurusan/keahlian, jalur masuk, biaya, dan fasilitas sekolah.
+           - Orang Tua / Calon Siswa: Panduan pendaftaran PPDB Online, syarat berkas, pilihan 5 jurusan resmi di atas, jalur masuk, biaya bebas uang gedung, dan fasilitas sekolah.
            - Siswa Aktif: Navigasi modul BLUD (publikasi & komisi), BKK (magang/PKL), Akademik (rapor & absen), serta pengelolaan profil.
-           - Alumni & Pencari Kerja: Rekomendasi lowongan BKK mitra DUDI, legalisir ijazah online, sertifikasi BNSP, dan tracer study.
-           - Mitra Industri / DUDI: Kerjasama Teaching Factory (TEFA), rekrutmen alumni siap kerja, dan order produk/jasa kejuruan.
+           - Alumni & Pencari Kerja: Rekomendasi lowongan BKK mitra 100+ DUDI, legalisir ijazah online, sertifikasi BNSP, dan tracer study.
+           - Mitra Industri / DUDI: Kerjasama Teaching Factory (TEFA), rekrutmen alumni siap kerja BMW (Bekerja, Melanjutkan, Wirausaha).
            - Tamu Umum / Administrasi: Jam operasional TU, pengurusan surat keterangan, dan reset akun mandiri.
-        2. MENGURANGI PERTANYAAN BERULANG KE ADMIN & TU: Menjawab pertanyaan operasional secara terstruktur, jelas, dan tuntas sehingga pengguna tidak perlu antre atau bertanya berulang kali ke admin sekolah.
+        2. MENGURANGI PERTANYAAN BERULANG KE ADMIN & TU: Menjawab pertanyaan operasional secara terstruktur, jelas, dan tuntas.
 
         ATURAN JAWABAN:
         - Format jawaban TERSTRUKTUR & RAMAH: Gunakan langkah bernomor 1, 2, 3 untuk prosedur atau poin ringkas (•) untuk rincian.
         - Ringkas & Jelas: Maksimal 3-6 kalimat padat dan informatif.
         - Selalu berikan navigasi yang jelas atau arahkan ke menu/portal terkait.
-        - Jawab semua pertanyaan umum dengan benar, ramah, dan langsung pada inti pertanyaannya. Jika pertanyaan terkait TEFA-Hub, gunakan konteks layanan TEFA-Hub di atas.
-        - Untuk informasi yang tidak dapat dipastikan, jelaskan keterbatasannya dan jangan mengarang fakta.
         - Jangan sebut diri sebagai Gemini/Google. Kamu adalah Tanya Tefa AI Navigator.
         PROMPT;
 
@@ -184,12 +190,12 @@ class AiNavigatorController extends Controller
                 'suggestions' => ['Syarat Berkas PPDB', 'Pilihan Jurusan & Keahlian', 'Jadwal PPDB'],
             ],
             [
-                'intents' => ['pilihan jurusan', 'jurusan apa saja', 'konsentrasi keahlian', 'program keahlian', 'jurusan smk', 'kejuruan', 'jurusan favorit'],
-                'keywords' => ['jurusan', 'konsentrasi keahlian', 'program keahlian', 'rpl', 'tkj', 'dkv', 'mesin', 'otomotif', 'akuntansi'],
+                'intents' => ['pilihan jurusan', 'jurusan apa saja', 'konsentrasi keahlian', 'program keahlian', 'jurusan smk', 'kejuruan', 'jurusan favorit', 'tpm', 'rpl', 'tei', 'tkr', 'titl', 'pemesinan', 'otomotif', 'listrik', 'elektronika', 'perangkat lunak'],
+                'keywords' => ['jurusan', 'konsentrasi keahlian', 'program keahlian', 'tpm', 'rpl', 'tei', 'tkr', 'titl', 'mesin', 'otomotif', 'listrik', 'elektronika', 'software'],
                 'category' => 'PPDB',
-                'answer' => "Pilihan Konsentrasi Keahlian (Jurusan) Unggulan:\n• 💻 Rekayasa Perangkat Lunak (RPL): Web development, mobile app, UI/UX, dan AI.\n• 🌐 Teknik Jaringan Komputer & Telekomunikasi (TJKT/TKJ): Cloud computing, cyber security & network engineer.\n• 🎨 Desain Komunikasi Visual (DKV): 3D animation, graphic design, branding & video production.\n• ⚙️ Teknik Pemesinan: CNC operator, CAD/CAM, fabrikasi presisi manufaktur.\n• 🚗 Teknik Otomotif: Kendaraan ringan, kelistrikan bodi, dan teknologi motor listrik.\nSetiap jurusan memiliki unit Teaching Factory (TEFA) berstandar industri!",
+                'answer' => "SMK Antartika 1 Sidoarjo memiliki 5 Program Keahlian Unggulan berstandar industri:\n1. ⚙️ TPM — Teknik Pemesinan: CNC bubut & frais presisi, manufaktur, fabrikasi, CAD/CAM.\n2. 🚗 TKR — Teknik Kendaraan Ringan: Diagnostik otomotif, EFI, engine stand, tune-up.\n3. 💻 RPL — Rekayasa Perangkat Lunak: Web & mobile app, database, cloud, UI/UX, AI.\n4. ⚡ TITL — Teknik Instalasi Tenaga Listrik: Instalasi industri, panel, motor listrik, PLC.\n5. 🤖 TEI — Teknik Elektronika Industri: Otomasi industri, robotika, IoT, mikrokontroler.\nSeluruh jurusan memiliki Teaching Factory (TEFA) & sertifikasi LSP/BNSP!",
                 'route' => 'ppdb',
-                'label' => 'Eksplorasi Jurusan Sekolah',
+                'label' => 'Eksplorasi 5 Jurusan Sekolah',
                 'suggestions' => ['Fasilitas Lab & Bengkel', 'Cara Daftar PPDB Online', 'Prospek Kerja Lulusan'],
             ],
             [
@@ -214,7 +220,7 @@ class AiNavigatorController extends Controller
                 'intents' => ['fasilitas sekolah', 'sarana prasarana', 'bengkel smk', 'lab komputer', 'asrama', 'sarana tefa'],
                 'keywords' => ['fasilitas', 'sarana', 'lab komputer', 'bengkel', 'peralatan industri', 'gedung sekolah'],
                 'category' => 'PPDB',
-                'answer' => "Fasilitas & Sarana Unggulan Sekolah:\n• 🖥️ Modern Computer Lab (Spesifikasi Core i7 / RTX untuk Coding, Render 3D & Desain).\n• 🏭 Bengkel Manufaktur CNC & Bubut Berstandar Standar Industri Jepang/Jerman.\n• 🚗 Bengkel Otomotif Modern dengan Hydraulic Lift, Diagnostic Scanner & Simulator EV.\n• 🎬 Studio Multimedia & Sound Recording DKV bersertifikasi industri.\n• 🌐 Koneksi Internet Fiber Optik Dedicated di seluruh area kampus.",
+                'answer' => "Fasilitas & Sarana Unggulan Sekolah:\n• 🏭 Workshop Pemesinan CNC & Bubut Berstandar Industri Presisi (TPM).\n• 🚗 Bengkel Otomotif EFI dengan Diagnostic Scanner & Car Lift (TKR).\n• 💻 Lab Komputer RPL & Software Studio Berkecepatan Tinggi (RPL).\n• ⚡ Lab Instalasi Listrik Industri & Trainer PLC (TITL).\n• 🤖 Lab Elektronika, IoT & Platform Robotika Otomasi (TEI).\n• 🌐 Jaringan Internet Fiber Optik Terintegrasi di seluruh area kampus.",
                 'route' => 'ppdb',
                 'label' => 'Lihat Galeri Fasilitas',
                 'suggestions' => ['Pilihan Jurusan & Keahlian', 'Cara Daftar PPDB Online', 'Prospek Kerja Lulusan'],

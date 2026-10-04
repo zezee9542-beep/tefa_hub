@@ -1,9 +1,10 @@
 /* ============================================================
    TEFA-HUB — PROFIL SEKOLAH (SMK ANTARTIKA 1 SIDOARJO)
-   Enhanced Modern Design System:
-   - Landscape 16:9 Cinema Player for Video Profil Sekolah
-   - Portrait 9:16 Vertical Smartphone Frame for Video Guru
-   - High-Grade Glassmorphism, Micro-Animations & Responsive Design
+   Enhanced Human-Crafted Design System:
+   - Ultra-Smooth Mobile Horizontal Swipe / Scroll-Snap Reels
+   - Landscape 16:9 Cinema Player (profil.webm)
+   - Portrait 9:16 Vertical Smartphone Mockup Player (guru.webm)
+   - Professional Glassmorphism, Zero-Cliché Modern Typography
    ============================================================ */
 
 :root {
@@ -324,7 +325,7 @@
 }
 
 /* ============================================================
-   2. SECTION HEADERS
+   2. SECTION HEADERS & MOBILE SWIPE HINT BADGES
    ============================================================ */
 .profil-section-header {
     text-align: center;
@@ -360,6 +361,22 @@
     font-size: 1rem;
     color: var(--profil-muted);
     line-height: 1.65;
+}
+
+/* Mobile Swipe Hint Badge */
+.profil-swipe-hint {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--profil-primary);
+    background: rgba(37, 99, 235, 0.08);
+    padding: 6px 14px;
+    border-radius: 9999px;
+    margin: -24px auto 24px;
+    width: fit-content;
 }
 
 /* ============================================================
@@ -523,8 +540,8 @@
 
 /* ============================================================
    4. VIDEO SHOWCASE SECTION (CINEMA MASTER STAGE)
-   - Video Profil Sekolah: Landscape 16:9 Widescreen Cinema Card
-   - Video Pengenalan Guru: Portrait 9:16 Smartphone Mockup Frame
+   - Landscape 16:9 Cinema Player (profil.webm)
+   - Portrait 9:16 Vertical Smartphone Mockup Player (guru.webm)
    ============================================================ */
 .profil-video-section {
     padding: 84px 0;
@@ -563,6 +580,9 @@
     justify-content: center;
     gap: 12px;
     margin-bottom: 36px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
 }
 
 .profil-video-tab-btn {
@@ -577,6 +597,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
     transition: var(--profil-transition);
 }
 
@@ -722,50 +743,6 @@
     100% { transform: scale(1); opacity: 1; }
 }
 
-/* Custom Play Overlay */
-.profil-custom-play-overlay {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(15, 23, 42, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: none;
-    z-index: 5;
-    transition: opacity 0.3s ease, background 0.3s ease;
-}
-
-.profil-custom-play-overlay.is-playing {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.profil-play-icon-bubble {
-    width: 62px;
-    height: 62px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.5);
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.profil-custom-play-overlay:hover .profil-play-icon-bubble {
-    transform: scale(1.14);
-}
-
-.profil-play-icon-bubble svg {
-    width: 26px;
-    height: 26px;
-    margin-left: 3px;
-}
-
 /* Video Metadata Card Details */
 .profil-video-card-meta {
     padding: 24px;
@@ -830,7 +807,7 @@
 }
 
 /* ============================================================
-   5. PROGRAM KEAHLIAN (JURUSAN)
+   5. PROGRAM KEAHLIAN (JURUSAN) — WITH MOBILE SWIPE
    ============================================================ */
 .profil-jurusan-section {
     padding: 80px 0;
@@ -956,6 +933,9 @@
     justify-content: center;
     gap: 8px;
     margin-bottom: 36px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
 }
 
 .profil-mitra-tab-btn {
@@ -967,6 +947,7 @@
     padding: 8px 18px;
     border-radius: 9999px;
     cursor: pointer;
+    white-space: nowrap;
     transition: var(--profil-transition);
 }
 
@@ -1228,11 +1209,11 @@
 }
 
 .profil-principal-avatar {
-    width: 130px;
-    height: 130px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     margin: 0 auto 20px;
-    padding: 6px;
+    padding: 4px;
     background: linear-gradient(135deg, var(--profil-primary), var(--profil-secondary));
     box-shadow: 0 10px 24px -4px rgba(37, 99, 235, 0.3);
 }
@@ -1436,7 +1417,7 @@
 }
 
 /* ============================================================
-   11. RESPONSIVE BREAKPOINTS
+   11. ULTRA-REFINED MOBILE RESPONSIVENESS & HORIZONTAL SWIPING
    ============================================================ */
 @media (max-width: 1024px) {
     .profil-hero-grid,
@@ -1461,40 +1442,221 @@
 }
 
 @media (max-width: 768px) {
-    .profil-hero-title {
-        font-size: 2.15rem;
+    .profil-wrap {
+        padding: 0 16px;
     }
+    
+    .profil-hero-section {
+        padding: 28px 0 44px;
+    }
+    
+    .profil-hero-title {
+        font-size: 2.1rem;
+        line-height: 1.2;
+    }
+    
+    .profil-hero-lead {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
     .profil-hero-meta-grid {
         grid-template-columns: 1fr;
         gap: 10px;
     }
-    .profil-bmw-pills {
-        grid-template-columns: 1fr;
+    
+    .profil-hero-cta-group {
+        width: 100%;
+        flex-direction: column;
     }
-    .profil-jurusan-grid {
-        grid-template-columns: 1fr;
+    
+    .profil-hero-cta-group .profil-btn-primary,
+    .profil-hero-cta-group .profil-btn-secondary {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
     }
-    .profil-jurusan-grid .profil-jurusan-card:nth-child(5) {
-        grid-column: span 1;
-    }
-    .profil-management-boxes {
-        grid-template-columns: 1fr;
-    }
+
     .profil-hero-img-wrapper {
-        height: 290px;
+        height: 240px;
     }
+
+    .profil-floating-badge {
+        padding: 10px 14px;
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        gap: 10px;
+    }
+    .profil-floating-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+    }
+    .profil-floating-text h4 {
+        font-size: 0.85rem;
+    }
+    .profil-floating-text p {
+        font-size: 0.72rem;
+    }
+
+    .profil-section-title {
+        font-size: 1.75rem;
+    }
+    
+    .profil-section-desc {
+        font-size: 0.92rem;
+    }
+
+    /* Swipe hint badge appears on mobile */
+    .profil-swipe-hint {
+        display: inline-flex;
+    }
+
+    /* Horizontal Swipeable Jurusan Cards on Mobile */
+    .profil-jurusan-grid {
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 16px !important;
+        padding: 4px 4px 16px !important;
+        margin: 0 -16px;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .profil-jurusan-card {
+        flex: 0 0 82% !important;
+        min-width: 280px !important;
+        scroll-snap-align: center !important;
+        grid-column: auto !important;
+        padding: 22px !important;
+    }
+
+    /* Horizontal Swipeable Mitra Cards on Mobile */
+    .profil-mitra-grid {
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 12px !important;
+        padding: 4px 4px 16px !important;
+        margin: 0 -16px;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .profil-mitra-card {
+        flex: 0 0 75% !important;
+        min-width: 240px !important;
+        scroll-snap-align: start !important;
+        padding: 14px 16px !important;
+    }
+
+    /* Horizontal Swipeable Fasilitas on Mobile */
+    .profil-fasilitas-grid {
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 16px !important;
+        padding: 4px 4px 16px !important;
+        margin: 0 -16px;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .profil-fasilitas-col {
+        flex: 0 0 90% !important;
+        min-width: 290px !important;
+        scroll-snap-align: center !important;
+        padding: 22px 18px !important;
+    }
+
+    /* Video Section on Mobile */
+    .profil-video-section {
+        padding: 56px 0;
+    }
+
+    .profil-video-nav-tabs {
+        justify-content: flex-start;
+        margin-bottom: 24px;
+    }
+
+    .profil-video-tab-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+
+    .profil-smartphone-frame {
+        max-width: 260px;
+    }
+
+    .profil-video-card-meta {
+        padding: 18px 14px;
+    }
+
+    .profil-video-meta-title {
+        font-size: 1.1rem;
+    }
+
+    .profil-video-meta-desc {
+        font-size: 0.82rem;
+    }
+
     .profil-visi-card,
     .profil-karakter-card,
     .profil-ekskul-banner,
-    .profil-contact-info-card,
-    .profil-fasilitas-col {
-        padding: 24px;
+    .profil-contact-info-card {
+        padding: 22px 18px;
     }
-    .profil-video-nav-tabs {
+
+    .profil-visi-text {
+        font-size: 1.18rem;
+    }
+
+    .profil-bmw-pills {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    .profil-bmw-pill {
+        padding: 10px 6px;
+    }
+    .profil-bmw-letter {
+        font-size: 1.15rem;
+    }
+    .profil-bmw-label {
+        font-size: 0.7rem;
+    }
+
+    .profil-principal-card {
+        padding: 24px 16px;
+    }
+    .profil-principal-avatar {
+        width: 110px;
+        height: 110px;
+    }
+    .profil-principal-name {
+        font-size: 1.2rem;
+    }
+
+    .profil-management-boxes {
+        grid-template-columns: 1fr;
+    }
+
+    .profil-map-iframe {
+        height: 250px;
+    }
+    
+    .profil-map-footer {
         flex-direction: column;
         align-items: stretch;
+        gap: 12px;
+        padding: 16px;
     }
-    .profil-video-tab-btn {
+    .profil-map-footer .profil-btn-secondary {
+        text-align: center;
         justify-content: center;
     }
 }

@@ -24,6 +24,15 @@
     RewriteRule ^ index.php [L]
 </IfModule>
 
+<IfModule mod_mime.c>
+    AddType video/webm .webm
+    AddType video/mp4 .mp4
+    AddType video/ogg .ogv .ogg
+    AddType audio/ogg .oga .ogg
+    AddType audio/webm .webm
+    AddType audio/mp4 .m4a
+</IfModule>
+
 <IfModule mod_headers.c>
     <Files "sw.js">
         Header always set Cache-Control "no-cache, no-store, must-revalidate"
@@ -31,6 +40,12 @@
 
     <FilesMatch "\.(?:avif|webp|woff2?)$">
         Header set Cache-Control "public, max-age=604800"
+    </FilesMatch>
+
+    <FilesMatch "\.(?:webm|mp4|ogv|m4a)$">
+        Header set Access-Control-Allow-Origin "*"
+        Header set Accept-Ranges bytes
+        Header set Cache-Control "public, max-age=2592000"
     </FilesMatch>
 
     <FilesMatch "\.(?:css|js)$">

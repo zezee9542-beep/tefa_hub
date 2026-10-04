@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-pwa />
-    <meta name="description" content="Profil Resmi SMK Antartika 1 Sidoarjo di TefaHub — Sekolah vokasi teknik unggulan terakreditasi A (Unggul) sejak 1974. Visi, program keahlian, kemitraan 100+ industri DUDI, fasilitas workshop industri, serta video profil landscape dan pengenalan guru portrait.">
+    <meta name="description" content="Profil Resmi SMK Antartika 1 Sidoarjo di TefaHub — Sekolah vokasi teknik unggulan terakreditasi A (Unggul) sejak 1974. Visi, 5 program keahlian (TPM, TKR, RPL, TITL, TEI), kemitraan 100+ industri DUDI, fasilitas workshop industri, serta video profil sekolah dan guru.">
     <title>Profil Sekolah — SMK Antartika 1 Sidoarjo | Tefa-Hub</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
 
@@ -256,19 +256,10 @@
                             playsinline
                             controls
                             preload="metadata"
-                            poster="{{ asset('assets/image.png') }}"
                         >
                             <source src="{{ asset('assets/profil.webm') }}" type="video/webm">
-                            Browser Anda tidak mendukung pemutaran video HTML5.
+                            Browser Anda tidak mendukung pemutaran video WebM.
                         </video>
-
-                        <button type="button" class="profil-custom-play-overlay" id="overlayBtnProfil" aria-label="Putar Video Profil Sekolah">
-                            <div class="profil-play-icon-bubble">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                                </svg>
-                            </div>
-                        </button>
                     </div>
 
                     <div class="profil-video-card-meta">
@@ -284,7 +275,7 @@
                                     <polygon points="23 7 16 12 23 17 23 7"></polygon>
                                     <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
                                 </svg>
-                                Format: profil.webm (Landscape 16:9)
+                                WebM 720p (Landscape 16:9)
                             </span>
                             <button type="button" class="profil-fullscreen-btn" onclick="toggleFullscreenVideo('videoProfilSekolah')">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -317,19 +308,10 @@
                             playsinline
                             controls
                             preload="metadata"
-                            poster="{{ asset('assets/image copy 3.webp') }}"
                         >
                             <source src="{{ asset('assets/guru.webm') }}" type="video/webm">
-                            Browser Anda tidak mendukung pemutaran video HTML5.
+                            Browser Anda tidak mendukung pemutaran video WebM.
                         </video>
-
-                        <button type="button" class="profil-custom-play-overlay" id="overlayBtnGuru" aria-label="Putar Video Pengenalan Guru">
-                            <div class="profil-play-icon-bubble">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                                </svg>
-                            </div>
-                        </button>
                     </div>
 
                     <div class="profil-video-card-meta">
@@ -344,7 +326,7 @@
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
                                 </svg>
-                                Format: guru.webm (Portrait 9:16)
+                                WebM 720p (Portrait 9:16)
                             </span>
                             <button type="button" class="profil-fullscreen-btn" onclick="toggleFullscreenVideo('videoPengenalanGuru')">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -365,7 +347,7 @@
     </section>
 
     {{-- ═══════════════════════════════════════════
-         4. PROGRAM KEAHLIAN (JURUSAN & FOKUS KOMPETENSI)
+         4. PROGRAM KEAHLIAN (5 JURUSAN RESMI: TPM, TKR, RPL, TITL, TEI)
          ═══════════════════════════════════════════ --}}
     <section class="profil-jurusan-section" id="jurusan">
         <div class="profil-wrap">
@@ -378,9 +360,13 @@
                 </p>
             </div>
 
+            <div class="profil-swipe-hint">
+                <span>👉 Geser kartu ke samping untuk melihat jurusan lain</span>
+            </div>
+
             <div class="profil-jurusan-grid">
                 
-                {{-- 1. Teknik Pemesinan --}}
+                {{-- 1. Teknik Pemesinan (TPM) --}}
                 <div class="profil-jurusan-card">
                     <div>
                         <div class="profil-jurusan-icon-box icon-box-tp">
@@ -389,16 +375,16 @@
                                 <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
                             </svg>
                         </div>
-                        <div class="profil-jurusan-code">TP — Teknik Pemesinan</div>
+                        <div class="profil-jurusan-code">TPM — Teknik Pemesinan</div>
                         <h3 class="profil-jurusan-name">Teknik Pemesinan</h3>
                     </div>
                     <div class="profil-jurusan-fokus-box">
                         <div class="profil-jurusan-fokus-label">Fokus Kompetensi</div>
-                        <div class="profil-jurusan-fokus-text">CNC, bubut, frais, manufaktur presisi</div>
+                        <div class="profil-jurusan-fokus-text">CNC, bubut, frais, manufaktur presisi, CAD/CAM</div>
                     </div>
                 </div>
 
-                {{-- 2. Teknik Kendaraan Ringan --}}
+                {{-- 2. Teknik Kendaraan Ringan (TKR) --}}
                 <div class="profil-jurusan-card">
                     <div>
                         <div class="profil-jurusan-icon-box icon-box-tkr">
@@ -414,11 +400,11 @@
                     </div>
                     <div class="profil-jurusan-fokus-box">
                         <div class="profil-jurusan-fokus-label">Fokus Kompetensi</div>
-                        <div class="profil-jurusan-fokus-text">Diagnostik otomotif, EFI, perawatan kendaraan</div>
+                        <div class="profil-jurusan-fokus-text">Diagnostik otomotif, EFI, perawatan kendaraan, tune up</div>
                     </div>
                 </div>
 
-                {{-- 3. Rekayasa Perangkat Lunak --}}
+                {{-- 3. Rekayasa Perangkat Lunak (RPL) --}}
                 <div class="profil-jurusan-card">
                     <div>
                         <div class="profil-jurusan-icon-box icon-box-rpl">
@@ -432,11 +418,11 @@
                     </div>
                     <div class="profil-jurusan-fokus-box">
                         <div class="profil-jurusan-fokus-label">Fokus Kompetensi</div>
-                        <div class="profil-jurusan-fokus-text">Web, aplikasi, basis data, cloud, UI/UX</div>
+                        <div class="profil-jurusan-fokus-text">Web, aplikasi mobile, basis data, cloud, UI/UX, AI</div>
                     </div>
                 </div>
 
-                {{-- 4. Teknik Instalasi Tenaga Listrik --}}
+                {{-- 4. Teknik Instalasi Tenaga Listrik (TITL) --}}
                 <div class="profil-jurusan-card">
                     <div>
                         <div class="profil-jurusan-icon-box icon-box-titl">
@@ -453,7 +439,7 @@
                     </div>
                 </div>
 
-                {{-- 5. Teknik Elektronika Industri --}}
+                {{-- 5. Teknik Elektronika Industri (TEI) --}}
                 <div class="profil-jurusan-card">
                     <div>
                         <div class="profil-jurusan-icon-box icon-box-tei">
@@ -475,7 +461,7 @@
                     </div>
                     <div class="profil-jurusan-fokus-box">
                         <div class="profil-jurusan-fokus-label">Fokus Kompetensi</div>
-                        <div class="profil-jurusan-fokus-text">Otomasi, robotika, IoT, instrumentasi, mikrokontroler</div>
+                        <div class="profil-jurusan-fokus-text">Otomasi industri, robotika, IoT, instrumentasi, mikrokontroler</div>
                     </div>
                 </div>
 
@@ -506,6 +492,10 @@
                 <button type="button" class="profil-mitra-tab-btn" data-sector="otomotif">Otomotif</button>
                 <button type="button" class="profil-mitra-tab-btn" data-sector="energi">Energi &amp; Kelistrikan</button>
                 <button type="button" class="profil-mitra-tab-btn" data-sector="elektronika">Elektronika &amp; Otomasi</button>
+            </div>
+
+            <div class="profil-swipe-hint">
+                <span>👉 Geser ke samping untuk melihat mitra industri lainnya</span>
             </div>
 
             {{-- Mitra Cards Grid --}}
@@ -605,7 +595,7 @@
 
                 <div class="profil-mitra-card" data-sector="manufaktur">
                     <div class="profil-mitra-icon-circle">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
                     </div>
                     <div class="profil-mitra-info">
                         <div class="profil-mitra-name">PT Astra Komponen Indonesia</div>
@@ -792,6 +782,10 @@
                 <p class="profil-section-desc">
                     Mendukung terciptanya iklim belajar berbasis industri melalui bengkel manufaktur mutakhir, laboratorium komputasi terkini, dan infrastruktur penunjang terpadu.
                 </p>
+            </div>
+
+            <div class="profil-swipe-hint">
+                <span>👉 Geser ke samping untuk melihat fasilitas lainnya</span>
             </div>
 
             <div class="profil-fasilitas-grid">
@@ -981,7 +975,7 @@
                 {{-- Principal Showcase Card --}}
                 <div class="profil-principal-card">
                     <div class="profil-principal-avatar">
-                        <img src="{{ asset('assets/human.webp') }}" alt="Akhmad Nasirudin, S.T. - Kepala SMK Antartika 1 Sidoarjo" class="profil-principal-img" onerror="this.onerror=null; this.src='{{ asset('assets/logo2.webp') }}';">
+                        <img src="{{ asset('assets/image copy.png') }}" alt="Akhmad Nasirudin, S.T. - Kepala SMK Antartika 1 Sidoarjo" class="profil-principal-img" onerror="this.onerror=null; this.src='{{ asset('assets/image copy.webp') }}';">
                     </div>
                     <h3 class="profil-principal-name">Akhmad Nasirudin, S.T.</h3>
                     <div class="profil-principal-role">Kepala SMK Antartika 1 Sidoarjo</div>
@@ -1158,41 +1152,8 @@
          ═══════════════════════════════════════════ --}}
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        
-        // ── 1. Video Custom Overlay Handlers ──────────────────
-        function setupVideoOverlay(videoId, overlayId) {
-            const video = document.getElementById(videoId);
-            const overlay = document.getElementById(overlayId);
 
-            if (!video || !overlay) return;
-
-            overlay.addEventListener('click', function() {
-                if (video.paused) {
-                    video.play();
-                    overlay.classList.add('is-playing');
-                } else {
-                    video.pause();
-                    overlay.classList.remove('is-playing');
-                }
-            });
-
-            video.addEventListener('play', function() {
-                overlay.classList.add('is-playing');
-            });
-
-            video.addEventListener('pause', function() {
-                overlay.classList.remove('is-playing');
-            });
-
-            video.addEventListener('ended', function() {
-                overlay.classList.remove('is-playing');
-            });
-        }
-
-        setupVideoOverlay('videoProfilSekolah', 'overlayBtnProfil');
-        setupVideoOverlay('videoPengenalanGuru', 'overlayBtnGuru');
-
-        // ── 2. Fullscreen Video Helper ────────────────────────
+        // ── 1. Fullscreen Video Helper ────────────────────────
         window.toggleFullscreenVideo = function(videoId) {
             const video = document.getElementById(videoId);
             if (!video) return;
@@ -1206,7 +1167,7 @@
             }
         };
 
-        // ── 3. Video Nav Tabs (Landscape vs Portrait Filter) ───
+        // ── 2. Video Nav Tabs (Landscape vs Portrait Filter) ───
         const videoTabs = document.querySelectorAll('.profil-video-tab-btn');
         const cardLandscape = document.getElementById('cardVideoProfilLandscape');
         const cardPortrait  = document.getElementById('cardVideoGuruPortrait');
@@ -1222,7 +1183,9 @@
                 if (target === 'all') {
                     if (cardLandscape) cardLandscape.style.display = 'flex';
                     if (cardPortrait) cardPortrait.style.display = 'flex';
-                    if (videoDualGrid) videoDualGrid.style.gridTemplateColumns = '1.25fr 0.75fr';
+                    if (videoDualGrid && window.innerWidth > 1024) {
+                        videoDualGrid.style.gridTemplateColumns = '1.25fr 0.75fr';
+                    }
                 } else if (target === 'landscape') {
                     if (cardLandscape) cardLandscape.style.display = 'flex';
                     if (cardPortrait) cardPortrait.style.display = 'none';
@@ -1235,7 +1198,7 @@
             });
         });
 
-        // ── 4. Mitra Filter Tabs ──────────────────────────────
+        // ── 3. Mitra Filter Tabs ──────────────────────────────
         const tabBtns = document.querySelectorAll('.profil-mitra-tab-btn');
         const mitraCards = document.querySelectorAll('.profil-mitra-card');
 
