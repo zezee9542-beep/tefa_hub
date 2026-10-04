@@ -1,12 +1,15 @@
 /* ============================================================
    TEFA-HUB — PROFIL SEKOLAH (SMK ANTARTIKA 1 SIDOARJO)
-   Design System: Modern Glassmorphism, Dynamic Vibrant Gradients,
-   Responsive Cinema Video Players & Clean Typography (Plus Jakarta Sans)
+   Enhanced Modern Design System:
+   - Landscape 16:9 Cinema Player for Video Profil Sekolah
+   - Portrait 9:16 Vertical Smartphone Frame for Video Guru
+   - High-Grade Glassmorphism, Micro-Animations & Responsive Design
    ============================================================ */
 
 :root {
     --profil-primary: #2563eb;
     --profil-primary-dark: #1d4ed8;
+    --profil-primary-light: #60a5fa;
     --profil-secondary: #7c3aed;
     --profil-accent: #0284c7;
     --profil-accent-cyan: #06b6d4;
@@ -18,8 +21,8 @@
     --profil-card-bg: #ffffff;
     --profil-border: rgba(226, 232, 240, 0.85);
     --profil-border-focus: rgba(37, 99, 235, 0.4);
-    --profil-glow-blue: rgba(37, 99, 235, 0.12);
-    --profil-glow-purple: rgba(124, 58, 237, 0.1);
+    --profil-glow-blue: rgba(37, 99, 235, 0.14);
+    --profil-glow-purple: rgba(124, 58, 237, 0.12);
     --profil-shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.04);
     --profil-shadow-md: 0 16px 36px -8px rgba(15, 23, 42, 0.08), 0 4px 16px rgba(0, 0, 0, 0.02);
     --profil-shadow-lg: 0 24px 50px -10px rgba(37, 99, 235, 0.15), 0 8px 24px rgba(15, 23, 42, 0.04);
@@ -45,28 +48,28 @@
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
-    filter: blur(80px);
+    filter: blur(90px);
     opacity: 0.18;
 }
 .profil-glow-top-right {
-    width: 420px;
-    height: 420px;
+    width: 450px;
+    height: 450px;
     background: radial-gradient(circle, #3b82f6, #8b5cf6);
-    top: 40px;
+    top: 30px;
     right: 2%;
 }
 .profil-glow-mid-left {
     width: 480px;
     height: 480px;
     background: radial-gradient(circle, #06b6d4, #3b82f6);
-    top: 35%;
+    top: 32%;
     left: -5%;
 }
 .profil-glow-bottom-right {
     width: 450px;
     height: 450px;
     background: radial-gradient(circle, #8b5cf6, #ec4899);
-    bottom: 10%;
+    bottom: 8%;
     right: -3%;
 }
 
@@ -75,7 +78,7 @@
    ============================================================ */
 .profil-hero-section {
     position: relative;
-    padding: 40px 0 60px;
+    padding: 44px 0 64px;
     background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
     overflow: hidden;
 }
@@ -95,7 +98,6 @@
     align-items: flex-start;
 }
 
-/* Top Badges */
 .profil-badge-row {
     display: flex;
     flex-wrap: wrap;
@@ -134,9 +136,9 @@
 }
 
 .profil-hero-title {
-    font-size: 2.75rem;
+    font-size: 2.85rem;
     font-weight: 800;
-    line-height: 1.18;
+    line-height: 1.16;
     color: var(--profil-dark);
     margin-bottom: 16px;
     letter-spacing: -0.02em;
@@ -150,7 +152,7 @@
 
 .profil-hero-lead {
     font-size: 1.05rem;
-    line-height: 1.68;
+    line-height: 1.7;
     color: var(--profil-muted);
     margin-bottom: 24px;
 }
@@ -188,7 +190,7 @@
 }
 
 .profil-meta-value {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     font-weight: 800;
     color: var(--profil-dark);
 }
@@ -244,7 +246,7 @@
     transform: translateY(-2px);
 }
 
-/* Hero Visual Composition */
+/* Hero Showcase Visual */
 .profil-hero-visual {
     position: relative;
 }
@@ -263,7 +265,7 @@
     position: relative;
     border-radius: var(--profil-radius-lg);
     overflow: hidden;
-    height: 380px;
+    height: 390px;
 }
 
 .profil-hero-img {
@@ -280,10 +282,10 @@
 
 .profil-floating-badge {
     position: absolute;
-    bottom: 24px;
-    left: 24px;
-    right: 24px;
-    background: rgba(15, 23, 42, 0.85);
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: rgba(15, 23, 42, 0.88);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -326,7 +328,7 @@
    ============================================================ */
 .profil-section-header {
     text-align: center;
-    max-width: 740px;
+    max-width: 760px;
     margin: 0 auto 44px;
 }
 
@@ -346,7 +348,7 @@
 }
 
 .profil-section-title {
-    font-size: 2.2rem;
+    font-size: 2.25rem;
     font-weight: 800;
     line-height: 1.25;
     color: var(--profil-dark);
@@ -393,8 +395,8 @@
     position: absolute;
     top: -50px;
     right: -50px;
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     background: radial-gradient(circle, rgba(37, 99, 235, 0.4), transparent 70%);
     border-radius: 50%;
 }
@@ -403,7 +405,7 @@
     width: 48px;
     height: 48px;
     color: #60a5fa;
-    opacity: 0.8;
+    opacity: 0.85;
     margin-bottom: 20px;
 }
 
@@ -417,7 +419,7 @@
 }
 
 .profil-visi-text {
-    font-size: 1.4rem;
+    font-size: 1.38rem;
     font-weight: 700;
     line-height: 1.5;
     color: #f8fafc;
@@ -454,12 +456,8 @@
     justify-content: space-between;
 }
 
-.profil-karakter-header {
-    margin-bottom: 20px;
-}
-
 .profil-karakter-title {
-    font-size: 1.4rem;
+    font-size: 1.45rem;
     font-weight: 800;
     color: var(--profil-dark);
     margin-bottom: 10px;
@@ -524,11 +522,12 @@
 }
 
 /* ============================================================
-   4. VIDEO SHOWCASE SECTION (CINEMA VIDEO PLAYERS)
-   Includes profil.webm and guru.mp4
+   4. VIDEO SHOWCASE SECTION (CINEMA MASTER STAGE)
+   - Video Profil Sekolah: Landscape 16:9 Widescreen Cinema Card
+   - Video Pengenalan Guru: Portrait 9:16 Smartphone Mockup Frame
    ============================================================ */
 .profil-video-section {
-    padding: 80px 0;
+    padding: 84px 0;
     background: #0f172a;
     color: #ffffff;
     position: relative;
@@ -542,7 +541,7 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
 }
 
 .profil-video-header .profil-section-title {
@@ -558,34 +557,69 @@
     color: #60a5fa;
 }
 
-/* Video Showcase Grid (Dual Cinema Cards) */
-.profil-video-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 36px;
-    margin-top: 10px;
+/* Video Mode Selector / Quick Switch Tabs */
+.profil-video-nav-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 36px;
 }
 
-.profil-video-card {
+.profil-video-tab-btn {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: 9999px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--profil-transition);
+}
+
+.profil-video-tab-btn:hover {
+    background: rgba(51, 65, 85, 0.9);
+    color: #ffffff;
+    border-color: rgba(96, 165, 250, 0.4);
+}
+
+.profil-video-tab-btn.is-active {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: #ffffff;
+    border-color: rgba(147, 197, 253, 0.4);
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+}
+
+/* Asymmetric Dual Video Cinema Grid */
+.profil-video-dual-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 36px;
+    align-items: stretch;
+}
+
+/* ─── CARD 1: LANDSCAPE 16:9 CINEMA CARD (Video Profil) ─── */
+.profil-landscape-cinema-card {
     background: #1e293b;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--profil-radius-xl);
     overflow: hidden;
-    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
     transition: var(--profil-transition);
-    position: relative;
 }
 
-.profil-video-card:hover {
-    transform: translateY(-4px);
+.profil-landscape-cinema-card:hover {
     border-color: rgba(96, 165, 250, 0.4);
-    box-shadow: 0 25px 60px -12px rgba(37, 99, 235, 0.35);
+    box-shadow: 0 28px 60px -12px rgba(37, 99, 235, 0.35);
 }
 
-/* Video Player Container */
-.profil-video-player-box {
+/* 16:9 Landscape Player Box */
+.profil-landscape-player-box {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -593,21 +627,75 @@
     overflow: hidden;
 }
 
-.profil-video-element {
+.profil-landscape-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    background: #000;
+    background: #000000;
 }
 
-/* Video Badge in Player */
-.profil-video-badge {
+/* ─── CARD 2: PORTRAIT 9:16 SMARTPHONE CARD (Video Guru) ─── */
+.profil-portrait-cinema-card {
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--profil-radius-xl);
+    overflow: hidden;
+    box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    transition: var(--profil-transition);
+}
+
+.profil-portrait-cinema-card:hover {
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 28px 60px -12px rgba(124, 58, 237, 0.35);
+}
+
+/* 9:16 Portrait Smartphone Frame */
+.profil-smartphone-frame {
+    position: relative;
+    width: 100%;
+    max-width: 290px;
+    aspect-ratio: 9 / 16;
+    background: #000000;
+    border-radius: 28px;
+    border: 4px solid #334155;
+    box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.8), inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+/* Smartphone Top Speaker Notch */
+.profil-phone-notch {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 68px;
+    height: 5px;
+    background: #475569;
+    border-radius: 9999px;
+    z-index: 10;
+}
+
+.profil-portrait-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background: #000000;
+}
+
+/* Video Badges */
+.profil-video-badge-pill {
     position: absolute;
     top: 14px;
     left: 14px;
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(8px);
+    background: rgba(15, 23, 42, 0.82);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 4px 10px;
     border-radius: 9999px;
@@ -617,25 +705,25 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    z-index: 5;
+    z-index: 6;
 }
 
-.profil-video-badge .badge-dot {
+.profil-video-badge-pill .live-dot {
     width: 7px;
     height: 7px;
     background: #ef4444;
     border-radius: 50%;
-    animation: pulseRed 1.8s infinite;
+    animation: livePulse 1.8s infinite;
 }
 
-@keyframes pulseRed {
+@keyframes livePulse {
     0% { transform: scale(1); opacity: 1; }
     50% { transform: scale(1.4); opacity: 0.6; }
     100% { transform: scale(1); opacity: 1; }
 }
 
-/* Custom Play Overlay for aesthetic & click to play */
-.profil-video-overlay-btn {
+/* Custom Play Overlay */
+.profil-custom-play-overlay {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -646,18 +734,18 @@
     justify-content: center;
     cursor: pointer;
     border: none;
-    z-index: 4;
+    z-index: 5;
     transition: opacity 0.3s ease, background 0.3s ease;
 }
 
-.profil-video-overlay-btn.is-playing {
+.profil-custom-play-overlay.is-playing {
     opacity: 0;
     pointer-events: none;
 }
 
-.profil-play-icon-circle {
-    width: 64px;
-    height: 64px;
+.profil-play-icon-bubble {
+    width: 62px;
+    height: 62px;
     border-radius: 50%;
     background: linear-gradient(135deg, #2563eb, #7c3aed);
     color: #ffffff;
@@ -668,41 +756,43 @@
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.profil-video-overlay-btn:hover .profil-play-icon-circle {
-    transform: scale(1.12);
+.profil-custom-play-overlay:hover .profil-play-icon-bubble {
+    transform: scale(1.14);
 }
 
-.profil-play-icon-circle svg {
-    width: 28px;
-    height: 28px;
+.profil-play-icon-bubble svg {
+    width: 26px;
+    height: 26px;
     margin-left: 3px;
 }
 
-/* Video Info & Controls Panel */
-.profil-video-info {
+/* Video Metadata Card Details */
+.profil-video-card-meta {
     padding: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.profil-video-title {
-    font-size: 1.22rem;
+.profil-video-meta-title {
+    font-size: 1.25rem;
     font-weight: 800;
     color: #ffffff;
     margin-bottom: 8px;
     line-height: 1.35;
 }
 
-.profil-video-desc {
+.profil-video-meta-desc {
     font-size: 0.88rem;
     color: #94a3b8;
     line-height: 1.6;
     margin-bottom: 20px;
 }
 
-.profil-video-meta-bar {
+.profil-video-bottom-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -711,7 +801,7 @@
     margin-top: auto;
 }
 
-.profil-video-tag-pill {
+.profil-video-spec-pill {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -719,12 +809,7 @@
     color: #cbd5e1;
 }
 
-.profil-video-control-actions {
-    display: flex;
-    gap: 8px;
-}
-
-.profil-video-btn {
+.profil-fullscreen-btn {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: #ffffff;
@@ -739,7 +824,7 @@
     transition: var(--profil-transition);
 }
 
-.profil-video-btn:hover {
+.profil-fullscreen-btn:hover {
     background: rgba(255, 255, 255, 0.16);
     border-color: rgba(255, 255, 255, 0.3);
 }
@@ -1356,13 +1441,16 @@
 @media (max-width: 1024px) {
     .profil-hero-grid,
     .profil-visi-grid,
-    .profil-video-grid,
+    .profil-video-dual-grid,
     .profil-fasilitas-grid,
     .profil-ekskul-banner-grid,
     .profil-lead-grid,
     .profil-contact-grid {
         grid-template-columns: 1fr;
         gap: 30px;
+    }
+    .profil-smartphone-frame {
+        max-width: 320px;
     }
     .profil-jurusan-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1374,7 +1462,7 @@
 
 @media (max-width: 768px) {
     .profil-hero-title {
-        font-size: 2.1rem;
+        font-size: 2.15rem;
     }
     .profil-hero-meta-grid {
         grid-template-columns: 1fr;
@@ -1393,7 +1481,7 @@
         grid-template-columns: 1fr;
     }
     .profil-hero-img-wrapper {
-        height: 280px;
+        height: 290px;
     }
     .profil-visi-card,
     .profil-karakter-card,
@@ -1401,5 +1489,12 @@
     .profil-contact-info-card,
     .profil-fasilitas-col {
         padding: 24px;
+    }
+    .profil-video-nav-tabs {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .profil-video-tab-btn {
+        justify-content: center;
     }
 }
