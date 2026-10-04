@@ -17,6 +17,18 @@ Route::get('/bkk', function () {
     return view('bkk');
 })->name('bkk');
 
+Route::get('/profil', function () {
+    return view('profil');
+})->name('profil');
+
+Route::get('/profil-sekolah', function () {
+    return redirect()->route('profil');
+});
+
+Route::get('/tentang', function () {
+    return redirect()->route('profil');
+});
+
 Route::get('/pkl', function () {
     return view('pkl');
 })->name('pkl');
@@ -99,6 +111,29 @@ Route::prefix('admin')
     ->middleware(['auth', 'role:admin'])
     ->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+        Route::get('/pengguna', [AdminController::class, 'users'])->name('users');
+        Route::post('/pengguna', [AdminController::class, 'storeUser'])->name('users.store');
+        Route::put('/pengguna/{user}', [AdminController::class, 'updateUser'])->name('users.update');
+        Route::patch('/pengguna/{user}/status', [AdminController::class, 'toggleUser'])->name('users.toggle');
+        Route::get('/akademik', [AdminController::class, 'academic'])->name('academic');
+        Route::post('/akademik/nilai', [AdminController::class, 'storeGrade'])->name('academic.grades.store');
+        Route::post('/akademik/kehadiran', [AdminController::class, 'storeAttendance'])->name('academic.attendance.store');
+        Route::post('/akademik/tugas', [AdminController::class, 'storeAssignment'])->name('academic.assignments.store');
+        Route::get('/blud', [AdminController::class, 'blud'])->name('blud');
+        Route::patch('/blud/{product}', [AdminController::class, 'updateProduct'])->name('blud.update');
+        Route::get('/bkk', [AdminController::class, 'jobs'])->name('jobs');
+        Route::post('/bkk', [AdminController::class, 'storeJob'])->name('jobs.store');
+        Route::patch('/bkk/{job}/status', [AdminController::class, 'toggleJob'])->name('jobs.toggle');
+        Route::patch('/lamaran/{application}', [AdminController::class, 'updateApplication'])->name('applications.update');
+        Route::get('/ppdb', [AdminController::class, 'ppdb'])->name('ppdb');
+        Route::post('/ppdb', [AdminController::class, 'storePpdb'])->name('ppdb.store');
+        Route::patch('/ppdb/{application}', [AdminController::class, 'updatePpdb'])->name('ppdb.update');
+        Route::get('/laporan', [AdminController::class, 'reports'])->name('reports');
+        Route::get('/laporan/ekspor', [AdminController::class, 'export'])->name('reports.export');
+        Route::get('/konten', [AdminController::class, 'content'])->name('content');
+        Route::put('/konten', [AdminController::class, 'saveContent'])->name('content.save');
+        Route::get('/pengaturan', [AdminController::class, 'settings'])->name('settings');
+        Route::put('/pengaturan', [AdminController::class, 'saveSettings'])->name('settings.save');
         Route::get('/monitor', [SystemMonitorController::class, 'index'])->name('monitor');
         Route::get('/monitor/metrics', [SystemMonitorController::class, 'metrics'])->name('monitor.metrics');
     });

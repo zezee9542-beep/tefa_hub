@@ -39,6 +39,7 @@
                 <h3 class="footer-col-title">NAVIGASI</h3>
                 <ul class="footer-links">
                     <li><a href="{{ url('/') }}">Beranda</a></li>
+                    <li><a href="{{ route('profil') }}">Profil Sekolah</a></li>
                     <li><a href="{{ route('ppdb') }}">PPDB</a></li>
                     <li><a href="{{ url('/#blud') }}">BLUD</a></li>
                     <li><a href="{{ url('/#pkl') }}">PKL &amp; Industri</a></li>

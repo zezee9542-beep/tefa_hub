@@ -44,7 +44,7 @@
                         </svg>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="{{ url('/#tentang') }}" class="dropdown-item {{ in_array($active, ['tentang', 'profil']) ? 'active-item' : '' }}">Profil Sekolah</a>
+                        <a href="{{ route('profil') }}" class="dropdown-item {{ in_array($active, ['tentang', 'profil']) ? 'active-item' : '' }}">Profil Sekolah</a>
                     </div>
                 </li>
 
@@ -117,7 +117,7 @@
                 </svg>
             </button>
             <ul class="mobile-sublinks">
-                <li><a href="{{ url('/#tentang') }}" class="mobile-sublink {{ in_array($active, ['tentang', 'profil']) ? 'active' : '' }}">Profil Sekolah</a></li>
+                <li><a href="{{ route('profil') }}" class="mobile-sublink {{ in_array($active, ['tentang', 'profil']) ? 'active' : '' }}">Profil Sekolah</a></li>
             </ul>
         </li>
 

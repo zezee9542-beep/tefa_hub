@@ -1,0 +1,1405 @@
+/* ============================================================
+   TEFA-HUB — PROFIL SEKOLAH (SMK ANTARTIKA 1 SIDOARJO)
+   Design System: Modern Glassmorphism, Dynamic Vibrant Gradients,
+   Responsive Cinema Video Players & Clean Typography (Plus Jakarta Sans)
+   ============================================================ */
+
+:root {
+    --profil-primary: #2563eb;
+    --profil-primary-dark: #1d4ed8;
+    --profil-secondary: #7c3aed;
+    --profil-accent: #0284c7;
+    --profil-accent-cyan: #06b6d4;
+    --profil-emerald: #059669;
+    --profil-amber: #d97706;
+    --profil-dark: #0f172a;
+    --profil-slate: #1e293b;
+    --profil-muted: #64748b;
+    --profil-card-bg: #ffffff;
+    --profil-border: rgba(226, 232, 240, 0.85);
+    --profil-border-focus: rgba(37, 99, 235, 0.4);
+    --profil-glow-blue: rgba(37, 99, 235, 0.12);
+    --profil-glow-purple: rgba(124, 58, 237, 0.1);
+    --profil-shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.04);
+    --profil-shadow-md: 0 16px 36px -8px rgba(15, 23, 42, 0.08), 0 4px 16px rgba(0, 0, 0, 0.02);
+    --profil-shadow-lg: 0 24px 50px -10px rgba(37, 99, 235, 0.15), 0 8px 24px rgba(15, 23, 42, 0.04);
+    --profil-radius-sm: 12px;
+    --profil-radius-md: 18px;
+    --profil-radius-lg: 24px;
+    --profil-radius-xl: 32px;
+    --profil-transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Container Wrap ── */
+.profil-wrap {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+/* ── Ambient Background Glows ── */
+.profil-ambient-glow {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(80px);
+    opacity: 0.18;
+}
+.profil-glow-top-right {
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, #3b82f6, #8b5cf6);
+    top: 40px;
+    right: 2%;
+}
+.profil-glow-mid-left {
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, #06b6d4, #3b82f6);
+    top: 35%;
+    left: -5%;
+}
+.profil-glow-bottom-right {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, #8b5cf6, #ec4899);
+    bottom: 10%;
+    right: -3%;
+}
+
+/* ============================================================
+   1. HERO SECTION
+   ============================================================ */
+.profil-hero-section {
+    position: relative;
+    padding: 40px 0 60px;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    overflow: hidden;
+}
+
+.profil-hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.profil-hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Top Badges */
+.profil-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.profil-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.profil-pill-primary {
+    background: rgba(37, 99, 235, 0.08);
+    color: #1d4ed8;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.profil-pill-success {
+    background: rgba(16, 185, 129, 0.1);
+    color: #047857;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.profil-pill-npsn {
+    background: rgba(245, 158, 11, 0.1);
+    color: #b45309;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.profil-hero-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1.18;
+    color: var(--profil-dark);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.profil-hero-title .highlight-blue {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.profil-hero-lead {
+    font-size: 1.05rem;
+    line-height: 1.68;
+    color: var(--profil-muted);
+    margin-bottom: 24px;
+}
+
+.profil-hero-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    width: 100%;
+    margin-bottom: 28px;
+}
+
+.profil-meta-card {
+    background: #ffffff;
+    border: 1px solid var(--profil-border);
+    border-radius: var(--profil-radius-sm);
+    padding: 14px 16px;
+    box-shadow: var(--profil-shadow-sm);
+    transition: var(--profil-transition);
+}
+
+.profil-meta-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--profil-primary);
+    box-shadow: 0 10px 24px -6px rgba(37, 99, 235, 0.12);
+}
+
+.profil-meta-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--profil-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+.profil-meta-value {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--profil-dark);
+}
+
+.profil-hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.profil-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--profil-primary), var(--profil-primary-dark));
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 12px 22px;
+    border-radius: 9999px;
+    text-decoration: none;
+    box-shadow: 0 10px 20px -4px rgba(37, 99, 235, 0.35);
+    transition: var(--profil-transition);
+}
+
+.profil-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px -4px rgba(37, 99, 235, 0.45);
+    color: #ffffff;
+}
+
+.profil-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    color: var(--profil-slate) !important;
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 11px 20px;
+    border-radius: 9999px;
+    text-decoration: none;
+    border: 1px solid var(--profil-border);
+    box-shadow: var(--profil-shadow-sm);
+    transition: var(--profil-transition);
+}
+
+.profil-btn-secondary:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    color: var(--profil-primary) !important;
+    transform: translateY(-2px);
+}
+
+/* Hero Visual Composition */
+.profil-hero-visual {
+    position: relative;
+}
+
+.profil-hero-showcase-box {
+    position: relative;
+    background: #ffffff;
+    border-radius: var(--profil-radius-xl);
+    padding: 14px;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: var(--profil-shadow-lg);
+    overflow: hidden;
+}
+
+.profil-hero-img-wrapper {
+    position: relative;
+    border-radius: var(--profil-radius-lg);
+    overflow: hidden;
+    height: 380px;
+}
+
+.profil-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profil-hero-showcase-box:hover .profil-hero-img {
+    transform: scale(1.03);
+}
+
+.profil-floating-badge {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--profil-radius-md);
+    padding: 14px 18px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.profil-floating-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.profil-floating-text h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+    color: #ffffff;
+}
+
+.profil-floating-text p {
+    font-size: 0.78rem;
+    color: #cbd5e1;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* ============================================================
+   2. SECTION HEADERS
+   ============================================================ */
+.profil-section-header {
+    text-align: center;
+    max-width: 740px;
+    margin: 0 auto 44px;
+}
+
+.profil-section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: 9999px;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--profil-primary);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.profil-section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--profil-dark);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.profil-section-desc {
+    font-size: 1rem;
+    color: var(--profil-muted);
+    line-height: 1.65;
+}
+
+/* ============================================================
+   3. VISI & KARAKTER PENDIDIKAN (BMW & 5R)
+   ============================================================ */
+.profil-visi-section {
+    padding: 70px 0;
+    background: #ffffff;
+    position: relative;
+}
+
+.profil-visi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+.profil-visi-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #ffffff;
+    border-radius: var(--profil-radius-xl);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--profil-shadow-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.profil-visi-card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.4), transparent 70%);
+    border-radius: 50%;
+}
+
+.profil-visi-quote-icon {
+    width: 48px;
+    height: 48px;
+    color: #60a5fa;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.profil-visi-heading {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #93c5fd;
+    margin-bottom: 14px;
+}
+
+.profil-visi-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #f8fafc;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.profil-visi-card .profil-link-official {
+    align-self: flex-start;
+    color: #60a5fa;
+    font-weight: 700;
+    font-size: 0.88rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: var(--profil-transition);
+}
+
+.profil-visi-card .profil-link-official:hover {
+    color: #93c5fd;
+    transform: translateX(4px);
+}
+
+.profil-karakter-card {
+    background: #ffffff;
+    border: 1px solid var(--profil-border);
+    border-radius: var(--profil-radius-xl);
+    padding: 36px;
+    box-shadow: var(--profil-shadow-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.profil-karakter-header {
+    margin-bottom: 20px;
+}
+
+.profil-karakter-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--profil-dark);
+    margin-bottom: 10px;
+}
+
+.profil-karakter-desc {
+    font-size: 0.95rem;
+    color: var(--profil-muted);
+    line-height: 1.6;
+}
+
+.profil-bmw-pills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.profil-bmw-pill {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--profil-radius-sm);
+    padding: 14px 10px;
+    text-align: center;
+    transition: var(--profil-transition);
+}
+
+.profil-bmw-pill:hover {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    transform: translateY(-2px);
+}
+
+.profil-bmw-letter {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--profil-primary);
+    margin-bottom: 2px;
+}
+
+.profil-bmw-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--profil-slate);
+}
+
+.profil-5r-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.profil-5r-tag {
+    background: #f1f5f9;
+    color: #334155;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+/* ============================================================
+   4. VIDEO SHOWCASE SECTION (CINEMA VIDEO PLAYERS)
+   Includes profil.webm and guru.mp4
+   ============================================================ */
+.profil-video-section {
+    padding: 80px 0;
+    background: #0f172a;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.profil-video-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+}
+
+.profil-video-header .profil-section-title {
+    color: #ffffff;
+}
+
+.profil-video-header .profil-section-desc {
+    color: #94a3b8;
+}
+
+.profil-video-header .profil-section-tag {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+}
+
+/* Video Showcase Grid (Dual Cinema Cards) */
+.profil-video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    margin-top: 10px;
+}
+
+.profil-video-card {
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--profil-radius-xl);
+    overflow: hidden;
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    transition: var(--profil-transition);
+    position: relative;
+}
+
+.profil-video-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(96, 165, 250, 0.4);
+    box-shadow: 0 25px 60px -12px rgba(37, 99, 235, 0.35);
+}
+
+/* Video Player Container */
+.profil-video-player-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000000;
+    overflow: hidden;
+}
+
+.profil-video-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background: #000;
+}
+
+/* Video Badge in Player */
+.profil-video-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 5;
+}
+
+.profil-video-badge .badge-dot {
+    width: 7px;
+    height: 7px;
+    background: #ef4444;
+    border-radius: 50%;
+    animation: pulseRed 1.8s infinite;
+}
+
+@keyframes pulseRed {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.6; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Custom Play Overlay for aesthetic & click to play */
+.profil-video-overlay-btn {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    z-index: 4;
+    transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+.profil-video-overlay-btn.is-playing {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.profil-play-icon-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.5);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profil-video-overlay-btn:hover .profil-play-icon-circle {
+    transform: scale(1.12);
+}
+
+.profil-play-icon-circle svg {
+    width: 28px;
+    height: 28px;
+    margin-left: 3px;
+}
+
+/* Video Info & Controls Panel */
+.profil-video-info {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.profil-video-title {
+    font-size: 1.22rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+    line-height: 1.35;
+}
+
+.profil-video-desc {
+    font-size: 0.88rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.profil-video-meta-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 14px;
+    margin-top: auto;
+}
+
+.profil-video-tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    color: #cbd5e1;
+}
+
+.profil-video-control-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.profil-video-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: var(--profil-transition);
+}
+
+.profil-video-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================================
+   5. PROGRAM KEAHLIAN (JURUSAN)
+   ============================================================ */
+.profil-jurusan-section {
+    padding: 80px 0;
+    background: #f8fafc;
+    position: relative;
+}
+
+.profil-jurusan-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.profil-jurusan-grid .profil-jurusan-card:nth-child(4),
+.profil-jurusan-grid .profil-jurusan-card:nth-child(5) {
+    grid-column: span 1;
+}
+
+.profil-jurusan-card {
+    background: #ffffff;
+    border: 1px solid var(--profil-border);
+    border-radius: var(--profil-radius-lg);
+    padding: 28px;
+    box-shadow: var(--profil-shadow-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--profil-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.profil-jurusan-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--profil-primary);
+    box-shadow: var(--profil-shadow-md);
+}
+
+.profil-jurusan-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--profil-primary), var(--profil-secondary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profil-jurusan-card:hover::before {
+    opacity: 1;
+}
+
+.profil-jurusan-icon-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+.icon-box-tp { background: #eff6ff; color: #2563eb; }
+.icon-box-tkr { background: #fef2f2; color: #dc2626; }
+.icon-box-rpl { background: #f0fdf4; color: #16a34a; }
+.icon-box-titl { background: #fefce8; color: #ca8a04; }
+.icon-box-tei { background: #faf5ff; color: #9333ea; }
+
+.profil-jurusan-code {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--profil-muted);
+    margin-bottom: 4px;
+}
+
+.profil-jurusan-name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--profil-dark);
+    margin-bottom: 12px;
+}
+
+.profil-jurusan-fokus-box {
+    background: #f8fafc;
+    border-radius: var(--profil-radius-sm);
+    padding: 12px 14px;
+    margin-top: 14px;
+}
+
+.profil-jurusan-fokus-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--profil-muted);
+    margin-bottom: 4px;
+}
+
+.profil-jurusan-fokus-text {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--profil-slate);
+    line-height: 1.45;
+}
+
+/* ============================================================
+   6. KEMITRAAN INDUSTRI & BKK (> 100 MITRA DUDI)
+   ============================================================ */
+.profil-mitra-section {
+    padding: 80px 0;
+    background: #ffffff;
+}
+
+.profil-mitra-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 36px;
+}
+
+.profil-mitra-tab-btn {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #475569;
+    font-size: 0.84rem;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: var(--profil-transition);
+}
+
+.profil-mitra-tab-btn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+.profil-mitra-tab-btn.is-active {
+    background: var(--profil-primary);
+    color: #ffffff;
+    border-color: var(--profil-primary);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+}
+
+.profil-mitra-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.profil-mitra-card {
+    background: #ffffff;
+    border: 1px solid var(--profil-border);
+    border-radius: var(--profil-radius-sm);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: var(--profil-shadow-sm);
+    transition: var(--profil-transition);
+}
+
+.profil-mitra-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--profil-primary);
+    box-shadow: 0 10px 20px -6px rgba(37, 99, 235, 0.12);
+}
+
+.profil-mitra-icon-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #eff6ff;
+    color: var(--profil-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.profil-mitra-info {
+    flex-grow: 1;
+}
+
+.profil-mitra-name {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--profil-dark);
+    margin-bottom: 2px;
+}
+
+.profil-mitra-sector {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--profil-muted);
+}
+
+.profil-mitra-cta-box {
+    margin-top: 40px;
+    text-align: center;
+    background: linear-gradient(135deg, #eff6ff, #f5f3ff);
+    border: 1px solid #dbeafe;
+    border-radius: var(--profil-radius-lg);
+    padding: 28px;
+}
+
+.profil-mitra-cta-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 14px;
+}
+
+/* ============================================================
+   7. FASILITAS UNGGULAN
+   ============================================================ */
+.profil-fasilitas-section {
+    padding: 80px 0;
+    background: #f8fafc;
+}
+
+.profil-fasilitas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+.profil-fasilitas-col {
+    background: #ffffff;
+    border: 1px solid var(--profil-border);
+    border-radius: var(--profil-radius-xl);
+    padding: 36px;
+    box-shadow: var(--profil-shadow-sm);
+}
+
+.profil-fasilitas-col-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--profil-dark);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profil-fasilitas-col-desc {
+    font-size: 0.92rem;
+    color: var(--profil-muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.profil-fasilitas-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.profil-fasilitas-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    background: #f8fafc;
+    border-radius: var(--profil-radius-sm);
+    border: 1px solid #f1f5f9;
+    transition: var(--profil-transition);
+}
+
+.profil-fasilitas-item:hover {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.profil-fasilitas-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: #16a34a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.profil-fasilitas-item-text strong {
+    font-size: 0.92rem;
+    color: var(--profil-dark);
+    display: block;
+    margin-bottom: 2px;
+}
+
+.profil-fasilitas-item-text span {
+    font-size: 0.82rem;
+    color: var(--profil-muted);
+    line-height: 1.45;
+}
+
+/* ============================================================
+   8. KEHIDUPAN & PENGEMBANGAN SISWA (EKSKUL & KARAKTER)
+   ============================================================ */
+.profil-ekskul-section {
+    padding: 80px 0;
+    background: #ffffff;
+}
+
+.profil-ekskul-banner {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #ffffff;
+    border-radius: var(--profil-radius-xl);
+    padding: 44px;
+    margin-bottom: 40px;
+    box-shadow: var(--profil-shadow-lg);
+}
+
+.profil-ekskul-banner-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 36px;
+    align-items: center;
+}
+
+.profil-ekskul-banner-title {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 14px;
+    color: #ffffff;
+}
+
+.profil-ekskul-banner-desc {
+    font-size: 1rem;
+    color: #cbd5e1;
+    line-height: 1.65;
+}
+
+.profil-ekskul-tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.profil-ekskul-pill {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: var(--profil-transition);
+}
+
+.profil-ekskul-pill:hover {
+    background: rgba(59, 130, 246, 0.3);
+    border-color: rgba(96, 165, 250, 0.5);
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   9. KEPEMIMPINAN SEKOLAH & MANAJEMEN
+   ============================================================ */
+.profil-lead-section {
+    padding: 80px 0;
+    background: #f8fafc;
+}
+
+.profil-lead-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 36px;
+    align-items: center;
+}
+
+.profil-principal-card {
+    background: #ffffff;
+    border: 1px solid var(--profil-border);
+    border-radius: var(--profil-radius-xl);
+    padding: 32px;
+    text-align: center;
+    box-shadow: var(--profil-shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.profil-principal-avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    padding: 6px;
+    background: linear-gradient(135deg, var(--profil-primary), var(--profil-secondary));
+    box-shadow: 0 10px 24px -4px rgba(37, 99, 235, 0.3);
+}
+
+.profil-principal-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    background: #ffffff;
+}
+
+.profil-principal-name {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--profil-dark);
+    margin-bottom: 4px;
+}
+
+.profil-principal-role {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--profil-primary);
+    margin-bottom: 6px;
+}
+
+.profil-principal-tenure {
+    display: inline-block;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 9999px;
+    margin-bottom: 16px;
+}
+
+.profil-principal-quote {
+    font-size: 0.88rem;
+    color: var(--profil-muted);
+    line-height: 1.6;
+    font-style: italic;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 16px;
+}
+
+.profil-management-boxes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.profil-mgmt-box {
+    background: #ffffff;
+    border: 1px solid var(--profil-border);
+    border-radius: var(--profil-radius-md);
+    padding: 20px;
+    box-shadow: var(--profil-shadow-sm);
+    transition: var(--profil-transition);
+}
+
+.profil-mgmt-box:hover {
+    transform: translateY(-2px);
+    border-color: var(--profil-primary);
+    box-shadow: 0 10px 20px -6px rgba(37, 99, 235, 0.12);
+}
+
+.profil-mgmt-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #eff6ff;
+    color: var(--profil-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.profil-mgmt-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--profil-dark);
+    margin-bottom: 4px;
+}
+
+.profil-mgmt-desc {
+    font-size: 0.8rem;
+    color: var(--profil-muted);
+    line-height: 1.5;
+}
+
+/* ============================================================
+   10. ALAMAT, LAYANAN & KONTAK RESMI
+   ============================================================ */
+.profil-contact-section {
+    padding: 80px 0;
+    background: #ffffff;
+}
+
+.profil-contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+}
+
+.profil-contact-info-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #ffffff;
+    border-radius: var(--profil-radius-xl);
+    padding: 40px;
+    box-shadow: var(--profil-shadow-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.profil-contact-info-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.profil-contact-info-desc {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    line-height: 1.65;
+    margin-bottom: 28px;
+}
+
+.profil-contact-detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.profil-contact-detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.profil-contact-detail-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #60a5fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.profil-contact-detail-text h5 {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #93c5fd;
+    margin-bottom: 3px;
+}
+
+.profil-contact-detail-text p {
+    font-size: 0.92rem;
+    color: #f1f5f9;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.profil-contact-detail-text a {
+    color: #60a5fa;
+    text-decoration: none;
+}
+
+.profil-map-card {
+    background: #ffffff;
+    border: 1px solid var(--profil-border);
+    border-radius: var(--profil-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--profil-shadow-md);
+    display: flex;
+    flex-direction: column;
+}
+
+.profil-map-iframe {
+    width: 100%;
+    height: 340px;
+    border: 0;
+    display: block;
+}
+
+.profil-map-footer {
+    padding: 20px 24px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ============================================================
+   11. RESPONSIVE BREAKPOINTS
+   ============================================================ */
+@media (max-width: 1024px) {
+    .profil-hero-grid,
+    .profil-visi-grid,
+    .profil-video-grid,
+    .profil-fasilitas-grid,
+    .profil-ekskul-banner-grid,
+    .profil-lead-grid,
+    .profil-contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .profil-jurusan-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .profil-jurusan-grid .profil-jurusan-card:nth-child(5) {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .profil-hero-title {
+        font-size: 2.1rem;
+    }
+    .profil-hero-meta-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .profil-bmw-pills {
+        grid-template-columns: 1fr;
+    }
+    .profil-jurusan-grid {
+        grid-template-columns: 1fr;
+    }
+    .profil-jurusan-grid .profil-jurusan-card:nth-child(5) {
+        grid-column: span 1;
+    }
+    .profil-management-boxes {
+        grid-template-columns: 1fr;
+    }
+    .profil-hero-img-wrapper {
+        height: 280px;
+    }
+    .profil-visi-card,
+    .profil-karakter-card,
+    .profil-ekskul-banner,
+    .profil-contact-info-card,
+    .profil-fasilitas-col {
+        padding: 24px;
+    }
+}

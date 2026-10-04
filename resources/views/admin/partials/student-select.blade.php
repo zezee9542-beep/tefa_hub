@@ -1,0 +1,1 @@
+<div class="field"><label>Siswa</label><select name="user_id" required><option value="">Pilih siswa</option>@foreach($students as $student)<option value="{{ $student->id }}">{{ $student->name }}{{ $student->kelas ? ' — '.$student->kelas : '' }}</option>@endforeach</select></div>
