@@ -294,14 +294,14 @@
 
             {{-- Right: Content --}}
             <div class="about-content reveal-right delay-1">
-                <span class="about-category">STANDARISASI PENDIDIKAN VOKASI 4.0</span>
+                <span class="about-category">TENTANG KAMI</span>
 
                 <h2 class="about-title">
                     Apa itu <span class="gradient-text">Tefa–Hub</span> ?
                 </h2>
 
                 <p class="about-desc">
-                    Tefa-Hub adalah platform ekosistem digital resmi yang mengintegrasikan seluruh pilar pendidikan vokasi unggul dalam satu sistem terpusat. Mengadopsi standar industri modern dan regulasi Teaching Factory (BLUD), Tefa-Hub menyelaraskan kurikulum kompetensi (SKKNI), transparansi asesmen belajar, hilirisasi produk inovasi siswa, hingga percepatan rekrutmen kerja bersama jaringan mitra Dunia Usaha dan Dunia Industri (DUDI) bereputasi tinggi.
+                    Tefa-Hub adalah aplikasi resmi sekolah yang menyatukan semua layanan siswa di satu tempat. Mulai dari pendaftaran siswa baru, kegiatan belajar harian, penjualan karya dan jasa siswa, hingga penyaluran magang dan kerja ke perusahaan mitra.
                 </p>
             </div>
 
@@ -315,9 +315,9 @@
         <div class="wrap">
 
             <div class="services-header reveal">
-                <h2 class="services-title">Solusi Vokasi Komprehensif Berstandar Industri</h2>
+                <h2 class="services-title">Layanan Unggulan Sekolah</h2>
                 <p class="services-desc">
-                    Dirancang untuk memastikan setiap siswa memiliki rekam jejak kompetensi terverifikasi, keahlian nyata berbasis proyek, dan akses jalur karier profesional.
+                    Semua informasi dan kebutuhan sekolah dapat diakses dengan mudah dan praktis di satu tempat.
                 </p>
             </div>
 
@@ -325,26 +325,26 @@
                 $services = [
                     [
                         'icon' => '1.webp',
-                        'title' => 'Penerimaan Peserta Didik Baru',
-                        'desc' => 'Pusat informasi dan registrasi digital calon peserta didik baru SMK Terakreditasi A dengan validasi dokumen transparan, realtime, dan akuntabel.',
+                        'title' => 'Pendaftaran Siswa Baru (PPDB)',
+                        'desc' => 'Informasi dan pendaftaran online calon siswa baru secara mudah, cepat, dan transparan.',
                         'link' => route('ppdb'),
                     ],
                     [
                         'icon' => '2.webp',
-                        'title' => 'Akademik & Asesmen Digital',
-                        'desc' => 'Akses materi berbasis proyek industri, rekapitulasi tugas, hingga transparansi nilai dan Rapor Digital terpusat untuk memantau progres kompetensi.',
+                        'title' => 'Belajar & Nilai Digital',
+                        'desc' => 'Akses materi pelajaran, kumpulkan tugas, dan lihat nilai rapor langsung dari hp.',
                         'link' => route('siswa.akademik'),
                     ],
                     [
                         'icon' => '3.webp',
-                        'title' => 'Produk & Jasa Unggulan (BLUD)',
-                        'desc' => 'Etalase komersialisasi resmi karya dan jasa siswa Teaching Factory dengan standar kendali mutu profesional, siap melayani kebutuhan masyarakat umum.',
+                        'title' => 'Produk & Jasa Karya Siswa',
+                        'desc' => 'Layanan servis kendaraan dan hasil karya siswa yang siap melayani masyarakat umum.',
                         'link' => '#blud',
                     ],
                     [
                         'icon' => '4.webp',
-                        'title' => 'Bursa Kerja Khusus & Karier DUDI',
-                        'desc' => 'Gerbang percepatan karier dengan CV Digital otomatis, portofolio terverifikasi, serta penyaluran kerja dan magang langsung ke mitra industri nasional.',
+                        'title' => 'Penyaluran Kerja & Magang',
+                        'desc' => 'Informasi lowongan kerja, tempat magang resmi (PKL), dan pengiriman lamaran langsung.',
                         'link' => route('bkk'),
                     ],
                 ];
@@ -378,12 +378,12 @@
 
             {{-- Left: Text & CTA --}}
             <div class="showcase-content reveal-left">
-                <span class="showcase-category">PENGALAMAN &amp; KOMPETENSI NYATA</span>
+                <span class="showcase-category">KARYA &amp; LAYANAN SISWA</span>
 
-                <h2 class="showcase-title">Dari Karya Menjadi Produk Layak Pasar</h2>
+                <h2 class="showcase-title">Dari Praktik Menjadi Karya Nyata</h2>
 
                 <p class="showcase-desc">
-                    Melalui model pembelajaran Teaching Factory berbasis BLUD, setiap karya dan layanan siswa diproduksi dengan standar kendali mutu industri. Kami memastikan keahlian teknis siswa tidak hanya teruji di ruang praktik, namun diakui dan bernilai guna langsung bagi pasar komersial.
+                    Siswa kami dilatih melalui praktik kerja langsung. Dari perawatan kendaraan hingga pembuatan produk, semua dikerjakan dengan rapi, teliti, dan terjangkau untuk masyarakat umum.
                 </p>
 
                 <a href="{{ route('bkk') }}" class="showcase-btn">
@@ -447,30 +447,30 @@
 
             {{-- Right: Content & 3 Cards --}}
             <div class="ai-content reveal-right delay-1">
-                <span class="ai-category">ASISTEN KECERDASAN VOKASI</span>
+                <span class="ai-category">BANTUAN CEPAT</span>
 
-                <h2 class="ai-title">Pusat Layanan Cerdas &amp; Informasi 24/7</h2>
+                <h2 class="ai-title">Pusat Informasi &amp; Bantuan 24 Jam</h2>
 
                 <p class="ai-desc">
-                    Dapatkan panduan resmi dan jawaban terverifikasi seputar kurikulum, jadwal PKL, persyaratan PPDB, hingga prosedur rekrutmen BKK secara presisi, instan, dan akurat bersama Tanya Tefa.
+                    Punya pertanyaan seputar sekolah, jadwal magang, atau pendaftaran siswa? Asisten pintar Tanya Tefa siap membantumu kapan saja.
                 </p>
 
                 @php
                     $aiFeatures = [
                         [
                             'icon' => '11.webp',
-                            'title' => 'Layanan Bantuan 24/7',
-                            'desc' => 'Asisten pintar interaktif yang siap melayani kebutuhan informasi kapan saja tanpa jeda.',
+                            'title' => 'Siap Membantu 24/7',
+                            'desc' => 'Tanya info sekolah kapan saja tanpa harus menunggu jam buka kantor.',
                         ],
                         [
                             'icon' => '12.webp',
-                            'title' => 'Akurasi & Respon Cepat',
-                            'desc' => 'Menyajikan data resmi institusi secara instan dan tepat sasaran sesuai kebutuhan pengguna.',
+                            'title' => 'Jawaban Cepat & Tepat',
+                            'desc' => 'Dapatkan penjelasan resmi dan panduan langsung yang mudah dimengerti.',
                         ],
                         [
                             'icon' => '13.webp',
-                            'title' => 'Efisiensi Layanan Maksimal',
-                            'desc' => 'Menyederhanakan proses konsultasi akademik dan rekrutmen hingga lebih dari 80%.',
+                            'title' => 'Mudah Digunakan',
+                            'desc' => 'Cukup ketik pertanyaanmu dan asisten kami akan langsung menjawab.',
                         ],
                     ];
                 @endphp
@@ -498,14 +498,12 @@
         <div class="wrap">
             <div class="cta-banner-card reveal-scale">
                 <h2 class="cta-banner-title">
-                    Akselerasikan Potensi Kejuruan &amp;<br>
-                    Raih Masa Depan Industri Bersama<br>
-                    Tefa–Hub
+                    Siapkan Masa Depanmu<br>
+                    Bersama Tefa–Hub
                 </h2>
 
                 <p class="cta-banner-desc">
-                    Dari sinkronisasi kurikulum berbasis SKKNI, sertifikasi produk BLUD, hingga<br>
-                    penyaluran kerja profesional dalam satu ekosistem terpadu.
+                    Mulai langkah pertamamu hari ini. Belajar dengan praktik nyata dan raih peluang kerja impianmu.
                 </p>
 
                 <a href="{{ Route::has('login') ? route('login') : '#login' }}" class="cta-banner-btn">

@@ -2541,10 +2541,11 @@ body.ai-panel-open .ai-trigger {
         box-shadow: 0 12px 30px rgba(15, 23, 42, 0.1) !important;
     }
 
-    .cta-banner-section { padding: 36px 0 56px; }
-    .cta-banner-card { padding: 32px 16px; }
-    .cta-banner-title { font-size: clamp(1.5rem, 6vw, 2rem); }
-    .cta-banner-desc { font-size: 13.5px; }
+    .cta-banner-section { padding: 36px 0 64px; }
+    .cta-banner-card { padding: 36px 20px; border-radius: 22px; }
+    .cta-banner-title { font-size: clamp(1.45rem, 5.5vw, 1.85rem); line-height: 1.25; margin-bottom: 10px; }
+    .cta-banner-desc { font-size: 13.5px; line-height: 1.5; margin-bottom: 22px; max-width: 92%; }
+    .cta-banner-btn { padding: 11px 32px; font-size: 14px; }
 
     .footer-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -2839,7 +2840,10 @@ body.ai-panel-open .ai-trigger {
     .btn-masuk { padding: 7px 14px; font-size: 12.5px; }
     .pill-text { font-size: 11px; }
     .pill-badge { padding: 5px 12px; }
-    .cta-banner-title { font-size: 1.4rem; }
+    .cta-banner-card { padding: 28px 16px; border-radius: 18px; }
+    .cta-banner-title { font-size: 1.35rem; line-height: 1.25; margin-bottom: 8px; }
+    .cta-banner-desc { font-size: 12.5px; line-height: 1.45; margin-bottom: 18px; }
+    .cta-banner-btn { padding: 10px 24px; font-size: 13px; }
 }
 
 @media (max-width: 360px) {

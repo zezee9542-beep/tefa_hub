@@ -120,7 +120,7 @@
     const GREET_URL  = '{{ route("ai.greet") }}';
     const CHAT_URL   = '{{ route("ai.chat") }}';
     const CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]')?.content || '';
-    const AI_GREETING_KEY = 'tefa-hub-ai-greeting-played-v1';
+    const AI_GREETING_KEY = 'tefa-hub-ai-greeting-played-v2';
 
     let panel, backdrop, toggleBtn, closeBtn, conversation, form, field, submitBtn, quickActions, badge, greetCard, initLoading;
     let isOpen = false, isBusy = false, greeted = false;
@@ -140,11 +140,11 @@
             ?? indonesianVoices.find((availableVoice) => /google|microsoft/i.test(availableVoice.name))
             ?? indonesianVoices[0]
             ?? voices.find((availableVoice) => availableVoice.lang.toLowerCase().startsWith('id'));
-        const utterance = new SpeechSynthesisUtterance('Halo, saya adalah Asisten TefaHub. Adakah yang bisa saya bantu?');
+        const utterance = new SpeechSynthesisUtterance('Selamat datang di TefaHub. Saya Asisten TefaHub. Silakan sampaikan kebutuhan Anda. Dengan senang hati, saya siap membantu.');
 
         utterance.lang = 'id-ID';
-        utterance.rate = 0.88;
-        utterance.pitch = 1.08;
+        utterance.rate = 0.82;
+        utterance.pitch = 0.98;
         utterance.volume = 0.9;
 
         if (voice) {
@@ -173,7 +173,6 @@
 
         function openPanel() {
             isOpen = true;
-            speakAiGreeting();
             panel.classList.add('is-open');
             panel.setAttribute('aria-hidden', 'false');
             if (backdrop) backdrop.classList.add('is-open');
@@ -181,6 +180,7 @@
             toggleBtn.classList.add('is-hidden');
             document.body.classList.add('ai-panel-open');
             if (badge) badge.style.display = 'none';
+            speakAiGreeting();
             
             setTimeout(() => { if (field) field.focus(); }, 120);
             if (!greeted) { greeted = true; loadGreeting(); }

@@ -1,0 +1,1030 @@
+/* ═══════════════════════════════════════════════════════════
+   PPDB DEDICATED REGISTRATION PAGE STYLES
+   SMK ANTARTIKA 1 SIDOARJO — TEFA-HUB
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+    --reg-primary: #004AC6;
+    --reg-primary-hover: #003799;
+    --reg-primary-light: #EEF4FF;
+    --reg-primary-glow: rgba(0, 74, 198, 0.22);
+    --reg-dark: #0F172A;
+    --reg-text-main: #1E293B;
+    --reg-muted: #64748B;
+    --reg-light-bg: #F8FAFC;
+    --reg-card-bg: #FFFFFF;
+    --reg-border: #E2E8F0;
+    --reg-border-focus: #93C5FD;
+    --reg-green: #059669;
+    --reg-green-bg: #ECFDF5;
+    --reg-amber: #D97706;
+    --reg-amber-bg: #FFFBEB;
+    --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+body.ppdb-daftar-body {
+    background-color: #F8FAFC;
+    color: var(--reg-text-main);
+    font-family: var(--font-main);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.ppdb-daftar-container {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 24px 20px 64px;
+    box-sizing: border-box;
+}
+
+/* ─── Top Header Navigation Bar ─── */
+.reg-top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.reg-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--reg-muted);
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    background: #FFFFFF;
+    border: 1px solid var(--reg-border);
+    transition: all 0.2s ease;
+}
+
+.reg-back-link:hover {
+    color: var(--reg-primary);
+    border-color: #BFDBFE;
+    background: var(--reg-primary-light);
+    transform: translateX(-2px);
+}
+
+.reg-header-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--reg-primary-light);
+    color: var(--reg-primary);
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    border: 1px solid #DBEAFE;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10B981;
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: pulseDot 1.8s infinite;
+}
+
+@keyframes pulseDot {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* ─── Hero Card / Banner ─── */
+.reg-hero-banner {
+    background: linear-gradient(135deg, #004AC6 0%, #1E40AF 100%);
+    border-radius: 20px;
+    padding: 28px 32px;
+    color: #FFFFFF;
+    margin-bottom: 24px;
+    box-shadow: 0 12px 30px -8px rgba(0, 74, 198, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.reg-hero-banner::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
+}
+
+.reg-hero-content {
+    max-width: 640px;
+    z-index: 1;
+}
+
+.reg-hero-title {
+    font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+    font-weight: 800;
+    margin: 0 0 8px 0;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+.reg-hero-desc {
+    font-size: 13.5px;
+    opacity: 0.92;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.reg-hero-badge {
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 18px;
+    border-radius: 14px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.reg-hero-badge-num {
+    font-size: 20px;
+    font-weight: 800;
+    display: block;
+    color: #FDE047;
+}
+
+.reg-hero-badge-text {
+    font-size: 11px;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+/* ─── Stepper Progress Bar ─── */
+.reg-stepper-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 16px 20px;
+    border: 1px solid var(--reg-border);
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.reg-stepper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.reg-step-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    opacity: 0.55;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.reg-step-item.active {
+    opacity: 1;
+}
+
+.reg-step-item.completed {
+    opacity: 1;
+}
+
+.reg-step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #F1F5F9;
+    color: var(--reg-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.25s ease;
+    border: 1.5px solid #CBD5E1;
+}
+
+.reg-step-item.active .reg-step-num {
+    background: var(--reg-primary);
+    color: #FFFFFF;
+    border-color: var(--reg-primary);
+    box-shadow: 0 0 0 4px var(--reg-primary-glow);
+}
+
+.reg-step-item.completed .reg-step-num {
+    background: var(--reg-green);
+    color: #FFFFFF;
+    border-color: var(--reg-green);
+}
+
+.reg-step-label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--reg-dark);
+}
+
+.reg-step-item.active .reg-step-label {
+    color: var(--reg-primary);
+    font-weight: 700;
+}
+
+.reg-step-divider {
+    flex: 1;
+    height: 2px;
+    background: #E2E8F0;
+    margin: 0 10px;
+    min-width: 16px;
+    transition: background 0.3s ease;
+}
+
+.reg-step-divider.filled {
+    background: var(--reg-primary);
+}
+
+/* ─── Main Form Card Layout ─── */
+.reg-main-card {
+    background: #FFFFFF;
+    border-radius: 20px;
+    border: 1px solid var(--reg-border);
+    padding: 32px;
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+}
+
+.form-step-pane {
+    display: none;
+    animation: fadeInStep 0.35s ease forwards;
+}
+
+.form-step-pane.active {
+    display: block;
+}
+
+@keyframes fadeInStep {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.step-pane-header {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+.step-pane-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--reg-dark);
+    margin: 0 0 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.step-pane-title-badge {
+    background: var(--reg-primary-light);
+    color: var(--reg-primary);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+}
+
+.step-pane-desc {
+    font-size: 13px;
+    color: var(--reg-muted);
+    margin: 0;
+}
+
+/* ─── Form Controls & Grid ─── */
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 20px;
+    margin-bottom: 18px;
+}
+
+.form-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.form-label .req {
+    color: #EF4444;
+    font-weight: 700;
+}
+
+.form-control {
+    height: 44px;
+    padding: 0 14px;
+    border-radius: 10px;
+    border: 1.5px solid var(--reg-border);
+    background: #FFFFFF;
+    font-size: 13.5px;
+    font-family: var(--font-main);
+    color: var(--reg-dark);
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--reg-primary);
+    box-shadow: 0 0 0 3.5px var(--reg-primary-glow);
+    background: #FFFFFF;
+}
+
+.form-control.is-invalid {
+    border-color: #EF4444;
+    background: #FEF2F2;
+}
+
+textarea.form-control {
+    height: 84px;
+    padding: 10px 14px;
+    resize: vertical;
+}
+
+.form-help {
+    font-size: 11.5px;
+    color: var(--reg-muted);
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+.input-with-prefix {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    border: 1.5px solid var(--reg-border);
+    background: #FFFFFF;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.input-with-prefix:focus-within {
+    border-color: var(--reg-primary);
+    box-shadow: 0 0 0 3.5px var(--reg-primary-glow);
+}
+
+.input-prefix-tag {
+    padding: 0 12px;
+    height: 44px;
+    background: #F1F5F9;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--reg-border);
+}
+
+.input-with-prefix .form-control {
+    border: none;
+    border-radius: 0;
+    box-shadow: none !important;
+}
+
+/* Radio Group */
+.radio-cards-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.radio-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1.5px solid var(--reg-border);
+    background: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.radio-card:hover {
+    border-color: #93C5FD;
+    background: #F8FAFC;
+}
+
+.radio-card input[type="radio"] {
+    accent-color: var(--reg-primary);
+    width: 16px;
+    height: 16px;
+}
+
+.radio-card.active {
+    border-color: var(--reg-primary);
+    background: var(--reg-primary-light);
+    color: var(--reg-primary);
+}
+
+/* ─── Jurusan Selection Cards ─── */
+.jurusan-select-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.jurusan-choice-card {
+    border: 1.5px solid var(--reg-border);
+    border-radius: 14px;
+    padding: 16px 14px;
+    background: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.jurusan-choice-card:hover {
+    border-color: #93C5FD;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 74, 198, 0.08);
+}
+
+.jurusan-choice-card.selected {
+    border-color: var(--reg-primary);
+    background: #F0F6FF;
+    box-shadow: 0 0 0 3px var(--reg-primary-glow);
+}
+
+.jurusan-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.jurusan-card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #EFF6FF;
+    color: var(--reg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jurusan-card-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.jurusan-choice-card.selected .jurusan-card-icon {
+    background: var(--reg-primary);
+    color: #FFFFFF;
+}
+
+.jurusan-check-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid #CBD5E1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.jurusan-choice-card.selected .jurusan-check-dot {
+    background: var(--reg-primary);
+    border-color: var(--reg-primary);
+}
+
+.jurusan-check-dot svg {
+    display: none;
+    width: 10px;
+    height: 10px;
+    stroke: #FFFFFF;
+    stroke-width: 3;
+}
+
+.jurusan-choice-card.selected .jurusan-check-dot svg {
+    display: block;
+}
+
+.jurusan-code-badge {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--reg-dark);
+}
+
+.jurusan-name-desc {
+    font-size: 11.5px;
+    color: var(--reg-muted);
+    line-height: 1.35;
+}
+
+.quiz-matched-tag {
+    position: absolute;
+    top: -9px;
+    right: 10px;
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: #FFFFFF;
+    font-size: 9.5px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+/* ─── Gelombang Pendaftaran Cards ─── */
+.gelombang-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.gelombang-card {
+    border: 1.5px solid var(--reg-border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #FFFFFF;
+}
+
+.gelombang-card.active {
+    border-color: var(--reg-primary);
+    background: #F0F6FF;
+}
+
+.gelombang-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.gelombang-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--reg-dark);
+}
+
+.gelombang-badge-promo {
+    font-size: 10.5px;
+    font-weight: 700;
+    background: #DCFCE7;
+    color: #166534;
+    padding: 2px 8px;
+    border-radius: 9999px;
+}
+
+.gelombang-desc {
+    font-size: 11.5px;
+    color: var(--reg-muted);
+    margin: 0;
+}
+
+/* ─── Dropzone File Uploads ─── */
+.dropzones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.dropzone-item {
+    border: 2px dashed var(--reg-border);
+    border-radius: 14px;
+    padding: 20px 16px;
+    text-align: center;
+    background: #F8FAFC;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    position: relative;
+}
+
+.dropzone-item:hover {
+    border-color: var(--reg-primary);
+    background: #F0F6FF;
+}
+
+.dropzone-item.has-file {
+    border-color: var(--reg-green);
+    background: #F0FDF4;
+}
+
+.dropzone-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #EFF6FF;
+    color: var(--reg-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.dropzone-item.has-file .dropzone-icon {
+    background: var(--reg-green-bg);
+    color: var(--reg-green);
+}
+
+.dropzone-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--reg-dark);
+    margin-bottom: 4px;
+}
+
+.dropzone-sub {
+    font-size: 11.5px;
+    color: var(--reg-muted);
+    margin-bottom: 10px;
+}
+
+.dropzone-file-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--reg-primary);
+    background: #FFFFFF;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid #DBEAFE;
+    display: inline-block;
+    word-break: break-all;
+}
+
+.dropzone-item.has-file .dropzone-file-name {
+    color: var(--reg-green);
+    border-color: #BBF7D0;
+}
+
+/* ─── Review & Summary Layout ─── */
+.review-box {
+    background: #F8FAFC;
+    border: 1px solid var(--reg-border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.review-section {
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.review-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.review-sec-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--reg-primary);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px 16px;
+}
+
+.review-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.review-key {
+    font-size: 11px;
+    color: var(--reg-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+}
+
+.review-val {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--reg-dark);
+}
+
+.agreement-box {
+    background: #EFF6FF;
+    border: 1px solid #DBEAFE;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.agreement-box input[type="checkbox"] {
+    accent-color: var(--reg-primary);
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+}
+
+.agreement-text {
+    font-size: 12.5px;
+    color: #1E3A8A;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ─── Final Official Registration Proof / Receipt ─── */
+.receipt-wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.receipt-card {
+    background: #FFFFFF;
+    border: 2px solid #CBD5E1;
+    border-radius: 20px;
+    padding: 32px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.receipt-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-25deg);
+    font-size: 72px;
+    font-weight: 900;
+    color: rgba(0, 74, 198, 0.04);
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.receipt-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px dashed #CBD5E1;
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+    gap: 16px;
+}
+
+.receipt-school-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.receipt-logo {
+    width: 48px;
+    height: 48px;
+}
+
+.receipt-school-name {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--reg-dark);
+    margin: 0 0 2px 0;
+}
+
+.receipt-school-sub {
+    font-size: 11px;
+    color: var(--reg-muted);
+    margin: 0;
+}
+
+.receipt-status-badge {
+    background: #DCFCE7;
+    color: #15803D;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    border: 1px solid #BBF7D0;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.receipt-code-hero {
+    background: linear-gradient(135deg, #004AC6 0%, #1E3A8A 100%);
+    color: #FFFFFF;
+    border-radius: 14px;
+    padding: 16px 20px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.receipt-code-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.85;
+    margin-bottom: 4px;
+}
+
+.receipt-code-val {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    font-family: 'Courier New', monospace;
+    color: #FDE047;
+}
+
+.receipt-details-table {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.receipt-tr {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #F1F5F9;
+    font-size: 12.5px;
+}
+
+.receipt-td-key {
+    color: var(--reg-muted);
+    font-weight: 500;
+}
+
+.receipt-td-val {
+    color: var(--reg-dark);
+    font-weight: 700;
+    text-align: right;
+}
+
+.receipt-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+
+/* ─── Bottom Navigation Buttons ─── */
+.step-actions-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid #F1F5F9;
+}
+
+.btn-reg-prev {
+    height: 44px;
+    padding: 0 20px;
+    border-radius: 10px;
+    background: #FFFFFF;
+    border: 1.5px solid var(--reg-border);
+    color: var(--reg-muted);
+    font-size: 13.5px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-reg-prev:hover {
+    background: #F1F5F9;
+    color: var(--reg-dark);
+}
+
+.btn-reg-next, .btn-reg-submit {
+    height: 44px;
+    padding: 0 24px;
+    border-radius: 10px;
+    background: var(--reg-primary);
+    border: none;
+    color: #FFFFFF;
+    font-size: 13.5px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 74, 198, 0.28);
+    transition: all 0.2s ease;
+}
+
+.btn-reg-next:hover, .btn-reg-submit:hover {
+    background: var(--reg-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(0, 74, 198, 0.38);
+}
+
+.btn-reg-submit {
+    background: #059669;
+    box-shadow: 0 4px 14px rgba(5, 150, 105, 0.28);
+}
+
+.btn-reg-submit:hover {
+    background: #047857;
+    box-shadow: 0 6px 18px rgba(5, 150, 105, 0.38);
+}
+
+/* ─── Responsive Adjustments ─── */
+@media (max-width: 768px) {
+    .ppdb-daftar-container {
+        padding: 16px 12px 48px;
+    }
+    .reg-hero-banner {
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .reg-main-card {
+        padding: 20px 16px;
+    }
+    .form-grid-2, .form-grid-3, .radio-cards-group {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .reg-stepper {
+        justify-content: flex-start;
+        gap: 12px;
+    }
+    .reg-step-divider {
+        display: none;
+    }
+}
+
+@media print {
+    body {
+        background: #FFFFFF !important;
+    }
+    .reg-top-nav, .reg-hero-banner, .reg-stepper-card, .step-actions-bar, .receipt-actions, header, footer {
+        display: none !important;
+    }
+    .ppdb-daftar-container, .reg-main-card, .receipt-wrapper, .receipt-card {
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+}

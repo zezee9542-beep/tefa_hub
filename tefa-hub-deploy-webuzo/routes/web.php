@@ -25,6 +25,22 @@ Route::get('/ppdb', function () {
     return view('ppdb');
 })->name('ppdb');
 
+Route::get('/ppdb/daftar', function () {
+    return view('ppdb-daftar');
+})->name('ppdb.daftar');
+
+Route::get('/pendaftaran', function () {
+    return redirect()->route('ppdb.daftar');
+});
+
+Route::get('/ppdb/kuis', function () {
+    return view('kuis-jurusan');
+})->name('ppdb.kuis');
+
+Route::get('/kuis-jurusan', function () {
+    return view('kuis-jurusan');
+})->name('kuis-jurusan');
+
 // ─── Auth Routes (hanya bisa diakses saat belum login) ─────────────────────
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
