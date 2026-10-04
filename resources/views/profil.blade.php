@@ -239,7 +239,6 @@
                             poster="{{ asset('assets/image.png') }}"
                         >
                             <source src="{{ asset('assets/profil.webm') }}" type="video/webm">
-                            <source src="{{ asset('assets/profil.mov') }}" type="video/quicktime">
                             Browser Anda tidak mendukung pemutaran video HTML5.
                         </video>
 
@@ -265,7 +264,7 @@
                                     <polygon points="23 7 16 12 23 17 23 7"></polygon>
                                     <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
                                 </svg>
-                                Format: profil.webm
+                                WebM (Terkompresi &amp; Cepat)
                             </span>
                             <div class="profil-video-control-actions">
                                 <button type="button" class="profil-video-btn" onclick="toggleFullscreenVideo('videoProfilSekolah')">
@@ -282,7 +281,7 @@
                     </div>
                 </div>
 
-                {{-- Video 2: Pengenalan Guru (guru.mp4) --}}
+                {{-- Video 2: Pengenalan Guru (guru.webm) --}}
                 <div class="profil-video-card" id="cardVideoGuru">
                     <div class="profil-video-player-box">
                         <span class="profil-video-badge">
@@ -298,7 +297,7 @@
                             preload="metadata"
                             poster="{{ asset('assets/image copy 3.webp') }}"
                         >
-                            <source src="{{ asset('assets/guru.mp4') }}" type="video/mp4">
+                            <source src="{{ asset('assets/guru.webm') }}" type="video/webm">
                             Browser Anda tidak mendukung pemutaran video HTML5.
                         </video>
 
@@ -326,7 +325,7 @@
                                     <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                                     <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                                 </svg>
-                                Format: guru.mp4
+                                WebM (Terkompresi &amp; Cepat)
                             </span>
                             <div class="profil-video-control-actions">
                                 <button type="button" class="profil-video-btn" onclick="toggleFullscreenVideo('videoPengenalanGuru')">
