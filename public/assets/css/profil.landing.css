@@ -1,11 +1,17 @@
 /* ============================================================
    TEFA-HUB — PROFIL SEKOLAH (SMK ANTARTIKA 1 SIDOARJO)
-   Enhanced Human-Crafted Design System:
-   - Ultra-Smooth Mobile Horizontal Swipe / Scroll-Snap Reels
-   - Landscape 16:9 Cinema Player (profil.webm)
-   - Portrait 9:16 Vertical Smartphone Mockup Player (guru.webm)
-   - Professional Glassmorphism, Zero-Cliché Modern Typography
+   Optimized Performance & Clean Responsive System:
+   - Zero horizontal overflow / No jerky swipe
+   - Clean vertical & fluid multi-column responsive grid
+   - Lightweight & fast loading footprint
+   - Professional Glassmorphism & Modern Typography
    ============================================================ */
+
+html, body {
+    overflow-x: hidden !important;
+    width: 100%;
+    max-width: 100%;
+}
 
 :root {
     --profil-primary: #2563eb;
@@ -325,7 +331,7 @@
 }
 
 /* ============================================================
-   2. SECTION HEADERS & MOBILE SWIPE HINT BADGES
+   2. SECTION HEADERS
    ============================================================ */
 .profil-section-header {
     text-align: center;
@@ -361,22 +367,6 @@
     font-size: 1rem;
     color: var(--profil-muted);
     line-height: 1.65;
-}
-
-/* Mobile Swipe Hint Badge */
-.profil-swipe-hint {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-size: 0.76rem;
-    font-weight: 700;
-    color: var(--profil-primary);
-    background: rgba(37, 99, 235, 0.08);
-    padding: 6px 14px;
-    border-radius: 9999px;
-    margin: -24px auto 24px;
-    width: fit-content;
 }
 
 /* ============================================================
@@ -539,275 +529,7 @@
 }
 
 /* ============================================================
-   4. VIDEO SHOWCASE SECTION (CINEMA MASTER STAGE)
-   - Landscape 16:9 Cinema Player (profil.webm)
-   - Portrait 9:16 Vertical Smartphone Mockup Player (guru.webm)
-   ============================================================ */
-.profil-video-section {
-    padding: 84px 0;
-    background: #0f172a;
-    color: #ffffff;
-    position: relative;
-    overflow: hidden;
-}
-
-.profil-video-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
-}
-
-.profil-video-header .profil-section-title {
-    color: #ffffff;
-}
-
-.profil-video-header .profil-section-desc {
-    color: #94a3b8;
-}
-
-.profil-video-header .profil-section-tag {
-    background: rgba(59, 130, 246, 0.2);
-    color: #60a5fa;
-}
-
-/* Video Mode Selector / Quick Switch Tabs */
-.profil-video-nav-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 36px;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    -webkit-overflow-scrolling: touch;
-}
-
-.profil-video-tab-btn {
-    background: rgba(30, 41, 59, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: #cbd5e1;
-    font-size: 0.88rem;
-    font-weight: 700;
-    padding: 10px 22px;
-    border-radius: 9999px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    white-space: nowrap;
-    transition: var(--profil-transition);
-}
-
-.profil-video-tab-btn:hover {
-    background: rgba(51, 65, 85, 0.9);
-    color: #ffffff;
-    border-color: rgba(96, 165, 250, 0.4);
-}
-
-.profil-video-tab-btn.is-active {
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-    color: #ffffff;
-    border-color: rgba(147, 197, 253, 0.4);
-    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
-}
-
-/* Asymmetric Dual Video Cinema Grid */
-.profil-video-dual-grid {
-    display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
-    gap: 36px;
-    align-items: stretch;
-}
-
-/* ─── CARD 1: LANDSCAPE 16:9 CINEMA CARD (Video Profil) ─── */
-.profil-landscape-cinema-card {
-    background: #1e293b;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: var(--profil-radius-xl);
-    overflow: hidden;
-    box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.6);
-    display: flex;
-    flex-direction: column;
-    transition: var(--profil-transition);
-}
-
-.profil-landscape-cinema-card:hover {
-    border-color: rgba(96, 165, 250, 0.4);
-    box-shadow: 0 28px 60px -12px rgba(37, 99, 235, 0.35);
-}
-
-/* 16:9 Landscape Player Box */
-.profil-landscape-player-box {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000000;
-    overflow: hidden;
-}
-
-.profil-landscape-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    background: #000000;
-}
-
-/* ─── CARD 2: PORTRAIT 9:16 SMARTPHONE CARD (Video Guru) ─── */
-.profil-portrait-cinema-card {
-    background: #1e293b;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: var(--profil-radius-xl);
-    overflow: hidden;
-    box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.6);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 24px;
-    transition: var(--profil-transition);
-}
-
-.profil-portrait-cinema-card:hover {
-    border-color: rgba(168, 85, 247, 0.4);
-    box-shadow: 0 28px 60px -12px rgba(124, 58, 237, 0.35);
-}
-
-/* 9:16 Portrait Smartphone Frame */
-.profil-smartphone-frame {
-    position: relative;
-    width: 100%;
-    max-width: 290px;
-    aspect-ratio: 9 / 16;
-    background: #000000;
-    border-radius: 28px;
-    border: 4px solid #334155;
-    box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.8), inset 0 0 0 2px rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
-/* Smartphone Top Speaker Notch */
-.profil-phone-notch {
-    position: absolute;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 68px;
-    height: 5px;
-    background: #475569;
-    border-radius: 9999px;
-    z-index: 10;
-}
-
-.profil-portrait-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    background: #000000;
-}
-
-/* Video Badges */
-.profil-video-badge-pill {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    background: rgba(15, 23, 42, 0.82);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 4px 10px;
-    border-radius: 9999px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: #ffffff;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    z-index: 6;
-}
-
-.profil-video-badge-pill .live-dot {
-    width: 7px;
-    height: 7px;
-    background: #ef4444;
-    border-radius: 50%;
-    animation: livePulse 1.8s infinite;
-}
-
-@keyframes livePulse {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.4); opacity: 0.6; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-/* Video Metadata Card Details */
-.profil-video-card-meta {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.profil-video-meta-title {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: #ffffff;
-    margin-bottom: 8px;
-    line-height: 1.35;
-}
-
-.profil-video-meta-desc {
-    font-size: 0.88rem;
-    color: #94a3b8;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.profil-video-bottom-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: 14px;
-    margin-top: auto;
-}
-
-.profil-video-spec-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.76rem;
-    color: #cbd5e1;
-}
-
-.profil-fullscreen-btn {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: #ffffff;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    transition: var(--profil-transition);
-}
-
-.profil-fullscreen-btn:hover {
-    background: rgba(255, 255, 255, 0.16);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-/* ============================================================
-   5. PROGRAM KEAHLIAN (JURUSAN) — WITH MOBILE SWIPE
+   4. PROGRAM KEAHLIAN (JURUSAN: TPM, TKR, RPL, TITL, TEI)
    ============================================================ */
 .profil-jurusan-section {
     padding: 80px 0;
@@ -920,7 +642,7 @@
 }
 
 /* ============================================================
-   6. KEMITRAAN INDUSTRI & BKK (> 100 MITRA DUDI)
+   5. KEMITRAAN INDUSTRI & BKK (> 100 MITRA DUDI)
    ============================================================ */
 .profil-mitra-section {
     padding: 80px 0;
@@ -933,9 +655,6 @@
     justify-content: center;
     gap: 8px;
     margin-bottom: 36px;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    -webkit-overflow-scrolling: touch;
 }
 
 .profil-mitra-tab-btn {
@@ -1033,7 +752,7 @@
 }
 
 /* ============================================================
-   7. FASILITAS UNGGULAN
+   6. FASILITAS UNGGULAN
    ============================================================ */
 .profil-fasilitas-section {
     padding: 80px 0;
@@ -1076,6 +795,8 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
+    padding: 0;
+    margin: 0;
 }
 
 .profil-fasilitas-item {
@@ -1122,7 +843,7 @@
 }
 
 /* ============================================================
-   8. KEHIDUPAN & PENGEMBANGAN SISWA (EKSKUL & KARAKTER)
+   7. KEHIDUPAN & PENGEMBANGAN SISWA (EKSKUL & KARAKTER)
    ============================================================ */
 .profil-ekskul-section {
     padding: 80px 0;
@@ -1183,7 +904,7 @@
 }
 
 /* ============================================================
-   9. KEPEMIMPINAN SEKOLAH & MANAJEMEN
+   8. KEPEMIMPINAN SEKOLAH & MANAJEMEN
    ============================================================ */
 .profil-lead-section {
     padding: 80px 0;
@@ -1307,7 +1028,7 @@
 }
 
 /* ============================================================
-   10. ALAMAT, LAYANAN & KONTAK RESMI
+   9. ALAMAT, LAYANAN & KONTAK RESMI
    ============================================================ */
 .profil-contact-section {
     padding: 80px 0;
@@ -1417,21 +1138,17 @@
 }
 
 /* ============================================================
-   11. ULTRA-REFINED MOBILE RESPONSIVENESS & HORIZONTAL SWIPING
+   10. MOBILE & TABLET RESPONSIVENESS (FLUID & SMOOTH)
    ============================================================ */
 @media (max-width: 1024px) {
     .profil-hero-grid,
     .profil-visi-grid,
-    .profil-video-dual-grid,
     .profil-fasilitas-grid,
     .profil-ekskul-banner-grid,
     .profil-lead-grid,
     .profil-contact-grid {
         grid-template-columns: 1fr;
         gap: 30px;
-    }
-    .profil-smartphone-frame {
-        max-width: 320px;
     }
     .profil-jurusan-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1447,22 +1164,22 @@
     }
     
     .profil-hero-section {
-        padding: 28px 0 44px;
+        padding: 24px 0 40px;
     }
     
     .profil-hero-title {
-        font-size: 2.1rem;
+        font-size: 2rem;
         line-height: 1.2;
     }
     
     .profil-hero-lead {
-        font-size: 0.95rem;
+        font-size: 0.92rem;
         line-height: 1.6;
     }
 
     .profil-hero-meta-grid {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 8px;
     }
     
     .profil-hero-cta-group {
@@ -1475,178 +1192,111 @@
         width: 100%;
         justify-content: center;
         text-align: center;
+        box-sizing: border-box;
     }
 
     .profil-hero-img-wrapper {
-        height: 240px;
+        height: 220px;
     }
 
     .profil-floating-badge {
-        padding: 10px 14px;
-        bottom: 12px;
-        left: 12px;
-        right: 12px;
+        padding: 10px 12px;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
         gap: 10px;
     }
     .profil-floating-icon {
-        width: 34px;
-        height: 34px;
+        width: 32px;
+        height: 32px;
         border-radius: 8px;
     }
     .profil-floating-text h4 {
-        font-size: 0.85rem;
+        font-size: 0.82rem;
     }
     .profil-floating-text p {
-        font-size: 0.72rem;
+        font-size: 0.7rem;
     }
 
     .profil-section-title {
-        font-size: 1.75rem;
+        font-size: 1.65rem;
     }
     
     .profil-section-desc {
-        font-size: 0.92rem;
+        font-size: 0.9rem;
     }
 
-    /* Swipe hint badge appears on mobile */
-    .profil-swipe-hint {
-        display: inline-flex;
-    }
-
-    /* Horizontal Swipeable Jurusan Cards on Mobile */
+    /* Clean vertical stacks for all grids on mobile (No side scroll / no swipe glitch) */
     .profil-jurusan-grid {
-        display: flex !important;
-        overflow-x: auto !important;
-        scroll-snap-type: x mandatory !important;
-        -webkit-overflow-scrolling: touch !important;
-        gap: 16px !important;
-        padding: 4px 4px 16px !important;
-        margin: 0 -16px;
-        padding-left: 16px !important;
-        padding-right: 16px !important;
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
     }
-
+    .profil-jurusan-grid .profil-jurusan-card:nth-child(5) {
+        grid-column: auto;
+    }
     .profil-jurusan-card {
-        flex: 0 0 82% !important;
-        min-width: 280px !important;
-        scroll-snap-align: center !important;
-        grid-column: auto !important;
-        padding: 22px !important;
-    }
-
-    /* Horizontal Swipeable Mitra Cards on Mobile */
-    .profil-mitra-grid {
-        display: flex !important;
-        overflow-x: auto !important;
-        scroll-snap-type: x mandatory !important;
-        -webkit-overflow-scrolling: touch !important;
-        gap: 12px !important;
-        padding: 4px 4px 16px !important;
-        margin: 0 -16px;
-        padding-left: 16px !important;
-        padding-right: 16px !important;
-    }
-
-    .profil-mitra-card {
-        flex: 0 0 75% !important;
-        min-width: 240px !important;
-        scroll-snap-align: start !important;
-        padding: 14px 16px !important;
-    }
-
-    /* Horizontal Swipeable Fasilitas on Mobile */
-    .profil-fasilitas-grid {
-        display: flex !important;
-        overflow-x: auto !important;
-        scroll-snap-type: x mandatory !important;
-        -webkit-overflow-scrolling: touch !important;
-        gap: 16px !important;
-        padding: 4px 4px 16px !important;
-        margin: 0 -16px;
-        padding-left: 16px !important;
-        padding-right: 16px !important;
-    }
-
-    .profil-fasilitas-col {
-        flex: 0 0 90% !important;
-        min-width: 290px !important;
-        scroll-snap-align: center !important;
         padding: 22px 18px !important;
     }
 
-    /* Video Section on Mobile */
-    .profil-video-section {
-        padding: 56px 0;
+    .profil-mitra-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+    .profil-mitra-card {
+        padding: 14px 16px !important;
     }
 
-    .profil-video-nav-tabs {
-        justify-content: flex-start;
-        margin-bottom: 24px;
+    .profil-fasilitas-grid {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
     }
-
-    .profil-video-tab-btn {
-        padding: 8px 16px;
-        font-size: 0.8rem;
-    }
-
-    .profil-smartphone-frame {
-        max-width: 260px;
-    }
-
-    .profil-video-card-meta {
-        padding: 18px 14px;
-    }
-
-    .profil-video-meta-title {
-        font-size: 1.1rem;
-    }
-
-    .profil-video-meta-desc {
-        font-size: 0.82rem;
+    .profil-fasilitas-col {
+        padding: 22px 16px !important;
     }
 
     .profil-visi-card,
     .profil-karakter-card,
     .profil-ekskul-banner,
     .profil-contact-info-card {
-        padding: 22px 18px;
+        padding: 22px 16px;
     }
 
     .profil-visi-text {
-        font-size: 1.18rem;
+        font-size: 1.15rem;
     }
 
     .profil-bmw-pills {
         grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
+        gap: 6px;
     }
     .profil-bmw-pill {
-        padding: 10px 6px;
+        padding: 10px 4px;
     }
     .profil-bmw-letter {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
     }
     .profil-bmw-label {
-        font-size: 0.7rem;
+        font-size: 0.68rem;
     }
 
     .profil-principal-card {
         padding: 24px 16px;
     }
     .profil-principal-avatar {
-        width: 110px;
-        height: 110px;
+        width: 100px;
+        height: 100px;
     }
     .profil-principal-name {
-        font-size: 1.2rem;
+        font-size: 1.18rem;
     }
 
     .profil-management-boxes {
         grid-template-columns: 1fr;
+        gap: 12px;
     }
 
     .profil-map-iframe {
-        height: 250px;
+        height: 240px;
     }
     
     .profil-map-footer {

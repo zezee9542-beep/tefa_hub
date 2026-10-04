@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-pwa />
-    <meta name="description" content="Profil Resmi SMK Antartika 1 Sidoarjo di TefaHub — Sekolah vokasi teknik unggulan terakreditasi A (Unggul) sejak 1974. Visi, 5 program keahlian (TPM, TKR, RPL, TITL, TEI), kemitraan 100+ industri DUDI, fasilitas workshop industri, serta video profil sekolah dan guru.">
+    <meta name="description" content="Profil Resmi SMK Antartika 1 Sidoarjo di TefaHub — Sekolah vokasi teknik unggulan terakreditasi A (Unggul) sejak 1974. Visi, 5 program keahlian (TPM, TKR, RPL, TITL, TEI), kemitraan 100+ industri DUDI, serta fasilitas workshop industri modern.">
     <title>Profil Sekolah — SMK Antartika 1 Sidoarjo | Tefa-Hub</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
 
@@ -83,11 +83,12 @@
 
                     {{-- Action CTA Buttons --}}
                     <div class="profil-hero-cta-group">
-                        <a href="#video-showcase" class="profil-btn-primary">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        <a href="#jurusan" class="profil-btn-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
                             </svg>
-                            Tonton Video Profil &amp; Guru
+                            <span>Jelajahi 5 Program Keahlian</span>
                         </a>
                         <a href="https://www.smkantartika1sda.sch.id/about/" target="_blank" rel="noopener noreferrer" class="profil-btn-secondary">
                             <span>Profil Resmi Sekolah</span>
@@ -206,148 +207,7 @@
     </section>
 
     {{-- ═══════════════════════════════════════════
-         3. SECTION VIDEO SHOWCASE (Landscape Profil & Portrait Guru)
-         ═══════════════════════════════════════════ --}}
-    <section class="profil-video-section" id="video-showcase">
-        <div class="profil-wrap">
-            
-            <div class="profil-section-header profil-video-header">
-                <span class="profil-section-tag">CINEMA MEDIA SHOWCASE</span>
-                <h2 class="profil-section-title">Video Profil &amp; Pengenalan Guru</h2>
-                <p class="profil-section-desc">
-                    Tonton video profil sekolah dalam format <strong>Landscape (16:9)</strong> serta video pengenalan instruktur &amp; tenaga pendidik dalam format <strong>Portrait (9:16)</strong>.
-                </p>
-            </div>
-
-            {{-- Filter Selector Tabs --}}
-            <div class="profil-video-nav-tabs">
-                <button type="button" class="profil-video-tab-btn is-active" data-videotarget="all">
-                    <span>Semua Video</span>
-                </button>
-                <button type="button" class="profil-video-tab-btn" data-videotarget="landscape">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
-                    </svg>
-                    <span>🎬 Video Profil Sekolah (Landscape 16:9)</span>
-                </button>
-                <button type="button" class="profil-video-tab-btn" data-videotarget="portrait">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                    </svg>
-                    <span>📱 Pengenalan Guru (Portrait 9:16)</span>
-                </button>
-            </div>
-
-            {{-- Dual Video Cinema Grid (Landscape 16:9 + Portrait 9:16) --}}
-            <div class="profil-video-dual-grid" id="videoDualContainer">
-
-                {{-- 🎬 VIDEO 1: PROFIL SEKOLAH (LANDSCAPE 16:9 WIDESCREEN) --}}
-                <div class="profil-landscape-cinema-card" id="cardVideoProfilLandscape" data-videotype="landscape">
-                    <div class="profil-landscape-player-box">
-                        <span class="profil-video-badge-pill">
-                            <span class="live-dot"></span>
-                            <span>PROFIL RESMI (LANDSCAPE 16:9)</span>
-                        </span>
-
-                        <video
-                            id="videoProfilSekolah"
-                            class="profil-landscape-video"
-                            playsinline
-                            controls
-                            preload="metadata"
-                        >
-                            <source src="{{ asset('assets/profil.webm') }}" type="video/webm">
-                            Browser Anda tidak mendukung pemutaran video WebM.
-                        </video>
-                    </div>
-
-                    <div class="profil-video-card-meta">
-                        <div>
-                            <h3 class="profil-video-meta-title">Video Profil SMK Antartika 1 Sidoarjo</h3>
-                            <p class="profil-video-meta-desc">
-                                Gambaran menyeluruh mengenai visi sekolah, workshop pemesinan CNC berstandar industri, laboratorium modern berkecepatan tinggi, kurikulum vokasi unggulan, serta ekosistem pencetak generasi BMW di SMK Antartika 1 Sidoarjo.
-                            </p>
-                        </div>
-                        <div class="profil-video-bottom-bar">
-                            <span class="profil-video-spec-pill">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                                </svg>
-                                WebM 720p (Landscape 16:9)
-                            </span>
-                            <button type="button" class="profil-fullscreen-btn" onclick="toggleFullscreenVideo('videoProfilSekolah')">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <polyline points="9 21 3 21 3 15"></polyline>
-                                    <line x1="21" y1="3" x2="14" y2="10"></line>
-                                    <line x1="3" y1="21" x2="10" y2="14"></line>
-                                </svg>
-                                Layar Penuh
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- 📱 VIDEO 2: PENGENALAN GURU (PORTRAIT 9:16 SMARTPHONE FRAME) --}}
-                <div class="profil-portrait-cinema-card" id="cardVideoGuruPortrait" data-videotype="portrait">
-                    
-                    {{-- Smartphone Mockup Frame for Portrait 9:16 --}}
-                    <div class="profil-smartphone-frame">
-                        <div class="profil-phone-notch"></div>
-                        
-                        <span class="profil-video-badge-pill" style="top: 20px; left: 14px;">
-                            <span class="live-dot"></span>
-                            <span>GURU (PORTRAIT 9:16)</span>
-                        </span>
-
-                        <video
-                            id="videoPengenalanGuru"
-                            class="profil-portrait-video"
-                            playsinline
-                            controls
-                            preload="metadata"
-                        >
-                            <source src="{{ asset('assets/guru.webm') }}" type="video/webm">
-                            Browser Anda tidak mendukung pemutaran video WebM.
-                        </video>
-                    </div>
-
-                    <div class="profil-video-card-meta">
-                        <div>
-                            <h3 class="profil-video-meta-title" style="text-align: center;">Pengenalan Tenaga Pendidik &amp; Guru</h3>
-                            <p class="profil-video-meta-desc" style="text-align: center;">
-                                Video vertikal memperkenalkan instruktur kejuruan, guru mata pelajaran, serta praktisi industri yang mendampingi kompetensi vokasi siswa.
-                            </p>
-                        </div>
-                        <div class="profil-video-bottom-bar">
-                            <span class="profil-video-spec-pill">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                                </svg>
-                                WebM 720p (Portrait 9:16)
-                            </span>
-                            <button type="button" class="profil-fullscreen-btn" onclick="toggleFullscreenVideo('videoPengenalanGuru')">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <polyline points="9 21 3 21 3 15"></polyline>
-                                    <line x1="21" y1="3" x2="14" y2="10"></line>
-                                    <line x1="3" y1="21" x2="10" y2="14"></line>
-                                </svg>
-                                Layar Penuh
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-    {{-- ═══════════════════════════════════════════
-         4. PROGRAM KEAHLIAN (5 JURUSAN RESMI: TPM, TKR, RPL, TITL, TEI)
+         3. PROGRAM KEAHLIAN (5 JURUSAN RESMI: TPM, TKR, RPL, TITL, TEI)
          ═══════════════════════════════════════════ --}}
     <section class="profil-jurusan-section" id="jurusan">
         <div class="profil-wrap">
@@ -358,10 +218,6 @@
                 <p class="profil-section-desc">
                     Kurikulum berbasis standar industri yang dirancang untuk menghasilkan teknisi handal dan talenta digital siap kerja.
                 </p>
-            </div>
-
-            <div class="profil-swipe-hint">
-                <span>👉 Geser kartu ke samping untuk melihat jurusan lain</span>
             </div>
 
             <div class="profil-jurusan-grid">
@@ -492,10 +348,6 @@
                 <button type="button" class="profil-mitra-tab-btn" data-sector="otomotif">Otomotif</button>
                 <button type="button" class="profil-mitra-tab-btn" data-sector="energi">Energi &amp; Kelistrikan</button>
                 <button type="button" class="profil-mitra-tab-btn" data-sector="elektronika">Elektronika &amp; Otomasi</button>
-            </div>
-
-            <div class="profil-swipe-hint">
-                <span>👉 Geser ke samping untuk melihat mitra industri lainnya</span>
             </div>
 
             {{-- Mitra Cards Grid --}}
@@ -782,10 +634,6 @@
                 <p class="profil-section-desc">
                     Mendukung terciptanya iklim belajar berbasis industri melalui bengkel manufaktur mutakhir, laboratorium komputasi terkini, dan infrastruktur penunjang terpadu.
                 </p>
-            </div>
-
-            <div class="profil-swipe-hint">
-                <span>👉 Geser ke samping untuk melihat fasilitas lainnya</span>
             </div>
 
             <div class="profil-fasilitas-grid">
@@ -1148,57 +996,10 @@
     <x-ai-widget />
 
     {{-- ═══════════════════════════════════════════
-         INTERACTIVE SCRIPTS (Video Player, Filter & Tabs)
+         INTERACTIVE SCRIPTS (Mitra Filter Tabs)
          ═══════════════════════════════════════════ --}}
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-
-        // ── 1. Fullscreen Video Helper ────────────────────────
-        window.toggleFullscreenVideo = function(videoId) {
-            const video = document.getElementById(videoId);
-            if (!video) return;
-
-            if (video.requestFullscreen) {
-                video.requestFullscreen();
-            } else if (video.webkitRequestFullscreen) {
-                video.webkitRequestFullscreen();
-            } else if (video.msRequestFullscreen) {
-                video.msRequestFullscreen();
-            }
-        };
-
-        // ── 2. Video Nav Tabs (Landscape vs Portrait Filter) ───
-        const videoTabs = document.querySelectorAll('.profil-video-tab-btn');
-        const cardLandscape = document.getElementById('cardVideoProfilLandscape');
-        const cardPortrait  = document.getElementById('cardVideoGuruPortrait');
-        const videoDualGrid = document.getElementById('videoDualContainer');
-
-        videoTabs.forEach(function(tab) {
-            tab.addEventListener('click', function() {
-                videoTabs.forEach(function(t) { t.classList.remove('is-active'); });
-                tab.classList.add('is-active');
-
-                const target = tab.getAttribute('data-videotarget');
-
-                if (target === 'all') {
-                    if (cardLandscape) cardLandscape.style.display = 'flex';
-                    if (cardPortrait) cardPortrait.style.display = 'flex';
-                    if (videoDualGrid && window.innerWidth > 1024) {
-                        videoDualGrid.style.gridTemplateColumns = '1.25fr 0.75fr';
-                    }
-                } else if (target === 'landscape') {
-                    if (cardLandscape) cardLandscape.style.display = 'flex';
-                    if (cardPortrait) cardPortrait.style.display = 'none';
-                    if (videoDualGrid) videoDualGrid.style.gridTemplateColumns = '1fr';
-                } else if (target === 'portrait') {
-                    if (cardLandscape) cardLandscape.style.display = 'none';
-                    if (cardPortrait) cardPortrait.style.display = 'flex';
-                    if (videoDualGrid) videoDualGrid.style.gridTemplateColumns = '1fr';
-                }
-            });
-        });
-
-        // ── 3. Mitra Filter Tabs ──────────────────────────────
         const tabBtns = document.querySelectorAll('.profil-mitra-tab-btn');
         const mitraCards = document.querySelectorAll('.profil-mitra-card');
 
@@ -1219,7 +1020,6 @@
                 });
             });
         });
-
     });
     </script>
 </body>

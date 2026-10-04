@@ -82,7 +82,7 @@ Route::prefix('siswa')
         Route::get('/riwayat', [SiswaController::class, 'riwayat'])->name('riwayat');
         Route::get('/tanya-tefa', [SiswaController::class, 'tanyaTefa'])->name('tanya-tefa');
         Route::post('/profile', [SiswaController::class, 'updateProfile'])->name('profile.update');
-        Route::post('/blud/publikasi', [SiswaController::class, 'ajukanPublikasi'])->name('blud.publikasi');
+        Route::post('/blud/publikasi', [SiswaController::class, 'storeBludProduct'])->name('blud.publikasi');
 
         // ─── Realtime Data & Actions Endpoints ───
         Route::get('/api/dashboard-data', [SiswaController::class, 'getDashboardData'])->name('api.dashboard');

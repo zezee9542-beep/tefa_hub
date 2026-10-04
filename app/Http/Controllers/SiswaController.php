@@ -119,14 +119,6 @@ class SiswaController extends Controller
     }
 
     /**
-     * Submit BLUD product publication for review.
-     */
-    public function ajukanPublikasi(Request $request): JsonResponse
-    {
-        return $this->storeBludProduct($request);
-    }
-
-    /**
      * Store BLUD product with database insertion.
      */
     public function storeBludProduct(Request $request): JsonResponse
