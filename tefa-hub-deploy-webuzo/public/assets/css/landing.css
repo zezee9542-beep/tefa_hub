@@ -633,8 +633,9 @@ body.onboarding-active {
 }
 .mobile-nav-link:hover,
 .mobile-nav-link.active {
-    background: #eff6ff;
-    color: var(--blue);
+    background: #004AC6;
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(0, 74, 198, 0.25);
 }
 
 /* Mobile Nav Accordion Groups */
@@ -659,14 +660,25 @@ body.onboarding-active {
     color: var(--slate);
     cursor: pointer;
     text-align: left;
+    transition: all 0.2s ease;
+}
+.mobile-group-header:hover {
+    background: #004AC6;
+    color: #FFFFFF;
 }
 .mobile-group-chevron {
     color: #64748b;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+}
+.mobile-group-header:hover .mobile-group-chevron {
+    color: #FFFFFF;
 }
 .mobile-nav-group.group-open .mobile-group-chevron {
     transform: rotate(180deg);
     color: var(--blue);
+}
+.mobile-group-header:hover .mobile-group-chevron {
+    color: #FFFFFF !important;
 }
 .mobile-sublinks {
     list-style: none;
@@ -680,22 +692,29 @@ body.onboarding-active {
 }
 .mobile-sublink {
     display: block;
-    padding: 8px 12px;
+    padding: 9px 13px;
     border-radius: 8px;
     text-decoration: none;
     font-size: 13.5px;
     font-weight: 500;
-    color: #475569;
+    color: #334155;
     background: #ffffff;
-    border: 1px solid #f1f5f9;
-    transition: var(--ease);
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
 }
 .mobile-sublink:hover,
 .mobile-sublink.active {
-    background: #eff6ff;
-    border-color: #bfdbfe;
-    color: var(--blue);
-    font-weight: 600;
+    background: #004AC6;
+    border-color: #004AC6;
+    color: #FFFFFF;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 74, 198, 0.25);
+    transform: translateX(3px);
+}
+.mobile-sublink:hover .sublink-badge,
+.mobile-sublink.active .sublink-badge {
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
 }
 .sublink-badge {
     font-size: 10.5px;
