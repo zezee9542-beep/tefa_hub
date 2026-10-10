@@ -142,7 +142,7 @@
         const drawer    = document.getElementById('mobileNavDrawer');
         const backdrop  = document.getElementById('mobileNavBackdrop');
 
-        // Scroll behaviour: Scrolled background shadow + hide on scroll down
+        // Scroll behaviour: Scrolled background shadow + hide on scroll down (Jitter-free 120Hz optimized)
         if (header) {
             let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
             let ticking = false;
@@ -151,19 +151,21 @@
                 if (!ticking) {
                     requestAnimationFrame(function() {
                         const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+                        const delta = currentScrollY - lastScrollY;
+
                         if (currentScrollY <= 40) {
                             header.classList.remove('nav-hidden');
-                        } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                        } else if (delta > 8 && currentScrollY > 120) {
                             header.classList.add('nav-hidden');
-                        } else if (currentScrollY < lastScrollY) {
+                        } else if (delta < -8) {
                             header.classList.remove('nav-hidden');
                         }
 
-                        if (currentScrollY > 20) {
-                            header.classList.add('nav-scrolled');
-                        } else {
-                            header.classList.remove('nav-scrolled');
+                        const shouldBeScrolled = currentScrollY > 20;
+                        if (header.classList.contains('nav-scrolled') !== shouldBeScrolled) {
+                            header.classList.toggle('nav-scrolled', shouldBeScrolled);
                         }
+
                         lastScrollY = currentScrollY;
                         ticking = false;
                     });

@@ -18,9 +18,6 @@
     {{-- Premium Modern Onboarding Splash Preloader Animation --}}
     <x-onboarding />
 
-    {{-- Ambient background glow --}}
-    <div class="glow-tl" aria-hidden="true"></div>
-
     {{-- Unified Landing Header & Navbar --}}
     <x-landing-header />
 
@@ -117,7 +114,7 @@
 
                         {{-- Main Organic Wavy Fluid Body --}}
                         <path class="wave-shape-fluid" d="M 140,150 C 120,60 280,40 420,70 C 520,100 555,230 500,350 C 450,460 300,470 190,420 C 100,380 90,260 130,180 C 135,170 138,160 140,150 Z" 
-                              fill="url(#waveGradPrimary)" filter="drop-shadow(0 16px 36px rgba(37,99,235,0.25))"/>
+                              fill="url(#waveGradPrimary)"/>
 
                         {{-- Secondary Overlay Wave Crescent --}}
                         <path d="M 160,80 C 270,45 420,75 490,140 C 420,170 290,160 200,230 C 170,180 155,120 160,80 Z" 
@@ -530,27 +527,29 @@
          ═══════════════════════════════════════════ --}}
     <script>
     (function() {
-        // ── 1. HIGH-PERFORMANCE 120HZ SCROLL REVEAL OBSERVER ────────
+        let revealObserver = null;
         function initWelcomeReveal() {
             const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-group');
             if (!revealElements.length) return;
 
             if ('IntersectionObserver' in window) {
-                const observer = new IntersectionObserver((entries, obs) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-revealed');
-                            obs.unobserve(entry.target);
-                        }
+                if (!revealObserver) {
+                    revealObserver = new IntersectionObserver((entries, obs) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('is-revealed');
+                                obs.unobserve(entry.target);
+                            }
+                        });
+                    }, {
+                        threshold: 0.08,
+                        rootMargin: '0px 0px -40px 0px'
                     });
-                }, {
-                    threshold: 0.08,
-                    rootMargin: '0px 0px -40px 0px'
-                });
+                }
 
                 revealElements.forEach(el => {
                     if (!el.classList.contains('is-revealed')) {
-                        observer.observe(el);
+                        revealObserver.observe(el);
                     }
                 });
             } else {
@@ -558,18 +557,9 @@
             }
         }
 
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initWelcomeReveal);
-        } else {
+        function initWelcomePage() {
             initWelcomeReveal();
-        }
 
-        window.addEventListener('pageshow', function() {
-            document.body.style.overflow = '';
-            initWelcomeReveal();
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
             const heroSearchForm = document.getElementById('heroSearchForm');
             const heroSearchInput = document.getElementById('heroSearchInput');
             
@@ -610,6 +600,17 @@
                     }
                 });
             }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initWelcomePage);
+        } else {
+            initWelcomePage();
+        }
+
+        window.addEventListener('pageshow', function() {
+            document.body.style.overflow = '';
+            initWelcomeReveal();
         });
     })();
     </script>

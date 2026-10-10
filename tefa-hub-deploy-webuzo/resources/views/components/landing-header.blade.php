@@ -44,7 +44,7 @@
                         </svg>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="{{ url('/#tentang') }}" class="dropdown-item {{ in_array($active, ['tentang', 'profil']) ? 'active-item' : '' }}">Profil Sekolah</a>
+                        <a href="{{ route('profil') }}" class="dropdown-item {{ in_array($active, ['tentang', 'profil']) ? 'active-item' : '' }}">Profil Sekolah</a>
                     </div>
                 </li>
 
@@ -117,7 +117,7 @@
                 </svg>
             </button>
             <ul class="mobile-sublinks">
-                <li><a href="{{ url('/#tentang') }}" class="mobile-sublink {{ in_array($active, ['tentang', 'profil']) ? 'active' : '' }}">Profil Sekolah</a></li>
+                <li><a href="{{ route('profil') }}" class="mobile-sublink {{ in_array($active, ['tentang', 'profil']) ? 'active' : '' }}">Profil Sekolah</a></li>
             </ul>
         </li>
 
@@ -142,7 +142,7 @@
         const drawer    = document.getElementById('mobileNavDrawer');
         const backdrop  = document.getElementById('mobileNavBackdrop');
 
-        // Scroll behaviour: Scrolled background shadow + hide on scroll down
+        // Scroll behaviour: Scrolled background shadow + hide on scroll down (Jitter-free 120Hz optimized)
         if (header) {
             let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
             let ticking = false;
@@ -151,19 +151,21 @@
                 if (!ticking) {
                     requestAnimationFrame(function() {
                         const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+                        const delta = currentScrollY - lastScrollY;
+
                         if (currentScrollY <= 40) {
                             header.classList.remove('nav-hidden');
-                        } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                        } else if (delta > 8 && currentScrollY > 120) {
                             header.classList.add('nav-hidden');
-                        } else if (currentScrollY < lastScrollY) {
+                        } else if (delta < -8) {
                             header.classList.remove('nav-hidden');
                         }
 
-                        if (currentScrollY > 20) {
-                            header.classList.add('nav-scrolled');
-                        } else {
-                            header.classList.remove('nav-scrolled');
+                        const shouldBeScrolled = currentScrollY > 20;
+                        if (header.classList.contains('nav-scrolled') !== shouldBeScrolled) {
+                            header.classList.toggle('nav-scrolled', shouldBeScrolled);
                         }
+
                         lastScrollY = currentScrollY;
                         ticking = false;
                     });

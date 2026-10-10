@@ -55,10 +55,21 @@ class AiNavigatorController extends Controller
     private function buildIntents(): array
     {
         return [
+            // ─── SAPAAN & PERKENALAN UMUM ────────────────────────────────────
+            [
+                'intents' => ['hai', 'halo', 'hello', 'selamat pagi', 'selamat siang', 'selamat sore', 'selamat malam', 'hei', 'assalamualaikum', 'permisi', 'halo tefa', 'hai tefa'],
+                'keywords' => ['hai saya', 'halo saya', 'salam kenal', 'perkenalkan', 'saya ingin', 'saya mau', 'saya hendak'],
+                'category' => 'PPDB',
+                'answer' => "Halo! 👋 Selamat datang di TEFA-Hub SMK Antartika 1 Sidoarjo!\n\nSaya Tanya Tefa AI, asisten virtual yang siap membantu Anda. 😊\nSaya bisa membantu Anda dengan:\n\n1. 📝 **Pendaftaran PPDB** — Info alur, syarat, jadwal, dan biaya\n2. 🎯 **Pilihan Jurusan** — TPM, TKR, RPL, TITL, dan TEI\n3. 💼 **Karir & Magang** — Info BKK, PKL, dan lowongan kerja\n4. 🏭 **BLUD** — Unit produksi dan publikasi karya siswa\n5. 🎓 **Akademik** — Nilai rapor, absensi, dan jadwal\n\nSilakan ceritakan kebutuhan Anda, atau klik salah satu topik di bawah!",
+                'route' => 'ppdb',
+                'label' => 'Buka Halaman PPDB Online',
+                'suggestions' => ['Cara Daftar PPDB Online', 'Pilihan Jurusan & Keahlian', 'Syarat Berkas PPDB', 'Info Biaya Sekolah'],
+            ],
+
             // ─── PUSAT PPDB & PENDAFTARAN SISWA BARU ──────────────────────
             [
-                'intents' => ['ppdb', 'daftar ppdb', 'pendaftaran ppdb', 'info ppdb', 'halaman ppdb', 'buka ppdb', 'link ppdb', 'ppdb smk', 'mau daftar', 'daftar sekolah', 'penerimaan siswa baru', 'ppdb online'],
-                'keywords' => ['ppdb', 'daftar', 'pendaftaran', 'calon siswa', 'murid baru', 'registrasi siswa', 'formulir'],
+                'intents' => ['ppdb', 'daftar ppdb', 'pendaftaran ppdb', 'info ppdb', 'halaman ppdb', 'buka ppdb', 'link ppdb', 'ppdb smk', 'mau daftar', 'daftar sekolah', 'penerimaan siswa baru', 'ppdb online', 'mau mendaftar', 'ingin mendaftar', 'mendaftarkan diri', 'cara mendaftar', 'mendaftar sekolah', 'pendaftaran siswa'],
+                'keywords' => ['ppdb', 'pendaftaran', 'calon siswa', 'murid baru', 'registrasi siswa', 'formulir', 'mendaftarkan', 'mendaftar'],
                 'category' => 'PPDB',
                 'answer' => "Pusat Pendaftaran Peserta Didik Baru (PPDB Online) TEFA-Hub telah dibuka!\n\nLayanan PPDB menyediakan:\n1. 📝 Pendaftaran Online & Pengisian Formulir Biodata\n2. 📄 Unggah & Verifikasi Berkas (KK, Akta, SKL/Rapor SMP, NISN)\n3. 🎯 Pilihan 5 Konsentrasi Keahlian / Jurusan Unggulan\n4. 💰 Program Potongan Biaya & Beasiswa Prestasi\n5. 📅 Jadwal & Alur Seleksi Transparan\n\nKlik tombol navigasi di bawah untuk langsung menuju ke halaman PPDB:",
                 'route' => 'ppdb',
@@ -66,7 +77,62 @@ class AiNavigatorController extends Controller
                 'suggestions' => ['Cara Daftar PPDB Online', 'Syarat Berkas PPDB', 'Jadwal PPDB', 'Pilihan Jurusan & Keahlian'],
             ],
 
-            // ─── NAVIGASI PERAN UTAMA (ROLE ORIENTATION) ────────────────────
+            // ─── DETAIL JURUSAN RPL ──────────────────────────────────────────
+            [
+                'intents' => ['jurusan rpl', 'rpl itu apa', 'tentang rpl', 'rekayasa perangkat lunak', 'info rpl', 'rpl smk', 'belajar apa di rpl', 'pelajaran rpl', 'prospek rpl', 'karir rpl', 'kerja di rpl', 'gaji rpl', 'cocok rpl', 'masuk rpl', 'pilih rpl'],
+                'keywords' => ['jurusan rpl', 'tentang rpl', 'perangkat lunak', 'rekayasa perangkat', 'karir rpl', 'prospek rpl'],
+                'category' => 'PPDB',
+                'answer' => "Jurusan RPL - Rekayasa Perangkat Lunak\n\nRPL berfokus pada dunia pengembangan software dan teknologi digital.\n\nYang dipelajari:\n- Pemrograman web (HTML, CSS, JS, PHP, Laravel)\n- Mobile app development (Android/Flutter)\n- Database & cloud computing\n- UI/UX design & AI dasar\n- Cybersecurity dasar\n\nProspek karir:\nWeb Developer, Mobile Developer, Data Analyst, UI/UX Designer, Software Engineer\n\nCocok untuk kamu yang suka coding, logika, dan membuat aplikasi!",
+                'route' => 'ppdb',
+                'label' => 'Daftar Jurusan RPL',
+                'suggestions' => ['Cara Daftar PPDB Online', 'Jurusan TEI (Elektronika)', 'Jurusan TITL (Listrik)', 'Kuis Temukan Jurusanmu'],
+            ],
+
+            // ─── DETAIL JURUSAN TEI ──────────────────────────────────────────
+            [
+                'intents' => ['jurusan tei', 'tei itu apa', 'tentang tei', 'teknik elektronika industri', 'info tei', 'tei smk', 'belajar apa di tei', 'pelajaran tei', 'prospek tei', 'karir tei', 'kerja di tei', 'gaji tei', 'cocok tei', 'masuk tei', 'pilih tei', 'jurusan elektronika'],
+                'keywords' => ['jurusan tei', 'tentang tei', 'elektronika industri', 'teknik elektronika', 'karir tei', 'prospek tei'],
+                'category' => 'PPDB',
+                'answer' => "Jurusan TEI - Teknik Elektronika Industri\n\nTEI berfokus pada otomasi industri, robotika, IoT, dan sistem elektronika berstandar industri.\n\nYang dipelajari:\n- Pemrograman mikrokontroler (Arduino, ESP32)\n- IoT (Internet of Things) & sensor\n- Robotika & otomasi industri\n- PLC (Programmable Logic Controller)\n- Sistem elektronika analog & digital\n\nProspek karir:\nTeknisi Otomasi, IoT Engineer, Robotics Technician, Electrical Technician, Maintenance Engineer\n\nCocok untuk kamu yang suka elektronika, robot, dan teknologi cerdas!",
+                'route' => 'ppdb',
+                'label' => 'Daftar Jurusan TEI',
+                'suggestions' => ['Jurusan RPL (Software)', 'Jurusan TITL (Listrik)', 'Cara Daftar PPDB Online', 'Kuis Temukan Jurusanmu'],
+            ],
+
+            // ─── DETAIL JURUSAN TITL ──────────────────────────────────────────
+            [
+                'intents' => ['jurusan titl', 'titl itu apa', 'tentang titl', 'teknik instalasi tenaga listrik', 'info titl', 'titl smk', 'belajar apa di titl', 'pelajaran titl', 'prospek titl', 'karir titl', 'kerja di titl', 'gaji titl', 'cocok titl', 'masuk titl', 'pilih titl', 'jurusan listrik'],
+                'keywords' => ['jurusan titl', 'tentang titl', 'instalasi tenaga listrik', 'teknik instalasi', 'karir titl', 'prospek titl'],
+                'category' => 'PPDB',
+                'answer' => "Jurusan TITL - Teknik Instalasi Tenaga Listrik\n\nTITL berfokus pada instalasi sistem kelistrikan industri, panel kontrol, dan energi terbarukan.\n\nYang dipelajari:\n- Instalasi listrik rumah, gedung & industri\n- Panel kontrol & sistem pengaman listrik\n- PLC (Programmable Logic Controller)\n- Motor listrik & sistem distribusi\n- Energi surya (solar panel) & terbarukan\n\nProspek karir:\nTeknisi Listrik, Electrical Engineer, PLC Programmer, Teknisi Solar Panel, Kontraktor Listrik\n\nCocok untuk kamu yang suka kelistrikan, panel, dan energi!",
+                'route' => 'ppdb',
+                'label' => 'Daftar Jurusan TITL',
+                'suggestions' => ['Jurusan TEI (Elektronika)', 'Jurusan TPM (Pemesinan)', 'Cara Daftar PPDB Online', 'Kuis Temukan Jurusanmu'],
+            ],
+
+            // ─── DETAIL JURUSAN TKR ──────────────────────────────────────────
+            [
+                'intents' => ['jurusan tkr', 'tkr itu apa', 'tentang tkr', 'teknik kendaraan ringan', 'info tkr', 'tkr smk', 'belajar apa di tkr', 'pelajaran tkr', 'prospek tkr', 'karir tkr', 'kerja di tkr', 'gaji tkr', 'cocok tkr', 'masuk tkr', 'pilih tkr', 'jurusan otomotif', 'jurusan mobil'],
+                'keywords' => ['jurusan tkr', 'tentang tkr', 'kendaraan ringan', 'teknik kendaraan', 'karir tkr', 'prospek tkr'],
+                'category' => 'PPDB',
+                'answer' => "Jurusan TKR - Teknik Kendaraan Ringan\n\nTKR berfokus pada perawatan, perbaikan, dan diagnosa kendaraan otomotif berteknologi modern.\n\nYang dipelajari:\n- Mesin otomotif & sistem EFI (Electronic Fuel Injection)\n- Diagnosa kerusakan dengan scanner digital\n- Sistem rem, suspensi & kemudi\n- Transmisi manual & otomatis\n- AC kendaraan & sistem kelistrikan mobil\n\nProspek karir:\nTeknisi Otomotif, Service Advisor, Mekanik Profesional, Quality Control Otomotif\n\nCocok untuk kamu yang suka kendaraan, mesin, dan dunia otomotif!",
+                'route' => 'ppdb',
+                'label' => 'Daftar Jurusan TKR',
+                'suggestions' => ['Jurusan TPM (Pemesinan)', 'Jurusan TEI (Elektronika)', 'Cara Daftar PPDB Online', 'Kuis Temukan Jurusanmu'],
+            ],
+
+            // ─── DETAIL JURUSAN TPM ──────────────────────────────────────────
+            [
+                'intents' => ['jurusan tpm', 'tpm itu apa', 'tentang tpm', 'teknik pemesinan', 'info tpm', 'tpm smk', 'belajar apa di tpm', 'pelajaran tpm', 'prospek tpm', 'karir tpm', 'kerja di tpm', 'gaji tpm', 'cocok tpm', 'masuk tpm', 'pilih tpm', 'jurusan mesin', 'jurusan cnc', 'jurusan manufaktur'],
+                'keywords' => ['jurusan tpm', 'tentang tpm', 'teknik pemesinan', 'pemesinan cnc', 'karir tpm', 'prospek tpm'],
+                'category' => 'PPDB',
+                'answer' => "Jurusan TPM - Teknik Pemesinan\n\nTPM berfokus pada manufaktur presisi, mesin CNC, dan fabrikasi komponen industri berstandar internasional.\n\nYang dipelajari:\n- Mesin bubut & frais konvensional\n- CNC (Computer Numerical Control) bubut & milling\n- CAD/CAM (desain & pemrograman mesin CNC)\n- Fabrikasi logam & welding\n- Metrologi & kontrol kualitas produk\n\nProspek karir:\nOperator CNC, Drafter CAD/CAM, Teknisi Manufaktur, Quality Control, Supervisor Produksi\n\nCocok untuk kamu yang suka presisi, mesin, dan dunia manufaktur!",
+                'route' => 'ppdb',
+                'label' => 'Daftar Jurusan TPM',
+                'suggestions' => ['Jurusan TKR (Otomotif)', 'Jurusan TITL (Listrik)', 'Cara Daftar PPDB Online', 'Kuis Temukan Jurusanmu'],
+            ],
+
+            // ─── NAVIGASI PERAN UTAMA (ROLE ORIENTATION) ──────────────────── (ROLE ORIENTATION) ────────────────────
             [
                 'intents' => ['saya orang tua', 'saya wali murid', 'role orang tua', 'info orang tua', 'saya calon siswa', 'calon murid baru', 'wali calon siswa'],
                 'keywords' => ['orang tua', 'wali murid', 'calon siswa', 'wali calon', 'ortu', 'daftar anak'],
@@ -549,6 +615,9 @@ class AiNavigatorController extends Controller
     {
         Validator::make($request->all(), [
             'message' => ['required', 'string', 'max:500'],
+            'history' => ['nullable', 'array', 'max:10'],
+            'history.*.role' => ['required_with:history', 'string', 'in:user,model'],
+            'history.*.text' => ['required_with:history', 'string', 'max:1000'],
         ])->validate();
 
         $userMessage = trim((string) $request->input('message'));
@@ -589,8 +658,9 @@ class AiNavigatorController extends Controller
         }
 
         // 3. Try Gemini API for questions not covered by the TEFA-Hub knowledge base.
+        $history = $request->input('history', []);
         try {
-            $geminiAnswer = $this->askGemini($userMessage);
+            $geminiAnswer = $this->askGemini($userMessage, is_array($history) ? $history : []);
             if ($geminiAnswer !== null) {
                 $category = $this->detectCategory($userMessage);
                 $routeKey = $this->detectRelevantRouteKey($userMessage);
@@ -632,7 +702,9 @@ class AiNavigatorController extends Controller
         foreach ($this->intents as $entry) {
             foreach ($entry['intents'] as $intent) {
                 $intentLength = mb_strlen(str_replace(' ', '', $intent));
-                if ($intentLength >= 10 && str_contains($lower, $intent)) {
+                // Lower threshold to 6 chars (from 10) for common short intents like 'hai', 'halo'
+                $minLength = $intentLength <= 5 ? 3 : 6;
+                if ($intentLength >= $minLength && str_contains($lower, $intent)) {
                     $score = mb_strlen($intent) * 4;
                     if ($score > $bestIntentScore) {
                         $bestIntentScore = $score;
@@ -646,16 +718,14 @@ class AiNavigatorController extends Controller
             return $bestIntent;
         }
 
-        // Permit a single distinctive operational keyword (for example,
-        // "mempublikasikan") while excluding broad words such as "jurusan"
-        // and "elektronika" that previously produced unrelated templates.
+        // Pass 2: Keyword matching with lower threshold for longer descriptive keywords.
         $bestKeywordIntent = null;
         $bestKeywordScore = 0;
 
         foreach ($this->intents as $entry) {
             foreach ($entry['keywords'] as $keyword) {
                 $keywordLength = mb_strlen(str_replace(' ', '', $keyword));
-                if ($keywordLength >= 12 && $this->containsPhrase($lower, $keyword) && $keywordLength > $bestKeywordScore) {
+                if ($keywordLength >= 8 && $this->containsPhrase($lower, $keyword) && $keywordLength > $bestKeywordScore) {
                     $bestKeywordScore = $keywordLength;
                     $bestKeywordIntent = $entry;
                 }
@@ -759,9 +829,11 @@ class AiNavigatorController extends Controller
     }
 
     /**
-     * Call Gemini API with timeout resilience.
+     * Call Gemini API with conversation history and contextual system prompt.
+     *
+     * @param  array<int, array{role: string, text: string}>  $history
      */
-    private function askGemini(string $userMessage): ?string
+    private function askGemini(string $userMessage, array $history = []): ?string
     {
         $apiKey = config('services.ai_navigator.key');
         $baseUrl = rtrim((string) config('services.ai_navigator.url'), '/');
@@ -779,32 +851,63 @@ class AiNavigatorController extends Controller
 
         $models = array_unique(array_filter([$model, $fallbackModel]));
 
-        // The local knowledge base answers school-specific questions immediately.
-        // Keep provider context compact for the small number of general questions
-        // that need generation, reducing latency and payload size.
-        $promptText = 'Kamu adalah Tanya Tefa AI, asisten TEFA-Hub SMK Antartika 1 Sidoarjo. '
-            .'Jawab semua pertanyaan umum dalam bahasa Indonesia, maksimal 3 kalimat, ramah, dan tanpa mengarang informasi sekolah. '
-            .'Jurusan resmi: TPM, TKR, RPL, TITL, dan TEI. Pertanyaan pengguna: '.$userMessage;
+        $systemInstruction = [
+            'role' => 'user',
+            'parts' => [[
+                'text' => 'Kamu adalah Tanya Tefa AI, asisten cerdas TEFA-Hub milik SMK Antartika 1 Sidoarjo. '
+                    .'Tugasmu adalah menjawab pertanyaan pengguna dengan ramah, informatif, dan relevan. '
+                    .'Konteks platform: TEFA-Hub adalah sistem manajemen vokasi terpadu yang mencakup PPDB Online, '
+                    .'Unit Produksi BLUD, Bursa Kerja BKK, PKL/Magang, Portal Akademik, dan fitur siswa/guru/admin. '
+                    .'Jurusan resmi di SMK Antartika 1 Sidoarjo: TPM (Teknik Pemesinan), TKR (Teknik Kendaraan Ringan), '
+                    .'RPL (Rekayasa Perangkat Lunak), TITL (Teknik Instalasi Tenaga Listrik), TEI (Teknik Elektronika Industri). '
+                    .'Aturan penting: '
+                    .'1. Jawab SESUAI pertanyaan pengguna - jangan paksakan jawaban ke topik lain. '
+                    .'2. Jika pertanyaan bersifat umum (bukan spesifik sekolah), jawab dengan wajar dan informatif. '
+                    .'3. Gunakan bahasa Indonesia yang natural, santai, dan tidak kaku. '
+                    .'4. Panjang jawaban sesuaikan dengan kompleksitas pertanyaan - bisa singkat untuk pertanyaan pendek, lebih detail untuk pertanyaan kompleks. '
+                    .'5. Jangan mengarang data spesifik seperti nomor telepon, nama guru, atau tanggal yang tidak kamu ketahui. '
+                    .'6. Jika tidak tahu jawaban spesifik, arahkan ke admin/TU sekolah dengan sopan.',
+            ]],
+        ];
+
+        // Build conversation history for multi-turn context
+        $contents = [$systemInstruction];
+
+        // Add a model acknowledgement turn after system instruction
+        $contents[] = [
+            'role' => 'model',
+            'parts' => [['text' => 'Siap! Saya Tanya Tefa AI, asisten TEFA-Hub SMK Antartika 1 Sidoarjo. Ada yang bisa saya bantu?']],
+        ];
+
+        // Append previous conversation turns (max 6 turns = 3 exchanges)
+        $recentHistory = array_slice($history, -6);
+        foreach ($recentHistory as $turn) {
+            $contents[] = [
+                'role' => $turn['role'] === 'model' ? 'model' : 'user',
+                'parts' => [['text' => (string) ($turn['text'] ?? '')]],
+            ];
+        }
+
+        // Add the current user message
+        $contents[] = [
+            'role' => 'user',
+            'parts' => [['text' => $userMessage]],
+        ];
+
         $payload = [
-            'contents' => [
-                [
-                    'role' => 'user',
-                    'parts' => [
-                        ['text' => $promptText],
-                    ],
-                ],
-            ],
+            'contents' => $contents,
             'generationConfig' => [
-                'maxOutputTokens' => (int) config('services.ai_navigator.max_output_tokens', 220),
-                'temperature' => 0.2,
+                'maxOutputTokens' => (int) config('services.ai_navigator.max_output_tokens', 400),
+                'temperature' => 0.7,
+                'topP' => 0.9,
             ],
         ];
 
-        foreach ($models as $model) {
+        foreach ($models as $currentModel) {
             try {
-                $url = "{$baseUrl}/{$model}:generateContent";
-                $response = Http::connectTimeout((int) config('services.ai_navigator.connect_timeout', 1))
-                    ->timeout((int) config('services.ai_navigator.timeout', 3))
+                $url = "{$baseUrl}/{$currentModel}:generateContent";
+                $response = Http::connectTimeout((int) config('services.ai_navigator.connect_timeout', 2))
+                    ->timeout((int) config('services.ai_navigator.timeout', 6))
                     ->withHeaders([
                         'Content-Type' => 'application/json',
                         'X-goog-api-key' => $apiKey,
@@ -838,7 +941,7 @@ class AiNavigatorController extends Controller
     {
         $lower = mb_strtolower($message);
 
-        if (str_contains($lower, 'ppdb') || str_contains($lower, 'calon') || str_contains($lower, 'orang tua') || str_contains($lower, 'ortu') || str_contains($lower, 'wali') || str_contains($lower, 'biaya') || str_contains($lower, 'jurusan')) {
+        if (str_contains($lower, 'ppdb') || str_contains($lower, 'calon') || str_contains($lower, 'orang tua') || str_contains($lower, 'ortu') || str_contains($lower, 'wali') || str_contains($lower, 'biaya') || str_contains($lower, 'jurusan') || str_contains($lower, 'daftar') || str_contains($lower, 'mendaftar') || str_contains($lower, 'pendaftaran')) {
             return 'PPDB';
         }
         if (str_contains($lower, 'blud') || str_contains($lower, 'produk') || str_contains($lower, 'komisi') || str_contains($lower, 'kurasi')) {
@@ -877,7 +980,7 @@ class AiNavigatorController extends Controller
             'INDUSTRI' => 'Terkait **Kemitraan Industri (DUDI)**, TEFA-Hub memfasilitasi kerjasama Teaching Factory, rekrutmen alumni terampil bersertifikat BNSP, dan order produk/jasa kejuruan.',
             'AKADEMIK' => 'Terkait **Portal Akademik**, Anda dapat mengakses rekapitulasi nilai rapor, absensi kehadiran, dan jadwal pembelajaran secara langsung.',
             'ADMIN_FAQ' => 'Terkait **Bantuan Akun & Administrasi**, Anda dapat mengatur reset password, memperbarui profil biodata, atau berkonsultasi ke ruang Tata Usaha pada jam operasional sekolah.',
-            'GENERAL' => "Maaf, saya belum dapat menjawab pertanyaan Anda secara spesifik saat ini: “{$message}”. Silakan coba lagi sesaat lagi atau tanyakan informasi sekolah, PPDB, jurusan, BLUD, PKL, dan BKK.",
+            'GENERAL' => "Halo! Saya Tanya Tefa AI, asisten TEFA-Hub SMK Antartika 1 Sidoarjo.\n\nSaya siap membantu Anda dengan informasi seputar:\n- 📝 PPDB - Pendaftaran & alur masuk sekolah\n- 🎯 Jurusan - TPM, TKR, RPL, TITL, TEI\n- 💼 Karir & BKK - Lowongan dan magang\n- 🏭 BLUD - Unit produksi siswa\n- 🎓 Akademik - Nilai dan absensi\n\nSilakan tanyakan apa yang ingin Anda ketahui!",
         ];
 
         return [

@@ -35,14 +35,14 @@ html, body {
     -ms-overflow-style: none;
 }
 
-/* ── HIDE ALL SCROLLBARS GLOBALLY ── */
-* {
+/* ── HIDE SCROLLBARS GLOBALLY WITHOUT UNIVERSAL DOM OVERHEAD ── */
+html, body, .scrollable, .wrap, [data-scrollable] {
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
 }
-*::-webkit-scrollbar,
 html::-webkit-scrollbar,
-body::-webkit-scrollbar {
+body::-webkit-scrollbar,
+.scrollable::-webkit-scrollbar {
     display: none !important;
     width: 0 !important;
     height: 0 !important;
@@ -285,6 +285,7 @@ body.onboarding-active {
 .reveal-scale.is-revealed {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
+    will-change: auto;
 }
 
 .delay-1 { transition-delay: 0.08s; }
@@ -300,6 +301,10 @@ body.onboarding-active {
     transform: translate3d(0, 28px, 0);
     transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
+}
+
+.stagger-group.is-revealed > * {
+    will-change: auto;
 }
 
 .stagger-group.is-revealed > *:nth-child(1) { opacity: 1; transform: translate3d(0, 0, 0); transition-delay: 0.05s; }
@@ -669,9 +674,6 @@ body.onboarding-active {
 .mobile-group-chevron {
     color: #64748b;
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
-}
-.mobile-group-header:hover .mobile-group-chevron {
-    color: #FFFFFF;
 }
 .mobile-nav-group.group-open .mobile-group-chevron {
     transform: rotate(180deg);
@@ -2935,3 +2937,35 @@ body.ai-panel-open .ai-trigger {
         transform: none !important;
     }
 }
+
+/* ============================================================
+   PERFORMANCE ACCELERATION: 60/120FPS SILKY SMOOTH SCROLLING
+   ============================================================ */
+html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Contain layout and paint for off-screen landing sections */
+.about-section,
+.services-section,
+.showcase-section,
+.partners-section,
+.cta-banner-section,
+.footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 600px;
+}
+
+/* Hardware accelerated layer promotion for cards */
+.site-header {
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+}
+
+.card,
+.service-card,
+.cta-banner-card {
+    transform: translateZ(0);
+}
+
