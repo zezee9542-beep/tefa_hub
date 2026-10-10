@@ -819,6 +819,29 @@ body.onboarding-active {
     max-width: 510px;
     width: 100%;
 }
+
+.hero-ai-discovery-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 10px 15px;
+    border: 1px solid #C7D2FE;
+    border-radius: 9999px;
+    background: rgba(238, 242, 255, 0.88);
+    color: #3730A3;
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 5px 16px rgba(79, 70, 229, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.hero-ai-discovery-link:hover {
+    background: #FFFFFF;
+    box-shadow: 0 9px 22px rgba(79, 70, 229, 0.17);
+    transform: translateY(-2px);
+}
 .search-box {
     display: flex;
     align-items: center;

@@ -12,36 +12,6 @@ use Illuminate\Support\Facades\Validator;
 class AiNavigatorController extends Controller
 {
     /**
-     * System prompt sent to Gemini to keep it on-topic, helpful, and concise.
-     */
-    private const SYSTEM_PROMPT = <<<'PROMPT'
-        Kamu adalah Tanya Tefa AI, asisten virtual resmi platform TEFA-Hub (Teaching Factory Hub) di SMK Antartika 1 Sidoarjo.
-
-        KNOWLEDGE BASE 5 JURUSAN / KONSENTRASI KEAHLIAN RESMI:
-        Sekolah HANYA memiliki 5 program keahlian resmi berikut (JANGAN sebutkan jurusan lain seperti TKJ, DKV, Akuntansi, dll):
-        1. TPM / TP (Teknik Pemesinan): CNC bubut & frais presisi, manufaktur, fabrikasi, CAD/CAM.
-        2. TKR (Teknik Kendaraan Ringan): Diagnostik otomotif, EFI injeksi, pemeliharaan mesin, tune up kendaraan.
-        3. RPL (Rekayasa Perangkat Lunak): Web & mobile apps, basis data, cloud computing, UI/UX design, AI.
-        4. TITL (Teknik Instalasi Tenaga Listrik): Instalasi industri, panel distribusi, motor listrik, kontrol PLC, otomasi energi.
-        5. TEI (Teknik Elektronika Industri): Otomasi industri, robotika, IoT (Internet of Things), mikrokontroler, instrumentasi.
-
-        TUGAS UTAMA SEBAGAI NAVIGATOR PERAN (ROLE-BASED NAVIGATOR):
-        1. MENGANALISIS PERAN & KEBUTUHAN PENGGUNA:
-           - Orang Tua / Calon Siswa: Panduan pendaftaran PPDB Online, syarat berkas, pilihan 5 jurusan resmi di atas, jalur masuk, biaya bebas uang gedung, dan fasilitas sekolah.
-           - Siswa Aktif: Navigasi modul BLUD (publikasi & komisi), BKK (magang/PKL), Akademik (rapor & absen), serta pengelolaan profil.
-           - Alumni & Pencari Kerja: Rekomendasi lowongan BKK mitra 100+ DUDI, legalisir ijazah online, sertifikasi BNSP, dan tracer study.
-           - Mitra Industri / DUDI: Kerjasama Teaching Factory (TEFA), rekrutmen alumni siap kerja BMW (Bekerja, Melanjutkan, Wirausaha).
-           - Tamu Umum / Administrasi: Jam operasional TU, pengurusan surat keterangan, dan reset akun mandiri.
-        2. MENGURANGI PERTANYAAN BERULANG KE ADMIN & TU: Menjawab pertanyaan operasional secara terstruktur, jelas, dan tuntas.
-
-        ATURAN JAWABAN:
-        - Format jawaban TERSTRUKTUR & RAMAH: Gunakan langkah bernomor 1, 2, 3 untuk prosedur atau poin ringkas (•) untuk rincian.
-        - Ringkas & Jelas: Maksimal 3-6 kalimat padat dan informatif.
-        - Selalu berikan navigasi yang jelas atau arahkan ke menu/portal terkait.
-        - Jangan sebut diri sebagai Gemini/Google. Kamu adalah Tanya Tefa AI Navigator.
-        PROMPT;
-
-    /**
      * Comprehensive intent-based knowledge base for instant offline responses.
      *
      * @var array<int, array{intents: string[], keywords: string[], category: string, answer: string, route: string|null, label: string|null, suggestions?: string[]}>
@@ -582,14 +552,24 @@ class AiNavigatorController extends Controller
         ])->validate();
 
         $userMessage = trim((string) $request->input('message'));
-        $cacheKey = 'ai_nav_v5_'.md5(mb_strtolower($userMessage));
+        $role = auth()->user()?->role ?? 'guest';
+        $cacheKey = 'ai_nav_v8_'.$role.'_'.md5(mb_strtolower($userMessage));
 
-        // Serve cached response if available
-        if (Cache::has($cacheKey)) {
-            return response()->json(Cache::get($cacheKey));
+        // Use one cache read; database-backed caches would otherwise make two queries.
+        $cachedResponse = Cache::get($cacheKey);
+        if ($cachedResponse !== null) {
+            return response()->json($cachedResponse);
         }
 
-        // 1. Intent-based knowledge base matching (instant, accurate, 100% offline resilient)
+        // 1. Answer explicit major-interest questions before broad knowledge-base matches.
+        $majorRecommendation = $this->findMajorRecommendation($userMessage);
+        if ($majorRecommendation !== null) {
+            Cache::put($cacheKey, $majorRecommendation, now()->addHours(24));
+
+            return response()->json($majorRecommendation);
+        }
+
+        // 2. Intent-based knowledge base matching (instant, accurate, 100% offline resilient)
         $local = $this->matchIntent($userMessage);
         if ($local !== null) {
             $result = [
@@ -608,7 +588,7 @@ class AiNavigatorController extends Controller
             return response()->json($result);
         }
 
-        // 2. Try Gemini API for questions not covered by the TEFA-Hub knowledge base.
+        // 3. Try Gemini API for questions not covered by the TEFA-Hub knowledge base.
         try {
             $geminiAnswer = $this->askGemini($userMessage);
             if ($geminiAnswer !== null) {
@@ -630,7 +610,8 @@ class AiNavigatorController extends Controller
             Log::info('Gemini API fallback triggered: '.$e->getMessage());
         }
 
-        // 3. Smart contextual fallback when the AI provider is unavailable.
+        // Do not cache an unavailable-provider response. A later request may succeed
+        // as soon as the provider or network has recovered.
         return response()->json($this->generateSmartFallback($userMessage));
     }
 
@@ -643,13 +624,15 @@ class AiNavigatorController extends Controller
     {
         $lower = mb_strtolower($message);
 
-        // Pass 1: Direct intent match (highest accuracy)
+        // Pass 1: Explicit service requests. Free-form questions must reach the AI
+        // provider instead of being forced into an only partially related template.
         $bestIntent = null;
         $bestIntentScore = 0;
 
         foreach ($this->intents as $entry) {
             foreach ($entry['intents'] as $intent) {
-                if (str_contains($lower, $intent)) {
+                $intentLength = mb_strlen(str_replace(' ', '', $intent));
+                if ($intentLength >= 10 && str_contains($lower, $intent)) {
                     $score = mb_strlen($intent) * 4;
                     if ($score > $bestIntentScore) {
                         $bestIntentScore = $score;
@@ -663,24 +646,116 @@ class AiNavigatorController extends Controller
             return $bestIntent;
         }
 
-        // Pass 2: Keyword relevance scoring (fuzzy overlap)
-        $bestKw = null;
-        $bestKwScore = 0;
+        // Permit a single distinctive operational keyword (for example,
+        // "mempublikasikan") while excluding broad words such as "jurusan"
+        // and "elektronika" that previously produced unrelated templates.
+        $bestKeywordIntent = null;
+        $bestKeywordScore = 0;
 
         foreach ($this->intents as $entry) {
-            $score = 0;
             foreach ($entry['keywords'] as $keyword) {
-                if (str_contains($lower, $keyword)) {
-                    $score += mb_strlen($keyword);
+                $keywordLength = mb_strlen(str_replace(' ', '', $keyword));
+                if ($keywordLength >= 12 && $this->containsPhrase($lower, $keyword) && $keywordLength > $bestKeywordScore) {
+                    $bestKeywordScore = $keywordLength;
+                    $bestKeywordIntent = $entry;
                 }
-            }
-            if ($score > $bestKwScore && $score >= 4) {
-                $bestKwScore = $score;
-                $bestKw = $entry;
             }
         }
 
-        return $bestKw;
+        if ($bestKeywordIntent !== null) {
+            return $bestKeywordIntent;
+        }
+
+        return null;
+    }
+
+    /**
+     * Return a direct, explainable recommendation for common prospective-student interests.
+     *
+     * @return array{answer: string, route: string, label: string, category: string, suggestions: string[], source: string}|null
+     */
+    private function findMajorRecommendation(string $message): ?array
+    {
+        $lower = mb_strtolower($message);
+        $isInterestQuestion = $this->containsAnyPhrase($lower, ['cocok', 'minat', 'suka', 'ingin masuk', 'jurusan apa']);
+
+        if (! $isInterestQuestion) {
+            return null;
+        }
+
+        $majors = [
+            'RPL' => [
+                'keywords' => ['rpl', 'coding', 'programming', 'aplikasi', 'website', 'web', 'software', 'game', 'database'],
+                'focus' => 'membuat aplikasi, mengolah logika, dan membangun solusi digital',
+                'alternative' => 'TEI bila kamu lebih tertarik pada perangkat fisik, sensor, dan robotika.',
+            ],
+            'TEI' => [
+                'keywords' => ['tei', 'robot', 'robotika', 'iot', 'sensor', 'mikrokontroler', 'arduino', 'elektronika'],
+                'focus' => 'robotika, IoT, sensor, dan perangkat otomatis',
+                'alternative' => 'RPL bila kamu lebih ingin fokus membuat aplikasi atau perangkat lunak.',
+            ],
+            'TITL' => [
+                'keywords' => ['titl', 'listrik', 'panel', 'plc', 'energi', 'instalasi', 'solar'],
+                'focus' => 'instalasi listrik, panel kontrol, PLC, dan energi',
+                'alternative' => 'TEI bila kamu lebih suka elektronika kecil dan robotika.',
+            ],
+            'TKR' => [
+                'keywords' => ['tkr', 'otomotif', 'mobil', 'kendaraan', 'servis', 'injeksi'],
+                'focus' => 'diagnostik kendaraan, perawatan mesin, dan teknologi otomotif',
+                'alternative' => 'TPM bila kamu lebih suka membuat komponen presisi di mesin manufaktur.',
+            ],
+            'TPM' => [
+                'keywords' => ['tpm', 'cnc', 'bubut', 'frais', 'manufaktur', 'cad', 'cam', 'pemesinan'],
+                'focus' => 'manufaktur, CAD/CAM, CNC, dan pembuatan komponen presisi',
+                'alternative' => 'TKR bila kamu lebih tertarik merawat dan mendiagnosis kendaraan.',
+            ],
+        ];
+
+        $scores = [];
+        foreach ($majors as $code => $major) {
+            $scores[$code] = 0;
+            foreach ($major['keywords'] as $keyword) {
+                if ($this->containsPhrase($lower, $keyword)) {
+                    $scores[$code]++;
+                }
+            }
+        }
+
+        arsort($scores);
+        $recommendedCode = array_key_first($scores);
+        $score = $recommendedCode ? $scores[$recommendedCode] : 0;
+        $matchedMajors = array_filter($scores, fn (int $majorScore): bool => $majorScore > 0);
+
+        if ($recommendedCode === null || $score === 0 || count($matchedMajors) > 1) {
+            return null;
+        }
+
+        $major = $majors[$recommendedCode];
+
+        return [
+            'answer' => "Untuk minatmu pada {$major['focus']}, jurusan **{$recommendedCode}** paling relevan. {$major['alternative']} Gunakan fitur AI Temukan Jurusanmu untuk melihat kecocokan yang lebih personal.",
+            'route' => '/ppdb/kuis',
+            'label' => 'Coba AI Temukan Jurusanmu',
+            'category' => 'PPDB',
+            'suggestions' => ['Prospek karier '.$recommendedCode, 'Mata pelajaran '.$recommendedCode, 'Cara daftar PPDB'],
+            'source' => 'advisor',
+        ];
+    }
+
+    private function containsAnyPhrase(string $message, array $phrases): bool
+    {
+        foreach ($phrases as $phrase) {
+            if ($this->containsPhrase($message, $phrase)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function containsPhrase(string $message, string $phrase): bool
+    {
+        return preg_match('/(?<![\\p{L}\\p{N}])'.preg_quote($phrase, '/').'(?![\\p{L}\\p{N}])/iu', $message) === 1;
     }
 
     /**
@@ -704,7 +779,12 @@ class AiNavigatorController extends Controller
 
         $models = array_unique(array_filter([$model, $fallbackModel]));
 
-        $promptText = self::SYSTEM_PROMPT."\n\nPertanyaan pengguna: ".$userMessage;
+        // The local knowledge base answers school-specific questions immediately.
+        // Keep provider context compact for the small number of general questions
+        // that need generation, reducing latency and payload size.
+        $promptText = 'Kamu adalah Tanya Tefa AI, asisten TEFA-Hub SMK Antartika 1 Sidoarjo. '
+            .'Jawab semua pertanyaan umum dalam bahasa Indonesia, maksimal 3 kalimat, ramah, dan tanpa mengarang informasi sekolah. '
+            .'Jurusan resmi: TPM, TKR, RPL, TITL, dan TEI. Pertanyaan pengguna: '.$userMessage;
         $payload = [
             'contents' => [
                 [
@@ -715,7 +795,7 @@ class AiNavigatorController extends Controller
                 ],
             ],
             'generationConfig' => [
-                'maxOutputTokens' => 450,
+                'maxOutputTokens' => (int) config('services.ai_navigator.max_output_tokens', 220),
                 'temperature' => 0.2,
             ],
         ];
@@ -723,8 +803,8 @@ class AiNavigatorController extends Controller
         foreach ($models as $model) {
             try {
                 $url = "{$baseUrl}/{$model}:generateContent";
-                $response = Http::connectTimeout(2)
-                    ->timeout(8)
+                $response = Http::connectTimeout((int) config('services.ai_navigator.connect_timeout', 1))
+                    ->timeout((int) config('services.ai_navigator.timeout', 3))
                     ->withHeaders([
                         'Content-Type' => 'application/json',
                         'X-goog-api-key' => $apiKey,
@@ -742,7 +822,9 @@ class AiNavigatorController extends Controller
                     }
                 }
             } catch (\Throwable) {
-                continue;
+                // A network timeout should return the local contextual response
+                // immediately instead of making visitors wait for another timeout.
+                return null;
             }
         }
 
@@ -795,7 +877,7 @@ class AiNavigatorController extends Controller
             'INDUSTRI' => 'Terkait **Kemitraan Industri (DUDI)**, TEFA-Hub memfasilitasi kerjasama Teaching Factory, rekrutmen alumni terampil bersertifikat BNSP, dan order produk/jasa kejuruan.',
             'AKADEMIK' => 'Terkait **Portal Akademik**, Anda dapat mengakses rekapitulasi nilai rapor, absensi kehadiran, dan jadwal pembelajaran secara langsung.',
             'ADMIN_FAQ' => 'Terkait **Bantuan Akun & Administrasi**, Anda dapat mengatur reset password, memperbarui profil biodata, atau berkonsultasi ke ruang Tata Usaha pada jam operasional sekolah.',
-            'GENERAL' => 'Tanya Tefa AI Navigator siap memandu kebutuhan Anda sesuai peran (Orang Tua PPDB, Siswa, Alumni, atau Mitra Industri). Silakan pilih menu panduan di bawah:',
+            'GENERAL' => "Maaf, saya belum dapat menjawab pertanyaan Anda secara spesifik saat ini: “{$message}”. Silakan coba lagi sesaat lagi atau tanyakan informasi sekolah, PPDB, jurusan, BLUD, PKL, dan BKK.",
         ];
 
         return [
@@ -804,7 +886,7 @@ class AiNavigatorController extends Controller
             'label' => $this->detectRelevantLabel($message),
             'category' => $category,
             'suggestions' => $this->generateSuggestionsForCategory($category),
-            'source' => 'fallback',
+            'source' => 'unavailable',
         ];
     }
 

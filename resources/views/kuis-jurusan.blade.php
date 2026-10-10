@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-pwa />
-    <meta name="description" content="Kuis Minat & Bakat Kejuruan SMK Antartika 1 Sidoarjo — Temukan jurusan vokasi yang paling cocok dengan passion, potensi, dan kepribadianmu dalam 2 menit!">
-    <title>Kuis Jurusan: Jurusan Apa yang Cocok Untukmu? — SMK Antartika 1 Sidoarjo</title>
+    <meta name="description" content="TEFA AI Career Discovery SMK Antartika 1 Sidoarjo — Temukan jurusan vokasi yang paling sesuai dengan minat, potensi, dan impian kariermu dalam 60 detik.">
+    <title>TEFA AI Career Discovery — SMK Antartika 1 Sidoarjo</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
 
     <!-- Google Fonts: Plus Jakarta Sans -->
@@ -52,26 +52,26 @@
                  ═════════════════════════════════════════════ -->
             <div class="quiz-intro-box" id="quizIntroScreen">
                 <div class="quiz-intro-badge">
-                    <span>⚡ Kuis Minat &amp; Karir Vokasi</span>
+                    <span>✨ TEFA AI CAREER DISCOVERY</span>
                 </div>
 
                 <h1 class="quiz-intro-title">
-                    Jurusan Apa yang <span>Paling Cocok</span> Untukmu?
+                    Temukan Jurusan yang <span>Paling Cocok</span> Untukmu
                 </h1>
 
                 <p class="quiz-intro-desc">
-                    Bingung memilih jurusan setelah lulus SMP? Jawab 6 pertanyaan seru berikut untuk mengenali potensi tersembunyimu dan temukan program keahlian SMK Antartika 1 Sidoarjo yang paling selaras dengan impianmu!
+                    Jawab 6 pertanyaan singkat. TEFA AI akan memetakan minatmu ke 5 jurusan unggulan, menjelaskan alasannya, lalu menunjukkan langkah pertamamu menuju masa depan.
                 </p>
 
                 <div class="quiz-features-pills">
-                    <span class="quiz-feature-pill">⏱️ Hanya 1-2 Menit</span>
-                    <span class="quiz-feature-pill">🎯 Rekomendasi Akurat</span>
-                    <span class="quiz-feature-pill">💡 Tanpa Jawaban Salah</span>
+                    <span class="quiz-feature-pill">⚡ Hasil Instan</span>
+                    <span class="quiz-feature-pill">🎯 Rekomendasi Personal</span>
+                    <span class="quiz-feature-pill">💡 Alasan Transparan</span>
                     <span class="quiz-feature-pill">🚀 5 Jurusan Unggulan</span>
                 </div>
 
                 <button type="button" class="btn-start-quiz" onclick="startQuiz()">
-                    <span>Mulai Kuis Sekarang</span>
+                    <span>Mulai Analisis AI</span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
@@ -112,11 +112,11 @@
             <div class="quiz-result-box" id="quizResultScreen">
                 
                 <div class="result-celebration-badge">
-                    <span>🎉 Hasil Analisis Minat &amp; Bakat</span>
+                    <span>✨ Analisis AI Selesai dalam Sekejap</span>
                 </div>
 
                 <h2 class="result-headline">
-                    Inilah Jurusan Impian Masa Depanmu!
+                    Ini Jalur Vokasi yang Direkomendasikan untukmu
                 </h2>
 
                 <!-- Top Match Hero Card -->
@@ -135,6 +135,11 @@
                         <span class="result-skill-pill">💻 Web &amp; Mobile App</span>
                         <span class="result-skill-pill">🤖 AI &amp; Logic Coding</span>
                         <span class="result-skill-pill">🎮 Game Dev &amp; UI/UX</span>
+                    </div>
+
+                    <div class="result-ai-insight" aria-live="polite">
+                        <span class="result-ai-insight-label">AI MENEMUKAN POLA INI DARI PILIHANMU</span>
+                        <div class="result-ai-signals" id="resultAiSignals"></div>
                     </div>
                 </div>
 
@@ -171,6 +176,11 @@
                         <span>Bagikan ke WhatsApp</span>
                     </a>
 
+                    <button type="button" class="btn-result-ask-ai" onclick="askTefaAboutResult()">
+                        <span>✨</span>
+                        <span>Tanya AI tentang Jurusan Ini</span>
+                    </button>
+
                     <button type="button" class="btn-result-restart" onclick="restartQuiz()">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="1 4 1 10 7 10"></polyline>
@@ -188,6 +198,9 @@
 
     <!-- Unified Landing Footer Component -->
     <x-landing-footer />
+
+    {{-- Pengunjung dapat melanjutkan rekomendasi ke percakapan publik tanpa login. --}}
+    <x-ai-widget subtitle="Tanya lanjut tentang jurusanmu" />
 
     <!-- Quiz Engine & Interactive Sound/Confetti Scripts -->
     <script>
@@ -399,11 +412,13 @@
         // ─── 4. QUIZ STATE & CONTROLLER ───
         let currentQuestionIndex = 0;
         let scores = { rpl: 0, tkr: 0, tei: 0, titl: 0, tpm: 0 };
+        let selectedAnswers = [];
 
         function startQuiz() {
             playSound('select');
             currentQuestionIndex = 0;
             scores = { rpl: 0, tkr: 0, tei: 0, titl: 0, tpm: 0 };
+            selectedAnswers = [];
 
             document.getElementById('quizIntroScreen').style.display = 'none';
             document.getElementById('quizResultScreen').classList.remove('active');
@@ -443,19 +458,20 @@
                     <div class="quiz-option-emoji">${opt.emoji}</div>
                 `;
 
-                optEl.addEventListener('click', () => handleOptionChosen(opt.major, optEl));
+                optEl.addEventListener('click', () => handleOptionChosen(opt, optEl));
                 list.appendChild(optEl);
             });
 
             window.scrollTo({ top: 120, behavior: 'smooth' });
         }
 
-        function handleOptionChosen(major, cardElement) {
+        function handleOptionChosen(option, cardElement) {
             playSound('select');
             cardElement.classList.add('selected');
 
             // Add score
-            scores[major] += 1;
+            scores[option.major] += 1;
+            selectedAnswers.push(option);
 
             setTimeout(() => {
                 if (currentQuestionIndex < QUIZ_QUESTIONS.length - 1) {
@@ -505,6 +521,15 @@
             const skillsContainer = document.getElementById('resultSkillsList');
             skillsContainer.innerHTML = topProfile.skills.map(s => `<span class="result-skill-pill">${s}</span>`).join('');
 
+            const relevantSignals = selectedAnswers
+                .filter(answer => answer.major === highestMajor)
+                .slice(0, 3)
+                .map(answer => answer.title);
+            const signals = relevantSignals.length ? relevantSignals : topProfile.skills;
+            document.getElementById('resultAiSignals').innerHTML = signals
+                .map(signal => `<span class="result-ai-signal">✓ ${signal}</span>`)
+                .join('');
+
             // Link CTA
             const daftarBtn = document.getElementById('btnResultDaftar');
             daftarBtn.href = `{{ route('ppdb.daftar') }}?jurusan=${topProfile.code}`;
@@ -546,6 +571,15 @@
         function restartQuiz() {
             playSound('select');
             startQuiz();
+        }
+
+        function askTefaAboutResult() {
+            const topMajor = Object.keys(scores).reduce((best, major) => scores[major] > scores[best] ? major : best, 'rpl');
+            const profile = MAJOR_PROFILES[topMajor];
+
+            if (window.sendNavChip) {
+                window.sendNavChip(`Saya mendapat rekomendasi ${profile.title}. Prospek karier dan langkah daftar PPDB-nya bagaimana?`);
+            }
         }
 
         // ─── 5. CONFETTI ANIMATION (CANVAS) ───

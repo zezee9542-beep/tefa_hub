@@ -71,6 +71,12 @@
                         </button>
                     </form>
                 </div>
+
+                <a href="{{ route('ppdb.kuis') }}" class="hero-ai-discovery-link">
+                    <span aria-hidden="true">✨</span>
+                    Coba AI Temukan Jurusanmu — hasil instan
+                    <span aria-hidden="true">→</span>
+                </a>
             </section>
 
             {{-- Right: visual composition --}}

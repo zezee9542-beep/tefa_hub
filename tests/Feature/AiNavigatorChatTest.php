@@ -58,6 +58,85 @@ class AiNavigatorChatTest extends TestCase
         Http::assertNothingSent();
     }
 
+    public function test_it_gives_a_specific_major_recommendation_for_a_visitor_interest(): void
+    {
+        Http::fake();
+
+        $response = $this->postJson(route('ai.chat'), [
+            'message' => 'Saya suka robotika dan ingin tahu jurusan yang cocok.',
+        ]);
+
+        $response->assertOk()
+            ->assertJsonPath('source', 'advisor')
+            ->assertJsonPath('route', '/ppdb/kuis')
+            ->assertJsonPath('label', 'Coba AI Temukan Jurusanmu')
+            ->assertJsonPath('category', 'PPDB');
+
+        $this->assertStringContainsString('TEI', (string) $response->json('answer'));
+
+        Http::assertNothingSent();
+    }
+
+    public function test_it_sends_a_question_that_is_not_in_the_school_knowledge_base_to_the_ai_provider(): void
+    {
+        config()->set('services.ai_navigator.key', 'test-key');
+        config()->set('services.ai_navigator.url', 'https://ai.example.test/v1beta/models');
+        config()->set('services.ai_navigator.model', 'gemini-test-model');
+
+        Http::fake([
+            'https://ai.example.test/*' => Http::response([
+                'candidates' => [[
+                    'content' => [
+                        'parts' => [['text' => 'RPL berfokus pada perangkat lunak, sedangkan TEI berfokus pada elektronika industri.']],
+                    ],
+                ]],
+            ]),
+        ]);
+
+        $response = $this->postJson(route('ai.chat'), [
+            'message' => 'Apakah jurusan RPL dan TEI memiliki perbedaan?',
+        ]);
+
+        $response->assertOk()
+            ->assertJsonPath('source', 'gemini')
+            ->assertJsonPath('answer', 'RPL berfokus pada perangkat lunak, sedangkan TEI berfokus pada elektronika industri.');
+
+        Http::assertSentCount(1);
+    }
+
+    public function test_it_does_not_cache_a_response_when_the_ai_provider_is_unavailable(): void
+    {
+        config()->set('services.ai_navigator.key', null);
+
+        $firstResponse = $this->postJson(route('ai.chat'), [
+            'message' => 'Apa arti quantum computing?',
+        ]);
+
+        $firstResponse->assertOk()->assertJsonPath('source', 'unavailable');
+
+        config()->set('services.ai_navigator.key', 'test-key');
+        config()->set('services.ai_navigator.url', 'https://ai.example.test/v1beta/models');
+        config()->set('services.ai_navigator.model', 'gemini-test-model');
+
+        Http::fake([
+            'https://ai.example.test/*' => Http::response([
+                'candidates' => [[
+                    'content' => [
+                        'parts' => [['text' => 'Quantum computing adalah pendekatan komputasi yang memanfaatkan prinsip mekanika kuantum.']],
+                    ],
+                ]],
+            ]),
+        ]);
+
+        $secondResponse = $this->postJson(route('ai.chat'), [
+            'message' => 'Apa arti quantum computing?',
+        ]);
+
+        $secondResponse->assertOk()
+            ->assertJsonPath('source', 'gemini')
+            ->assertJsonPath('answer', 'Quantum computing adalah pendekatan komputasi yang memanfaatkan prinsip mekanika kuantum.');
+    }
+
     public function test_it_uses_the_fallback_model_when_the_primary_model_is_busy(): void
     {
         config()->set('services.ai_navigator.key', 'test-key');

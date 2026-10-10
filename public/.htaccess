@@ -38,8 +38,8 @@
         Header always set Cache-Control "no-cache, no-store, must-revalidate"
     </Files>
 
-    <FilesMatch "\.(?:avif|webp|woff2?)$">
-        Header set Cache-Control "public, max-age=604800"
+    <FilesMatch "\.(?:avif|webp|png|jpe?g|gif|svg|woff2?)$">
+        Header set Cache-Control "public, max-age=604800, immutable"
     </FilesMatch>
 
     <FilesMatch "\.(?:webm|mp4|ogv|m4a)$">
@@ -49,6 +49,6 @@
     </FilesMatch>
 
     <FilesMatch "\.(?:css|js)$">
-        Header always set Cache-Control "no-cache, must-revalidate"
+        Header always set Cache-Control "public, max-age=604800, immutable"
     </FilesMatch>
 </IfModule>

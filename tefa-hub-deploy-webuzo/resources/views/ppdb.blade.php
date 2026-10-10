@@ -473,39 +473,47 @@
             <div class="ppdb-quiz-banner-card">
                 <div class="quiz-banner-content">
                     <div class="quiz-banner-tag">
-                        <span>⚡ Kuis Minat &amp; Karir Vokasi</span>
+                        <span class="quiz-tag-icon-circle">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                        </span>
+                        <span>Kuis Minat &amp; Karir Vokasi</span>
                     </div>
-                    <h3 class="quiz-banner-title">
-                        Bingung Memilih Jurusan? Temukan Program Keahlian yang Paling Cocok Untukmu!
-                    </h3>
+
+                    <h2 class="quiz-banner-title">
+                        Bingung Memilih Jurusan?<br>
+                        Temukan Program Keahlian<br>
+                        yang <span class="highlight-blue">Paling Cocok Untukmu!</span>
+                    </h2>
+
                     <p class="quiz-banner-desc">
                         Ikuti kuis singkat 6 pertanyaan interaktif tanpa jawaban salah. Kenali potensimu dan dapatkan rekomendasi jurusan impian beserta prospek karir masa depan secara instan dalam 2 menit.
                     </p>
+
                     <div class="quiz-banner-actions">
                         <a href="{{ route('ppdb.kuis') }}" class="btn-quiz-cta">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                            </svg>
+                            <span class="btn-quiz-icon-circle">
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                </svg>
+                            </span>
                             <span>Mulai Kuis Seru Sekarang (2 Menit)</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="btn-quiz-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
                         </a>
                     </div>
                 </div>
+
                 <div class="quiz-banner-visual">
-                    <div class="quiz-badge-bubble">
-                        <div class="quiz-bubble-stat">5</div>
-                        <div class="quiz-bubble-label">Jurusan<br>Unggulan</div>
-                    </div>
-                    <div class="quiz-float-pills">
-                        <span class="quiz-pill-item">💻 RPL</span>
-                        <span class="quiz-pill-item">🏎️ TKR</span>
-                        <span class="quiz-pill-item">🤖 TEI</span>
-                        <span class="quiz-pill-item">⚡ TITL</span>
-                        <span class="quiz-pill-item">⚙️ TPM</span>
-                    </div>
+                    <img 
+                        src="{{ asset('assets/image copy 2.png') }}" 
+                        alt="Temukan Program Keahlian 5 Jurusan Unggulan SMK Antartika 1 Sidoarjo" 
+                        class="quiz-banner-right-img"
+                        loading="eager"
+                    >
                 </div>
             </div>
         </section>

@@ -40,6 +40,9 @@ return [
         'url' => env('AI_NAVIGATOR_API_URL', 'https://generativelanguage.googleapis.com/v1beta/models'),
         'model' => env('AI_NAVIGATOR_MODEL', 'gemini-flash-latest'),
         'fallback_model' => env('AI_NAVIGATOR_FALLBACK_MODEL', 'gemini-3.5-flash-lite'),
+        'connect_timeout' => (int) env('AI_NAVIGATOR_CONNECT_TIMEOUT', 1),
+        'timeout' => (int) env('AI_NAVIGATOR_TIMEOUT', 3),
+        'max_output_tokens' => (int) env('AI_NAVIGATOR_MAX_OUTPUT_TOKENS', 220),
     ],
 
 ];
