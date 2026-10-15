@@ -36,9 +36,9 @@
          BKK HERO SECTION WITH GRADIENT GLOWS & BACKGROUND IMAGE
          ═══════════════════════════════════════════ --}}
     <section class="bkk-hero-section" id="mainContent">
-        {{-- Background image.png Artwork (Subtle & Elegant) --}}
+        {{-- Background image.webp Artwork (Subtle & Elegant) --}}
         <div class="bkk-hero-bg-artwork" aria-hidden="true">
-            <img src="{{ asset('assets/image.png') }}" alt="" class="bkk-hero-bg-img">
+            <img src="{{ asset('assets/image.webp') }}" alt="" class="bkk-hero-bg-img">
         </div>
 
         {{-- Background Eclipse Glow Accents --}}

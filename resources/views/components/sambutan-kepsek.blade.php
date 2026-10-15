@@ -5,7 +5,7 @@
             {{-- Left Column: Foto Kepala Sekolah dengan Floating Badge --}}
             <div class="principal-photo-wrapper" data-reveal="left">
                 <div class="principal-photo-frame">
-                    <img src="{{ asset('assets/image copy 6.png') }}"
+                    <img src="{{ asset('assets/image copy 6.webp') }}"
                         alt="Akhmad Nasirudin, S.T. - Kepala SMK Antartika 1 Sidoarjo" width="680" height="1170"
                         loading="lazy" decoding="async">
                 </div>

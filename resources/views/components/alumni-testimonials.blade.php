@@ -346,11 +346,21 @@
 }
 [data-theme="dark"] .partner-statement-card {
     background: #131b2e !important;
-    border-color: rgba(255, 255, 255, 0.08) !important;
-    box-shadow: 0 10px 28px -10px rgba(0, 0, 0, 0.4) !important;
+    border-color: rgba(59, 130, 246, 0.22) !important;
+    box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(59, 130, 246, 0.1) !important;
+}
+[data-theme="dark"] .partner-statement-icon {
+    background: rgba(37, 99, 235, 0.16) !important;
+    border: 1px solid rgba(59, 130, 246, 0.28) !important;
+}
+[data-theme="dark"] .partner-statement-icon svg {
+    stroke: #60a5fa !important;
+}
+[data-theme="dark"] .partner-quote {
+    color: #f1f5f9 !important;
 }
 [data-theme="dark"] .partner-quote-body {
-    color: #cbd5e1 !important;
+    color: #f1f5f9 !important;
 }
 [data-theme="dark"] .partner-author strong {
     color: #ffffff !important;
