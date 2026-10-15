@@ -524,9 +524,11 @@
 
                 <div class="quiz-banner-visual">
                     <img 
-                        src="{{ asset('assets/image copy 2.png') }}" 
+                        src="{{ asset('assets/image copy 11.webp') }}" 
                         alt="Temukan Program Keahlian 5 Jurusan Unggulan SMK Antartika 1 Sidoarjo" 
                         class="quiz-banner-right-img"
+                        width="460"
+                        height="400"
                         loading="eager"
                     >
                 </div>

@@ -2242,28 +2242,65 @@ body.onboarding-active {
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
 }
 
-/* Sapaan Pill Badge Gelap Sesuai Gambar Referensi */
+/* Sapaan Pill Badge (Sleek, Non-intrusive Tooltip) */
 .ai-pill-badge {
     position: relative;
-    background: linear-gradient(135deg, #2b110c, #1f0b07);
-    border: 1.5px solid #d97706;
+    background: rgba(15, 23, 42, 0.92);
+    border: 1px solid rgba(217, 119, 6, 0.7);
     border-radius: 9999px;
-    padding: 8px 18px;
+    padding: 6px 14px;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    box-shadow: 0 10px 24px -2px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(217, 119, 6, 0.2);
+    gap: 7px;
+    box-shadow: 0 8px 20px -2px rgba(0, 0, 0, 0.35);
     white-space: nowrap;
-    margin-top: 22px;
-    margin-right: -14px;
+    margin-top: 20px;
+    margin-right: -10px;
     z-index: 2;
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.ai-pill-dismiss {
+    cursor: pointer;
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1;
+    margin-left: 3px;
+    padding: 1px 4px;
+    border-radius: 50%;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ai-pill-dismiss:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Auto-hide state so it never disturbs the user */
+.ai-pill-badge.ai-pill-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
     pointer-events: none;
-    animation: none !important; /* Statis, tidak ada animasi naik turun */
+}
+
+/* Gracefully re-appears as a sleek tooltip when user hovers or focuses the mascot */
+.ai-trigger:hover .ai-pill-badge.ai-pill-hidden,
+.ai-trigger:focus-visible .ai-pill-badge.ai-pill-hidden {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .ai-pill-dot {
-    width: 10px;
-    height: 10px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
     background: #22c55e;
     box-shadow: 0 0 8px #22c55e;
@@ -2272,7 +2309,7 @@ body.onboarding-active {
 
 .ai-pill-text {
     color: #ffffff;
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 700;
     font-family: 'Plus Jakarta Sans', sans-serif;
     letter-spacing: -0.01em;

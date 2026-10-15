@@ -41,7 +41,7 @@
     background: radial-gradient(circle, rgba(37, 99, 235, 0.07) 0%, rgba(37, 99, 235, 0) 70%);
 }
 
-/* Background image.png Artwork (Subtle & Elegant Hero Background) */
+/* Background image.webp Artwork (Subtle & Elegant Hero Background) */
 .bkk-hero-bg-artwork {
     position: absolute;
     top: 0;
@@ -354,11 +354,11 @@
     transform: translateY(-1px);
 }
 
-/* Aksen Tulisan Tangan di Kanan Luar: "Karier Dimulai dari Sini!" */
+/* Aksen Tulisan Tangan di Kanan Luar: "Karier Dimulai dari Sini!" (Preserved inside container) */
 .bkk-hero-quote-accent {
     position: absolute;
     top: 10px;
-    right: -58px;
+    right: -8px;
     z-index: 5;
     display: flex;
     flex-direction: column;
@@ -390,6 +390,19 @@
     background: #ffffff; /* Sesuai instruksi: warna putih saja */
     font-family: 'Plus Jakarta Sans', sans-serif;
     position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: clip;
+}
+
+.bkk-catalog-section .wrap {
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: clamp(20px, 3.5vw, 48px) !important;
+    padding-right: clamp(20px, 3.5vw, 48px) !important;
+    box-sizing: border-box !important;
 }
 
 /* Header Bar Layanan */
@@ -498,9 +511,11 @@
    ═══════════════════════════════════════════════════════════ */
 .bkk-cards-catalog-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
     align-items: stretch;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Setiap Card Layanan */
@@ -516,6 +531,8 @@
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     cursor: pointer;
+    min-width: 0;
+    width: 100%;
 }
 
 .bkk-service-card:hover {
@@ -734,7 +751,7 @@
    ═══════════════════════════════════════════════════════════ */
 @media (max-width: 1200px) {
     .bkk-cards-catalog-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 18px;
     }
 }
@@ -766,7 +783,7 @@
         gap: 16px;
     }
     .bkk-cards-catalog-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 16px;
     }
 }
@@ -799,8 +816,12 @@
     .bkk-benefit-item {
         flex-shrink: 0;
     }
+    .bkk-catalog-section .wrap {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
     .bkk-cards-catalog-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
     }
     .bkk-card-img-wrap {

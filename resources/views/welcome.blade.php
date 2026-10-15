@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <x-pwa />
-    <meta name="description" content="Tefa-Hub — Satu ekosistem digital terpadu untuk akademik, BLUD teaching factory, dan career center siswa SMK.">
+    <meta name="description" content="Tefa-Hub — Satu ekosistem digital terpadu untuk akademik, BLUD teaching factory, dan career center siswa SMK Antartika 1 Sidoarjo.">
     <title>Tefa-Hub | Satu Ekosistem Digital untuk Seluruh Perjalanan Siswa</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
+    <link rel="canonical" href="{{ url()->current() }}">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+    {{-- Open Graph & Social Cards --}}
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tefa-Hub | Satu Ekosistem Digital SMK Antartika 1 Sidoarjo">
+    <meta property="og:description" content="Satu ekosistem digital terpadu untuk pembelajaran kurikulum industri SKKNI, unit produksi BLUD Teaching Factory, PKL, dan BKK SMK Antartika 1 Sidoarjo.">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:site_name" content="Tefa-Hub">
+    <meta property="og:image" content="{{ asset('assets/logo.webp') }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tefa-Hub | Satu Ekosistem Digital SMK Antartika 1 Sidoarjo">
+    <meta name="twitter:description" content="Satu ekosistem digital terpadu untuk pembelajaran kurikulum industri SKKNI, unit produksi BLUD Teaching Factory, PKL, dan BKK SMK Antartika 1 Sidoarjo.">
+    <meta name="twitter:image" content="{{ asset('assets/logo.webp') }}">
+
+    {{-- LCP Hero Image Preload for 95+ Performance --}}
+    <link rel="preload" as="image" href="{{ asset('assets/image.webp') }}" type="image/webp" fetchpriority="high">
+
     <!-- Google Fonts: Plus Jakarta Sans & Caveat (High-Performance Non-Render-Blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +35,120 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
     </noscript>
 
-    <!-- Agentic AI Discovery & LLM Context -->
+    <!-- Agentic AI Discovery & WebMCP (Web Model Context Protocol) -->
     <link rel="alternate" type="text/markdown" href="{{ url('/llms.txt') }}" title="LLM Context">
+    <meta name="llms-txt" content="{{ url('/llms.txt') }}">
+    <meta name="webmcp:version" content="1.0">
+    <meta name="ai:agentic-browsing" content="supported">
+
+    {{-- Structured Data: EducationalOrganization + WebSite Schema.org --}}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "EducationalOrganization",
+          "@id": "https://tefahub.sch.id/#organization",
+          "name": "SMK Antartika 1 Sidoarjo",
+          "url": "https://tefahub.sch.id",
+          "logo": "{{ asset('assets/logo.webp') }}",
+          "description": "SMK Pusat Keunggulan & BLUD dengan akreditasi A di Sidoarjo.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Sidoarjo",
+            "addressRegion": "Jawa Timur",
+            "addressCountry": "ID"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://tefahub.sch.id/#website",
+          "url": "https://tefahub.sch.id",
+          "name": "Tefa-Hub",
+          "publisher": { "@id": "https://tefahub.sch.id/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://tefahub.sch.id/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+    </script>
+
+    {{-- WebMCP Protocol Manifest for Agentic Browsing (4/4 Score) --}}
+    <script type="application/json" id="webmcp-manifest">
+    {
+      "protocol": "webmcp/1.0",
+      "site": "Tefa-Hub SMK Antartika 1 Sidoarjo",
+      "capabilities": ["navigation", "search", "admissions", "ai-chat"],
+      "tools": [
+        {
+          "name": "search_site",
+          "description": "Cari informasi jurusan, PKL, fasilitas, dan PPDB di SMK Antartika 1 Sidoarjo",
+          "parameters": {
+            "type": "object",
+            "properties": { "query": { "type": "string" } },
+            "required": ["query"]
+          }
+        },
+        {
+          "name": "navigate_to_page",
+          "description": "Buka halaman PPDB, PKL, BKK, atau Profil Sekolah",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "page": { "type": "string", "enum": ["ppdb", "pkl", "bkk", "profil", "kuis-jurusan"] }
+            },
+            "required": ["page"]
+          }
+        },
+        {
+          "name": "ask_tefa_ai",
+          "description": "Konsultasi interaktif dengan asisten virtual Tanya Tefa AI",
+          "parameters": {
+            "type": "object",
+            "properties": { "message": { "type": "string" } }
+          }
+        }
+      ]
+    }
+    </script>
+    <script>
+      (function() {
+        if (typeof window === 'undefined') return;
+        window.__WEBMCP__ = {
+          version: '1.0',
+          tools: ['search_site', 'navigate_to_page', 'ask_tefa_ai'],
+          execute: function(name, args) {
+            args = args || {};
+            if (name === 'search_site' && args.query) {
+              const trigger = document.getElementById('heroSearchTrigger');
+              if (trigger) trigger.click();
+              const inp = document.getElementById('searchModalInput');
+              if (inp) { inp.value = args.query; inp.dispatchEvent(new Event('input')); }
+              return { status: 'success', query: args.query };
+            }
+            if (name === 'navigate_to_page' && args.page) {
+              const urls = { ppdb: '{{ route("ppdb") }}', pkl: '{{ route("pkl") }}', bkk: '{{ route("bkk") }}', profil: '{{ route("profil") }}', 'kuis-jurusan': '{{ route("ppdb.kuis") }}' };
+              if (urls[args.page]) { window.location.href = urls[args.page]; return { status: 'navigating', url: urls[args.page] }; }
+            }
+            if (name === 'ask_tefa_ai') {
+              const btn = document.getElementById('ai-toggle-btn');
+              if (btn) btn.click();
+              return { status: 'opened' };
+            }
+            return { status: 'unknown_tool' };
+          }
+        };
+        try {
+          if (navigator.modelContext && typeof navigator.modelContext.registerTools === 'function') {
+            navigator.modelContext.registerTools(window.__WEBMCP__.tools);
+          }
+        } catch(e) {}
+      })();
+    </script>
+
     <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v={{ file_exists(public_path('assets/css/landing.css')) ? filemtime(public_path('assets/css/landing.css')) : '1.0' }}">
     <link rel="stylesheet" href="{{ asset('assets/css/sambutan.css') }}?v={{ file_exists(public_path('assets/css/sambutan.css')) ? filemtime(public_path('assets/css/sambutan.css')) : '1.0' }}">
     <link rel="stylesheet" href="{{ asset('assets/css/logo-marquee.css') }}?v={{ file_exists(public_path('assets/css/logo-marquee.css')) ? filemtime(public_path('assets/css/logo-marquee.css')) : '1.0' }}">
@@ -239,6 +370,10 @@
                         src="{{ asset('assets/image.webp') }}"
                         alt="Siswa dan Siswi SMK Tefa-Hub"
                         class="students-img"
+                        width="530"
+                        height="470"
+                        fetchpriority="high"
+                        loading="eager"
                     >
                 </div>
 
@@ -253,10 +388,11 @@
                 <div class="cards-row" data-stagger>
                     @foreach ($heroCards as $card)
                         <div class="card" role="button" tabindex="0" data-stagger-item data-hover-card
+                             aria-label="{{ $card['title'] }} — {{ $card['desc'] }}"
                              onclick="window.location.href='{{ $card['href'] }}'">
                             {{-- Icon kiri --}}
                             <div class="card-icon">
-                                <img src="{{ asset('assets/' . $card['icon']) }}" alt="Icon {{ $card['title'] }}">
+                                <img src="{{ asset('assets/' . $card['icon']) }}" alt="Icon {{ $card['title'] }}" width="44" height="44" loading="lazy">
                             </div>
                             {{-- Title + desc tengah --}}
                             <div class="card-head">
@@ -265,8 +401,8 @@
                             </div>
                             {{-- Arrow button biru bulat kanan --}}
                             <div class="card-foot">
-                                <button class="btn-arrow" title="Buka {{ $card['title'] }}">
-                                    <img src="{{ asset('assets/back.webp') }}" alt="Lanjut">
+                                <button class="btn-arrow" type="button" aria-label="Buka {{ $card['title'] }}" title="Buka {{ $card['title'] }}">
+                                    <img src="{{ asset('assets/back.webp') }}" alt="Lanjut" width="16" height="16" loading="lazy">
                                 </button>
                             </div>
                         </div>

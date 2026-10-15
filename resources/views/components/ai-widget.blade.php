@@ -14,15 +14,16 @@
 
 {{-- Floating Trigger Button: Large Mascot Robot + Pill Sapaan (Matching Reference Image) --}}
 <button id="ai-toggle-btn" class="ai-trigger" type="button" aria-label="Buka Tanya Tefa AI" aria-expanded="false" aria-controls="ai-navigator-panel" title="Tanya Tefa AI">
-    {{-- Pill Sapaan Tepat di Atas / Samping Kepala Robot --}}
+    {{-- Pill Sapaan (Non-intrusive: auto-fades and re-appears on hover) --}}
     <div class="ai-pill-badge" id="ai-pill-badge" aria-hidden="true">
         <span class="ai-pill-dot"></span>
-        <span class="ai-pill-text">Hai, tanya aku Tefa AI</span>
+        <span class="ai-pill-text">Tanya Tefa AI</span>
+        <span class="ai-pill-dismiss" id="ai-pill-dismiss" title="Tutup sapaan" aria-label="Tutup sapaan">&times;</span>
     </div>
 
     {{-- Robot Mascot Container (Besar & Statis Sesuai Gambar) --}}
     <div class="ai-mascot-wrap">
-        <img src="{{ asset('assets/image copy 5.png') }}" alt="Asisten Tanya Tefa AI" class="ai-mascot-img" width="130" height="140" loading="lazy">
+        <img src="{{ asset('assets/image copy 5.webp') }}" alt="Asisten Tanya Tefa AI" class="ai-mascot-img" width="130" height="140" loading="lazy">
     </div>
 
     <span class="ai-trigger-badge" id="ai-notif-badge" style="display:none;"></span>
@@ -35,7 +36,7 @@
     <div class="ai-header">
         <div class="ai-header-brand">
             <div class="ai-header-avatar">
-                <img src="{{ asset('assets/image copy 5.png') }}" alt="Tanya Tefa AI" class="ai-avatar-img" width="28" height="28">
+                <img src="{{ asset('assets/copy5.webp') }}" alt="Tanya Tefa AI" class="ai-avatar-img" width="28" height="28">
                 <span class="ai-status-pulse"></span>
             </div>
             <div class="ai-header-info">
@@ -441,6 +442,23 @@
         toggleBtn.addEventListener('click', () => isOpen ? closePanel() : openPanel());
         if (closeBtn) closeBtn.addEventListener('click', closePanel);
         if (backdrop) backdrop.addEventListener('click', closePanel);
+
+        // Auto-dismiss AI greeting pill after 4.5 seconds so it doesn't disturb the user
+        const pillBadge = document.getElementById('ai-pill-badge');
+        const pillDismiss = document.getElementById('ai-pill-dismiss');
+        if (pillBadge) {
+            const autoHideTimer = setTimeout(() => {
+                pillBadge.classList.add('ai-pill-hidden');
+            }, 4500);
+
+            if (pillDismiss) {
+                pillDismiss.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    clearTimeout(autoHideTimer);
+                    pillBadge.classList.add('ai-pill-hidden');
+                });
+            }
+        }
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && isOpen) closePanel();

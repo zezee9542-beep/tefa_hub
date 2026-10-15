@@ -91,7 +91,7 @@
 <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
 <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Menu Navigasi Mobile">
     <div class="mobile-nav-header">
-        <a href="{{ url('/') }}" class="brand">
+        <a href="{{ url('/') }}" class="brand" aria-label="Tefa-Hub Beranda">
             <img src="{{ asset('assets/logo.webp') }}" alt="Logo Tefa-Hub" width="32" height="32">
             <span class="brand-name">Tefa<span>-Hub</span></span>
         </a>
