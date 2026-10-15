@@ -1,0 +1,97 @@
+{
+  "manifest_version": "1.0",
+  "site": {
+    "name": "Tefa-Hub — SMK Antartika 1 Sidoarjo",
+    "url": "https://tefahub.sch.id",
+    "lang": "id",
+    "description": "Ekosistem digital terpadu untuk pendidikan vokasi SMK: Akademik, Teaching Factory (BLUD), Praktik Kerja Lapangan (PKL), dan Bursa Kerja Khusus (BKK).",
+    "agent_instructions": "Gunakan tool 'search' untuk menelusuri konten, 'ppdb_register' untuk pendaftaran siswa baru, 'ai_chat' untuk tanya jawab, dan 'navigate' untuk pindah antar halaman. Semua halaman tersedia dalam Bahasa Indonesia."
+  },
+  "tools": [
+    {
+      "name": "navigate",
+      "type": "navigation",
+      "description": "Navigasi ke halaman utama Tefa-Hub: Beranda, Profil, BKK, PKL, PPDB, atau Kuis Jurusan.",
+      "riskClass": "read",
+      "enabled": true,
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "string",
+            "description": "Nama halaman tujuan.",
+            "enum": ["beranda", "profil", "bkk", "pkl", "ppdb", "kuis-jurusan"]
+          }
+        },
+        "required": ["page"]
+      },
+      "actions": {
+        "beranda":       { "url": "https://tefahub.sch.id/",              "selector": "main" },
+        "profil":        { "url": "https://tefahub.sch.id/profil",         "selector": "main" },
+        "bkk":           { "url": "https://tefahub.sch.id/bkk",            "selector": "main" },
+        "pkl":           { "url": "https://tefahub.sch.id/pkl",            "selector": "main" },
+        "ppdb":          { "url": "https://tefahub.sch.id/ppdb",           "selector": "main" },
+        "kuis-jurusan":  { "url": "https://tefahub.sch.id/kuis-jurusan",   "selector": "main" }
+      }
+    },
+    {
+      "name": "search",
+      "type": "search",
+      "description": "Cari informasi tentang program jurusan, PPDB, lowongan kerja (BKK), atau jadwal PKL di Tefa-Hub.",
+      "page_url": "https://tefahub.sch.id/",
+      "selector": "#hero-search-input",
+      "riskClass": "read",
+      "enabled": true,
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Kata kunci pencarian, misalnya: 'jurusan RPL', 'jadwal PPDB', 'lowongan kerja BKK'."
+          }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "ai_chat",
+      "type": "chat",
+      "description": "Kirim pertanyaan ke Asisten AI Tanya Tefa untuk mendapat bantuan seputar akademik, PPDB, PKL, BKK, atau informasi sekolah.",
+      "page_url": "https://tefahub.sch.id/",
+      "selector": "#ai-message-input",
+      "riskClass": "read",
+      "enabled": true,
+      "before_prompt": "Klik tombol 'Tanya Tefa AI' terlebih dahulu untuk membuka panel percakapan.",
+      "success_prompt": "Pertanyaan berhasil dikirim. Asisten akan merespons dalam hitungan detik.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Pertanyaan yang ingin diajukan kepada Asisten Tanya Tefa AI."
+          }
+        },
+        "required": ["message"]
+      }
+    },
+    {
+      "name": "ppdb_register",
+      "type": "contact_form",
+      "description": "Isi dan kirim formulir pendaftaran PPDB (Penerimaan Peserta Didik Baru) secara online.",
+      "page_url": "https://tefahub.sch.id/ppdb/daftar",
+      "selector": "#ppdb-registration-form",
+      "riskClass": "mutate",
+      "enabled": true,
+      "before_prompt": "Siapkan data diri lengkap: nama lengkap, NISN, asal sekolah, pilihan jurusan, nomor HP, dan email orang tua.",
+      "success_prompt": "Formulir pendaftaran PPDB berhasil dikirim. Panitia akan menghubungi via email atau WhatsApp dalam 1x24 jam.",
+      "fields": [
+        { "name": "nama_lengkap",   "type": "text",   "required": true,  "description": "Nama lengkap calon siswa sesuai ijazah." },
+        { "name": "nisn",           "type": "text",   "required": true,  "description": "Nomor Induk Siswa Nasional (10 digit)." },
+        { "name": "asal_sekolah",   "type": "text",   "required": true,  "description": "Nama SMP/MTs asal calon siswa." },
+        { "name": "jurusan",        "type": "select", "required": true,  "description": "Pilihan program keahlian: RPL, TKR, TEI, TITL, atau TPM." },
+        { "name": "no_hp",          "type": "tel",    "required": true,  "description": "Nomor HP aktif orang tua atau wali." },
+        { "name": "email",          "type": "email",  "required": false, "description": "Alamat email orang tua atau wali (opsional)." }
+      ]
+    }
+  ]
+}

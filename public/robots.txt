@@ -2,5 +2,6 @@ User-agent: *
 Disallow:
 
 # Sitemaps & AI Agent Discovery
-Sitemap: /sitemap.xml
-Agentmap: /llms.txt
+Sitemap: https://tefahub.sch.id/sitemap.xml
+Agentmap: https://tefahub.sch.id/llms.txt
+WebMCP: https://tefahub.sch.id/.well-known/webmcp.json

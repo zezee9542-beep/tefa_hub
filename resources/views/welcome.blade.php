@@ -39,6 +39,7 @@
     <link rel="alternate" type="text/markdown" href="{{ url('/llms.txt') }}" title="LLM Context">
     <meta name="llms-txt" content="{{ url('/llms.txt') }}">
     <meta name="webmcp:version" content="1.0">
+    <link rel="webmcp" type="application/json" href="{{ url('/.well-known/webmcp.json') }}">
     <meta name="ai:agentic-browsing" content="supported">
 
     {{-- Structured Data: EducationalOrganization + WebSite Schema.org --}}
