@@ -48,22 +48,14 @@
                     </div>
                 </li>
 
-                {{-- Tentang Dropdown (Profil Sekolah) --}}
-                <li class="nav-dropdown {{ in_array($active, ['tentang', 'profil']) ? 'has-active' : '' }}">
-                    <button type="button" class="nav-dropdown-toggle {{ in_array($active, ['tentang', 'profil']) ? 'active-nav-link' : '' }}" aria-expanded="false" aria-haspopup="true">
-                        <span>Tentang</span>
-                        <svg class="dropdown-chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </button>
-                    <div class="nav-dropdown-menu">
-                        <a href="{{ route('profil') }}" class="dropdown-item {{ in_array($active, ['tentang', 'profil']) ? 'active-item' : '' }}">Profil Sekolah</a>
-                    </div>
+                {{-- Profil Sekolah (Direct Link) --}}
+                <li>
+                    <a href="{{ route('profil') }}" class="{{ (in_array($active, ['tentang', 'profil']) || request()->routeIs('profil')) ? 'active-nav-link' : '' }}">Profil Sekolah</a>
                 </li>
 
                 {{-- Kontak --}}
                 <li>
-                    <a href="{{ url('/#kontak') }}" class="{{ $active === 'kontak' ? 'active-nav-link' : '' }}">Kontak</a>
+                    <a href="{{ route('kontak') }}" class="{{ ($active === 'kontak' || request()->routeIs('kontak')) ? 'active-nav-link' : '' }}">Kontak</a>
                 </li>
             </ul>
         </nav>
@@ -148,21 +140,14 @@
             </ul>
         </li>
 
-        {{-- Mobile Group: Tentang --}}
-        <li class="mobile-nav-group group-open">
-            <button type="button" class="mobile-group-header">
-                <span>Tentang</span>
-                <svg class="mobile-group-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </button>
-            <ul class="mobile-sublinks">
-                <li><a href="{{ route('profil') }}" class="mobile-sublink {{ in_array($active, ['tentang', 'profil']) ? 'active' : '' }}">Profil Sekolah</a></li>
-            </ul>
+        {{-- Profil Sekolah (Direct Link) --}}
+        <li>
+            <a href="{{ route('profil') }}" class="mobile-nav-link {{ (in_array($active, ['tentang', 'profil']) || request()->routeIs('profil')) ? 'active' : '' }}">Profil Sekolah</a>
         </li>
 
+        {{-- Kontak --}}
         <li>
-            <a href="{{ url('/#kontak') }}" class="mobile-nav-link {{ $active === 'kontak' ? 'active' : '' }}">Kontak</a>
+            <a href="{{ route('kontak') }}" class="mobile-nav-link {{ ($active === 'kontak' || request()->routeIs('kontak')) ? 'active' : '' }}">Kontak</a>
         </li>
     </ul>
 

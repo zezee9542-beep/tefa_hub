@@ -40,6 +40,7 @@
                 <ul class="footer-links">
                     <li><a href="{{ url('/') }}">Beranda</a></li>
                     <li><a href="{{ route('profil') }}">Profil Sekolah</a></li>
+                    <li><a href="{{ route('kontak') }}">Kontak Siswa &amp; Sekolah</a></li>
                     <li><a href="{{ route('ppdb') }}">PPDB Online</a></li>
                     <li><a href="{{ route('pkl') }}">PKL &amp; Kemitraan Industri</a></li>
                     <li><a href="{{ route('bkk') }}">Career Center (BKK)</a></li>

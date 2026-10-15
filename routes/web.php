@@ -33,6 +33,14 @@ Route::get('/pkl', function () {
     return view('pkl');
 })->name('pkl');
 
+Route::get('/kontak', function () {
+    return view('kontak');
+})->name('kontak');
+
+Route::get('/kontak-siswa', function () {
+    return redirect()->route('kontak');
+});
+
 Route::get('/ppdb', function () {
     return view('ppdb');
 })->name('ppdb');
