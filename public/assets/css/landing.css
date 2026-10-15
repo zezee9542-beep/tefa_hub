@@ -1233,12 +1233,31 @@ body.onboarding-active {
     font-size: 24px;
     font-weight: 700;
     line-height: 1.15;
-    text-shadow: 0 2px 10px rgba(15, 23, 42, 0.4);
+    /* Multi-layer shadow: strong dark outline for light mode legibility */
+    text-shadow:
+        0 0 3px rgba(15, 23, 42, 0.9),
+        0 0 8px rgba(15, 23, 42, 0.7),
+        -1px -1px 0 rgba(15, 23, 42, 0.6),
+        1px -1px 0 rgba(15, 23, 42, 0.6),
+        -1px  1px 0 rgba(15, 23, 42, 0.6),
+        1px  1px 0 rgba(15, 23, 42, 0.6),
+        0 2px 16px rgba(15, 23, 42, 0.5);
+    /* Paint-order trick: draw stroke behind fill for clean outline */
+    -webkit-text-stroke: 2px rgba(15, 23, 42, 0.55);
+    paint-order: stroke fill;
     transform: rotate(5deg);
     pointer-events: none;
     user-select: none;
     letter-spacing: 0.02em;
     animation: quoteSway 5s ease-in-out infinite;
+}
+
+/* Dark mode: no need for heavy stroke — keep text clean & white */
+[data-theme="dark"] .hero-tagline-quote {
+    -webkit-text-stroke: 0;
+    text-shadow:
+        0 2px 14px rgba(0, 0, 0, 0.55),
+        0 0 6px rgba(15, 23, 42, 0.35);
 }
 
 /* ── Floating Official Verification Badges ─────────────────────────── */

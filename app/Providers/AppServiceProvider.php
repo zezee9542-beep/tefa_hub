@@ -26,11 +26,13 @@ class AppServiceProvider extends ServiceProvider
     {
         // Automatically force HTTPS URLs for assets/routes when accessed via ngrok or HTTPS proxy
         if (! $this->app->runningInConsole()) {
+            $appUrl = config('app.url', '');
+            $isHttpsAppUrl = str_starts_with($appUrl, 'https://');
             if (
                 request()->header('x-forwarded-proto') === 'https' ||
                 str_contains(request()->header('host', '') ?? '', 'ngrok') ||
                 str_contains(request()->header('x-forwarded-host', '') ?? '', 'ngrok') ||
-                $this->app->environment('production')
+                ($this->app->environment('production') && $isHttpsAppUrl)
             ) {
                 URL::forceScheme('https');
             }

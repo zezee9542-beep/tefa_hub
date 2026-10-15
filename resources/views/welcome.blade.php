@@ -44,30 +44,30 @@
     {{-- Structured Data: EducationalOrganization + WebSite Schema.org --}}
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@@context": "https://schema.org",
+      "@@graph": [
         {
-          "@type": "EducationalOrganization",
-          "@id": "https://tefahub.sch.id/#organization",
+          "@@type": "EducationalOrganization",
+          "@@id": "https://tefahub.sch.id/#organization",
           "name": "SMK Antartika 1 Sidoarjo",
           "url": "https://tefahub.sch.id",
           "logo": "{{ asset('assets/logo.webp') }}",
           "description": "SMK Pusat Keunggulan & BLUD dengan akreditasi A di Sidoarjo.",
           "address": {
-            "@type": "PostalAddress",
+            "@@type": "PostalAddress",
             "addressLocality": "Sidoarjo",
             "addressRegion": "Jawa Timur",
             "addressCountry": "ID"
           }
         },
         {
-          "@type": "WebSite",
-          "@id": "https://tefahub.sch.id/#website",
+          "@@type": "WebSite",
+          "@@id": "https://tefahub.sch.id/#website",
           "url": "https://tefahub.sch.id",
           "name": "Tefa-Hub",
-          "publisher": { "@id": "https://tefahub.sch.id/#organization" },
+          "publisher": { "@@id": "https://tefahub.sch.id/#organization" },
           "potentialAction": {
-            "@type": "SearchAction",
+            "@@type": "SearchAction",
             "target": "https://tefahub.sch.id/?q={search_term_string}",
             "query-input": "required name=search_term_string"
           }
