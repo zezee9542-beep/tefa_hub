@@ -7,6 +7,20 @@
     <title>Daftar Akun — TEFA-Hub Ekosistem Vokasi</title>
     <meta name="description" content="Buat akun baru siswa TEFA-Hub dan mulai perjalanan vokasi digital Anda.">
     
+    <!-- Immediate Theme Script: Prevent FOUC and follow active theme -->
+    <script>
+    (function() {
+        try {
+            var savedTheme = localStorage.getItem('tefa_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+        } catch (e) {}
+    })();
+    </script>
+    
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +30,32 @@
     <link rel="stylesheet" href="{{ asset('assets/css/auth.login.css') }}?v={{ config('app.asset_version', '1.0') }}">
 </head>
 <body>
+
+    <!-- Floating Top Bar: Back to Home & Theme Toggle -->
+    <div class="login-top-bar">
+        <a href="{{ url('/') }}" class="login-back-btn" title="Kembali ke Beranda">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Beranda</span>
+        </a>
+
+        <button type="button" class="login-theme-toggle" id="themeToggleBtn" aria-label="Ganti Tema Tampilan" title="Ganti Mode Gelap/Terang">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <span>Tema</span>
+        </button>
+    </div>
 
     <!-- Ambient Layer Blur Background Eclipses -->
     <div class="login-bg-viewport" aria-hidden="true">
@@ -44,7 +84,7 @@
             </header>
 
             <!-- Register Form -->
-            <form action="{{ route('register.post') }}" method="POST" class="login-form">
+            <form action="{{ Route::has('register.post') ? route('register.post') : '#' }}" method="POST" class="login-form">
                 @csrf
 
                 {{-- Error validasi --}}
@@ -210,6 +250,40 @@
 
             makeToggle('togglePasswordBtn', 'registerPassword');
             makeToggle('togglePasswordConfirmBtn', 'registerPasswordConfirm');
+
+            // Theme Toggle Synchronization
+            const themeBtn = document.getElementById('themeToggleBtn');
+            function updateThemeUI(theme) {
+                const isDark = theme === 'dark';
+                if (themeBtn) {
+                    themeBtn.innerHTML = isDark
+                        ? '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>Gelap</span>'
+                        : '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg><span>Terang</span>';
+                    themeBtn.setAttribute('title', isDark ? 'Beralih ke Mode Terang' : 'Beralih ke Mode Gelap');
+                }
+            }
+
+            function applyTheme(theme) {
+                if (theme === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+                try {
+                    localStorage.setItem('tefa_theme', theme);
+                } catch (e) {}
+                updateThemeUI(theme);
+            }
+
+            const currentTheme = localStorage.getItem('tefa_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            updateThemeUI(currentTheme);
+
+            if (themeBtn) {
+                themeBtn.addEventListener('click', function() {
+                    const active = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+                    applyTheme(active === 'dark' ? 'light' : 'dark');
+                });
+            }
         });
     </script>
 

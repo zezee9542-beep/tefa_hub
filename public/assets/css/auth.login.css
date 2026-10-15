@@ -571,3 +571,222 @@ html, body {
     .welcome-title { font-size: 1rem; }
     .btn-google-auth span { font-size: .7rem; }
 }
+
+/* ── TOP ACTION BAR (BACK & THEME TOGGLE) ────────────────── */
+.login-top-bar {
+    position: fixed;
+    top: 20px;
+    left: 24px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 50;
+    pointer-events: none;
+}
+
+.login-top-bar > * {
+    pointer-events: auto;
+}
+
+.login-back-btn,
+.login-theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    color: #334155;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.login-back-btn:hover,
+.login-theme-toggle:hover {
+    background: #ffffff;
+    color: #2563eb;
+    border-color: #bfdbfe;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12);
+}
+
+/* ── DARK THEME ADAPTATION ───────────────────────────────── */
+[data-theme="dark"] html,
+[data-theme="dark"] body {
+    background-color: #0b0f19 !important;
+    color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .login-top-bar .login-back-btn,
+[data-theme="dark"] .login-top-bar .login-theme-toggle {
+    background: rgba(19, 27, 46, 0.85) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #cbd5e1 !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+}
+
+[data-theme="dark"] .login-top-bar .login-back-btn:hover,
+[data-theme="dark"] .login-top-bar .login-theme-toggle:hover {
+    background: rgba(30, 41, 59, 0.95) !important;
+    color: #60a5fa !important;
+    border-color: rgba(96, 165, 250, 0.45) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45) !important;
+}
+
+[data-theme="dark"] .ellipse-top {
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(59, 130, 246, 0.12) 55%, transparent 80%) !important;
+}
+
+[data-theme="dark"] .ellipse-middle {
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, rgba(37, 99, 235, 0.1) 55%, transparent 80%) !important;
+}
+
+[data-theme="dark"] .ellipse-bottom-right {
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, rgba(99, 102, 241, 0.12) 55%, transparent 80%) !important;
+}
+
+[data-theme="dark"] .login-card {
+    background: rgba(19, 27, 46, 0.96) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow:
+        0 24px 60px -12px rgba(0, 0, 0, 0.7),
+        0 12px 32px -8px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-theme="dark"] .login-card:hover {
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    box-shadow:
+        0 30px 70px -10px rgba(0, 0, 0, 0.8),
+        0 0 30px rgba(37, 99, 235, 0.15) !important;
+}
+
+[data-theme="dark"] .logo-badge {
+    background: rgba(30, 41, 59, 0.8) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .welcome-title {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .welcome-subtitle {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .form-label {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .input-wrapper {
+    background: rgba(15, 23, 42, 0.85) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-theme="dark"] .input-wrapper:focus-within {
+    border-color: #3b82f6 !important;
+    background: rgba(15, 23, 42, 0.98) !important;
+    box-shadow: 0 0 0 3.5px rgba(59, 130, 246, 0.25) !important;
+}
+
+[data-theme="dark"] .input-icon {
+    color: #64748b !important;
+}
+
+[data-theme="dark"] .input-wrapper:focus-within .input-icon {
+    color: #60a5fa !important;
+}
+
+[data-theme="dark"] .form-input {
+    color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .form-input::placeholder {
+    color: #64748b !important;
+}
+
+[data-theme="dark"] .btn-toggle-eye {
+    color: #64748b !important;
+}
+
+[data-theme="dark"] .btn-toggle-eye:hover {
+    color: #e2e8f0 !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .forgot-password-link {
+    color: #60a5fa !important;
+}
+
+[data-theme="dark"] .forgot-password-link:hover {
+    color: #93c5fd !important;
+}
+
+[data-theme="dark"] .remember-text {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .custom-checkbox {
+    background: rgba(15, 23, 42, 0.85) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+[data-theme="dark"] .remember-row input[type="checkbox"]:checked ~ .custom-checkbox {
+    background: #2563eb !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.45) !important;
+}
+
+[data-theme="dark"] .btn-submit-primary {
+    background: #2563eb !important;
+    box-shadow: 0 6px 20px -3px rgba(37, 99, 235, 0.45) !important;
+}
+
+[data-theme="dark"] .btn-submit-primary:hover {
+    background: #3b82f6 !important;
+    box-shadow: 0 10px 24px -3px rgba(37, 99, 235, 0.6) !important;
+}
+
+[data-theme="dark"] .card-footer-note {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .link-register {
+    color: #a78bfa !important;
+}
+
+[data-theme="dark"] .link-register:hover {
+    color: #c4b5fd !important;
+}
+
+[data-theme="dark"] .link-admin {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .link-admin:hover {
+    color: #ffffff !important;
+}
+
+@media (max-width: 640px) {
+    .login-top-bar {
+        top: 12px;
+        left: 14px;
+        right: 14px;
+    }
+    .login-back-btn,
+    .login-theme-toggle {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
