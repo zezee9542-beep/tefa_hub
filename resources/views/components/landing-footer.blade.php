@@ -119,6 +119,17 @@
     </div>
 </footer>
 
+{{-- Floating Back-to-Top Navigation Button (Consistent Bottom-Left Pill with Pulse Indicator) --}}
+<button type="button" class="back-to-top-btn" id="backToTopBtn" aria-label="Kembali ke atas" title="Kembali ke atas">
+    <span class="back-to-top-pulse-ring" aria-hidden="true"></span>
+    <span class="back-to-top-icon-wrap" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </span>
+
+</button>
+
 <style>
 .footer-toast {
     position: fixed;
@@ -191,4 +202,48 @@ function handleFooterNewsletter(event, form) {
         }
     }, 450);
 }
+
+// ── Floating Back-to-Top Button Handler ──
+(function() {
+    function initFooterBackToTop() {
+        const btn = document.getElementById('backToTopBtn');
+        if (!btn || btn._bound) return;
+        btn._bound = true;
+
+        let ticking = false;
+        function checkScroll() {
+            const scrolled = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrolled > 300) {
+                btn.classList.add('is-visible');
+            } else {
+                btn.classList.remove('is-visible');
+            }
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(checkScroll);
+                ticking = true;
+            }
+        }, { passive: true });
+        checkScroll();
+
+        btn.addEventListener('click', function() {
+            if (typeof window.tefaScrollToTop === 'function') {
+                window.tefaScrollToTop();
+            } else if (window.__lenis) {
+                window.__lenis.scrollTo(0, { duration: 0.65 });
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFooterBackToTop);
+    } else {
+        initFooterBackToTop();
+    }
+})();
 </script>
