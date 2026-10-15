@@ -38,7 +38,7 @@
     <section class="bkk-hero-section" id="mainContent">
         {{-- Background image.png Artwork (Subtle & Elegant) --}}
         <div class="bkk-hero-bg-artwork" aria-hidden="true">
-            <img src="{{ asset('assets/image.png') }}" alt="" class="bkk-hero-bg-img">
+            
         </div>
 
         {{-- Background Eclipse Glow Accents --}}
