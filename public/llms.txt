@@ -1,0 +1,35 @@
+# Tefa-Hub SMK Antartika 1 Sidoarjo
+
+> Tefa-Hub adalah ekosistem digital terpadu untuk pendidikan vokasi SMK: Akademik, Teaching Factory (BLUD), Praktik Kerja Lapangan (PKL), dan Bursa Kerja Khusus (BKK).
+
+Platform resmi ini mengintegrasikan seluruh tahapan perjalanan siswa vokasi mulai dari pendaftaran peserta didik baru (PPDB), pembelajaran berbasis SKKNI, inkubasi produk unit produksi Teaching Factory (BLUD), monitoring magang industri (PKL), hingga rekrutmen kerja alumni melalui Bursa Kerja Khusus (BKK).
+
+## Layanan Utama & Navigasi
+
+- [Beranda Tefa-Hub](https://tefahub.sch.id/): Gerbang utama ekosistem digital vokasi sekolah dengan ikhtisar program, fasilitas, dan kemitraan.
+- [Profil Sekolah](https://tefahub.sch.id/profil): Profil kelembagaan SMK Antartika 1 Sidoarjo, visi, misi, akreditasi A, dan program keahlian unggulan.
+- [Pusat Karier & Penyaluran Industri (BKK)](https://tefahub.sch.id/bkk): Katalog bursa kerja khusus, lowongan mitra DUDI terverifikasi, dan manajemen portofolio/CV digital siswa.
+- [PPDB Online](https://tefahub.sch.id/ppdb): Pusat informasi penerimaan peserta didik baru, kuota jurusan, jadwal seleksi, dan syarat pendaftaran.
+- [Pendaftaran Online PPDB](https://tefahub.sch.id/ppdb/daftar): Formulir pendaftaran resmi calon peserta didik baru secara mandiri.
+- [Kuis Rekomendasi Jurusan AI](https://tefahub.sch.id/kuis-jurusan): Asesmen minat dan bakat berbasis AI untuk menemukan jurusan kejuruan yang tepat.
+- [Praktik Kerja Lapangan (PKL)](https://tefahub.sch.id/pkl): Sistem kemitraan industri, agenda magang terstruktur, dan sertifikasi kompetensi kejuruan.
+- [Kontak Siswa & Pusat Layanan](https://tefahub.sch.id/kontak): Helpdesk resmi Bimbingan Konseling (BK), Tata Usaha (TU), PPDB, BKK, serta peta kampus terpadu.
+
+## Program Keahlian (Konsentrasi Vokasi)
+
+- [Rekayasa Perangkat Lunak (RPL)](https://tefahub.sch.id/ppdb#rpl): Pengembangan web modern, aplikasi mobile, cloud computing, dan integrasi kecerdasan buatan.
+- [Teknik Kendaraan Ringan (TKR)](https://tefahub.sch.id/ppdb#tkr): Otomotif modern, EFI system, balancing, spooring, dan mekanik kelas industri.
+- [Teknik Elektronika Industri (TEI)](https://tefahub.sch.id/ppdb#tei): Otomasi pabrik, sistem PLC, mikrokontroler, dan instrumentasi digital.
+- [Teknik Instalasi Tenaga Listrik (TITL)](https://tefahub.sch.id/ppdb#titl): Distribusi daya gedung, instalasi tenaga surya, dan panel industri standar PUIL.
+- [Teknik Pemesinan (TPM)](https://tefahub.sch.id/ppdb#tpm): Pembubutan presisi, milling, dan pemrograman mesin CNC berstandar manufaktur nasional.
+
+## Layanan Bantuan Siswa (Helpdesk)
+
+- Bimbingan & Konseling (BK): Konsultasi minat bakat, pengembangan potensi diri, dan pendampingan akademik.
+- Tata Usaha & Kesiswaan (TU): Administrasi siswa, surat keterangan aktif, legalisir ijazah, dan mutasi siswa.
+- Panitia PPDB: Konsultasi pemilihan jurusan, verifikasi berkas, dan informasi beasiswa prestasi.
+- Bursa Kerja Khusus (BKK): Informasi lowongan kerja harian, job fair tahunan, dan pendampingan wawancara industri.
+
+## Optional
+
+- [Tanya Tefa AI Assistant](https://tefahub.sch.id/siswa/tanya-tefa): Asisten interaktif 24/7 untuk menjawab pertanyaan seputar materi akademik, bimbingan magang, dan informasi sekolah.

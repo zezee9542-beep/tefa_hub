@@ -8,10 +8,20 @@
     <title>Pusat Karier &amp; Penyaluran Industri (BKK) — Tefa-Hub</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
 
-    <!-- Google Fonts: Plus Jakarta Sans & Caveat -->
+    <!-- Google Fonts: Plus Jakarta Sans & Caveat (High-Performance Non-Render-Blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+    </noscript>
+
+    <!-- High-Priority LCP Hero Preload -->
+    <link rel="preload" as="image" href="{{ asset('assets/image copy 3.webp') }}" type="image/webp" fetchpriority="high">
+
+    <!-- Agentic AI Discovery & LLM Context -->
+    <link rel="alternate" type="text/markdown" href="{{ url('/llms.txt') }}" title="LLM Context">
 
     <!-- CSS Assets -->
     <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v={{ file_exists(public_path('assets/css/landing.css')) ? filemtime(public_path('assets/css/landing.css')) : '1.0' }}">
@@ -101,7 +111,7 @@
                         <div class="bkk-showcase-card">
                             <div class="bkk-showcase-media">
                                 {{-- Main Hero Card Image using image copy 3.webp --}}
-                                <img src="{{ asset('assets/image copy 3.webp') }}" alt="Pusat Karier dan Layanan Vokasi Tefa-Hub" class="bkk-showcase-img" decoding="async" fetchpriority="high">
+                                <img src="{{ asset('assets/image copy 3.webp') }}" alt="Pusat Karier dan Layanan Vokasi Tefa-Hub" class="bkk-showcase-img" decoding="async" fetchpriority="high" width="940" height="1672">
                                 
                                 {{-- Rating & Caption Top Left --}}
                                 <div class="bkk-showcase-rating-wrap">
@@ -338,7 +348,7 @@
                         
                         {{-- Card Image Area (Enlarged and uses image copy 3.webp) --}}
                         <div class="bkk-card-img-wrap">
-                            <img src="{{ asset('assets/image copy 3.webp') }}" alt="{{ $item['title'] }}" class="bkk-card-img" onerror="this.onerror=null; this.src='{{ asset('assets/Background (14).webp') }}';" loading="lazy">
+                            <img src="{{ asset('assets/image copy 3.webp') }}" alt="{{ $item['title'] }}" class="bkk-card-img" onerror="this.onerror=null; this.src='{{ asset('assets/Background (14).webp') }}';" loading="lazy" width="300" height="152">
                             
                             {{-- Rating Badge Top Left --}}
                             <span class="bkk-card-rating">
@@ -413,10 +423,10 @@
                             <p class="bkk-card-desc">{{ $item['desc'] }}</p>
                         </div>
 
-                        {{-- Card Footer Action --}}
+                        {{-- Card Footer Action (Semantic Anchor Link) --}}
                         <div class="bkk-card-footer">
-                            <span class="bkk-card-link">Lihat Detail</span>
-                            <span class="bkk-card-arrow">
+                            <a href="{{ route('siswa.bkk') }}" class="bkk-card-link" aria-label="Lihat Detail Layanan: {{ $item['title'] }}">Lihat Detail</a>
+                            <span class="bkk-card-arrow" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
                                     <polyline points="12 5 19 12 12 19"></polyline>

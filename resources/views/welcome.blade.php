@@ -7,9 +7,17 @@
     <meta name="description" content="Tefa-Hub — Satu ekosistem digital terpadu untuk akademik, BLUD teaching factory, dan career center siswa SMK.">
     <title>Tefa-Hub | Satu Ekosistem Digital untuk Seluruh Perjalanan Siswa</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
+    <!-- Google Fonts: Plus Jakarta Sans & Caveat (High-Performance Non-Render-Blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+    </noscript>
+
+    <!-- Agentic AI Discovery & LLM Context -->
+    <link rel="alternate" type="text/markdown" href="{{ url('/llms.txt') }}" title="LLM Context">
     <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}?v={{ file_exists(public_path('assets/css/landing.css')) ? filemtime(public_path('assets/css/landing.css')) : '1.0' }}">
     <link rel="stylesheet" href="{{ asset('assets/css/sambutan.css') }}?v={{ file_exists(public_path('assets/css/sambutan.css')) ? filemtime(public_path('assets/css/sambutan.css')) : '1.0' }}">
     <link rel="stylesheet" href="{{ asset('assets/css/logo-marquee.css') }}?v={{ file_exists(public_path('assets/css/logo-marquee.css')) ? filemtime(public_path('assets/css/logo-marquee.css')) : '1.0' }}">

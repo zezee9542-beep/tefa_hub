@@ -1,2 +1,6 @@
 User-agent: *
 Disallow:
+
+# Sitemaps & AI Agent Discovery
+Sitemap: /sitemap.xml
+Agentmap: /llms.txt

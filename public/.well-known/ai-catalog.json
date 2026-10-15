@@ -1,0 +1,33 @@
+{
+  "@context": "https://schema.org",
+  "@type": "AICatalog",
+  "name": "Tefa-Hub AI Capabilities & Vocational Services",
+  "description": "Katalog kapabilitas agen dan layanan vokasi digital SMK Antartika 1 Sidoarjo.",
+  "url": "https://tefahub.sch.id/llms.txt",
+  "entries": [
+    {
+      "@type": "AgentSkill",
+      "identifier": "urn:tefahub:skills:bkk-career-discovery",
+      "name": "BKK Career & Job Discovery",
+      "description": "Menelusuri informasi lowongan kerja, kualifikasi industri, dan bursa kerja khusus siswa SMK.",
+      "tags": ["career", "bkk", "vokasi", "lowongan"],
+      "url": "https://tefahub.sch.id/bkk"
+    },
+    {
+      "@type": "AgentSkill",
+      "identifier": "urn:tefahub:skills:ppdb-admission-info",
+      "name": "PPDB Vocational Admission Discovery",
+      "description": "Informasi jalur penerimaan peserta didik baru, syarat pendaftaran, dan biaya sekolah.",
+      "tags": ["ppdb", "admission", "sekolah"],
+      "url": "https://tefahub.sch.id/ppdb"
+    },
+    {
+      "@type": "AgentSkill",
+      "identifier": "urn:tefahub:skills:student-helpdesk-contact",
+      "name": "Student Helpdesk & Campus Contacts",
+      "description": "Menghubungi unit layanan sekolah seperti BK, TU, PPDB, dan BKK.",
+      "tags": ["kontak", "helpdesk", "layanan-siswa"],
+      "url": "https://tefahub.sch.id/kontak"
+    }
+  ]
+}

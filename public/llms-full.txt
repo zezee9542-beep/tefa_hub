@@ -1,0 +1,21 @@
+# Tefa-Hub SMK Antartika 1 Sidoarjo — Full Documentation Context
+
+> Platform ekosistem digital terpadu untuk pendidikan vokasi SMK: Akademik, Teaching Factory (BLUD), Praktik Kerja Lapangan (PKL), dan Bursa Kerja Khusus (BKK).
+
+## Ikhtisar Platform
+Tefa-Hub adalah portal sistem informasi terintegrasi milik SMK Antartika 1 Sidoarjo yang dirancang khusus untuk memfasilitasi kebutuhan seluruh pemangku kepentingan:
+1. Calon Peserta Didik & Orang Tua: Pendaftaran PPDB, kuis minat bakat AI, profil sekolah dan biaya.
+2. Siswa Aktif: Modul pembelajaran kejuruan, e-rapor vokasi, unit produksi BLUD Teaching Factory, dan logbook PKL.
+3. Guru & Pembimbing: Pemantauan presensi dan penilaian kompetensi siswa magang secara real-time.
+4. Mitra DUDI (Dunia Usaha & Dunia Industri): Penyusunan kurikulum industri, penempatan siswa magang PKL, dan rekrutmen kerja lulusan (BKK).
+5. Alumni: Akses bursa lowongan kerja terverifikasi, jejaring karir, dan legalisir dokumen ijazah online.
+
+## Navigasi Lengkap
+- Beranda: https://tefahub.sch.id/
+- Profil Sekolah: https://tefahub.sch.id/profil
+- PPDB: https://tefahub.sch.id/ppdb
+- Pendaftaran PPDB: https://tefahub.sch.id/ppdb/daftar
+- Kuis Jurusan: https://tefahub.sch.id/kuis-jurusan
+- Pusat Karir & BKK: https://tefahub.sch.id/bkk
+- PKL & Magang Industri: https://tefahub.sch.id/pkl
+- Kontak Siswa & Sekolah: https://tefahub.sch.id/kontak
