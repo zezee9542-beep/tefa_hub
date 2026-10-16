@@ -346,6 +346,9 @@
     gap: 4px;
     white-space: nowrap;
     flex-shrink: 0;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
     box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
     transition: all 0.2s ease;
 }
@@ -689,6 +692,11 @@
     align-items: center;
     gap: 4px;
     transition: color 0.2s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
 }
 .bkk-service-card:hover .bkk-card-link {
     color: #1d4ed8;
@@ -974,4 +982,426 @@
 [data-theme="dark"] .bkk-card-icon-inner {
     background: rgba(37, 99, 235, 0.2) !important;
     color: #60a5fa !important;
+}
+
+/* ═════════════════════════════════════════════════════════════
+   BKK SERVICE DETAIL MODAL (CLEAN SOFT-UI POPUP)
+   ═════════════════════════════════════════════════════════════ */
+
+body.bkk-modal-open {
+    overflow: hidden !important;
+}
+
+.bkk-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease;
+}
+
+.bkk-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.bkk-modal-card {
+    background: #ffffff;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 680px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 70px -12px rgba(15, 23, 42, 0.35), 0 0 0 1px rgba(226, 232, 240, 0.8);
+    overflow: hidden;
+    transform: scale(0.88) translateY(20px);
+    opacity: 0;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+}
+
+.bkk-modal-overlay.active .bkk-modal-card {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* Modal Header */
+.bkk-modal-header {
+    padding: 22px 26px 18px;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    background: #fafcff;
+}
+
+.bkk-modal-header-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    flex: 1;
+}
+
+.bkk-modal-icon-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: #eff6ff;
+    border: 1.5px solid #dbeafe;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+}
+
+.bkk-modal-icon-box svg {
+    width: 26px;
+    height: 26px;
+}
+
+.bkk-modal-title-area {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.bkk-modal-badge-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.bkk-modal-badge-pill {
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    line-height: 1.3;
+}
+
+.bkk-modal-badge-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.bkk-modal-badge-rating svg {
+    flex-shrink: 0;
+}
+
+.bkk-modal-title {
+    font-size: 19px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.3;
+    margin: 4px 0 2px 0;
+}
+
+.bkk-modal-price {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #2563eb;
+    margin: 0;
+}
+
+.bkk-modal-close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.bkk-modal-close-btn:hover {
+    background: #fee2e2;
+    color: #ef4444;
+    border-color: #fecaca;
+    transform: rotate(90deg);
+}
+
+/* Modal Body */
+.bkk-modal-body {
+    padding: 22px 26px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Badges Grid (4 items) */
+.bkk-modal-badges-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 12px 14px;
+}
+
+.bkk-modal-badge-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.bkk-modal-badge-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.bkk-modal-badge-value {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.bkk-modal-badge-value svg {
+    color: #2563eb;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+/* Sections */
+.bkk-modal-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.bkk-modal-section-title {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.bkk-modal-section-title svg {
+    color: #2563eb;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.bkk-modal-desc {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #475569;
+    margin: 0;
+}
+
+/* List with checkmark icons */
+.bkk-modal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.bkk-modal-list-item {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #334155;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.bkk-modal-list-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #eff6ff;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.bkk-modal-list-icon svg {
+    width: 11px;
+    height: 11px;
+    stroke-width: 3;
+}
+
+.bkk-modal-list-icon.green {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+/* Modal Footer */
+.bkk-modal-footer {
+    padding: 16px 26px;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    background: #fafcff;
+}
+
+.bkk-modal-btn-close {
+    padding: 10px 18px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #475569;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.bkk-modal-btn-close:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+.bkk-modal-btn-action {
+    padding: 10px 22px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #ffffff;
+    background: #16a34a;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
+    transition: all 0.2s ease;
+}
+
+.bkk-modal-btn-action:hover {
+    background: #15803d;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(22, 163, 74, 0.35);
+}
+
+/* Dark mode support */
+[data-theme="dark"] .bkk-modal-card {
+    background: #131b2e !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 25px 70px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .bkk-modal-header,
+[data-theme="dark"] .bkk-modal-footer {
+    background: #0f172a !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .bkk-modal-title {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .bkk-modal-desc {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .bkk-modal-section-title {
+    color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .bkk-modal-badges-grid {
+    background: #0f172a !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .bkk-modal-badge-value {
+    color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .bkk-modal-list-item {
+    color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .bkk-modal-close-btn {
+    background: #1e293b !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .bkk-modal-close-btn:hover {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .bkk-modal-btn-close {
+    background: #1e293b !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #cbd5e1 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .bkk-modal-card {
+        max-height: 94vh;
+        border-radius: 20px;
+    }
+    .bkk-modal-header {
+        padding: 16px 18px 14px;
+    }
+    .bkk-modal-body {
+        padding: 16px 18px;
+        gap: 16px;
+    }
+    .bkk-modal-badges-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    .bkk-modal-footer {
+        padding: 14px 18px;
+        flex-direction: column-reverse;
+    }
+    .bkk-modal-btn-close,
+    .bkk-modal-btn-action {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
 }

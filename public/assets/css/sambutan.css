@@ -14,14 +14,14 @@
     display: grid;
     grid-template-columns: 390px 1fr;
     gap: 56px;
-    align-items: start;
+    align-items: center;
 }
 
 /* ── Left: Photo Frame & Floating Badge ────────────────────────────── */
 .principal-photo-wrapper {
     position: relative;
     width: 100%;
-    max-width: 410px;
+    max-width: 410px;   
     margin: 0 auto;
 }
 
@@ -32,7 +32,7 @@
     border-radius: 26px;
     overflow: hidden;
     background: #f1f5f9;
-    box-shadow: 
+    box-shadow:
         0 20px 45px -12px rgba(15, 23, 42, 0.12),
         0 4px 16px -2px rgba(15, 23, 42, 0.04);
     border: 1px solid rgba(226, 232, 240, 0.8);
@@ -61,7 +61,7 @@
     border: 1px solid rgba(226, 232, 240, 0.9);
     border-radius: 14px;
     padding: 12px 18px;
-    box-shadow: 
+    box-shadow:
         0 12px 28px -6px rgba(15, 23, 42, 0.14),
         0 4px 10px -2px rgba(0, 0, 0, 0.04);
     z-index: 3;
@@ -164,7 +164,7 @@
     border: 1px solid rgba(226, 232, 240, 0.95);
     border-radius: 20px;
     box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
-    transition: 
+    transition:
         transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
         box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
         border-color 0.3s ease;
