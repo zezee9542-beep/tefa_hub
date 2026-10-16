@@ -8,6 +8,12 @@
     <title>Eksplorasi Peluang PKL & Karier Industri Mitra — Tefa-Hub</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
 
+    <x-meta-og 
+        title="Eksplorasi Peluang PKL & Karier Industri Mitra — Tefa-Hub"
+        description="Eksplorasi Peluang PKL & Karier Industri Mitra — Jembatan resmi talenta vokasi Tefa-Hub menuju DUDI melalui program Praktik Kerja Lapangan bersertifikasi, magang industri, dan rekrutmen kerja terpercaya."
+    />
+
+
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

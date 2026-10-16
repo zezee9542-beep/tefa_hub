@@ -8,6 +8,12 @@
     <title>Kontak Siswa &amp; Sekolah — SMK Antartika 1 Sidoarjo | Tefa-Hub</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
 
+    <x-meta-og 
+        title="Kontak Siswa & Sekolah — SMK Antartika 1 Sidoarjo | Tefa-Hub"
+        description="Pusat Layanan Bantuan & Kontak Siswa Resmi SMK Antartika 1 Sidoarjo — Hubungi layanan Bimbingan Konseling (BK), Tata Usaha, PPDB, Bursa Kerja Khusus (BKK), dan Teaching Factory."
+    />
+
+
     <!-- Immediate Theme Script: Prevent FOUC across all pages -->
     <script>
     (function() {

@@ -8,6 +8,12 @@
     <title>Profil Sekolah — SMK Antartika 1 Sidoarjo | Tefa-Hub</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
 
+    <x-meta-og 
+        title="Profil Sekolah — SMK Antartika 1 Sidoarjo | Tefa-Hub"
+        description="Profil Resmi SMK Antartika 1 Sidoarjo di TefaHub — Sekolah vokasi teknik unggulan terakreditasi A (Unggul) sejak 1974. Visi, 5 program keahlian (TPM, TKR, RPL, TITL, TEI), kemitraan 100+ industri DUDI, serta fasilitas workshop industri modern."
+    />
+
+
     <!-- Google Fonts: Plus Jakarta Sans & Caveat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

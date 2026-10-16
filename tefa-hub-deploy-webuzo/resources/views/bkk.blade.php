@@ -8,6 +8,12 @@
     <title>Pusat Karier &amp; Penyaluran Industri (BKK) — Tefa-Hub</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
 
+    <x-meta-og 
+        title="Pusat Karier & Penyaluran Industri (BKK) — Tefa-Hub"
+        description="Pusat Karier & Penyaluran Industri (BKK Tefa-Hub) — Akses lowongan terverifikasi dari mitra DUDI nasional, pantau proses seleksi kerja & PKL, serta bangun CV Digital dan portofolio kompetensi berstandar SKKNI."
+    />
+
+
     <!-- Google Fonts: Plus Jakarta Sans & Caveat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

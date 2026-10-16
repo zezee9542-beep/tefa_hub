@@ -32,7 +32,7 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
 </button>
 
 {{-- Help Panel Modal --}}
-<div id="ai-navigator-panel" class="ai-panel" role="dialog" aria-label="Pusat Bantuan Tefa-Hub" aria-hidden="true">
+<div id="ai-navigator-panel" class="ai-panel" role="dialog" aria-label="Pusat Bantuan Tefa-Hub" aria-hidden="true" data-lenis-prevent="true" data-scrollable="true">
 
     {{-- Panel Header --}}
     <div class="ai-header">
@@ -77,7 +77,7 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
     </div>
 
     {{-- Greeting Card --}}
-    <div class="ai-greeting-card" id="ai-greeting-card">
+    <div class="ai-greeting-card" id="ai-greeting-card" data-lenis-prevent="true">
         <p class="ai-greeting-kicker">{{ $greetingKicker }}</p>
         <p class="ai-greeting-label">{{ $greetingTitle }} <span aria-hidden="true">👋</span></p>
         <p class="ai-greeting-sub">{{ $greetingSub }}</p>
@@ -112,7 +112,7 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
     </div>
 
     {{-- Conversation Area --}}
-    <div class="ai-conversation" id="ai-messages" role="log" aria-live="polite">
+    <div class="ai-conversation" id="ai-messages" role="log" aria-live="polite" data-lenis-prevent="true" data-scrollable="true">
         <div class="ai-loading-row" id="ai-initial-typing">
             <div class="ai-loading-dots"><span></span><span></span><span></span></div>
             <span class="ai-loading-text">Menghubungkan asisten...</span>
@@ -120,7 +120,7 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
     </div>
 
     {{-- Quick Actions --}}
-    <div class="ai-quick-actions" id="ai-suggestions"></div>
+    <div class="ai-quick-actions" id="ai-suggestions" data-lenis-prevent="true"></div>
 
     {{-- Input Bar --}}
     <div class="ai-input-wrap">
@@ -423,6 +423,12 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
 
             initSpeechRecognition();
 
+            if (conversation) {
+                conversation.addEventListener('wheel', (e) => {
+                    e.stopPropagation();
+                }, { passive: true });
+            }
+
             function openPanel() {
                 isOpen = true;
                 panel.classList.add('is-open');
@@ -563,7 +569,7 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
             row.className = 'ai-row ai-row--user';
             row.innerHTML = `<div class="ai-msg ai-msg--user">${esc(text)}</div>`;
             conversation.appendChild(row);
-            scrollEnd();
+            scrollEnd(true);
         }
 
         // ── Live Streaming Simulation Typewriter for Replies ──
@@ -619,7 +625,7 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
             // Live stream typing simulation
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 bodyEl.innerHTML = fullHtml;
-                scrollEnd();
+                scrollEnd(true);
                 if (sugg.length) buildQuickActions(sugg);
                 return;
             }
@@ -635,13 +641,13 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
                     buffer += words[currentIndex++];
                 }
                 bodyEl.innerHTML = buffer + '<span class="ai-streaming-cursor" aria-hidden="true"></span>';
-                scrollEnd();
+                scrollEnd(false);
 
                 if (currentIndex < words.length) {
                     setTimeout(streamStep, 16);
                 } else {
                     bodyEl.innerHTML = fullHtml;
-                    scrollEnd();
+                    scrollEnd(false);
                     if (sugg.length) buildQuickActions(sugg);
                 }
             }
@@ -660,15 +666,22 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
                 row.className = 'ai-row ai-row--reply';
                 row.innerHTML = `<div class="ai-msg ai-msg--reply ai-msg--loading"><div class="ai-loading-dots"><span></span><span></span><span></span></div></div>`;
                 conversation.appendChild(row);
-                scrollEnd();
+                scrollEnd(true);
             } else {
                 document.getElementById('ai-busy-row')?.remove();
             }
         }
 
-        function scrollEnd() {
+        function isUserNearBottom() {
+            if (!conversation) return true;
+            return (conversation.scrollHeight - conversation.scrollTop - conversation.clientHeight) <= 120;
+        }
+
+        function scrollEnd(force = false) {
             requestAnimationFrame(() => {
-                if (conversation) conversation.scrollTop = conversation.scrollHeight;
+                if (conversation && (force || isUserNearBottom())) {
+                    conversation.scrollTop = conversation.scrollHeight;
+                }
             });
         }
 

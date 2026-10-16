@@ -20,6 +20,12 @@
     <title>PPDB SMK Antartika 1 Sidoarjo TA {{ $currentYear }}/{{ (int)$currentYear + 1 }} — TEFA-Hub</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
 
+    <x-meta-og 
+        :title="'PPDB SMK Antartika 1 Sidoarjo TA ' . $currentYear . '/' . ((int)$currentYear + 1) . ' — TEFA-Hub'"
+        :description="'Penerimaan Peserta Didik Baru (PPDB) SMK Antartika 1 Sidoarjo Tahun Ajaran ' . $currentYear . '/' . ((int)$currentYear + 1) . '. Wujudkan masa depanmu bersama ekosistem pendidikan vokasi unggul dan siap industri.'"
+    />
+
+
     <!-- Google Fonts: Plus Jakarta Sans (High-Performance Non-Render-Blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

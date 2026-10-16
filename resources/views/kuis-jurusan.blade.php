@@ -8,6 +8,12 @@
     <title>TEFA AI Career Discovery — SMK Antartika 1 Sidoarjo</title>
     <link rel="icon" type="image/webp" href="{{ asset('assets/logo.webp') }}">
 
+    <x-meta-og 
+        title="TEFA AI Career Discovery — SMK Antartika 1 Sidoarjo"
+        description="TEFA AI Career Discovery SMK Antartika 1 Sidoarjo — Temukan jurusan vokasi yang paling sesuai dengan minat, potensi, dan impian kariermu dalam 60 detik."
+    />
+
+
     <!-- Google Fonts: Plus Jakarta Sans (High-Performance Non-Render-Blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -11,17 +11,8 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
     {{-- Open Graph & Social Cards --}}
-    <meta property="og:locale" content="id_ID">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Tefa-Hub | Satu Ekosistem Digital SMK Antartika 1 Sidoarjo">
-    <meta property="og:description" content="Satu ekosistem digital terpadu untuk pembelajaran kurikulum industri SKKNI, unit produksi BLUD Teaching Factory, PKL, dan BKK SMK Antartika 1 Sidoarjo.">
-    <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:site_name" content="Tefa-Hub">
-    <meta property="og:image" content="{{ asset('assets/logo.webp') }}">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tefa-Hub | Satu Ekosistem Digital SMK Antartika 1 Sidoarjo">
-    <meta name="twitter:description" content="Satu ekosistem digital terpadu untuk pembelajaran kurikulum industri SKKNI, unit produksi BLUD Teaching Factory, PKL, dan BKK SMK Antartika 1 Sidoarjo.">
-    <meta name="twitter:image" content="{{ asset('assets/logo.webp') }}">
+    <x-meta-og />
+
 
     {{-- LCP Hero Image Preload for 95+ Performance --}}
     <link rel="preload" as="image" href="{{ asset('assets/image.webp') }}" type="image/webp" fetchpriority="high">
