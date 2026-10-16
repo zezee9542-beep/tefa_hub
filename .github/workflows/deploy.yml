@@ -39,7 +39,7 @@ jobs:
           script_stop: true
           script: |
             cd /home/tefahub/apps/tefa_hub
-            composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
+            /usr/local/apps/php83/bin/php $(which composer) install --no-dev --prefer-dist --no-interaction --optimize-autoloader
             /usr/local/apps/php83/bin/php artisan migrate --force
             /usr/local/apps/php83/bin/php artisan optimize:clear
             /usr/local/apps/php83/bin/php artisan config:cache
