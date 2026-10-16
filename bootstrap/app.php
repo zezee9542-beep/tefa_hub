@@ -19,6 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->trustProxies(at: '*');
         $middleware->validateCsrfTokens(except: [
             'ai-navigator/chat',
+            'ai-navigator/tts',
         ]);
         $middleware->alias([
             'role' => RoleMiddleware::class,

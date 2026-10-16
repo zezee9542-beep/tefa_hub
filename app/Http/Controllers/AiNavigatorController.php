@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\GoogleTtsService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -680,6 +681,36 @@ class AiNavigatorController extends Controller
 
         // 4. Fallback when AI API is unavailable
         return response()->json($this->generateSmartFallback($userMessage));
+    }
+
+    /**
+     * Synthesize speech audio using Google Cloud Text-to-Speech.
+     */
+    public function tts(Request $request, GoogleTtsService $ttsService): JsonResponse
+    {
+        Validator::make($request->all(), [
+            'text' => ['required', 'string', 'max:5000'],
+            'voice' => ['nullable', 'string', 'max:60'],
+        ])->validate();
+
+        $text = trim((string) $request->input('text'));
+        $voice = $request->input('voice') ? trim((string) $request->input('voice')) : null;
+
+        $result = $ttsService->synthesizeDataUri($text, $voice);
+
+        if ($result === null) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Layanan Google Cloud TTS sedang tidak tersedia.',
+                'audio' => null,
+            ], 503);
+        }
+
+        return response()->json([
+            'success' => true,
+            'audio' => $result['audio'],
+            'cached' => $result['cached'],
+        ]);
     }
 
     /**

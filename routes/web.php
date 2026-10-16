@@ -156,4 +156,7 @@ Route::prefix('ai-navigator')
         Route::post('/chat', [AiNavigatorController::class, 'chat'])
             ->middleware('throttle:ai-chat')
             ->name('chat');
+        Route::post('/tts', [AiNavigatorController::class, 'tts'])
+            ->middleware('throttle:ai-tts')
+            ->name('tts');
     });

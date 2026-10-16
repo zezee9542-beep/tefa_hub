@@ -2591,6 +2591,11 @@ body.drawer-open .ai-trigger {
     color: #ef4444;
     border-color: #fca5a5;
 }
+.ai-tts-btn.is-loading {
+    opacity: 0.75;
+    pointer-events: none;
+    cursor: wait;
+}
 .ai-mic-btn {
     width: 32px;
     height: 32px;

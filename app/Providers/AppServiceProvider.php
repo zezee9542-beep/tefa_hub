@@ -41,6 +41,9 @@ class AppServiceProvider extends ServiceProvider
         // AI chat: 20 req/min per IP (configurable via AI_CHAT_RATE_LIMIT)
         RateLimiter::for('ai-chat', fn (Request $request) => Limit::perMinute((int) env('AI_CHAT_RATE_LIMIT', 20))->by($request->ip()));
 
+        // AI TTS: 30 req/min per IP (configurable via AI_TTS_RATE_LIMIT)
+        RateLimiter::for('ai-tts', fn (Request $request) => Limit::perMinute((int) env('AI_TTS_RATE_LIMIT', 30))->by($request->ip()));
+
         // Registration: 10 per hour per IP
         RateLimiter::for('registration', fn (Request $request) => Limit::perHour(10)->by($request->ip()));
 

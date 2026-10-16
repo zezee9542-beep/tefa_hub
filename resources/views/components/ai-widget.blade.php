@@ -157,8 +157,9 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
         if (window.__aiWidgetLoaded) return;
         window.__aiWidgetLoaded = true;
 
-        const GREET_URL = '{{ route("ai.greet") }}';
-        const CHAT_URL = '{{ route("ai.chat") }}';
+        const GREET_URL = '{{ route("ai.greet", [], false) }}';
+        const CHAT_URL = '{{ route("ai.chat", [], false) }}';
+        const TTS_URL = '{{ route("ai.tts", [], false) }}';
         const CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]')?.content || '';
         const AI_GREETING_KEY = 'tefa-hub-ai-greeting-played-v2';
         const AI_SOUND_KEY = 'tefa-hub-ai-sound-enabled';
@@ -170,6 +171,8 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
         let hasPlayedAiGreeting = sessionStorage.getItem(AI_GREETING_KEY) === 'played';
         let isSoundEnabled = localStorage.getItem(AI_SOUND_KEY) !== 'false';
         let currentSpeakingUtterance = null;
+        let activeAudio = null;
+        let activeTtsBtn = null;
         let speechRecognition = null;
         let isListening = false;
 
@@ -220,26 +223,88 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
             playTone(880, 'sine', 0.18, 0.16, 0.05);
         }
 
-        function speakAiGreeting() {
-            if (hasPlayedAiGreeting || !('speechSynthesis' in window)) {
+        function stopSpeaking() {
+            if (activeAudio) {
+                try {
+                    activeAudio.pause();
+                    activeAudio.currentTime = 0;
+                } catch (_) {}
+                activeAudio = null;
+            }
+            if (window.speechSynthesis && window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+            }
+            currentSpeakingUtterance = null;
+            document.querySelectorAll('.ai-tts-btn').forEach(b => {
+                b.classList.remove('is-playing', 'is-loading');
+                b.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Dengarkan`;
+            });
+            activeTtsBtn = null;
+        }
+
+        async function speakAiGreeting() {
+            if (hasPlayedAiGreeting || !isSoundEnabled) {
                 return;
             }
 
             hasPlayedAiGreeting = true;
             sessionStorage.setItem(AI_GREETING_KEY, 'played');
 
+            const greetingText = 'Selamat datang di TefaHub. Saya Asisten TefaHub. Silakan sampaikan kebutuhan Anda. Dengan senang hati, saya siap membantu.';
+
+            try {
+                const res = await fetch(TTS_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': CSRF_TOKEN,
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ text: greetingText })
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.audio) {
+                        stopSpeaking();
+                        activeAudio = new Audio(data.audio);
+                        activeAudio.onended = () => { activeAudio = null; };
+                        activeAudio.onerror = (e) => {
+                            console.warn('[Tanya Tefa TTS] Audio error:', e);
+                            fallbackBrowserGreeting();
+                        };
+                        const playPromise = activeAudio.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch((err) => {
+                                console.warn('[Tanya Tefa TTS] Play prevented by browser:', err);
+                                fallbackBrowserGreeting();
+                            });
+                        }
+                        return;
+                    }
+                } else {
+                    console.warn('[Tanya Tefa TTS] Fetch returned status:', res.status);
+                }
+            } catch (err) {
+                console.warn('[Tanya Tefa TTS] Network or parse error:', err);
+            }
+
+            fallbackBrowserGreeting();
+        }
+
+        function fallbackBrowserGreeting() {
+            if (!('speechSynthesis' in window)) return;
             const voices = window.speechSynthesis.getVoices();
             const indonesianVoices = voices.filter((voice) => voice.lang.toLowerCase().startsWith('id'));
-            const voice = indonesianVoices.find((availableVoice) => /female|woman|perempuan/i.test(availableVoice.name))
-                ?? indonesianVoices.find((availableVoice) => /google|microsoft/i.test(availableVoice.name))
+            const voice = indonesianVoices.find((availableVoice) => /male|pria|laki|ardhi/i.test(availableVoice.name))
                 ?? indonesianVoices[0]
                 ?? voices.find((availableVoice) => availableVoice.lang.toLowerCase().startsWith('id'));
             const utterance = new SpeechSynthesisUtterance('Selamat datang di TefaHub. Saya Asisten TefaHub. Silakan sampaikan kebutuhan Anda. Dengan senang hati, saya siap membantu.');
 
             utterance.lang = 'id-ID';
-            utterance.rate = 0.85;
-            utterance.pitch = 0.98;
-            utterance.volume = 0.9;
+            utterance.rate = 1.02;
+            utterance.pitch = 1.05;
+            utterance.volume = 0.95;
 
             if (voice) {
                 utterance.voice = voice;
@@ -249,49 +314,101 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
             window.speechSynthesis.speak(utterance);
         }
 
-        function speakText(text, btnEl) {
-            if (!('speechSynthesis' in window)) return;
-
-            if (window.speechSynthesis.speaking) {
-                window.speechSynthesis.cancel();
-                document.querySelectorAll('.ai-tts-btn').forEach(b => {
-                    b.classList.remove('is-playing');
-                    b.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Dengarkan`;
-                });
-                if (currentSpeakingUtterance && currentSpeakingUtterance._btn === btnEl) {
-                    currentSpeakingUtterance = null;
-                    return;
-                }
+        async function speakText(text, btnEl) {
+            // Clicking the active playing button stops playback
+            if (activeTtsBtn === btnEl && (activeAudio || (window.speechSynthesis && window.speechSynthesis.speaking))) {
+                stopSpeaking();
+                return;
             }
 
-            // Strip HTML & markdown symbols for smooth natural reading
+            stopSpeaking();
+
             const plain = text.replace(/<[^>]*>/g, '').replace(/[*_#`[\]()]/g, ' ').replace(/\s+/g, ' ').trim();
             if (!plain) return;
 
+            if (btnEl) {
+                btnEl.classList.add('is-loading');
+                btnEl.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9" stroke-dasharray="32" stroke-dashoffset="10"/></svg> Memuat...`;
+            }
+
+            try {
+                const res = await fetch(TTS_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': CSRF_TOKEN,
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ text: plain })
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.audio) {
+                        activeAudio = new Audio(data.audio);
+                        activeTtsBtn = btnEl;
+
+                        if (btnEl) {
+                            btnEl.classList.remove('is-loading');
+                            btnEl.classList.add('is-playing');
+                            btnEl.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Berhenti`;
+                        }
+
+                        activeAudio.onended = () => {
+                            stopSpeaking();
+                        };
+                        activeAudio.onerror = (e) => {
+                            console.warn('[Tanya Tefa TTS] Audio error:', e);
+                            fallbackBrowserSpeech(plain, btnEl);
+                        };
+
+                        const playPromise = activeAudio.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch((err) => {
+                                console.warn('[Tanya Tefa TTS] Play error:', err);
+                                fallbackBrowserSpeech(plain, btnEl);
+                            });
+                        }
+                        return;
+                    }
+                } else {
+                    console.warn('[Tanya Tefa TTS] API error HTTP status:', res.status);
+                }
+            } catch (err) {
+                console.warn('[Tanya Tefa TTS] Fetch exception:', err);
+            }
+
+            fallbackBrowserSpeech(plain, btnEl);
+        }
+
+        function fallbackBrowserSpeech(plain, btnEl) {
+            if (!('speechSynthesis' in window)) {
+                stopSpeaking();
+                return;
+            }
+
             const utterance = new SpeechSynthesisUtterance(plain);
             utterance.lang = 'id-ID';
-            utterance.rate = 0.92;
-            utterance.pitch = 1.0;
+            utterance.rate = 1.02;
+            utterance.pitch = 1.05;
             utterance._btn = btnEl;
 
             const voices = window.speechSynthesis.getVoices();
             const indonesianVoices = voices.filter(v => v.lang.toLowerCase().startsWith('id'));
-            const voice = indonesianVoices.find(v => /female|perempuan|google|microsoft/i.test(v.name)) || indonesianVoices[0];
+            const voice = indonesianVoices.find(v => /male|pria|laki|ardhi/i.test(v.name)) || indonesianVoices[0];
             if (voice) utterance.voice = voice;
 
             utterance.onstart = () => {
+                activeTtsBtn = btnEl;
                 if (btnEl) {
+                    btnEl.classList.remove('is-loading');
                     btnEl.classList.add('is-playing');
                     btnEl.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Berhenti`;
                 }
             };
 
             utterance.onend = utterance.onerror = () => {
-                if (btnEl) {
-                    btnEl.classList.remove('is-playing');
-                    btnEl.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Dengarkan`;
-                }
-                currentSpeakingUtterance = null;
+                stopSpeaking();
             };
 
             currentSpeakingUtterance = utterance;
@@ -405,7 +522,7 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
             // Initialize reset conversation button
             if (resetBtn) {
                 resetBtn.addEventListener('click', () => {
-                    if (window.speechSynthesis) window.speechSynthesis.cancel();
+                    stopSpeaking();
                     if (conversation) {
                         conversation.innerHTML = '';
                     }
@@ -452,7 +569,7 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
                 toggleBtn.setAttribute('aria-expanded', 'false');
                 toggleBtn.classList.remove('is-hidden');
                 document.body.classList.remove('ai-panel-open');
-                if (window.speechSynthesis) window.speechSynthesis.cancel();
+                stopSpeaking();
                 if (isListening && speechRecognition) speechRecognition.stop();
             }
 

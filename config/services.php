@@ -45,4 +45,13 @@ return [
         'max_output_tokens' => (int) env('AI_NAVIGATOR_MAX_OUTPUT_TOKENS', 220),
     ],
 
+    'google_tts' => [
+        'credentials' => env('GOOGLE_APPLICATION_CREDENTIALS', storage_path('app/google/google-tts.json')),
+        'language_code' => env('GOOGLE_TTS_LANGUAGE_CODE', 'id-ID'),
+        'voice_name' => env('GOOGLE_TTS_VOICE_NAME', 'id-ID-Wavenet-B'),
+        'speaking_rate' => (float) env('GOOGLE_TTS_SPEAKING_RATE', 1.05),
+        'pitch' => (float) env('GOOGLE_TTS_PITCH', 1.2),
+        'cache_ttl' => (int) env('GOOGLE_TTS_CACHE_TTL', 604800), // 7 days in seconds
+    ],
+
 ];
