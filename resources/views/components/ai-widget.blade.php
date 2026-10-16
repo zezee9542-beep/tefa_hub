@@ -79,33 +79,74 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
     {{-- Greeting Card --}}
     <div class="ai-greeting-card" id="ai-greeting-card" data-lenis-prevent="true">
         <p class="ai-greeting-kicker">{{ $greetingKicker }}</p>
-        <p class="ai-greeting-label">{{ $greetingTitle }} <span aria-hidden="true">👋</span></p>
+        <p class="ai-greeting-label">{{ $greetingTitle }}</p>
         <p class="ai-greeting-sub">{{ $greetingSub }}</p>
         <p class="ai-role-label">Pilih Peran Anda Untuk Navigasi Cepat:</p>
         <div class="ai-nav-categories">
             <button class="ai-nav-cat" type="button"
                 onclick="window.sendNavChip && window.sendNavChip('Saya Mitra Industri / Perusahaan')">
-                <span class="ai-nav-cat-icon">🏢</span>
+                <span class="ai-nav-cat-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                        <path d="M9 22v-4h6v4"></path>
+                        <path d="M8 6h.01"></path>
+                        <path d="M16 6h.01"></path>
+                        <path d="M12 6h.01"></path>
+                        <path d="M12 10h.01"></path>
+                        <path d="M12 14h.01"></path>
+                        <path d="M16 10h.01"></path>
+                        <path d="M16 14h.01"></path>
+                        <path d="M8 10h.01"></path>
+                        <path d="M8 14h.01"></path>
+                    </svg>
+                </span>
                 <div><strong>Mitra Industri</strong><span>Kerjasama TEFA & PKL</span></div>
             </button>
             <button class="ai-nav-cat" type="button"
                 onclick="window.sendNavChip && window.sendNavChip('Saya Orang Tua / Calon Siswa (Info PPDB)')">
-                <span class="ai-nav-cat-icon">👨‍👩‍👧</span>
+                <span class="ai-nav-cat-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </span>
                 <div><strong>Orang Tua & Calon</strong><span>PPDB & Jurusan</span></div>
             </button>
             <button class="ai-nav-cat" type="button"
                 onclick="window.sendNavChip && window.sendNavChip('Saya Guru Pembimbing / Pendidik')">
-                <span class="ai-nav-cat-icon">👨‍🏫</span>
+                <span class="ai-nav-cat-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                </span>
                 <div><strong>Guru Pembimbing</strong><span>Monitoring PKL & Nilai</span></div>
             </button>
             <button class="ai-nav-cat" type="button"
                 onclick="window.sendNavChip && window.sendNavChip('Saya Siswa Aktif SMK')">
-                <span class="ai-nav-cat-icon">🎓</span>
+                <span class="ai-nav-cat-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                </span>
                 <div><strong>Siswa Aktif</strong><span>BLUD, Magang & Rapor</span></div>
             </button>
             <button class="ai-nav-cat ai-nav-cat-wide" type="button"
                 onclick="window.sendNavChip && window.sendNavChip('Saya Admin / Pengelola Sistem')">
-                <span class="ai-nav-cat-icon">🏛️</span>
+                <span class="ai-nav-cat-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 21h18"></path>
+                        <path d="M3 10h18"></path>
+                        <path d="M5 10v11"></path>
+                        <path d="M19 10v11"></path>
+                        <path d="M9 10v11"></path>
+                        <path d="M15 10v11"></path>
+                        <path d="M12 3l9 7H3l9-7z"></path>
+                    </svg>
+                </span>
                 <div><strong>Admin & Tata Usaha (TU)</strong><span>Layanan surat, akun & operasional</span></div>
             </button>
         </div>
@@ -699,14 +740,14 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
             const sugg = (typeof data === 'object' && Array.isArray(data.suggestions)) ? data.suggestions : [];
 
             let badgeCls = 'ai-badge-umum', badgeTxt = 'Tanya Tefa AI';
-            if (cat.includes('PPDB')) { badgeCls = 'ai-badge-ppdb'; badgeTxt = '👨‍👩‍👧 Info Calon / PPDB'; }
-            else if (cat.includes('INDUSTRI')) { badgeCls = 'ai-badge-industri'; badgeTxt = '🏢 Mitra Industri / DUDI'; }
-            else if (cat.includes('GURU')) { badgeCls = 'ai-badge-guru'; badgeTxt = '👨‍🏫 Guru Pembimbing'; }
-            else if (cat.includes('SISWA')) { badgeCls = 'ai-badge-siswa'; badgeTxt = '🎓 Siswa Aktif SMK'; }
-            else if (cat.includes('BLUD')) { badgeCls = 'ai-badge-blud'; badgeTxt = '🏭 Teaching Factory BLUD'; }
-            else if (cat.includes('BKK') || cat.includes('KARIR')) { badgeCls = 'ai-badge-bkk'; badgeTxt = '💼 Karir & Lowongan BKK'; }
-            else if (cat.includes('AKADEMIK')) { badgeCls = 'ai-badge-akademik'; badgeTxt = '🎓 Pembelajaran Akademik'; }
-            else if (cat.includes('ADMIN') || cat.includes('FAQ')) { badgeCls = 'ai-badge-admin'; badgeTxt = '🏛️ Layanan Admin / TU'; }
+            if (cat.includes('PPDB')) { badgeCls = 'ai-badge-ppdb'; badgeTxt = 'Info Calon & PPDB'; }
+            else if (cat.includes('INDUSTRI')) { badgeCls = 'ai-badge-industri'; badgeTxt = 'Mitra Industri / DUDI'; }
+            else if (cat.includes('GURU')) { badgeCls = 'ai-badge-guru'; badgeTxt = 'Guru Pembimbing'; }
+            else if (cat.includes('SISWA')) { badgeCls = 'ai-badge-siswa'; badgeTxt = 'Siswa Aktif SMK'; }
+            else if (cat.includes('BLUD')) { badgeCls = 'ai-badge-blud'; badgeTxt = 'Teaching Factory BLUD'; }
+            else if (cat.includes('BKK') || cat.includes('KARIR')) { badgeCls = 'ai-badge-bkk'; badgeTxt = 'Karir & Lowongan BKK'; }
+            else if (cat.includes('AKADEMIK')) { badgeCls = 'ai-badge-akademik'; badgeTxt = 'Portal Akademik'; }
+            else if (cat.includes('ADMIN') || cat.includes('FAQ')) { badgeCls = 'ai-badge-admin'; badgeTxt = 'Layanan Tata Usaha & Admin'; }
 
             const ctaHtml = (route && label)
                 ? `<a href="${route}" class="ai-cta-link">${esc(label)} <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>`
@@ -810,7 +851,7 @@ UNIFIED HIGH-PERFORMANCE TANYA TEFA AI WIDGET
         function mdFull(text) {
             if (!text) return '';
             let raw = esc(text);
-            raw = raw.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            raw = raw.replace(/\*\*+(.*?)\*\*+/g, '$1').replace(/\*/g, '');
             const lines = raw.split('\n');
             let out = '', inList = false, listType = 'ul';
             lines.forEach(line => {

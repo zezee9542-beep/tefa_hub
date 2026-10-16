@@ -295,9 +295,7 @@
                     
                     <!-- Suggestions Bar (Ide Pertanyaan Dinamis) -->
                     <div class="chat-suggestions-bar-full">
-                        <span class="suggestions-label">
-                            <span class="icon-bulb">💡</span> IDE PERTANYAAN:
-                        </span>
+                        <span class="suggestions-label">IDE PERTANYAAN:</span>
                         <div class="chips-scroll-container" id="bottomSuggestionsContainer">
                             <button type="button" class="chip-suggestion" onclick="sendCustomMessage('Cara Publikasi Produk BLUD')">
                                 Cara Publikasi Produk BLUD
@@ -382,11 +380,11 @@
                         </div>
                         <div class="ai-bubble-card">
                             <div class="ai-category-badge badge-umum">
-                                <span>🤖 Navigator Peran & Pusat Bantuan Mandiri</span>
+                                <span>Navigator Peran & Pusat Bantuan Mandiri</span>
                             </div>
                             <div class="ai-formatted-content">
-                                <p>Halo <strong>${escapeHtml(userName)}</strong>! Saya adalah <strong>Tanya Tefa AI</strong>, asisten navigator resmi platform TEFA-Hub.</p>
-                                <p>Saya siap memandu kebutuhan Anda berdasarkan peran hari ini, tanpa perlu antre ke ruang Tata Usaha:</p>
+                                <p>Halo ${escapeHtml(userName)}, saya Tanya Tefa AI, asisten virtual dan navigator resmi platform TEFA-Hub.</p>
+                                <p>Saya siap membantu Anda seputar informasi sekolah, PPDB, jurusan, unit BLUD, lowongan BKK, hingga layanan administrasi. Silakan pilih kategori di bawah ini atau langsung ajukan pertanyaan Anda:</p>
                             </div>
 
                             <!-- Needs Analysis Navigator Grid -->
@@ -395,7 +393,14 @@
                                 <!-- Card 1: Orang Tua & Calon Siswa (PPDB) -->
                                 <div class="ai-need-card" style="border-top: 3px solid #E07B00;">
                                     <div class="ai-need-header">
-                                        <div class="ai-need-icon">👨‍👩‍👧</div>
+                                        <div class="ai-need-icon">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                                <circle cx="9" cy="7" r="4"></circle>
+                                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                            </svg>
+                                        </div>
                                         <div>
                                             <h4 class="ai-need-title">Orang Tua & Calon Siswa</h4>
                                             <p class="ai-need-desc">PPDB online, syarat berkas, jurusan & biaya</p>
@@ -420,7 +425,12 @@
                                 <!-- Card 2: Siswa Aktif SMK -->
                                 <div class="ai-need-card" style="border-top: 3px solid #004AC6;">
                                     <div class="ai-need-header">
-                                        <div class="ai-need-icon">🎓</div>
+                                        <div class="ai-need-icon">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                                            </svg>
+                                        </div>
                                         <div>
                                             <h4 class="ai-need-title">Siswa Aktif SMK</h4>
                                             <p class="ai-need-desc">Magang PKL, produk BLUD, komisi & rapor</p>
@@ -445,7 +455,12 @@
                                 <!-- Card 3: Alumni & Pencari Kerja -->
                                 <div class="ai-need-card" style="border-top: 3px solid #712AE2;">
                                     <div class="ai-need-header">
-                                        <div class="ai-need-icon">💼</div>
+                                        <div class="ai-need-icon">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                            </svg>
+                                        </div>
                                         <div>
                                             <h4 class="ai-need-title">Alumni & Pencari Kerja</h4>
                                             <p class="ai-need-desc">Loker BKK, legalisir ijazah & sertifikasi</p>
@@ -470,7 +485,21 @@
                                 <!-- Card 4: Mitra Industri / DUDI -->
                                 <div class="ai-need-card" style="border-top: 3px solid #0284C7;">
                                     <div class="ai-need-header">
-                                        <div class="ai-need-icon">🏢</div>
+                                        <div class="ai-need-icon">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                                                <path d="M9 22v-4h6v4"></path>
+                                                <path d="M8 6h.01"></path>
+                                                <path d="M16 6h.01"></path>
+                                                <path d="M12 6h.01"></path>
+                                                <path d="M12 10h.01"></path>
+                                                <path d="M12 14h.01"></path>
+                                                <path d="M16 10h.01"></path>
+                                                <path d="M16 14h.01"></path>
+                                                <path d="M8 10h.01"></path>
+                                                <path d="M8 14h.01"></path>
+                                            </svg>
+                                        </div>
                                         <div>
                                             <h4 class="ai-need-title">Mitra Industri (DUDI)</h4>
                                             <p class="ai-need-desc">Kerjasama TEFA & rekrutmen alumni</p>
@@ -495,7 +524,17 @@
                                 <!-- Card 5: Layanan Tata Usaha & Akun -->
                                 <div class="ai-need-card" style="border-top: 3px solid #16A34A;">
                                     <div class="ai-need-header">
-                                        <div class="ai-need-icon">🏛️</div>
+                                        <div class="ai-need-icon">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M3 21h18"></path>
+                                                <path d="M3 10h18"></path>
+                                                <path d="M5 10v11"></path>
+                                                <path d="M19 10v11"></path>
+                                                <path d="M9 10v11"></path>
+                                                <path d="M15 10v11"></path>
+                                                <path d="M12 3l9 7H3l9-7z"></path>
+                                            </svg>
+                                        </div>
                                         <div>
                                             <h4 class="ai-need-title">Layanan TU & Akun</h4>
                                             <p class="ai-need-desc">Surat aktif, reset sandi & jam kerja TU</p>
@@ -519,7 +558,7 @@
 
                             </div>
 
-                            <p style="font-size:12px; color:#64748B; margin-top:8px;">💡 <em>Silakan klik opsi di atas atau ketik langsung pertanyaan Anda di kolom chat.</em></p>
+                            <p style="font-size:12px; color:#64748B; margin-top:8px;"><em>Silakan klik opsi di atas atau ketik langsung pertanyaan Anda di kolom chat.</em></p>
                         </div>
                     </div>
                 </div>
@@ -645,14 +684,14 @@
             
             // Category & Role Badge
             let badgeClass = 'badge-umum';
-            let badgeText = '🤖 Tanya Tefa AI Navigator';
+            let badgeText = 'Tanya Tefa AI Navigator';
             const cat = (data.category || '').toUpperCase();
-            if (cat.includes('PPDB')) { badgeClass = 'badge-ppdb'; badgeText = '👨‍👩‍👧 Info PPDB & Calon Siswa'; }
-            else if (cat.includes('INDUSTRI')) { badgeClass = 'badge-industri'; badgeText = '🏢 Kemitraan Industri (DUDI)'; }
-            else if (cat.includes('BLUD')) { badgeClass = 'badge-blud'; badgeText = '🏭 Unit Produksi BLUD'; }
-            else if (cat.includes('BKK')) { badgeClass = 'badge-bkk'; badgeText = '💼 Bursa Kerja Khusus (BKK)'; }
-            else if (cat.includes('AKADEMIK')) { badgeClass = 'badge-akademik'; badgeText = '🎓 Portal Akademik'; }
-            else if (cat.includes('ADMIN') || cat.includes('FAQ')) { badgeClass = 'badge-admin'; badgeText = '🏛️ Layanan Tata Usaha & Akun'; }
+            if (cat.includes('PPDB')) { badgeClass = 'badge-ppdb'; badgeText = 'Info PPDB & Calon Siswa'; }
+            else if (cat.includes('INDUSTRI')) { badgeClass = 'badge-industri'; badgeText = 'Kemitraan Industri (DUDI)'; }
+            else if (cat.includes('BLUD')) { badgeClass = 'badge-blud'; badgeText = 'Unit Produksi BLUD'; }
+            else if (cat.includes('BKK')) { badgeClass = 'badge-bkk'; badgeText = 'Bursa Kerja Khusus (BKK)'; }
+            else if (cat.includes('AKADEMIK')) { badgeClass = 'badge-akademik'; badgeText = 'Portal Akademik'; }
+            else if (cat.includes('ADMIN') || cat.includes('FAQ')) { badgeClass = 'badge-admin'; badgeText = 'Layanan Tata Usaha & Akun'; }
 
             // Action button
             let actionBtnHtml = '';
@@ -681,7 +720,7 @@
 
                 followupHtml = `
                     <div class="ai-followup-container">
-                        <span class="ai-followup-label">💡 Rekomendasi Langkah Selanjutnya:</span>
+                        <span class="ai-followup-label">Rekomendasi Langkah Selanjutnya:</span>
                         ${chips}
                     </div>
                 `;
@@ -743,8 +782,8 @@
             if (!text) return '';
             let raw = escapeHtml(text);
             
-            // Format bold **text**
-            raw = raw.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            // Strip any rogue asterisks or bold markings to keep text clean and natural
+            raw = raw.replace(/\*\*+(.*?)\*\*+/g, '$1').replace(/\*/g, '');
 
             // Format lines with bullet or numbered steps
             const lines = raw.split('\n');
