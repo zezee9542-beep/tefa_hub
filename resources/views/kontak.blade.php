@@ -330,7 +330,7 @@
                                 </svg>
                             </div>
                             <div class="info-details">
-                                <h4>Alamat Kampus</h4>
+                                <h4>Alamat Sekolah
                                 <p>Jl. Siwalanpanji, Kec. Buduran, Kabupaten Sidoarjo, Jawa Timur 61252</p>
                                 <p style="font-size: 12.5px; color: #2563eb; margin-top: 4px; font-weight: 600;">Area Kompleks Pendidikan Vokasi Siwalanpanji</p>
                             </div>

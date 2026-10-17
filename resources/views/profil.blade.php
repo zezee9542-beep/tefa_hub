@@ -1570,7 +1570,7 @@
                                     </svg>
                                 </div>
                                 <div class="profil-contact-detail-text">
-                                    <h5>Alamat Kampus</h5>
+                                    <h5>Alamat Sekolah</h5>
                                     <p>Jl. Raya Siwalanpanji No. 1, Bedrek, Siwalanpanji, Kecamatan Buduran, Kabupaten Sidoarjo, Jawa Timur 61252</p>
                                 </div>
                             </div>
