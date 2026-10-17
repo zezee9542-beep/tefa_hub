@@ -19,36 +19,14 @@ FACILITIES & INDUSTRY WORKSHOPS SHOWCASE
         {{-- Interactive Facility Cards Grid --}}
         <div class="facilities-grid" data-stagger>
 
-            {{-- 1. TBSM --}}
-            <div class="facility-card" data-stagger-item data-hover-card>
-                <div class="facility-badge">Teknik Sepeda Motor</div>
-                <div class="facility-icon-wrap icon-red">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="5.5" cy="17.5" r="3.5"></circle>
-                        <circle cx="18.5" cy="17.5" r="3.5"></circle>
-                        <path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h4"></path>
-                    </svg>
-                </div>
-                <h3 class="facility-name">Bengkel Resmi Standar APM</h3>
-                <p class="facility-detail">
-                    Dilengkapi 12 hydraulic bike lift, computerized injector tester &amp; cleaner, scanner diagnostic
-                    OBD, dan perkakas standar bengkel resmi APM.
-                </p>
-                <div class="facility-features">
-                    <span class="facility-pill">✓ 12 Hydraulic Bike Lift</span>
-                    <span class="facility-pill">✓ Scanner ECU Digital</span>
-                </div>
-            </div>
-
-            {{-- 2. TKRO --}}
+            {{-- 1. TKRO / TKR --}}
             <div class="facility-card" data-stagger-item data-hover-card>
                 <div class="facility-badge">Teknik Kendaraan Ringan</div>
                 <div class="facility-icon-wrap icon-blue">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
                         stroke-linecap="round" stroke-linejoin="round">
                         <rect x="1" y="3" width="15" height="13"></rect>
-                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
                         <circle cx="5.5" cy="18.5" r="2.5"></circle>
                         <circle cx="18.5" cy="18.5" r="2.5"></circle>
                     </svg>
@@ -64,7 +42,7 @@ FACILITIES & INDUSTRY WORKSHOPS SHOWCASE
                 </div>
             </div>
 
-            {{-- 3. RPL / PPLG --}}
+            {{-- 2. RPL / PPLG --}}
             <div class="facility-card" data-stagger-item data-hover-card>
                 <div class="facility-badge">Rekayasa Perangkat Lunak</div>
                 <div class="facility-icon-wrap icon-purple">
@@ -85,30 +63,7 @@ FACILITIES & INDUSTRY WORKSHOPS SHOWCASE
                 </div>
             </div>
 
-            {{-- 4. TKJ / TJKT --}}
-            <div class="facility-card" data-stagger-item data-hover-card>
-                <div class="facility-badge">Teknik Komputer &amp; Jaringan</div>
-                <div class="facility-icon-wrap icon-cyan">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                        <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                        <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                    </svg>
-                </div>
-                <h3 class="facility-name">Fiber Optic &amp; Enterprise Network</h3>
-                <p class="facility-detail">
-                    Peralatan optical fiber fusion splicer, Optical Time Domain Reflectometer (OTDR), routerboard
-                    MikroTik, dan server rack berlisensi akademi jaringan resmi.
-                </p>
-                <div class="facility-features">
-                    <span class="facility-pill">✓ Fusion Splicer Kit</span>
-                    <span class="facility-pill">✓ Cisco / MikroTik Lab</span>
-                </div>
-            </div>
-
-            {{-- 5. TPm --}}
+            {{-- 3. TPm --}}
             <div class="facility-card" data-stagger-item data-hover-card>
                 <div class="facility-badge">Teknik Pemesinan</div>
                 <div class="facility-icon-wrap icon-emerald">
@@ -131,14 +86,45 @@ FACILITIES & INDUSTRY WORKSHOPS SHOWCASE
                 </div>
             </div>
 
-            {{-- 6. Call to Action Card --}}
-            <div class="facility-card facility-card-cta" data-stagger-item data-hover-card>
-                <div class="facility-cta-badge">Kunjungi Langsung</div>
-                <h3 class="facility-cta-title">Ingin Melihat Fasilitas Kami Secara Langsung?</h3>
-                <p class="facility-cta-text">
-                    Daftarkan kunjungan sekolah atau jadwalkan sesi konsultasi PPDB bersama tim bimbingan kejuruan SMK
-                    Antartika 1 Sidoarjo.
+            {{-- 4. TEI --}}
+            <div class="facility-card" data-stagger-item data-hover-card>
+                <div class="facility-badge">Teknik Elektronika Industri</div>
+                <div class="facility-icon-wrap icon-cyan">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                        <rect x="9" y="9" width="6" height="6"></rect>
+                        <line x1="9" y1="1" x2="9" y2="4"></line>
+                        <line x1="15" y1="1" x2="15" y2="4"></line>
+                        <line x1="9" y1="20" x2="9" y2="23"></line>
+                        <line x1="15" y1="20" x2="15" y2="23"></line>
+                        <line x1="20" y1="9" x2="23" y2="9"></line>
+                        <line x1="20" y1="14" x2="23" y2="14"></line>
+                        <line x1="1" y1="9" x2="4" y2="9"></line>
+                        <line x1="1" y1="14" x2="4" y2="14"></line>
+                    </svg>
+                </div>
+                <h3 class="facility-name">Lab Robotika, IoT &amp; Otomasi PLC</h3>
+                <p class="facility-detail">
+                    Trainer mikrokontroler canggih, modul IoT cerdas, sistem kontrol PLC industri, osiloskop digital,
+                    dan simulator otomasi lini produksi pabrik modern.
                 </p>
+                <div class="facility-features">
+                    <span class="facility-pill">✓ Trainer PLC Industri</span>
+                    <span class="facility-pill">✓ Robotika &amp; Modul IoT</span>
+                </div>
+            </div>
+
+            {{-- 5. Call to Action Card --}}
+            <div class="facility-card facility-card-cta" data-stagger-item data-hover-card>
+                <div class="facility-cta-content">
+                    <div class="facility-cta-badge">Kunjungi Langsung</div>
+                    <h3 class="facility-cta-title">Ingin Melihat Fasilitas Kami Secara Langsung?</h3>
+                    <p class="facility-cta-text">
+                        Daftarkan kunjungan sekolah atau jadwalkan sesi konsultasi PPDB bersama tim bimbingan kejuruan SMK
+                        Antartika 1 Sidoarjo.
+                    </p>
+                </div>
                 <div class="facility-cta-actions">
                     <a href="{{ route('ppdb.daftar') }}" class="facility-cta-btn-primary">
                         Daftar Online PPDB
@@ -318,11 +304,24 @@ FACILITIES & INDUSTRY WORKSHOPS SHOWCASE
         color: #ffffff;
         border: none;
         box-shadow: 0 16px 40px -8px rgba(37, 99, 235, 0.35);
+        grid-column: span 2;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        padding: 34px 32px;
     }
 
     .facility-card-cta:hover {
         border: none;
         box-shadow: 0 24px 48px -6px rgba(37, 99, 235, 0.45);
+    }
+
+    .facility-cta-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
 
     .facility-cta-badge {
@@ -335,7 +334,7 @@ FACILITIES & INDUSTRY WORKSHOPS SHOWCASE
         background: rgba(255, 255, 255, 0.2);
         padding: 5px 12px;
         border-radius: 999px;
-        margin-bottom: 16px;
+        margin-bottom: 14px;
     }
 
     .facility-cta-title {
@@ -343,21 +342,22 @@ FACILITIES & INDUSTRY WORKSHOPS SHOWCASE
         font-weight: 800;
         color: #ffffff;
         line-height: 1.3;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
     }
 
     .facility-cta-text {
         font-size: 13.5px;
         color: rgba(255, 255, 255, 0.88);
-        line-height: 1.65;
-        margin-bottom: 24px;
-        flex-grow: 1;
+        line-height: 1.6;
+        margin-bottom: 0;
     }
 
     .facility-cta-actions {
         display: flex;
         flex-direction: column;
         gap: 10px;
+        min-width: 190px;
+        flex-shrink: 0;
     }
 
     .facility-cta-btn-primary {
@@ -401,12 +401,33 @@ FACILITIES & INDUSTRY WORKSHOPS SHOWCASE
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
+
+        .facility-card-cta {
+            grid-column: span 2;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .facility-card-cta {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .facility-cta-actions {
+            width: 100%;
+            min-width: unset;
+        }
     }
 
     @media (max-width: 640px) {
         .facilities-grid {
             grid-template-columns: 1fr;
             gap: 16px;
+        }
+
+        .facility-card-cta {
+            grid-column: span 1;
         }
 
         .facilities-section {
